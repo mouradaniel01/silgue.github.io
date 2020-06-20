@@ -117,943 +117,914 @@
          </div>
       </header>
       <div class="container-conteudo">
-         <div class="container-conteudo__content w-100">
-            <nav aria-label="breadcrumb">
-               <ol class="breadcrumb">
-                  <li class="breadcrumb-item">
-                     <a class="link" th:href="@{/}"><i class="fas fa-home"></i></a>
-                  </li>
-                  <li class="breadcrumb-item" aria-current="page">
-                     <h3>Submissão</h3>
-                  </li>
-               </ol>
-            </nav>
-            <!-- Alerta de Atenção -->
-            <div class="alert alert-warning alert-dismissible fade show d-flex mt-2" role="alert">
-               <div class="alert-icone d-flex justify-content-center align-items-center">
-                  <i class="fas fa-exclamation"></i>
+      <div class="container-conteudo__content w-100">
+      <nav aria-label="breadcrumb">
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+               <a class="link" th:href="@{/}"><i class="fas fa-home"></i></a>
+            </li>
+            <li class="breadcrumb-item" aria-current="page">
+               <h3>Submissão</h3>
+            </li>
+         </ol>
+      </nav>
+      <!-- Alerta de Atenção -->
+      <div class="alert alert-warning alert-dismissible fade show d-flex mt-2" role="alert">
+         <div class="alert-icone d-flex justify-content-center align-items-center">
+            <i class="fas fa-exclamation"></i>
+         </div>
+         <div class="alert-information">
+            <p><strong>Atenção</strong></p>
+            <ul>
+               <li><strong>•</strong> O formulário a seguir pode ser preenchido na sequência de sua preferência.</li>
+               <li><strong>•</strong> Lorem ipsum dolor sit amet</li>
+            </ul>
+         </div>
+         <button class="close d-flex" type="button" data-dismiss="alert" aria-label="Close">
+         <i class="fas fa-times"></i>
+         </button>
+      </div>
+      <!-- Navegação lateral -->
+      <div class="navegacao-lateral mt-2">
+         <div class="title-top">
+            <h1>Formalização de projeto de pesquisa</h1>
+         </div>
+         <div class="row">
+            <div class="col-4 barra-vertical">
+               <div class="list-group list-group-flush">
+                  <div class="menu-item active">
+                     <i class="far fa-circle"></i>
+                     <div class="menu-botao">
+                        <button
+                           class="list-group-item list-group-item-action"
+                           href="#consultaProj"
+                           role="tab"
+                           aria-controls="Consulta de Projetos"
+                           >
+                        Consulta de Projetos
+                        </button>
+                     </div>
+                  </div>
+                  <div class="menu-item">
+                     <i class="far fa-circle"></i>
+                     <div class="menu-botao">
+                        <button
+                           class="list-group-item list-group-item-action"
+                           href="#dadosGerais"
+                           role="tab"
+                           aria-controls="Dados Gerais"
+                           >
+                        Dados gerais
+                        </button>
+                     </div>
+                  </div>
+                  <div class="menu-item">
+                     <i class="far fa-circle"></i>
+                     <div class="menu-botao">
+                        <button
+                           class="list-group-item list-group-item-action"
+                           href="#participes"
+                           role="tab"
+                           aria-controls="Partícipes"
+                           >
+                        Partícipes
+                        </button>
+                     </div>
+                  </div>
+                  <div class="menu-item">
+                     <i class="far fa-circle"></i>
+                     <div class="menu-botao">
+                        <button
+                           class="list-group-item list-group-item-action"
+                           href="#metasResultados"
+                           role="tab"
+                           aria-controls="Metas_Resultados"
+                           >
+                        Metas/Resultados
+                        </button>
+                     </div>
+                  </div>
+                  <div class="menu-item">
+                     <i class="far fa-circle"></i>
+                     <div class="menu-botao">
+                        <button
+                           class="list-group-item list-group-item-action"
+                           href="#recursos"
+                           role="tab"
+                           aria-controls="Recursos"
+                           >
+                        Recursos
+                        </button>
+                     </div>
+                  </div>
+                  <div class="menu-item">
+                     <i class="far fa-circle"></i>
+                     <div class="menu-botao">
+                        <button class="list-group-item list-group-item-action" href="#planoAplicacao" role="tab" aria-controls="Plano de Aplicação">
+                        Plano de Aplicação
+                        </button>
+                     </div>
+                  </div>
+                  <div class="menu-item">
+                     <i class="far fa-circle"></i>
+                     <div class="menu-botao">
+                        <button
+                           class="list-group-item list-group-item-action"
+                           href="#cronogramaDes"
+                           role="tab"
+                           aria-controls="Cronograma de Desembolso"
+                           >
+                        Cronograma de Desembolso
+                        </button>
+                     </div>
+                  </div>
+                  <div class="menu-item">
+                     <i class="far fa-circle"></i>
+                     <div class="menu-botao">
+                        <button
+                           class="list-group-item list-group-item-action"
+                           href="#documentos"
+                           role="tab"
+                           aria-controls="Documentos"
+                           >
+                        Documentos
+                        </button>
+                     </div>
+                  </div>
                </div>
-               <div class="alert-information">
-                  <p><strong>Atenção</strong></p>
-                  <ul>
-                     <li><strong>•</strong> O formulário a seguir pode ser preenchido na sequência de sua preferência.</li>
-                     <li><strong>•</strong> Lorem ipsum dolor sit amet</li>
-                  </ul>
-               </div>
-               <button class="close d-flex" type="button" data-dismiss="alert" aria-label="Close">
-               <i class="fas fa-times"></i>
-               </button>
             </div>
-            <!-- Navegação lateral -->
-            <div class="navegacao-lateral mt-2">
-               <div class="title-top">
-                  <h1>Formalização de projeto de pesquisa</h1>
-               </div>
-               <div class="row">
-                  <div class="col-4 barra-vertical">
-                     <div class="list-group list-group-flush">
-                        <div class="menu-item active">
-                           <i class="far fa-circle"></i>
-                           <div class="menu-botao">
-                              <button
-                                 class="list-group-item list-group-item-action"
-                                 href="#consultaProj"
-                                 role="tab"
-                                 aria-controls="Consulta de Projetos"
-                                 >
-                              Consulta de Projetos
-                              </button>
-                           </div>
+            <div class="col-8">
+               <div class="tab-content menu-conteudo">
+                  <div class="tab-pane show active" 
+                     id="consultaProj" role="tabpanel">
+                     <section class="m-3">
+                        <h4>Consulta de Projetos</h4>
+                        <form>
+                           <!--<article class="conteudo-principal col-md-4 col-lg-12 col-xl-4 col-12 p-0">-->
+                           <!--<div class="conteudo-principal__header">
+                              <h1>Filtro</h1>
+                              </div>-->
+                           <div class="conteudo-principal__content m-0">
+                        <form class="border-0 p-0 my-3 mx-40px" id="form-filtro">
+                        <p class="advice">* Campos Obrigatórios</p>
+                        <div class="form-group position-relative">
+                        <div class="form-inline">
+                        <label for="date-input">Vigência</label>
+                        <input class="form-control p-1 m-1" id="date-input" type="date" /> até
+                        <input class="form-control p-1 m-1" id="date-input" type="date" />
+                        </div> 
                         </div>
-                        <div class="menu-item">
-                           <i class="far fa-circle"></i>
-                           <div class="menu-botao">
-                              <button
-                                 class="list-group-item list-group-item-action"
-                                 href="#dadosGerais"
-                                 role="tab"
-                                 aria-controls="Dados Gerais"
-                                 >
-                              Dados gerais
-                              </button>
-                           </div>
+                        <div class="form-group position-relative">
+                        <input id="unidade"
+                           class="form-control form-autocomplete" data-type="simples" id="autocomplete-input-simples" type="text" placeholder="Digite o nomeou o código da unidade..." />
+                        <label for="autocomplete-input-simples">Unidade Executora</label>
                         </div>
-                        <div class="menu-item">
-                           <i class="far fa-circle"></i>
-                           <div class="menu-botao">
-                              <button
-                                 class="list-group-item list-group-item-action"
-                                 href="#participes"
-                                 role="tab"
-                                 aria-controls="Partícipes"
-                                 >
-                              Partícipes
-                              </button>
-                           </div>
+                        <div class="form-group position-relative">
+                        <input class="form-control" id="text-input" type="text" placeholder="Título do Projeto" />
+                        <label for="text-input">Título</label>
                         </div>
-                        <div class="menu-item">
-                           <i class="far fa-circle"></i>
-                           <div class="menu-botao">
-                              <button
-                                 class="list-group-item list-group-item-action"
-                                 href="#metasResultados"
-                                 role="tab"
-                                 aria-controls="Metas_Resultados"
-                                 >
-                              Metas/Resultados
-                              </button>
-                           </div>
+                        <div class="form-group position-relative">
+                        <input class="form-control" id="text-input" type="text" placeholder="Palavras chaves" />
+                        <label for="text-input">Palavras chaves</label>
                         </div>
-                        <div class="menu-item">
-                           <i class="far fa-circle"></i>
-                           <div class="menu-botao">
-                              <button
-                                 class="list-group-item list-group-item-action"
-                                 href="#recursos"
-                                 role="tab"
-                                 aria-controls="Recursos"
-                                 >
-                              Recursos
-                              </button>
-                           </div>
+                        <div class="form-group position-relative">
+                        <select class="custom-select" id="select-situacao" required="required" name="situacao">
+                        <option value="hide">Selecione</option>
+                        <option>Com inovação tecnológica</option>
+                        <option>Sem inovação tecnológica</option>
+                        </select>
+                        <label class="required" for="select-situacao">Classificação da Pesquisa</label>
+                        <div class="invalid-feedback">Selecione alguma opção</div>
                         </div>
-                        <div class="menu-item">
-                           <i class="far fa-circle"></i>
-                           <div class="menu-botao">
-                              <button class="list-group-item list-group-item-action" href="#planoAplicacao" role="tab" aria-controls="Plano de Aplicação">
-                                 Plano de Aplicação
-                              </button>
-                           </div>
+                        <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i> Buscar</button>
+                        </form>
                         </div>
-                        <div class="menu-item">
-                           <i class="far fa-circle"></i>
-                           <div class="menu-botao">
-                              <button
-                                 class="list-group-item list-group-item-action"
-                                 href="#cronogramaDes"
-                                 role="tab"
-                                 aria-controls="Cronograma de Desembolso"
-                                 >
-                              Cronograma de Desembolso
-                              </button>
+                        <!--</article>-->
+                        <article class="conteudo-principal">
+                           <div class="conteudo-principal__header">
+                              <h1>Projetos Homologados</h1>
+                              <span class="tooltip-icon">
+                              <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Deverão ser listados apenas os projetos de pesquisa que tenham sido homologados pela PROPESQ.">
+                              </i>
+                              </span>
                            </div>
-                        </div>
-                        <div class="menu-item">
-                           <i class="far fa-circle"></i>
-                           <div class="menu-botao">
-                              <button
-                                 class="list-group-item list-group-item-action"
-                                 href="#documentos"
-                                 role="tab"
-                                 aria-controls="Documentos"
-                                 >
-                              Documentos
-                              </button>
+                           <div class="conteudo-principal__content m-0 my-3 px-4">
+                              <table class="table table-striped" data-toggle="table">
+                                 <thead>
+                                    <tr>
+                                       <th class="w-10" data-checkbox="true"></th>
+                                       <th>Número</th>
+                                       <th>Titulo</th>
+                                       <th>Classificação</th>
+                                       <th>Unidade Executora</th>
+                                       <th>Vigência Inicial</th>
+                                       <th>Vigência Final</th>
+                                       <th class="w-10 text-center">Formalizar</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr>
+                                       <td></td>
+                                       <td>00001</td>
+                                       <td>Desenvolvimento do novo sistema de Projetos Acadêmicos</td>
+                                       <td>Com inovação tecnológica</td>
+                                       <td>1135 - SINFO</td>
+                                       <td>01/10/2019</td>
+                                       <td>31/12/2021</td>
+                                       <td>
+                                          <a class="link-normal" href="..." rel="noopener noreferrer" target="_blank">
+                                          <i class="fas fa-external-link-alt"></i>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td></td>
+                                       <td>00002</td>
+                                       <td>Desenvolvimento de Plataforma de Integração entre sistemas estruturantes</td>
+                                       <td>Com inovação tecnológica</td>
+                                       <td>1135 - SINFO</td>
+                                       <td>01/04/2020</td>
+                                       <td>31/12/2024</td>
+                                       <td>
+                                          <a class="link-normal" href="..." rel="noopener noreferrer" target="_blank">
+                                          <i class="fas fa-external-link-alt"></i>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </article>
+                        </form>
+                     </section>
+                  </div>
+                  <div class="tab-content menu-conteudo">
+                     <!-- Modal de Membros -->
+                     <div class="modal fade" id="modalMembros" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h5 class="modal-title" id="exampleModalLabel">Associar Membros</h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                 <span aria-hidden="true">&times;</span>
+                                 </button>
+                              </div>
+                              <div class="modal-body">
+                                 <table class="table table-striped" data-toggle="table">
+                                    <thead>
+                                       <tr>
+                                          <th class="w-10" data-checkbox="true"></th>
+                                          <th>Membro</th>
+                                          <th>Valor</th>
+                                          <th class="w-10 text-center">Plano Individual</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                          <td><input class="form-check-input m-2" id="check-1" type="checkbox"  /></td>
+                                          <td>Alysson Rodrigues</td>
+                                          <td><input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" /></td>
+                                          <td>
+                                             <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
+                                             <i class="fas fa-external-link-alt"></i>
+                                             </a>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td><input class="form-check-input m-2" id="check-2" type="checkbox"  /></td>
+                                          <td>Brunno Rodrigues</td>
+                                          <td><input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" /></td>
+                                          <td>
+                                             <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
+                                             <i class="fas fa-external-link-alt"></i>
+                                             </a>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td><input class="form-check-input m-2" id="check-3" type="checkbox"  /></td>
+                                          <td>Thalisson Muriel</td>
+                                          <td><input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" /></td>
+                                          <td>
+                                             <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
+                                             <i class="fas fa-external-link-alt"></i>
+                                             </a>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td><input class="form-check-input m-2" id="check-4" type="checkbox"  /></td>
+                                          <td>José Edivan</td>
+                                          <td><input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" /></td>
+                                          <td>
+                                             <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
+                                             <i class="fas fa-external-link-alt"></i>
+                                             </a>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                              <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                 <button type="button" class="btn btn-primary">Salvar</button>
+                              </div>
                            </div>
                         </div>
                      </div>
-                  </div>
-                  <div class="col-8">
-                     <div class="tab-content menu-conteudo">
-                        <div class="tab-pane show active" 
-                           id="consultaProj" role="tabpanel">
-                           <section class="m-3">
-                              <h4>Consulta de Projetos</h4>
-                              <form>
-                                 <!--<article class="conteudo-principal col-md-4 col-lg-12 col-xl-4 col-12 p-0">-->
-                                 <!--<div class="conteudo-principal__header">
-                                    <h1>Filtro</h1>
-                                    </div>-->
-                                 <div class="conteudo-principal__content m-0">
-                              <form class="border-0 p-0 my-3 mx-40px" id="form-filtro">
-                              <p class="advice">* Campos Obrigatórios</p>
-                              <div class="form-group position-relative">
-                              <div class="form-inline">
-                              <label for="date-input">Vigência</label>
-                              <input class="form-control p-1 m-1" id="date-input" type="date" /> até
-                              <input class="form-control p-1 m-1" id="date-input" type="date" />
-                              </div> 
+                     <!-- Fim do modal de Membros-->
+                     <!-- Modal Detalhamento da Rubrica 14 -->
+                     <div class="modal fade" id="modalRubrica14" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h5 class="modal-title" id="exampleModalLabel">Rubrica 14 - Diárias</h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                 <span aria-hidden="true">&times;</span>
+                                 </button>
                               </div>
-                              <div class="form-group position-relative">
-                              <input id="unidade"
-                                 class="form-control form-autocomplete" data-type="simples" id="autocomplete-input-simples" type="text" placeholder="Digite o nomeou o código da unidade..." />
-                              <label for="autocomplete-input-simples">Unidade Executora</label>
-                              </div>
-                              <div class="form-group position-relative">
-                              <input class="form-control" id="text-input" type="text" placeholder="Título do Projeto" />
-                              <label for="text-input">Título</label>
-                              </div>
-                              <div class="form-group position-relative">
-                              <input class="form-control" id="text-input" type="text" placeholder="Palavras chaves" />
-                              <label for="text-input">Palavras chaves</label>
-                              </div>
-                              <div class="form-group position-relative">
-                              <select class="custom-select" id="select-situacao" required="required" name="situacao">
-                              <option value="hide">Selecione</option>
-                              <option>Com inovação tecnológica</option>
-                              <option>Sem inovação tecnológica</option>
-                              </select>
-                              <label class="required" for="select-situacao">Classificação da Pesquisa</label>
-                              <div class="invalid-feedback">Selecione alguma opção</div>
-                              </div>
-                              <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i> Buscar</button>
-                              </form>
-                              </div>
-                              <!--</article>-->
-                              <article class="conteudo-principal">
-                                 <div class="conteudo-principal__header">
-                                    <h1>Projetos Homologados</h1>
-                                    <span class="tooltip-icon">
-                                      <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Deverão ser listados apenas os projetos de pesquisa que tenham sido homologados pela PROPESQ.">
-                                      </i>
-                                    </span>
+                              <div class="modal-body">
+                                 <label class="d-block-inline mr-2">Detalhar Favorecido</label>
+                                 <div class="form-check form-check-inline">
+                                    <input class="form-check-input" id="favorecido-sim" type="radio" name="detalharFavorecido" value="Sim"/>
+                                    <label class="form-check-label" for="favorecido-sim">Sim</label>
                                  </div>
-                                 <div class="conteudo-principal__content m-0 my-3 px-4">
+                                 <div class="form-check form-check-inline">
+                                    <input class="form-check-input" id="favorecido-nao" type="radio" name="detalharFavorecido" value="Não" checked/>
+                                    <label class="form-check-label" for="favorecido-nao">Não</label>
+                                 </div>
+                                 <div id="rubrica14Resumida">
+                                    <div class="form-group position-relative">
+                                       <input class="form-control" id="text-input" type="text" placeholder="Quantidade de diárias" />
+                                       <label for="text-input">Quantidade</label>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                       <input class="form-control" id="text-input" type="text" placeholder="Valor unitário da diária" />
+                                       <label for="text-input">Valor da Diária</label>
+                                    </div>
+                                 </div>
+                                 <div id="detalheRubrica14">
+                                    <div class="form-group position-relative">
+                                       <select class="custom-select" id="select-favorecido" required="required" name="favorecido">
+                                          <option value="hide">Selecione</option>
+                                          <option>Alysson Rodrigues</option>
+                                          <option>Brunno Rodrigues</option>
+                                          <option>José Edivan</option>
+                                          <option>Thalisson Muriel</option>
+                                       </select>
+                                       <label class="required" for="select-favorecido">Favorecido</label>
+                                       <div class="invalid-feedback">Selecione alguma opção</div>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                       <input class="form-control" id="text-input" type="text" placeholder="Finalidade/Destino relacionada a diária" />
+                                       <label for="text-input">Finalidade/Destino</label>
+                                    </div>
+                                    <label class="d-block-inline mr-2">Diária Internacional</label>
+                                    <div class="form-check form-check-inline">
+                                       <input class="form-check-input" id="diaria-internacional-sim" type="radio" name="flagDiariaInternacional" value="Sim" checked />
+                                       <label class="form-check-label" for="diaria-internacional-sim">Sim</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                       <input class="form-check-input" id="diaria-internacional-nao" type="radio" name="flagDiariaInternacional" value="Não" />
+                                       <label class="form-check-label" for="diaria-internacional-nao">Não</label>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                       <select class="custom-select" id="select-tabela-diaria" required="required" name="tabela-diaria">
+                                          <option value="hide">Selecione</option>
+                                          <option>CAPES/CNPq</option>
+                                          <option>MEC</option>
+                                          <option>Outros</option>
+                                       </select>
+                                       <label class="required" for="select-tabela-diaria">Tabela de Referência</label>
+                                       <div class="invalid-feedback">Selecione alguma opção</div>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                       <input class="form-control" id="text-input" type="text" placeholder="Quantidade de diárias" />
+                                       <label for="text-input">Quantidade</label>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                       <input class="form-control" id="text-input" type="text" placeholder="Valor unitário da diária" />
+                                       <label for="text-input">Valor da Diária</label>
+                                    </div>
                                     <table class="table table-striped" data-toggle="table">
                                        <thead>
                                           <tr>
-                                             <th class="w-10" data-checkbox="true"></th>
-                                             <th>Número</th>
-                                             <th>Titulo</th>
-                                             <th>Classificação</th>
-                                             <th>Unidade Executora</th>
-                                             <th>Vigência Inicial</th>
-                                             <th>Vigência Final</th>
-                                             <th class="w-10 text-center">Formalizar</th>
+                                             <th>Favorecido</th>
+                                             <th>Finalidade/Destino</th>
+                                             <th>Qtd</th>
+                                             <th>Valor</th>
+                                             <th class="w-10 text-center">Ações</th>
                                           </tr>
                                        </thead>
                                        <tbody>
                                           <tr>
-                                             <td></td>
-                                             <td>00001</td>
-                                             <td>Desenvolvimento do novo sistema de Projetos Acadêmicos</td>
-                                             <td>Com inovação tecnológica</td>
-                                             <td>1135 - SINFO</td>
-                                             <td>01/10/2019</td>
-                                             <td>31/12/2021</td>
-                                             <td>
-                                                <a class="link-normal" href="..." rel="noopener noreferrer" target="_blank">
-                                                <i class="fas fa-external-link-alt"></i>
-                                                </a>
+                                             <td>Alysson Rodrigues</td>
+                                             <td>Brasília</td>
+                                             <td>10</td>
+                                             <td>220,00</td>
+                                             <td align="right" class="btn-group">
+                                                <button class="btn btn-link ">
+                                                <i class="far fa-trash-alt"></i>
+                                                </button>
                                              </td>
                                           </tr>
                                           <tr>
-                                             <td></td>
-                                             <td>00002</td>
-                                             <td>Desenvolvimento de Plataforma de Integração entre sistemas estruturantes</td>
-                                             <td>Com inovação tecnológica</td>
-                                             <td>1135 - SINFO</td>
-                                             <td>01/04/2020</td>
-                                             <td>31/12/2024</td>
-                                             <td>
-                                                <a class="link-normal" href="..." rel="noopener noreferrer" target="_blank">
-                                                <i class="fas fa-external-link-alt"></i>
-                                                </a>
+                                             <td>Alysson Rodrigues</td>
+                                             <td>Treinamento</td>
+                                             <td>10</td>
+                                             <td>140,00</td>
+                                             <td align="right" class="btn-group">
+                                                <button class="btn btn-link ">
+                                                <i class="far fa-trash-alt"></i>
+                                                </button>
                                              </td>
+                                          </tr>
+                                          <tr>
+                                             <td>Brunno Rodrigues</td>
+                                             <td>Brasília</td>
+                                             <td>10</td>
+                                             <td>220,00</td>
+                                             <td align="right" class="btn-group">
+                                                <button class="btn btn-link ">
+                                                <i class="far fa-trash-alt"></i>
+                                                </button>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>Thalisson Muriel</td>
+                                             <td>Brasília</td>
+                                             <td>10</td>
+                                             <td>220,00</td>
+                                             <td align="right" class="btn-group">
+                                                <button class="btn btn-link ">
+                                                <i class="far fa-trash-alt"></i>
+                                                </button>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td colspan="3"><strong>Total</strong></td>
+                                             <td>8.000,00</td>
+                                             <td></td>
                                           </tr>
                                        </tbody>
                                     </table>
                                  </div>
-                              </article>
-                              
-                              </form>
-                           </section>
+                              </div>
+                              <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                 <button type="button" class="btn btn-primary">Salvar</button>
+                              </div>
+                           </div>
                         </div>
-                        <div class="tab-content menu-conteudo">
-
-
-                           <!-- Modal de Membros -->
-                              <div class="modal fade" id="modalMembros" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Associar Membros</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                      <table class="table table-striped" data-toggle="table">
-                                                <thead>
-                                                   <tr>
-                                                      <th class="w-10" data-checkbox="true"></th>
-                                                      <th>Membro</th>
-                                                      <th>Valor</th>
-                                                      <th class="w-10 text-center">Plano Individual</th>
-                                                   </tr>
-                                                </thead>
-                                                <tbody>
-                                                   <tr>
-                                                      <td><input class="form-check-input m-2" id="check-1" type="checkbox"  /></td>
-                                                      <td>Alysson Rodrigues</td>
-                                                      <td><input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" /></td>
-                                                      <td>
-                                                         <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                </a>
-                                                      </td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td><input class="form-check-input m-2" id="check-2" type="checkbox"  /></td>
-                                                      <td>Brunno Rodrigues</td>
-                                                      <td><input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" /></td>
-                                                      <td>
-                                                         <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                </a>
-                                                      </td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td><input class="form-check-input m-2" id="check-3" type="checkbox"  /></td>
-                                                      <td>Thalisson Muriel</td>
-                                                      <td><input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" /></td>
-                                                      <td>
-                                                         <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                </a>
-                                                      </td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td><input class="form-check-input m-2" id="check-4" type="checkbox"  /></td>
-                                                      <td>José Edivan</td>
-                                                      <td><input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" /></td>
-                                                      <td>
-                                                         <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                </a>
-                                                      </td>
-                                                   </tr>
-                                                   
-                                                </tbody>
-                                             </table>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                      <button type="button" class="btn btn-primary">Salvar</button>
-                                    </div>
-                                  </div>
-                                </div>
+                     </div>
+                     <!-- Fim do modal de Detalhamento da Rubrica 14-->
+                     <!-- Modal Distribuição Remuneração Unidade Executora -->
+                     <div class="modal fade" id="modalRemuneracaoUnidadeExecutora" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h5 class="modal-title" id="exampleModalLabel">Unidade Executora</h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                 <span aria-hidden="true">&times;</span>
+                                 </button>
                               </div>
-                              <!-- Fim do modal de Membros-->
-
-                              <!-- Modal Detalhamento da Rubrica 14 -->
-
-                              <div class="modal fade" id="modalRubrica14" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Rubrica 14 - Diárias</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                         <label class="d-block-inline mr-2">Detalhar Favorecido</label>
-                                         <div class="form-check form-check-inline">
-                                           <input class="form-check-input" id="favorecido-sim" type="radio" name="detalharFavorecido" value="Sim"/>
-                                           <label class="form-check-label" for="favorecido-sim">Sim</label>
-                                         </div>
-                                         <div class="form-check form-check-inline">
-                                           <input class="form-check-input" id="favorecido-nao" type="radio" name="detalharFavorecido" value="Não" checked/>
-                                           <label class="form-check-label" for="favorecido-nao">Não</label>
-                                         </div>
-                                         <div id="rubrica14Resumida">
-                                          <div class="form-group position-relative">
-                                                <input class="form-control" id="text-input" type="text" placeholder="Quantidade de diárias" />
-                                                <label for="text-input">Quantidade</label>
-                                             </div>
-                                             <div class="form-group position-relative">
-                                                <input class="form-control" id="text-input" type="text" placeholder="Valor unitário da diária" />
-                                                <label for="text-input">Valor da Diária</label>
-                                             </div>
-                                         </div>
-                                       <div id="detalheRubrica14">
-                                          <div class="form-group position-relative">
-                                             <select class="custom-select" id="select-favorecido" required="required" name="favorecido">
-                                             <option value="hide">Selecione</option>
-                                             <option>Alysson Rodrigues</option>
-                                             <option>Brunno Rodrigues</option>
-                                             <option>José Edivan</option>
-                                             <option>Thalisson Muriel</option>
-                                             </select>
-                                             <label class="required" for="select-favorecido">Favorecido</label>
-                                             <div class="invalid-feedback">Selecione alguma opção</div>
-                                             </div>
-
-                                             <div class="form-group position-relative">
-                                                <input class="form-control" id="text-input" type="text" placeholder="Finalidade/Destino relacionada a diária" />
-                                                <label for="text-input">Finalidade/Destino</label>
-                                             </div>
-
-                                             <label class="d-block-inline mr-2">Diária Internacional</label>
-                                            <div class="form-check form-check-inline">
-                                              <input class="form-check-input" id="diaria-internacional-sim" type="radio" name="flagDiariaInternacional" value="Sim" checked />
-                                              <label class="form-check-label" for="diaria-internacional-sim">Sim</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                              <input class="form-check-input" id="diaria-internacional-nao" type="radio" name="flagDiariaInternacional" value="Não" />
-                                              <label class="form-check-label" for="diaria-internacional-nao">Não</label>
-                                            </div>
-                                            <div class="form-group position-relative">
-                                             <select class="custom-select" id="select-tabela-diaria" required="required" name="tabela-diaria">
-                                             <option value="hide">Selecione</option>
-                                             <option>CAPES/CNPq</option>
-                                             <option>MEC</option>
-                                             <option>Outros</option>
-                                             </select>
-                                             <label class="required" for="select-tabela-diaria">Tabela de Referência</label>
-                                             <div class="invalid-feedback">Selecione alguma opção</div>
-                                             </div>
-                                            <div class="form-group position-relative">
-                                                <input class="form-control" id="text-input" type="text" placeholder="Quantidade de diárias" />
-                                                <label for="text-input">Quantidade</label>
-                                             </div>
-                                             <div class="form-group position-relative">
-                                                <input class="form-control" id="text-input" type="text" placeholder="Valor unitário da diária" />
-                                                <label for="text-input">Valor da Diária</label>
-                                             </div>
-                                             <table class="table table-striped" data-toggle="table">
-                                                <thead>
-                                                   <tr>
-                                                      <th>Favorecido</th>
-                                                      <th>Finalidade/Destino</th>
-                                                      <th>Qtd</th>
-                                                       <th>Valor</th>
-                                                      <th class="w-10 text-center">Ações</th>
-                                                   </tr>
-                                                </thead>
-                                                <tbody>
-                                                   <tr>
-                                                      <td>Alysson Rodrigues</td>
-                                                      <td>Brasília</td>
-                                                      <td>10</td>
-                                                      <td>220,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td>Alysson Rodrigues</td>
-                                                      <td>Treinamento</td>
-                                                      <td>10</td>
-                                                      <td>140,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td>Brunno Rodrigues</td>
-                                                      <td>Brasília</td>
-                                                      <td>10</td>
-                                                      <td>220,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td>Thalisson Muriel</td>
-                                                      <td>Brasília</td>
-                                                      <td>10</td>
-                                                      <td>220,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td colspan="3"><strong>Total</strong></td>
-                                                      <td>8.000,00</td>
-                                                      <td></td>
-                                                   </tr>
-                                                </tbody>
-                                             </table>
-                                          </div>
-                                       </div>
-
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                      <button type="button" class="btn btn-primary">Salvar</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                        
-                              <!-- Fim do modal de Detalhamento da Rubrica 14-->
-
-                              <!-- Modal Distribuição Remuneração Unidade Executora -->
-                              <div class="modal fade" id="modalRemuneracaoUnidadeExecutora" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Unidade Executora</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                       <div class="form-inline position-relative">
-                                       <label for="text-input">Percentual</label>
-                                        <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
-                                        <label for="text-input">Valor</label>
-                                        <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
-                                       </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                      <button type="button" class="btn btn-primary">Salvar</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- Fim do modal de Distribuição de Remuneração-->
-
-                              <!-- Modal Distribuição Remuneração Centro -->
-                              <div class="modal fade" id="modalRemuneracaoCentro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Centro Acadêmico</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                       <div class="form-inline position-relative">
-                                       <label for="text-input">Percentual</label>
-                                        <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
-                                        <label for="text-input">Valor</label>
-                                        <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
-                                       </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                      <button type="button" class="btn btn-primary">Salvar</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- Fim do modal de Distribuição de Remuneração Centro-->
-
-                              <!-- Modal Distribuição Remuneração Fundo -->
-                              <div class="modal fade" id="modalRemuneracaoFundo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Fundo Acadêmico</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                       <div class="form-inline position-relative">
-                                       <label for="text-input">Percentual</label>
-                                        <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
-                                        <label for="text-input">Valor</label>
-                                        <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
-                                       </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                      <button type="button" class="btn btn-primary">Salvar</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- Fim do modal de Distribuição de Fundo-->
-
-                              <!-- Modal Distribuição Remuneração Fundação -->
-                              <div class="modal fade" id="modalRemuneracaoFundacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Fundação</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                       <div class="form-inline position-relative">
-                                       <label for="text-input">Percentual</label>
-                                        <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
-                                        <label for="text-input">Valor</label>
-                                        <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
-                                        <span class="tooltip-icon">
-                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Se o usuário informar o valor, o sistema calcula o percentual arredondado. Se preencher o percentual, o sistema calcula o valor arredondado.">
-                                          </i>
-                                        </span>
-                                       </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                      <button type="button" class="btn btn-primary">Salvar</button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- Fim do modal de Distribuição de Remuneração Fundação-->
-
-                           <div class="tab-pane show" id="planoAplicacao" role="tabpanel">
-                              <section class="m-3" >
-                                 <h4>Plano de Aplicação</h4>
-                                 <form>
-                                    <div class="conteudo-principal__content m-0">
-                                       <article class="conteudo-principal">
-                                          <div class="conteudo-principal__header">
-                                             <h1>Rubricas</h1>
-                                             <span class="tooltip-icon">
-                                               <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O coordenador deve informar ao menos uma rubrica.">
-                                               </i>
-                                             </span>
-                                          </div>
-                                          <div class="conteudo-principal__content m-0 my-3 px-4">
-                                             <table class="table table-striped" data-toggle="table">
-                                                <thead>
-                                                   <tr>
-                                                      <th>Rubrica</th>
-                                                      <th>Valor</th>
-                                                      <th class="w-10 text-center">Ações</th>
-                                                   </tr>
-                                                </thead>
-                                                <tbody>
-                                                   <tr>
-                                                      <td>14 - Diárias</td>
-                                                      <td>8.000,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button type="button" id="detalharRubrica14" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica14" onclick="ocultarDetalhamentoRubrica()">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td>18 - Auxilio Financeiro ao Estudante</td>
-                                                      <td>0,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td>20 - Auxilio Financeiro a Pesquisador</td>
-                                                      <td>5.000,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button type="button" id="detalharRubrica20" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica20" >
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                         <button type="button" class="btn btn-link " data-toggle="modal" data-target="#modalMembros"> 
-                                                           <i class="fas fa-user-plus"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                    <tr>
-                                                      <td>30 - Material de Consumo</td>
-                                                      <td>20.000,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                    <tr>
-                                                      <td>32 - Material de Consumo/Distribuição Gratuita</td>
-                                                      <td>0,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                    <tr>
-                                                      <td>33 - Passagens</td>
-                                                      <td>0,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                    <tr>
-                                                      <td>35 - Serviço de Consultoria</td>
-                                                      <td>0,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td>36 - Serviço Pessoa Física</td>
-                                                      <td>30.000,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                    <tr>
-                                                      <td>39 - Serviço Pessoa Jurídica</td>
-                                                      <td>0,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                    <tr>
-                                                      <td>41 - Ajuda de Custo</td>
-                                                      <td>0,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                    <tr>
-                                                      <td>47 - Obrigações Contributivas</td>
-                                                      <td>8.000,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td>48 - Auxílio a Pessoa Física</td>
-                                                      <td>10.000,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button type="button" id="detalharRubrica48" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica48" >
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                         <button type="button" class="btn btn-link " data-toggle="modal" data-target="#modalMembros"> 
-                                                           <i class="fas fa-user-plus"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                    <tr>
-                                                      <td>51 - Obras e Instalações</td>
-                                                      <td>0,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                    <tr>
-                                                      <td>52 - Material Permanente</td>
-                                                      <td>0,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                    <tr>
-                                                      <td>95 - Indenização de Trabalho de Campo</td>
-                                                      <td>0,00</td>
-                                                      <td align="right" class="btn-group">
-                                                         <button class="btn btn-link">
-                                                         <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                         <button class="btn btn-link">
-                                                         <i class="far fa-trash-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td><strong>Total das Rubricas</strong></td>
-                                                      <td>55.000,00</td>
-                                                      <td></td>
-                                                   </tr>
-                                                </tbody>
-                                             </table>
-                                             
-                                          </div>
-                                       </article>
-                                 <form class="border-0 p-0 my-3 mx-80px">
-                                 <!--<article class="conteudo-principal col-md-4 col-lg-12 col-xl-4 col-12 p-0">-->
-                                 <!--<div class="conteudo-principal__header">
-                                    <h1>Filtro</h1>
-                                    </div>-->
-                                 <div class="conteudo-principal__content m-0">
-                                  <article class="conteudo-principal">
-                                          <div class="conteudo-principal__header">
-
-                                             <h2>Distribuição da Remuneração</h2>
-                                             
-                                              <output class="form-control" id="text-output" type="text" value="35.000,00" />
-                                                <label for="text-output">Base de Cálculo UFRN:</label>
-                                                <label for="text-output">35.000,00</label>
-                                                <span class="tooltip-icon">
-                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: A base de calculo deve ser obtida através do somatório das rubricas, com excessão das rubricas 47,51 e 52.">
-                                                   </i>
-                                                 </span>
-                                                
-                                                <div class="form-inline position-relative">
-                                                   <label for="text-input">Base de Cálculo FUNPEC</label>
-                                                 <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
-                                                </div>
-                                          </div>
-                                          <div class="conteudo-principal__content m-0 my-3 px-4">
-                                             <table class="table table-striped" data-toggle="table">
-                                                <thead>
-                                                   <tr>
-                                                      
-                                                      <th>Destino</th>
-                                                      <th>%<span class="tooltip-icon">
-                                                <i class="fas fa-info-circle m-0 p-0" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Observar os limites de distribuição previstos no anexo II da resolução 061/2016">
-                                                </i>
-                                              </span></th>
-                                                      <th>Valor<span class="tooltip-icon">
-                                                <i class="fas fa-info-circle m-0 p-0" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Observar os limites de distribuição previstos no anexo II da resolução 061/2016">
-                                                </i>
-                                              </span></th>
-                                                      <th class="w-10 text-center">Distribuição</th>
-                                                   </tr>
-                                                </thead>
-                                                <tbody>
-                                                   <tr>
-                                                      <td>Unidade Executora</td>
-                                                      <td>5</td>
-                                                      <td>10.000,00</td>
-                                                      <td>
-                                                         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalRemuneracaoUnidadeExecutora">
-                                                           <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                </a>
-                                                      </td>
-                                                      
-                                                   </tr>
-                                                    <tr>
-                                                     
-                                                      <td>Centro e Unidade Acadêmica</td>
-                                                      <td>5</td>
-                                                      <td>10.000,00</td>
-                                                      <td>
-                                                         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalRemuneracaoCentro">
-                                                           <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                      
-                                                   </tr>
-                                                   <tr>
-                                                      
-                                                      <td>Fundo Acadêmico</td>
-                                                      <td>0</td>
-                                                      <td>0</td>
-                                                      <td>
-                                                         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalRemuneracaoFundo">
-                                                           <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                      
-                                                   </tr>
-                                                   <tr>
-                                                      
-                                                      <td>Fundação</td>
-                                                      <td>0</td>
-                                                      <td>0</td>
-                                                      <td>
-                                                        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalRemuneracaoFundacao">
-                                                           <i class="fas fa-external-link-alt"></i>
-                                                         </button>
-                                                      </td>
-                                                      
-                                                   </tr>
-
-                                                </tbody>
-                                             </table>
-                                
-                                 <!--</article>-->
-                                 </form>
+                              <div class="modal-body">
+                                 <div class="form-inline position-relative">
+                                    <label for="text-input">Percentual</label>
+                                    <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
+                                    <label for="text-input">Valor</label>
+                                    <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
                                  </div>
-                                 </form>
-                              </section>
+                              </div>
+                              <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                 <button type="button" class="btn btn-primary">Salvar</button>
+                              </div>
                            </div>
-                           <div class="tab-pane" id="detalhamentoRubricas" role="tabpanel">
-                              <p>Detalhamento Rubricas</p>
+                        </div>
+                     </div>
+                     <!-- Fim do modal de Distribuição de Remuneração-->
+                     <!-- Modal Distribuição Remuneração Centro -->
+                     <div class="modal fade" id="modalRemuneracaoCentro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h5 class="modal-title" id="exampleModalLabel">Centro Acadêmico</h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                 <span aria-hidden="true">&times;</span>
+                                 </button>
+                              </div>
+                              <div class="modal-body">
+                                 <div class="form-inline position-relative">
+                                    <label for="text-input">Percentual</label>
+                                    <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
+                                    <label for="text-input">Valor</label>
+                                    <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
+                                 </div>
+                              </div>
+                              <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                 <button type="button" class="btn btn-primary">Salvar</button>
+                              </div>
                            </div>
-                           <div class="tab-pane" id="dadosGerais" role="tabpanel">
-                              <p>Dados Gerais</p>
+                        </div>
+                     </div>
+                     <!-- Fim do modal de Distribuição de Remuneração Centro-->
+                     <!-- Modal Distribuição Remuneração Fundo -->
+                     <div class="modal fade" id="modalRemuneracaoFundo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h5 class="modal-title" id="exampleModalLabel">Fundo Acadêmico</h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                 <span aria-hidden="true">&times;</span>
+                                 </button>
+                              </div>
+                              <div class="modal-body">
+                                 <div class="form-inline position-relative">
+                                    <label for="text-input">Percentual</label>
+                                    <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
+                                    <label for="text-input">Valor</label>
+                                    <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
+                                 </div>
+                              </div>
+                              <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                 <button type="button" class="btn btn-primary">Salvar</button>
+                              </div>
                            </div>
-                           <div class="tab-pane" id="participes" role="tabpanel">
-                              <p>Partícipes</p>
+                        </div>
+                     </div>
+                     <!-- Fim do modal de Distribuição de Fundo-->
+                     <!-- Modal Distribuição Remuneração Fundação -->
+                     <div class="modal fade" id="modalRemuneracaoFundacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h5 class="modal-title" id="exampleModalLabel">Fundação</h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                 <span aria-hidden="true">&times;</span>
+                                 </button>
+                              </div>
+                              <div class="modal-body">
+                                 <div class="form-inline position-relative">
+                                    <label for="text-input">Percentual</label>
+                                    <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
+                                    <label for="text-input">Valor</label>
+                                    <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
+                                    <span class="tooltip-icon">
+                                    <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Se o usuário informar o valor, o sistema calcula o percentual arredondado. Se preencher o percentual, o sistema calcula o valor arredondado.">
+                                    </i>
+                                    </span>
+                                 </div>
+                              </div>
+                              <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                 <button type="button" class="btn btn-primary">Salvar</button>
+                              </div>
                            </div>
-                           <div class="tab-pane" id="metasResultados" role="tabpanel">
-                              <p>Metas/Resultados</p>
+                        </div>
+                     </div>
+                     <!-- Fim do modal de Distribuição de Remuneração Fundação-->
+                     <div class="tab-pane show" id="planoAplicacao" role="tabpanel">
+                        <section class="m-3" >
+                           <h4>Plano de Aplicação</h4>
+                           <form>
+                              <div class="conteudo-principal__content m-0">
+                                 <article class="conteudo-principal">
+                                    <div class="conteudo-principal__header">
+                                       <h1>Rubricas</h1>
+                                       <span class="tooltip-icon">
+                                       <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O coordenador deve informar ao menos uma rubrica.">
+                                       </i>
+                                       </span>
+                                    </div>
+                                    <div class="conteudo-principal__content m-0 my-3 px-4">
+                                       <table class="table table-striped" data-toggle="table">
+                                          <thead>
+                                             <tr>
+                                                <th>Rubrica</th>
+                                                <th>Valor</th>
+                                                <th class="w-10 text-center">Ações</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             <tr>
+                                                <td>14 - Diárias</td>
+                                                <td>8.000,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button type="button" id="detalharRubrica14" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica14" onclick="ocultarDetalhamentoRubrica()">
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>18 - Auxilio Financeiro ao Estudante</td>
+                                                <td>0,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link">
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>20 - Auxilio Financeiro a Pesquisador</td>
+                                                <td>5.000,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button type="button" id="detalharRubrica20" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica20" >
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                   <button type="button" class="btn btn-link " data-toggle="modal" data-target="#modalMembros"> 
+                                                   <i class="fas fa-user-plus"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>30 - Material de Consumo</td>
+                                                <td>20.000,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link">
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>32 - Material de Consumo/Distribuição Gratuita</td>
+                                                <td>0,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link">
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>33 - Passagens</td>
+                                                <td>0,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link">
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>35 - Serviço de Consultoria</td>
+                                                <td>0,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link">
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>36 - Serviço Pessoa Física</td>
+                                                <td>30.000,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link">
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>39 - Serviço Pessoa Jurídica</td>
+                                                <td>0,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link">
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>41 - Ajuda de Custo</td>
+                                                <td>0,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link">
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>47 - Obrigações Contributivas</td>
+                                                <td>8.000,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link">
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>48 - Auxílio a Pessoa Física</td>
+                                                <td>10.000,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button type="button" id="detalharRubrica48" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica48" >
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                   <button type="button" class="btn btn-link " data-toggle="modal" data-target="#modalMembros"> 
+                                                   <i class="fas fa-user-plus"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>51 - Obras e Instalações</td>
+                                                <td>0,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link">
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>52 - Material Permanente</td>
+                                                <td>0,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link">
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>95 - Indenização de Trabalho de Campo</td>
+                                                <td>0,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link">
+                                                   <i class="fas fa-external-link-alt"></i>
+                                                   </button>
+                                                   <button class="btn btn-link">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td><strong>Total das Rubricas</strong></td>
+                                                <td>55.000,00</td>
+                                                <td></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </div>
+                                 </article>
+                           <form class="border-0 p-0 my-3 mx-80px">
+                           <!--<article class="conteudo-principal col-md-4 col-lg-12 col-xl-4 col-12 p-0">-->
+                           <!--<div class="conteudo-principal__header">
+                              <h1>Filtro</h1>
+                              </div>-->
+                           <div class="conteudo-principal__content m-0">
+                           <article class="conteudo-principal">
+                           <div class="conteudo-principal__header">
+                           <h2>Distribuição da Remuneração</h2>
+                           <output class="form-control" id="text-output" type="text" value="35.000,00" />
+                           <label for="text-output">Base de Cálculo UFRN:</label>
+                           <label for="text-output">35.000,00</label>
+                           <span class="tooltip-icon">
+                           <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: A base de calculo deve ser obtida através do somatório das rubricas, com excessão das rubricas 47,51 e 52.">
+                           </i>
+                           </span>
+                           <div class="form-inline position-relative">
+                           <label for="text-input">Base de Cálculo FUNPEC</label>
+                           <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
                            </div>
-                           <div class="tab-pane show" id="recursos" role="tabpanel">
-                              <p>Recursos</p>
                            </div>
-                           <div class="tab-pane show" id="planoAplicacao" role="tabpanel">
-                              <p>Plano de Aplicação</p>
+                           <div class="conteudo-principal__content m-0 my-3 px-4">
+                           <table class="table table-striped" data-toggle="table">
+                           <thead>
+                           <tr>
+                           <th>Destino</th>
+                           <th>%<span class="tooltip-icon">
+                           <i class="fas fa-info-circle m-0 p-0" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Observar os limites de distribuição previstos no anexo II da resolução 061/2016">
+                           </i>
+                           </span></th>
+                           <th>Valor<span class="tooltip-icon">
+                           <i class="fas fa-info-circle m-0 p-0" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Observar os limites de distribuição previstos no anexo II da resolução 061/2016">
+                           </i>
+                           </span></th>
+                           <th class="w-10 text-center">Distribuição</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           <tr>
+                           <td>Unidade Executora</td>
+                           <td>5</td>
+                           <td>10.000,00</td>
+                           <td>
+                           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalRemuneracaoUnidadeExecutora">
+                           <i class="fas fa-external-link-alt"></i>
+                           </button>
+                           </a>
+                           </td>
+                           </tr>
+                           <tr>
+                           <td>Centro e Unidade Acadêmica</td>
+                           <td>5</td>
+                           <td>10.000,00</td>
+                           <td>
+                           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalRemuneracaoCentro">
+                           <i class="fas fa-external-link-alt"></i>
+                           </button>
+                           </td>
+                           </tr>
+                           <tr>
+                           <td>Fundo Acadêmico</td>
+                           <td>0</td>
+                           <td>0</td>
+                           <td>
+                           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalRemuneracaoFundo">
+                           <i class="fas fa-external-link-alt"></i>
+                           </button>
+                           </td>
+                           </tr>
+                           <tr>
+                           <td>Fundação</td>
+                           <td>0</td>
+                           <td>0</td>
+                           <td>
+                           <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalRemuneracaoFundacao">
+                           <i class="fas fa-external-link-alt"></i>
+                           </button>
+                           </td>
+                           </tr>
+                           </tbody>
+                           </table>
+                           <!--</article>-->
+                           </form>
                            </div>
-                           <div class="tab-pane show" id="exemplo7" role="tabpanel">
-                              <p>Página 7</p>
-                           </div>
-                           <div class="tab-pane show" id="exemplo8" role="tabpanel">
-                              <p>Página 8</p>
-                           </div>
-                           <div class="tab-pane show" id="exemplo9" role="tabpanel">
-                              <p>Página 9</p>
-                           </div>
-                           <div class="tab-pane show" id="exemplo10" role="tabpanel">
-                              <p>Página 10</p>
-                           </div>
-                           <div class="tab-pane show" id="exemplo11" role="tabpanel">
-                              <p>Página 11</p>
-                           </div>
-                           <div class="tab-pane show" id="exemplo12" role="tabpanel">
-                              <p>Página 12</p>
-                           </div>
+                           </form>
+                        </section>
+                        </div>
+                        <div class="tab-pane" id="detalhamentoRubricas" role="tabpanel">
+                        <p>Detalhamento Rubricas</p>
+                        </div>
+                        <div class="tab-pane" id="dadosGerais" role="tabpanel">
+                        <p>Dados Gerais</p>
+                        </div>
+                        <div class="tab-pane" id="participes" role="tabpanel">
+                        <p>Partícipes</p>
+                        </div>
+                        <div class="tab-pane" id="metasResultados" role="tabpanel">
+                        <p>Metas/Resultados</p>
+                        </div>
+                        <div class="tab-pane show" id="recursos" role="tabpanel">
+                        <p>Recursos</p>
+                        </div>
+                        <div class="tab-pane show" id="planoAplicacao" role="tabpanel">
+                        <p>Plano de Aplicação</p>
+                        </div>
+                        <div class="tab-pane show" id="exemplo7" role="tabpanel">
+                        <p>Página 7</p>
+                        </div>
+                        <div class="tab-pane show" id="exemplo8" role="tabpanel">
+                        <p>Página 8</p>
+                        </div>
+                        <div class="tab-pane show" id="exemplo9" role="tabpanel">
+                        <p>Página 9</p>
+                        </div>
+                        <div class="tab-pane show" id="exemplo10" role="tabpanel">
+                        <p>Página 10</p>
+                        </div>
+                        <div class="tab-pane show" id="exemplo11" role="tabpanel">
+                        <p>Página 11</p>
+                        </div>
+                        <div class="tab-pane show" id="exemplo12" role="tabpanel">
+                        <p>Página 12</p>
+                        </div>
                         </div>
                      </div>
                   </div>
@@ -1069,6 +1040,10 @@
       <script src="https://static.info.ufrn.br/1.0.6/js/scripts.js"></script>
       <!-- Adicionar ao final do body -->
       <script src="https://static.info.ufrn.br/1.0.6/autoComplete/autoComplete.min.js"></script>
+      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      <script>
+         new window.VLibras.Widget('https://vlibras.gov.br/app');
+      </script>
       <script src="js/prototipo.js"></script>
       <script>
          autocomplete(document.getElementById("unidade"), unidades);
@@ -1082,12 +1057,16 @@
                  $('#rubrica14Resumida').show();
              }
          });
-
+         
          function ocultarDetalhamentoRubrica(){
                   $('#detalheRubrica14').hide();
                   $('#rubrica14Resumida').show();
                   $('#favorecido-nao').prop('checked',true);
          };
+      </script>
+      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+      <script>
+         new window.VLibras.Widget('https://vlibras.gov.br/app');
       </script>
    </body>
 </html>
