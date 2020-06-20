@@ -264,7 +264,7 @@
                                  <h1>Filtro</h1>
                                  </div>-->
                            <div class="conteudo-principal__content m-0">
-                              <form class="border-0 p-0 my-3 mx-40px" id="form-filtro">
+                              <form class="border-0" id="form-filtro">
                                  <p class="advice">* Campos Obrigatórios</p>
                                  <div class="form-group position-relative">
                                     <div class="form-inline">
@@ -313,7 +313,7 @@
                                        <tr>
                                           <th class="w-10" data-checkbox="true"></th>
                                           <th>Número</th>
-                                          <th>Titulo</th>
+                                          <th>TÍtulo</th>
                                           <th>Classificação</th>
                                           <th>Unidade Executora</th>
                                           <th>Vigência Inicial</th>
@@ -356,6 +356,73 @@
                            </article>
                         </section>
                      </div>
+                     <div class="tab-pane show" id="dadosGerais" role="tabpanel">
+                           <section class="m-3" >
+                              <h4>Dados Gerais</h4>
+                              <div class="conteudo-principal__content m-0">
+                                 <form class="border-0" id="form-filtro">
+                                    <p class="advice">* Campos Obrigatórios</p>
+                                    <div class="form-group position-relative">
+                                       <select class="custom-select" id="select-fonte-recurso" required="required" name="fonte-recurso">
+                                          <option value="hide">Selecione</option>
+                                          <option>Tipo A</option>
+                                          <option>Tipo B</option>
+                                          <option>Tipo C</option>
+                                          <option>Tipo D</option>
+                                       </select>
+                                       <label class="required" for="select-fonte-recurso">Classificação da Pesquisa
+                                       <span class="tooltip-icon">
+                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Os projetos são classificados como tipo A, B, C e D de acordo com o art. 3º da resolução 061/2016 - CONSAD">
+                                          </i>
+                                       </span>
+                                       </label>
+                                        
+                                       <div class="invalid-feedback">Selecione alguma opção</div>
+                                    </div>
+               
+                                    <div class="form-group position-relative">
+                                       <input class="form-control" id="text-input" type="text" placeholder="tempo de execução do projeto em dias." />
+                                       <label class="required" for="text-input">Tempo de Execução(em meses)</label>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                       <select class="custom-select" id="select-partilha-resultados" required="required" name="partilha-resultados">
+                                          <option value="hide">Selecione</option>
+                                          <option>Sob Encomenda</option>
+                                          <option>Em Parceria</option>
+                                          <option>Mútua Colaboração</option>
+                                          <option>Institucional</option>
+                                       </select>
+                                       <label class="required" for="select-partilha-resultados">Como ocorrerá a partilha dos resultados?
+                                       <span class="tooltip-icon">
+                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Os projetos são classificados como tipo A, B, C e D de acordo com o art. 3º da resolução 061/2016 - CONSAD">
+                                          </i>
+                                       </span>
+                                       </label>
+                                       
+                                       <div class="invalid-feedback">Selecione alguma opção</div>
+                                    </div>
+                                    
+                                    <div class="form-group position-relative">
+                                       <select class="custom-select" id="select-criações-resultantes" required="required" name="riações-resultantes">
+                                          <option value="hide">Selecione</option>
+                                          <option>Desenvolvimento de Produto</option>
+                                          <option>Desenvolvimento de Processo</option>
+                                          <option>...</option>
+                                       </select>
+                                       <label class="required" for="select-riações-resultantes">Quais as possibilidades de criações resultantes dessa parceria?
+                                       <span class="tooltip-icon">
+                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Opções de acordo com a classificação da pesquisa informada na submissão do projeto. O tipo deve ser informado nos resultados(pendente de aprovação pela PROPESQ). De qualquer forma, os resultados dependem da classificação da pesquisa, de acordo com a resolução 135/2018-COBSEPE.">
+                                          </i>
+                                       </span>
+                                       </label>
+                                       
+                                       <div class="invalid-feedback">Selecione alguma opção</div>
+                                    </div>
+                                    
+                                 </div>
+                              </form>
+                           </section>
+                        </div>
                      <div class="tab-content menu-conteudo">
                         <!-- Modal de Membros -->
                         <div class="modal fade" id="modalMembros" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -937,6 +1004,7 @@
                            </div>
                         </div>
                         <!-- Fim do Modal de Indenização de trabalho de campo-->
+                         
                         <div class="tab-pane show" id="planoAplicacao" role="tabpanel">
                            <section class="m-3" >
                               <h4>Plano de Aplicação</h4>
@@ -1243,9 +1311,6 @@
                      </div>
                      <div class="tab-pane" id="detalhamentoRubricas" role="tabpanel">
                         <p>Detalhamento Rubricas</p>
-                     </div>
-                     <div class="tab-pane" id="dadosGerais" role="tabpanel">
-                        <p>Dados Gerais</p>
                      </div>
                      <div class="tab-pane" id="participes" role="tabpanel">
                         <p>Partícipes</p>
