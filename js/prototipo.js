@@ -10,6 +10,19 @@ function exibirDetalhes(flag,div){
          });
 }
 
+function calcular(vlr1,vlr2,resultado) {
+              var n1 = parseInt(document.getElementById('vlr1').value, 10);
+              var n2 = parseInt(document.getElementById('vlr2').value, 10);
+              document.getElementById('resultado').innerHTML = n1 + n2;
+            };
+
+function ocultarDetalhamentoRubrica(){
+         $('#detalheRubrica14').hide();
+         $('#rubrica14Resumida').show();
+         $('#favorecido-nao').prop('checked',true);
+};
+
+
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
@@ -50,6 +63,7 @@ function autocomplete(inp, arr) {
         }
       }
   });
+
   /*execute a function presses a key on the keyboard:*/
   inp.addEventListener("keydown", function(e) {
       var x = document.getElementById(this.id + "autocomplete-list");
