@@ -500,7 +500,7 @@
                            <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Rubrica 14 - Diárias</h5>
+                                    <h5 class="modal-title">Rubrica 14 - Diárias</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
@@ -653,6 +653,144 @@
                            </div>
                         </div>
                         <!-- Fim do modal de Detalhamento da Rubrica 14-->
+                        <!-- Modal Detalhamento da Rubrica Rubrica 36 - Serviço de Pessoa Física -->
+                        <div class="modal fade" id="modalRubrica36" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                           <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                 <div class="modal-header">
+                                    <h5 class="modal-title">Rubrica 36 - Serviço de Pessoa Física</h5>
+                                    <form class="form border-0 p-0">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                 </div>
+                                 <div class="modal-body">
+                                    <div class="form-group position-relative">
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-atividade-36-serviço-pessoa-fisica" required="required" name="atividade-36-serviço-pessoa-fisica">
+                                             <option value="hide">Selecione</option>
+                                             <option>Serviço de Natureza Eventual</option>
+                                             <option>Serviço de Pesquisa sob Encomenda</option>
+                                             
+                                          </select>
+                                          <label class="required" for="select-atividade-36-serviço-pessoa-fisica">Atividade
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Segundo reunião com Prof. Severino, apenas a atividade de Serviço de Natureza eventual e Serviço de Pesquisa sob Encomenda deve ser listada na rubrica 36">
+                                                </i>
+                                             </span>
+                                          </label>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-membro-36" required="required" name="membro-48">
+                                                <option value="hide">Selecione</option>
+                                                <option>Alysson Rodrigues</option>
+                                                <option>José Edivan</option>
+                                                <option>Thalisson Muriel</option>
+                                                
+                                             </select>
+                                             <label class="required" for="select-membro-36">Membro
+                                                <span class="tooltip-icon">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Esse tipo de auxílio NÃO deve ser pago para membros que sejam servidores da UFRN(docentes ou técnicos administrativos)">
+                                                   </i>
+                                                </span>
+                                             </label>
+                                             <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="qtdSemana" type="text" placeholder="Quantidade de semanas dedicada ao projeto." />
+                                          <label for="text-input">Semana(s) dedicada(s)?</label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="hrSemanal" type="text" placeholder="Quantidade de horas semanais previstas." />
+                                          <label for="text-input">Horas semanais previstas?
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Conforme resolução 061/2016, o limite máximo semanal deverá ser de até 8 horas por semanas, considerando projetos de pesquisa, ensino e extensão. Além disso, o total não deve ser superior a 416 horas anuais.">
+                                                </i>
+                                             </span>
+                                          </label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="vlrHora" type="text" placeholder="valor por Hora."/>
+                                          <label for="text-input">Valor por hora?
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Conforme resolução 061/2016, o valor máximo pago por hora não pode ultrapassar o limite estabelecido no anexo V da resolução 061/2016 CONSAD.">
+                                                </i>
+                                             </span>
+                                          </label>
+                                       </div>
+
+                                       <div class="form-group position-relative">
+                                          <output class="form-control" id="vlrTotalHora" type="text" placeholder="valor total."></output>
+                                          <label for="text-input">Valor Total?</label>
+                                       </div>
+
+                                      <div class="form-group">
+                                        <textarea class="form-control" id="textareaRubrica48" placeholder="Campo para descrever observações que deverão ser consideradas." data-max-size="200"></textarea>
+                                        <label for="textarea-counter">Observações</label>
+                                        <div class="invalid-feedback">Limite de caracteres excedido</div>
+                                      </div>
+                                      </form>
+                                   </div>
+                                    
+                                       <div class="form-group position-relative">
+                                       <button type="button" class="btn btn-primary">Inserir</button>
+                                       </div>
+                                       <table class="table table-striped" data-toggle="table">
+                                          <thead>
+                                             <tr>
+                                                <th>Atividade</th>
+                                                <th>Membro</th>
+                                                <th>Qtd</th>
+                                                <th>Valor</th>
+                                                <th>Total</th>
+                                                <th class="w-10 text-center">Ações</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             <tr>
+                                                <td>Serviço de pesquisa sob encomenda</td>
+                                                <td>Brunno Rodrigues</td>
+                                                <td>10</td>
+                                                <td>220,00</td>
+                                                <th>2200,00</th>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>Serviço de natureza eventual</td>
+                                                <td>José Edivan</td>
+                                                <td>10</td>
+                                                <td>220,00</td>
+                                                <th>2200,00</th>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             
+                                             <tr>
+                                                <td colspan="4"><strong>Total</strong></td>
+                                                <td>4400,00</td>
+                                                <td></td>
+                                                <td></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </div>
+                                 
+                                 <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <button type="button" class="btn btn-primary">Salvar</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Fim do modal de Detalhamento da Rubrica 36 - Serviço de Pessoa Física-->
                         <!-- Modal Detalhamento da Rubrica 48 - Auxilio a Pessoa Física -->
                         <div class="modal fade" id="modalRubrica48" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog" role="document">
