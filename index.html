@@ -380,8 +380,8 @@
                                     </div>
                
                                     <div class="form-group position-relative">
-                                       <input class="form-control" id="text-input" type="text" placeholder="tempo de execução do projeto em meses." />
-                                       <label class="required" for="text-input">Tempo de Execução(em meses)</label>
+                                       <input class="form-control" id="tempoExecucaoProjeto" type="text" placeholder="tempo de execução do projeto em meses." />
+                                       <label class="required" for="tempoExecucaoProjeto">Tempo de Execução(em meses)</label>
                                     </div>
                                     <div class="form-group position-relative">
                                        <select class="custom-select" id="select-partilha-resultados" required="required" name="partilha-resultados">
@@ -1581,294 +1581,23 @@
                          <!-- Início do cronograma de Desembolso-->
                          <div class="tab-pane show" id="cronogramaDes" role="tabpanel">
                            <section class="m-3" >
-                              <h4>Cronograma de Desembolso</h4>
+                              <h4>Cronograma de Desembolso
                               <span class="tooltip-icon">
                                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O cronograma de desembolso deve ser preenchido apenas para projetos do tipo B.">
                                  </i>
                                  </span>
+                                 </h4>
                               <form>
                                  <div class="conteudo-principal__content m-0">
                                     <article class="conteudo-principal">
-                                       <div class="conteudo-principal__header">
-                                          <h1>Rubricas</h1>
-                                          <span class="tooltip-icon">
-                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O coordenador deve informar ao menos uma rubrica. As atividades listadas nas rubricas devem ser obtidas a partir de uma tabela auxiliar, onde serão cadastrados as atividades e associadas às rubricas.">
-                                          </i>
-                                          </span>
+                                       <div class="form-inline position-relative">
+                                          <div class="form-group position-relative">
+                                          <output class="form-control m-2" id="tempoExecucaoProjetoCronograma" type="text" placeholder="Tempo de Execução em meses."></output>
+                                          <label for="tempoExecucaoProjetoCronograma">Tempo de Execução</label>
                                        </div>
-                                       <div class="conteudo-principal__content m-0 my-3 px-4">
-                                          <table class="table table-striped" data-toggle="table">
-                                             <thead>
-                                                <tr>
-                                                   <th>Rubrica</th>
-                                                   <th>Valor</th>
-                                                   <th class="w-10 text-center">Ações</th>
-                                                </tr>
-                                             </thead>
-                                             <tbody>
-                                                <tr>
-                                                   <td>14 - Diárias</td>
-                                                   <td>8.000,00</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica14" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica14" onclick="ocultarDetalhamentoRubrica()">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td>18 - Auxilio Financeiro ao Estudante</td>
-                                                   <td>0,00</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica18" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica18">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td>20 - Auxilio Financeiro a Pesquisador</td>
-                                                   <td>5.000,00</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica20" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica20">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                      <!--<button type="button" class="btn btn-link " data-toggle="modal" data-target="#modalMembros"> 
-                                                      <i class="fas fa-user-plus"></i>
-                                                      </button> -->                                            
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td>30 - Material de Consumo</td>
-                                                   <td>20.000,00</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica30" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica30">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td>32 - Material de Consumo/Distribuição Gratuita</td>
-                                                   <td>0,00</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica32" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica32">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td>33 - Passagens</td>
-                                                   <td>0,00</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica33" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica33">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td>35 - Serviço de Consultoria</td>
-                                                   <td>0,00</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica35" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica35">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td>36 - Serviço Pessoa Física</td>
-                                                   <td>30.000,00</td>
-                                                   <td align="right" class="btn-group">
-                                                       <button type="button" id="detalharRubrica36" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica36">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td>39 - Serviço Pessoa Jurídica</td>
-                                                   <td>0,00</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica39" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica39">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td>41 - Ajuda de Custo</td>
-                                                   <td>0,00</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica41" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica41">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td>47 - Obrigações Contributivas</td>
-                                                   <td>8.000,00</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica47" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica47">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td>48 - Auxílio a Pessoa Física</td>
-                                                   <td>10.000,00</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica48" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica48" >
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td>52 - Material Permanente</td>
-                                                   <td>0,00</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica52" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica52">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td>95 - Indenização de Trabalho de Campo</td>
-                                                   <td>0,00</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica95" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica95">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>
-                                                </tr>
-                                                <tr>
-                                                   <td><strong>Total das Rubricas</strong></td>
-                                                   <td>55.000,00</td>
-                                                   <td></td>
-                                                </tr>
-                                             </tbody>
-                                          </table>
-                                       </div>
+                                       </div>                                    
                                     </article>
                                  </div>
-                              <!--<article class="conteudo-principal col-md-4 col-lg-12 col-xl-4 col-12 p-0">-->
-                              <!--<div class="conteudo-principal__header">
-                                 <h1>Filtro</h1>
-                                 </div>-->
-                              <div class="conteudo-principal__content m-0">
-                                 <article class="conteudo-principal">
-                                    <div class="conteudo-principal__header">
-                                       <h2>Distribuição da Remuneração</h2>
-                                       <output class="form-control" id="text-output" type="text" value="35.000,00" />
-                                       <label for="text-output">Base de Cálculo UFRN:</label>
-                                       <label for="text-output">35.000,00</label>
-                                       <span class="tooltip-icon">
-                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: A base de calculo deve ser obtida através do somatório das rubricas, com excessão das rubricas 47,51 e 52.">
-                                          </i>
-                                       </span>                       
-                                       <div class="form-inline position-relative">
-                                          <label for="text-input">Base de Cálculo FUNPEC</label>
-                                          <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
-                                       </div>
-                                    </div>
-                                    <div class="conteudo-principal__content m-0 my-3 px-4">
-                                       <table class="table table-striped" data-toggle="table">
-                                          <thead>
-                                             <tr>
-                                                <th>Destino</th>
-                                                <th>%<span class="tooltip-icon">
-                                                <i class="fas fa-info-circle m-0 p-0" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Observar os limites de distribuição previstos no anexo II da resolução 061/2016">
-                                                </i>
-                                                </span></th>
-                                                <th>Valor<span class="tooltip-icon">
-                                                <i class="fas fa-info-circle m-0 p-0" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Observar os limites de distribuição previstos no anexo II da resolução 061/2016">
-                                                </i>
-                                                </span></th>
-                                                <th class="w-10 text-center">Distribuição</th>
-                                             </tr>
-                                          </thead>
-                                          <tbody>
-                                             <tr>
-                                                <td>Unidade Executora</td>
-                                                <td>5</td>
-                                                <td>10.000,00</td>
-                                                <td>
-                                                   <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalRemuneracaoUnidadeExecutora">
-                                                   <i class="fas fa-external-link-alt"></i>
-                                                   </button>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <td>Centro e Unidade Acadêmica</td>
-                                                <td>5</td>
-                                                <td>10.000,00</td>
-                                                <td>
-                                                   <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalRemuneracaoCentro">
-                                                   <i class="fas fa-external-link-alt"></i>
-                                                   </button>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <td>Fundo Acadêmico</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>
-                                                   <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalRemuneracaoFundo">
-                                                   <i class="fas fa-external-link-alt"></i>
-                                                   </button>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <td>Fundação</td>
-                                                <td>0</td>
-                                                <td>0</td>
-                                                <td>
-                                                   <button type="button" class="btn btn-link" data-toggle="modal" data-target="#modalRemuneracaoFundacao">
-                                                   <i class="fas fa-external-link-alt"></i>
-                                                   </button>
-                                                </td>
-                                             </tr>
-                                          </tbody>
-                                       </table>
-                                    </div>
-                                 </article>
-                              </div>
                               </form>
                             </section>
                          </div>
@@ -1967,6 +1696,12 @@
                 }
             });
 
+             $('input[id="tempoExecucaoProjeto"]').change(function () {
+               var tempoProjeto = parseInt(document.getElementById('tempoExecucaoProjeto').value, 10);
+               document.getElementById('tempoExecucaoProjetoCronograma').innerHTML = tempoProjeto;
+            });
+
+            
             function ocultarDetalhamentoRubrica(){
                      $('#detalheRubrica14').hide();
                      $('#rubrica14Resumida').show();
