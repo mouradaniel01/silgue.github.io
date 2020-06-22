@@ -702,7 +702,7 @@
                                           <label for="text-input">Semana(s) dedicada(s)?</label>
                                        </div>
                                        <div class="form-group position-relative">
-                                          <input class="form-control" id="hrSemanal" type="text" placeholder="Quantidade de horas semanais previstas." />
+                                          <input class="form-control" id="hrSemanalRubrica36" type="text" placeholder="Quantidade de horas semanais previstas." />
                                           <label for="text-input">Horas semanais previstas?
                                              <span class="tooltip-icon">
                                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Conforme resolução 061/2016, o limite máximo semanal deverá ser de até 8 horas por semanas, considerando projetos de pesquisa, ensino e extensão. Além disso, o total não deve ser superior a 416 horas anuais.">
@@ -711,7 +711,7 @@
                                           </label>
                                        </div>
                                        <div class="form-group position-relative">
-                                          <input class="form-control" id="vlrHora" type="text" placeholder="valor por Hora."/>
+                                          <input class="form-control" id="vlrHoraRubrica36" type="text" placeholder="valor por Hora."/>
                                           <label for="text-input">Valor por hora?
                                              <span class="tooltip-icon">
                                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Conforme resolução 061/2016, o valor máximo pago por hora não pode ultrapassar o limite estabelecido no anexo V da resolução 061/2016 CONSAD.">
@@ -721,12 +721,12 @@
                                        </div>
 
                                        <div class="form-group position-relative">
-                                          <output class="form-control" id="vlrTotalHora" type="text" placeholder="valor total."></output>
+                                          <output class="form-control" id="vlrTotalHoraRubrica36" type="text" placeholder="valor total."></output>
                                           <label for="text-input">Valor Total?</label>
                                        </div>
 
                                       <div class="form-group">
-                                        <textarea class="form-control" id="textareaRubrica48" placeholder="Campo para descrever observações que deverão ser consideradas." data-max-size="200"></textarea>
+                                        <textarea class="form-control" id="textareaRubrica36" placeholder="Campo para descrever observações que deverão ser consideradas." data-max-size="200"></textarea>
                                         <label for="textarea-counter">Observações</label>
                                         <div class="invalid-feedback">Limite de caracteres excedido</div>
                                       </div>
@@ -839,7 +839,7 @@
                                           <label for="text-input">Semana(s) dedicada(s)?</label>
                                        </div>
                                        <div class="form-group position-relative">
-                                          <input class="form-control" id="hrSemanal" type="text" placeholder="Quantidade de horas semanais previstas." />
+                                          <input class="form-control" id="hrSemanalRubrica48" type="text" placeholder="Quantidade de horas semanais previstas." />
                                           <label for="text-input">Horas semanais previstas?
                                              <span class="tooltip-icon">
                                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Conforme resolução 061/2016, o limite máximo semanal deverá ser de até 8 horas por semanas, considerando projetos de pesquisa, ensino e extensão. Além disso, o total não deve ser superior a 416 horas anuais.">
@@ -848,7 +848,7 @@
                                           </label>
                                        </div>
                                        <div class="form-group position-relative">
-                                          <input class="form-control" id="vlrHora" type="text" placeholder="valor por Hora."/>
+                                          <input class="form-control" id="vlrHoraRubrica48" type="text" placeholder="valor por Hora."/>
                                           <label for="text-input">Valor por hora?
                                              <span class="tooltip-icon">
                                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Conforme resolução 061/2016, o valor máximo pago por hora não pode ultrapassar o limite estabelecido no anexo V da resolução 061/2016 CONSAD.">
@@ -858,7 +858,7 @@
                                        </div>
 
                                        <div class="form-group position-relative">
-                                          <output class="form-control" id="vlrTotalHora" type="text" placeholder="valor total."></output>
+                                          <output class="form-control" id="vlrTotalHoraRubrica48" type="text" placeholder="valor total."></output>
                                           <label for="text-input">Valor Total?</label>
                                        </div>
 
@@ -1632,19 +1632,35 @@
          <script>
             autocomplete(document.getElementById("unidade"), unidades);
 
-            $('input[id="vlrHora"]').change(function () {
-               if(document.getElementById("hrSemanal").value.length > 0 && document.getElementById("vlrHora").value.length > 0){
-                  var n1 = parseInt(document.getElementById('hrSemanal').value, 10);
-                  var n2 = parseInt(document.getElementById('vlrHora').value, 10);
-                  document.getElementById('vlrTotalHora').innerHTML = n1 * n2;
+            $('input[id="vlrHoraRubrica36"]').change(function () {
+               if(document.getElementById("hrSemanalRubrica36").value.length > 0 && document.getElementById("vlrHoraRubrica36").value.length > 0){
+                  var n1 = parseInt(document.getElementById('hrSemanalRubrica36').value, 10);
+                  var n2 = parseInt(document.getElementById('vlrHoraRubrica36').value, 10);
+                  document.getElementById('vlrTotalHoraRubrica36').innerHTML = n1 * n2;
                }
             });
 
-            $('input[id="hrSemanal"]').change(function () {
-                if(document.getElementById("hrSemanal").value.length > 0 && document.getElementById("vlrHora").value.length > 0){
-                  var n1 = parseInt(document.getElementById('hrSemanal').value, 10);
-                  var n2 = parseInt(document.getElementById('vlrHora').value, 10);
-                  document.getElementById('vlrTotalHora').innerHTML = n1 * n2;
+            $('input[id="hrSemanalRubrica36"]').change(function () {
+                if(document.getElementById("hrSemanalRubrica36").value.length > 0 && document.getElementById("vlrHoraRubrica36").value.length > 0){
+                  var n1 = parseInt(document.getElementById('hrSemanalRubrica36').value, 10);
+                  var n2 = parseInt(document.getElementById('vlrHoraRubrica36').value, 10);
+                  document.getElementById('vlrTotalHoraRubrica36').innerHTML = n1 * n2;
+               };
+            });
+
+            $('input[id="vlrHoraRubrica48"]').change(function () {
+               if(document.getElementById("hrSemanalRubrica48").value.length > 0 && document.getElementById("vlrHoraRubrica36").value.length > 0){
+                  var n1 = parseInt(document.getElementById('hrSemanalRubrica48').value, 10);
+                  var n2 = parseInt(document.getElementById('vlrHoraRubrica48').value, 10);
+                  document.getElementById('vlrTotalHoraRubrica48').innerHTML = n1 * n2;
+               }
+            });
+
+            $('input[id="hrSemanalRubrica48"]').change(function () {
+                if(document.getElementById("hrSemanalRubrica48").value.length > 0 && document.getElementById("vlrHoraRubrica36").value.length > 0){
+                  var n1 = parseInt(document.getElementById('hrSemanalRubrica48').value, 10);
+                  var n2 = parseInt(document.getElementById('vlrHoraRubrica48').value, 10);
+                  document.getElementById('vlrTotalHoraRubrica48').innerHTML = n1 * n2;
                };
             });
 
