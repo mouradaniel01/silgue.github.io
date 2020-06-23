@@ -718,7 +718,7 @@
 
                                        <div class="form-group position-relative">
                                           <output class="form-control" id="vlrTotalHoraRubrica36" type="text" placeholder="valor total."></output>
-                                          <label for="text-input">Valor Total?</label>
+                                          <label for="vlrTotalHoraRubrica36">Valor Total?</label>
                                        </div>
 
                                       <div class="form-group">
@@ -1310,7 +1310,7 @@
                                              <tbody>
                                                 <tr>
                                                    <td>14 - Diárias</td>
-                                                   <td>8.000,00</td>
+                                                   <td id="vlrRubrica14">8.000,00</td>
                                                    <td align="right" class="btn-group">
                                                       <button type="button" id="detalharRubrica14" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica14" onclick="ocultarDetalhamentoRubrica()">
                                                       <i class="fas fa-external-link-alt"></i>
@@ -1322,7 +1322,7 @@
                                                 </tr>
                                                 <tr>
                                                    <td>18 - Auxilio Financeiro ao Estudante</td>
-                                                   <td>0,00</td>
+                                                   <td id="vlrRubrica18">0,00</td>
                                                    <td align="right" class="btn-group">
                                                       <button type="button" id="detalharRubrica18" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica18">
                                                       <i class="fas fa-external-link-alt"></i>
@@ -1334,7 +1334,7 @@
                                                 </tr>
                                                 <tr>
                                                    <td>20 - Auxilio Financeiro a Pesquisador</td>
-                                                   <td>5.000,00</td>
+                                                   <td id="vlrRubrica20">5.000,00</td>
                                                    <td align="right" class="btn-group">
                                                       <button type="button" id="detalharRubrica20" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica20">
                                                       <i class="fas fa-external-link-alt"></i>
@@ -1349,7 +1349,7 @@
                                                 </tr>
                                                 <tr>
                                                    <td>30 - Material de Consumo</td>
-                                                   <td>20.000,00</td>
+                                                   <td id="vlrRubrica30">20.000,00</td>
                                                    <td align="right" class="btn-group">
                                                       <button type="button" id="detalharRubrica30" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica30">
                                                       <i class="fas fa-external-link-alt"></i>
@@ -1360,7 +1360,7 @@
                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                   <td>32 - Material de Consumo/Distribuição Gratuita</td>
+                                                   <td id="vlrRubrica32">32 - Material de Consumo/Distribuição Gratuita</td>
                                                    <td>0,00</td>
                                                    <td align="right" class="btn-group">
                                                       <button type="button" id="detalharRubrica32" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica32">
@@ -1590,17 +1590,19 @@
                               <form>
                                  <div class="conteudo-principal__content m-0">
                                     <article class="conteudo-principal">
+                                       
                                        <div class="form-inline position-relative">
-                                          <div class="form-group position-relative">
-                                          <output class="form-control m-2" id="tempoExecucaoProjetoCronograma" type="text" placeholder="Tempo de Execução em meses."></output>
-                                          <label for="tempoExecucaoProjetoCronograma">Tempo de Execução
-                                             <!--<span class="tooltip-icon">
-                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Campo não editável. Deve recuperar o tempo de execução informado na etapa dados gerais.">
-                                                </i>
-                                             </span>-->
-                                          </label>
+                                         <div class="col-md-4">
+                                             <label for="tempoExecucaoProjetoCronograma">Tempo de Execução
+                                                <output class="form-control m-2" id="tempoExecucaoProjetoCronograma" type="text" placeholder="valor total."></output></label>
+                                         </div>
+                                         <div class="col-md-2"></div>
+                                         <div class="col-md-4">
+                                             <label for="planoAplicacaoCronograma">Plano de Aplicação
+                                          
+                                             <output class="form-control m-2" id="planoAplicacaoCronograma" type="text" placeholder="valor total."></output></label>
+                                         </div>
                                        </div>
-                                       </div>                                    
                                     </article>
                                  </div>
                               </form>
@@ -1702,16 +1704,25 @@
             });
 
              $('input[id="tempoExecucaoProjeto"]').change(function () {
+               
+               var tempoProjeto = parseInt(document.getElementById('tempoExecucaoProjeto').value, 10);
+               document.getElementById('tempoExecucaoProjetoCronograma').innerHTML = tempoProjeto;
+                document.getElementById('planoAplicacaoCronograma').innerHTML = '55.000,00';
+
+            });
+
+            $('input[id="tempoExecucaoProjeto"]').change(function () {
                var tempoProjeto = parseInt(document.getElementById('tempoExecucaoProjeto').value, 10);
                document.getElementById('tempoExecucaoProjetoCronograma').innerHTML = tempoProjeto;
             });
-
             
             function ocultarDetalhamentoRubrica(){
                      $('#detalheRubrica14').hide();
                      $('#rubrica14Resumida').show();
                      $('#favorecido-nao').prop('checked',true);
             };
+
+
 
 
          </script>
