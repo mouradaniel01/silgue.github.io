@@ -1649,7 +1649,7 @@
                                           <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i> Inserir</button>   
                                        </form>
                                    </article>
-                                   <article class="conteudo-principal">
+                                   <article class="conteudo-principal" id="tabelaParcelaPlano">
                                        <div class="conteudo-principal__header">
                                           <h1>Desembolso</h1>
                                           <span class="tooltip-icon">
@@ -1812,6 +1812,7 @@
              function ocultarDetalhamentoParcelaPlano(){
                      $('#detalheParcelarPlanoSim').hide();
                      $('#detalheParcelarPlanoNao').show();
+                     $('#tabelaParcelaPlano').hide();
                      $('#parcelarPlano-nao').prop('checked',true);
             };
 
@@ -1819,9 +1820,12 @@
                 if ($('input[name="parcelarPlano"]:checked').val() === "Sim") {
                     $('#detalheParcelarPlanoSim').show();
                     $('#detalheParcelarPlanoNao').hide();
+                    $('#tabelaParcelaPlano').hide();
+                    
                 } else {
                     $('#detalheParcelarPlanoSim').hide();
                     $('#detalheParcelarPlanoNao').show();
+                    $('#tabelaParcelaPlano').show();
                 }
             });
 
