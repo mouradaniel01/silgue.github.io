@@ -232,6 +232,7 @@
                               href="#cronogramaDes"
                               role="tab"
                               aria-controls="Cronograma de Desembolso"
+                              onclick="ocultarDetalhamentoParcelaPlano()"
                               >
                            Cronograma de Desembolso
                            </button>
@@ -258,46 +259,47 @@
                         id="consultaProj" role="tabpanel">
                         <section class="m-3">
                            <h4>Consulta de Projetos</h4>
-                              <!--<article class="conteudo-principal col-md-4 col-lg-12 col-xl-4 col-12 p-0">-->
-                              <!--<div class="conteudo-principal__header">
+                                       
+                              <article class="conteudo-principal">
+                                 <div class="conteudo-principal__header">
                                  <h1>Filtro</h1>
-                                 </div>-->
-                           <div class="conteudo-principal__content m-0">
-                              <form class="border-0" id="form-filtro">
-                                 <p class="advice">* Campos Obrigatórios</p>
-                                 <div class="form-group position-relative">
-                                    <div class="form-inline">
-                                       <label for="date-input">Vigência</label>
-                                       <input class="form-control p-1 m-1" id="date-input" type="date" /> até
-                                       <input class="form-control p-1 m-1" id="date-input" type="date" />
-                                    </div> 
                                  </div>
-                                 <div class="form-group position-relative">
-                                    <input id="unidade"
-                                       class="form-control form-autocomplete" data-type="simples" id="autocomplete-input-simples" type="text" placeholder="Digite o nomeou o código da unidade..." />
-                                    <label for="autocomplete-input-simples">Unidade Executora</label>
+                                 <div class="conteudo-principal__content m-0">
+                                    <form class="border-0 p-0 my-3 mx-40px" id="form-filtro">
+                                       <p class="advice">* Campos Obrigatórios</p>
+                                       <div class="form-group position-relative">
+                                          <div class="form-inline">
+                                             <label for="date-input">Vigência</label>
+                                             <input class="form-control p-1 m-1" id="date-input" type="date" /> até
+                                             <input class="form-control p-1 m-1" id="date-input" type="date" />
+                                          </div> 
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input id="unidade"
+                                             class="form-control form-autocomplete" data-type="simples" id="autocomplete-input-simples" type="text" placeholder="Digite o nomeou o código da unidade..." />
+                                          <label for="autocomplete-input-simples">Unidade Executora</label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="text-input" type="text" placeholder="Título do Projeto" />
+                                          <label for="text-input">Título</label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="text-input" type="text" placeholder="Palavras chaves" />
+                                          <label for="text-input">Palavras chaves</label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-situacao" required="required" name="situacao">
+                                             <option value="hide">Selecione</option>
+                                             <option>Com inovação tecnológica</option>
+                                             <option>Sem inovação tecnológica</option>
+                                          </select>
+                                          <label class="required" for="select-situacao">Classificação da Pesquisa</label>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i> Buscar</button>
+                                    </form>
                                  </div>
-                                 <div class="form-group position-relative">
-                                    <input class="form-control" id="text-input" type="text" placeholder="Título do Projeto" />
-                                    <label for="text-input">Título</label>
-                                 </div>
-                                 <div class="form-group position-relative">
-                                    <input class="form-control" id="text-input" type="text" placeholder="Palavras chaves" />
-                                    <label for="text-input">Palavras chaves</label>
-                                 </div>
-                                 <div class="form-group position-relative">
-                                    <select class="custom-select" id="select-situacao" required="required" name="situacao">
-                                       <option value="hide">Selecione</option>
-                                       <option>Com inovação tecnológica</option>
-                                       <option>Sem inovação tecnológica</option>
-                                    </select>
-                                    <label class="required" for="select-situacao">Classificação da Pesquisa</label>
-                                    <div class="invalid-feedback">Selecione alguma opção</div>
-                                 </div>
-                                 <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i> Buscar</button>
-                              </form>
-                           </div>
-                           <!--</article>-->
+                           </article>
                            <article class="conteudo-principal">
                               <div class="conteudo-principal__header">
                                  <h1>Projetos Homologados</h1>
@@ -358,68 +360,70 @@
                      <div class="tab-pane show" id="dadosGerais" role="tabpanel">
                            <section class="m-3" >
                               <h4>Dados Gerais</h4>
+                              <p class="advice">* Campos Obrigatórios</p>
                               <div class="conteudo-principal__content m-0">
-                                 <form class="border-0" id="form-filtro">
-                                    <p class="advice">* Campos Obrigatórios</p>
-                                    <div class="form-group position-relative">
-                                       <select class="custom-select" id="select-fonte-recurso" required="required" name="fonte-recurso">
-                                          <option value="hide">Selecione</option>
-                                          <option>Tipo A</option>
-                                          <option>Tipo B</option>
-                                          <option>Tipo C</option>
-                                          <option>Tipo D</option>
-                                       </select>
-                                       <label class="required" for="select-fonte-recurso">Classificação da Pesquisa
-                                       <span class="tooltip-icon">
-                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Os projetos são classificados como tipo A, B, C e D de acordo com o art. 3º da resolução 061/2016 - CONSAD">
-                                          </i>
-                                       </span>
-                                       </label>
-                                        
-                                       <div class="invalid-feedback">Selecione alguma opção</div>
-                                    </div>
-               
-                                    <div class="form-group position-relative">
-                                       <input class="form-control" id="tempoExecucaoProjeto" type="text" placeholder="tempo de execução do projeto em meses." />
-                                       <label class="required" for="tempoExecucaoProjeto">Tempo de Execução(em meses)</label>
-                                    </div>
-                                    <div class="form-group position-relative">
-                                       <select class="custom-select" id="select-partilha-resultados" required="required" name="partilha-resultados">
-                                          <option value="hide">Selecione</option>
-                                          <option>Sob Encomenda</option>
-                                          <option>Em Parceria</option>
-                                          <option>Mútua Colaboração</option>
-                                          <option>Institucional</option>
-                                       </select>
-                                       <label class="required" for="select-partilha-resultados">Como ocorrerá a partilha dos resultados?
-                                       <span class="tooltip-icon">
-                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Os projetos são classificados como tipo A, B, C e D de acordo com o art. 3º da resolução 061/2016 - CONSAD">
-                                          </i>
-                                       </span>
-                                       </label>
+                                 <!--<article class="conteudo-principal">-->
+                                    <form class="border-0" id="form-filtro">
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-fonte-recurso" required="required" name="fonte-recurso">
+                                             <option value="hide">Selecione</option>
+                                             <option>Tipo A</option>
+                                             <option>Tipo B</option>
+                                             <option>Tipo C</option>
+                                             <option>Tipo D</option>
+                                          </select>
+                                          <label class="required" for="select-fonte-recurso">Fonte de Recurso
+                                          <span class="tooltip-icon">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Os projetos são classificados como tipo A, B, C e D de acordo com o art. 3º da resolução 061/2016 - CONSAD">
+                                             </i>
+                                          </span>
+                                          </label>
+                                           
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                  
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="tempoExecucaoProjeto" type="text" placeholder="tempo de execução do projeto em meses." />
+                                          <label class="required" for="tempoExecucaoProjeto">Tempo de Execução(em meses)</label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-partilha-resultados" required="required" name="partilha-resultados">
+                                             <option value="hide">Selecione</option>
+                                             <option>Sob Encomenda</option>
+                                             <option>Em Parceria</option>
+                                             <option>Mútua Colaboração</option>
+                                             <option>Institucional</option>
+                                          </select>
+                                          <label class="required" for="select-partilha-resultados">Como ocorrerá a partilha dos resultados?
+                                          <span class="tooltip-icon">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Os projetos são classificados como tipo A, B, C e D de acordo com o art. 3º da resolução 061/2016 - CONSAD">
+                                             </i>
+                                          </span>
+                                          </label>
+                                          
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
                                        
-                                       <div class="invalid-feedback">Selecione alguma opção</div>
-                                    </div>
-                                    
-                                    <div class="form-group position-relative">
-                                       <select class="custom-select" id="select-criações-resultantes" required="required" name="riações-resultantes">
-                                          <option value="hide">Selecione</option>
-                                          <option>Desenvolvimento de Produto</option>
-                                          <option>Desenvolvimento de Processo</option>
-                                          <option>...</option>
-                                       </select>
-                                       <label class="required" for="select-riações-resultantes">Quais as possibilidades de criações resultantes dessa parceria?
-                                       <span class="tooltip-icon">
-                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Opções de acordo com a classificação da pesquisa informada na submissão do projeto. O tipo deve ser informado nos resultados(pendente de aprovação pela PROPESQ). De qualquer forma, os resultados dependem da classificação da pesquisa, de acordo com a resolução 135/2018-COBSEPE.">
-                                          </i>
-                                       </span>
-                                       </label>
+                                       <div class="form-group position-relative m-2">
+                                          <select class="custom-select" id="select-criações-resultantes" required="required" name="riações-resultantes">
+                                             <option value="hide">Selecione</option>
+                                             <option>Desenvolvimento de Produto</option>
+                                             <option>Desenvolvimento de Processo</option>
+                                             <option>...</option>
+                                          </select>
+                                          <label class="required" for="select-riações-resultantes">Quais as possibilidades de criações resultantes dessa parceria?
+                                          <span class="tooltip-icon">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Opções de acordo com a classificação da pesquisa informada na submissão do projeto. O tipo deve ser informado nos resultados(pendente de aprovação pela PROPESQ). De qualquer forma, os resultados dependem da classificação da pesquisa, de acordo com a resolução 135/2018-COBSEPE.">
+                                             </i>
+                                          </span>
+                                          </label>
+                                          
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
                                        
-                                       <div class="invalid-feedback">Selecione alguma opção</div>
                                     </div>
-                                    
-                                 </div>
-                              </form>
+                                 </form>
+                              <!--</article>   -->
                            </section>
                         </div>
                      <div class="tab-content menu-conteudo">
@@ -718,7 +722,7 @@
 
                                        <div class="form-group position-relative">
                                           <output class="form-control" id="vlrTotalHoraRubrica36" type="text" placeholder="valor total."></output>
-                                          <label for="text-input">Valor Total?</label>
+                                          <label for="vlrTotalHoraRubrica36">Valor Total?</label>
                                        </div>
 
                                       <div class="form-group">
@@ -1310,7 +1314,7 @@
                                              <tbody>
                                                 <tr>
                                                    <td>14 - Diárias</td>
-                                                   <td>8.000,00</td>
+                                                   <td id="vlrRubrica14">8.000,00</td>
                                                    <td align="right" class="btn-group">
                                                       <button type="button" id="detalharRubrica14" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica14" onclick="ocultarDetalhamentoRubrica()">
                                                       <i class="fas fa-external-link-alt"></i>
@@ -1322,7 +1326,7 @@
                                                 </tr>
                                                 <tr>
                                                    <td>18 - Auxilio Financeiro ao Estudante</td>
-                                                   <td>0,00</td>
+                                                   <td id="vlrRubrica18">0,00</td>
                                                    <td align="right" class="btn-group">
                                                       <button type="button" id="detalharRubrica18" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica18">
                                                       <i class="fas fa-external-link-alt"></i>
@@ -1334,7 +1338,7 @@
                                                 </tr>
                                                 <tr>
                                                    <td>20 - Auxilio Financeiro a Pesquisador</td>
-                                                   <td>5.000,00</td>
+                                                   <td id="vlrRubrica20">5.000,00</td>
                                                    <td align="right" class="btn-group">
                                                       <button type="button" id="detalharRubrica20" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica20">
                                                       <i class="fas fa-external-link-alt"></i>
@@ -1349,7 +1353,7 @@
                                                 </tr>
                                                 <tr>
                                                    <td>30 - Material de Consumo</td>
-                                                   <td>20.000,00</td>
+                                                   <td id="vlrRubrica30">20.000,00</td>
                                                    <td align="right" class="btn-group">
                                                       <button type="button" id="detalharRubrica30" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica30">
                                                       <i class="fas fa-external-link-alt"></i>
@@ -1360,7 +1364,7 @@
                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                   <td>32 - Material de Consumo/Distribuição Gratuita</td>
+                                                   <td id="vlrRubrica32">32 - Material de Consumo/Distribuição Gratuita</td>
                                                    <td>0,00</td>
                                                    <td align="right" class="btn-group">
                                                       <button type="button" id="detalharRubrica32" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica32">
@@ -1583,25 +1587,110 @@
                            <section class="m-3" >
                               <h4>Cronograma de Desembolso
                               <span class="tooltip-icon">
-                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O cronograma de desembolso deve ser preenchido apenas para projetos do tipo B.">
+                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O cronograma de desembolso deve ser preenchido apenas para projetos do tipo B. O tempo de execução é o informado na etapa de dados gerais e o plano de aplicação é o somatório das rubricas informadas.">
                                  </i>
                                  </span>
                                  </h4>
                               <form>
                                  <div class="conteudo-principal__content m-0">
                                     <article class="conteudo-principal">
-                                       <div class="form-inline position-relative">
-                                          <div class="form-group position-relative">
-                                          <output class="form-control m-2" id="tempoExecucaoProjetoCronograma" type="text" placeholder="Tempo de Execução em meses."></output>
-                                          <label for="tempoExecucaoProjetoCronograma">Tempo de Execução
-                                             <span class="tooltip-icon">
-                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Campo não editável. Deve recuperar o tempo de execução informado na etapa dados gerais.">
-                                                </i>
-                                             </span>
-                                          </label>
+                                       <div class="conteudo-principal__header">
+                                       
+                                          <div class="form-inline position-relative col-md-12">
+                                             
+                                            <div class="col-md-6">
+                                                <label for="tempoExecucaoProjetoCronograma">Tempo de Execução
+                                                   <output class="form-control m-2" id="tempoExecucaoProjetoCronograma" type="text" placeholder="valor total."></output></label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="planoAplicacaoCronograma">Plano de Aplicação
+                                             
+                                                <output class="form-control m-2" id="planoAplicacaoCronograma" type="text" placeholder="valor total."></output>
+                                                </label>
+                                            </div>
+                                          </div>
                                        </div>
-                                       </div>                                    
-                                    </article>
+
+                                       <form class="border-0 p-0 my-3 mx-40px" id="form-filtro">
+
+                                             <div class="form-inline position-relative m-2">
+                                                <label class="d-block">Parcelar Valor do Plano de Aplicação?</label>
+                                                  <div class="form-check form-check-inline m-2">
+                                                    <input class="form-check-input" id="parcelarPlano-sim" type="radio" name="parcelarPlano" valor="Sim" />
+                                                    <label class="form-check-label" for="parcelarPlano-sim">Sim</label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline m-2">
+                                                    <input class="form-check-input" id="parcelarPlano-nao" type="radio" name="parcelarPlano" valor="Não" checked/>
+                                                    <label class="form-check-label" for="parcelarPlano-nao">Não</label>
+                                                  </div>
+                                             </div>
+
+                                             <div class="form-group position-relative m-2" id="detalheParcelarPlanoSim">
+                                                <div class="form-group position-relative">
+                                                   <input class="form-control" id="qtdParcelasPlano" type="text" placeholder="Quantidade de parcelas que o Plano será dividido" />
+                                                   <label for="qtdParcelasPlano">Qtd Parcelas</label>
+                                                </div>
+                                                <div class="form-group position-relative">
+                                                   <input class="form-control" id="intervalorDesembolso" type="text" placeholder="Intervalo de meses para o desembolso" />
+                                                   <label for="intervalorDesembolso">Intervalo Desembolso</label>
+                                                </div>
+                                             </div>
+
+                                             <div class="form-group position-relative m-2" id="detalheParcelarPlanoNao">
+                                                <div class="form-group position-relative">
+                                                   <input class="form-control" id="mesExecucaoDesembolso" type="text" placeholder="Mês que o desembolso será realizado" />
+                                                   <label for="mesExecucaoDesembolso">Mês de Execução</label>
+                                                </div>
+                                                <div class="form-group position-relative">
+                                                   <input class="form-control" id="valorParcelaPlanoPeriodo" type="text" placeholder="Valor do desembolso" />
+                                                   <label for="valorParcelaPlanoPeriodo">Valor</label>
+                                                </div>
+                                             </div>
+                                          <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i> Inserir</button>   
+                                       </form>
+                                   </article>
+                                   <article class="conteudo-principal">
+                                       <div class="conteudo-principal__header">
+                                          <h1>Desembolso</h1>
+                                          <span class="tooltip-icon">
+                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: .">
+                                          </i>
+                                          </span>
+                                       </div>
+                                       <div class="conteudo-principal__content m-0 my-3 px-4">
+                                          <table class="table table-striped" data-toggle="table">
+                                             <thead>
+                                                <tr>
+                                                   <th>Mês de Execução</th>
+                                                   <th>Valor</th>
+                                                   <th class="w-10 text-center">Ações</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td>1</td>
+                                                   <td>200.000,00</td>
+                                                   <td></td>
+                                                </tr>
+                                                <tr>
+                                                   <td>6</td>
+                                                   <td>200.000,00</td>
+                                                   <td></td>
+                                                </tr>
+                                                <tr>
+                                                   <td>12</td>
+                                                   <td>400.000,00</td>
+                                                   <td></td>
+                                                </tr>
+                                                <tr>
+                                                   <td><strong>Total</strong></td>
+                                                   <td>800.000,00</td>
+                                                   <td></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+
+                                   </article>
                                  </div>
                               </form>
                             </section>
@@ -1702,16 +1791,41 @@
             });
 
              $('input[id="tempoExecucaoProjeto"]').change(function () {
+               
+               var tempoProjeto = parseInt(document.getElementById('tempoExecucaoProjeto').value, 10);
+               document.getElementById('tempoExecucaoProjetoCronograma').innerHTML = tempoProjeto;
+                document.getElementById('planoAplicacaoCronograma').innerHTML = '55.000,00';
+
+            });
+
+            $('input[id="tempoExecucaoProjeto"]').change(function () {
                var tempoProjeto = parseInt(document.getElementById('tempoExecucaoProjeto').value, 10);
                document.getElementById('tempoExecucaoProjetoCronograma').innerHTML = tempoProjeto;
             });
-
             
             function ocultarDetalhamentoRubrica(){
                      $('#detalheRubrica14').hide();
                      $('#rubrica14Resumida').show();
                      $('#favorecido-nao').prop('checked',true);
             };
+
+             function ocultarDetalhamentoParcelaPlano(){
+                     $('#detalheParcelarPlanoSim').hide();
+                     $('#detalheParcelarPlanoNao').show();
+                     $('#parcelarPlano-nao').prop('checked',true);
+            };
+
+            $('input[name="parcelarPlano"]').change(function () {
+                if ($('input[name="parcelarPlano"]:checked').val() === "Sim") {
+                    $('#detalheParcelarPlanoSim').show();
+                    $('#detalheParcelarPlanoNao').hide();
+                } else {
+                    $('#detalheParcelarPlanoSim').hide();
+                    $('#detalheParcelarPlanoNao').show();
+                }
+            });
+
+
 
 
          </script>
