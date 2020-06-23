@@ -1598,14 +1598,24 @@
                                        
                                           <div class="form-inline position-relative col-md-12">
                                              
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label for="tempoExecucaoProjetoCronograma">Tempo de Execução
                                                    <output class="form-control m-2" id="tempoExecucaoProjetoCronograma" type="text" placeholder="valor total."></output></label>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <label for="planoAplicacaoCronograma">Plano de Aplicação
                                              
                                                 <output class="form-control m-2" id="planoAplicacaoCronograma" type="text" placeholder="valor total."></output>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="doapParcelas">Doap
+                                                <span class="tooltip-icon">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O DOAP deverá ser pago em parcelas. A quantidade de parcelas é obtida subtraindo o tempo de execução do projeto - 1.">
+                                                   </i>
+                                                </span>
+                                                <output class="form-control m-2" id="doapParcelas" type="text" placeholder="Qtd Parcelas."></output>
+
                                                 </label>
                                             </div>
                                           </div>
@@ -1791,16 +1801,11 @@
             });
 
              $('input[id="tempoExecucaoProjeto"]').change(function () {
-               
                var tempoProjeto = parseInt(document.getElementById('tempoExecucaoProjeto').value, 10);
                document.getElementById('tempoExecucaoProjetoCronograma').innerHTML = tempoProjeto;
-                document.getElementById('planoAplicacaoCronograma').innerHTML = '55.000,00';
+               document.getElementById('planoAplicacaoCronograma').innerHTML = '55.000,00';
+               document.getElementById('doapParcelas').innerHTML = tempoProjeto -1;
 
-            });
-
-            $('input[id="tempoExecucaoProjeto"]').change(function () {
-               var tempoProjeto = parseInt(document.getElementById('tempoExecucaoProjeto').value, 10);
-               document.getElementById('tempoExecucaoProjetoCronograma').innerHTML = tempoProjeto;
             });
             
             function ocultarDetalhamentoRubrica(){
