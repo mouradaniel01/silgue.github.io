@@ -484,7 +484,7 @@
                                                 </tbody>
                                              </table>
                                           </div>
-                                          <div class="form-control m-0 my-3 px-4 border">
+                                          <div class="form-control m-0 my-3 px-4">
                                              <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i>        Inserir
                                              </button> 
                                           </div>  
@@ -538,7 +538,7 @@
                                                    <td>Rua Rio Grande do Norte</td>
                                                    <td>Natal</td>
                                                    <td>RN</td>
-                                                    <td align="right" class="btn-group">
+                                                   <td align="right" class="btn-group">
                                                       <button type="button" id="inserirResponsavel" class="btn btn-link " data-toggle="modal" data-target="#modalresponsavelEntidade">
                                                       <i class="fas fa-external-link-alt"></i>
                                                       </button>
@@ -555,7 +555,146 @@
                               </form>
                             </section>
                          </div>
-                         <!--Fim de Partícipes-->
+                     <!--Fim de Partícipes-->
+                     <!-- Início de Metas/Resultados-->
+                         <div class="tab-pane show" id="metasResultados" role="tabpanel">
+                           <section class="m-3" >
+                              <h4>Metas/Resultados
+                              <span class="tooltip-icon">
+                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: . ">
+                                 </i>
+                              </span>
+                              </h4>
+                              <form>
+                                 <div class="conteudo-principal__content m-0">
+                                    <article class="conteudo-principal">                                       
+                                       <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaMetasResultadosProjetoPesquisa">
+                                          <table class="table table-striped" data-toggle="table">
+                                             <thead>
+                                                <tr>
+                                                   <th class="text-center"></th>
+                                                   <th>Tipo</th>
+                                                   <th>Número</th>
+                                                   <th>Descrição</th>
+                                                   <th>Indicador</th>
+                                                   <th>Qtd</th>                                                   
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td><input class="form-check-input m-1" id="checkMetasResultados" type="checkbox"  /></td>
+                                                   <td>Meta</td>
+                                                   <td>1</td>
+                                                   <td>Especificação dos Requisitos</td>
+                                                   <td>Documentos de Especificação</td>
+                                                   <td>10</td>
+                                                </tr>
+                                                <tr>
+                                                   <td><input class="form-check-input m-1" id="checkMetasResultados" type="checkbox"  /></td>
+                                                   <td>Meta</td>
+                                                   <td>2</td>
+                                                   <td>Criação do BDD</td>
+                                                   <td>Cenários de testes</td>
+                                                   <td>10</td>
+                                                </tr>
+                                                <tr>
+                                                   <td><input class="form-check-input m-1" id="checkMetasResultados" type="checkbox"  /></td>
+                                                   <td>Resultados</td>
+                                                   <td>1</td>
+                                                   <td>Desenvolvimento de Funcionalidade</td>
+                                                   <td>Casos de Uso</td>
+                                                   <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                   <td><input class="form-check-input m-1" id="checkMetasResultados" type="checkbox"  /></td>
+                                                   <td>Resultados</td>
+                                                   <td>2</td>
+                                                   <td>Treinamento</td>
+                                                   <td>Participantes</td>
+                                                   <td>40</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       <div class="form-control m-0 my-3 px-4">
+                                          <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i>        Inserir
+                                          </button> 
+                                       </div>                                    
+                                   </article>
+                                   <article class="conteudo-principal">
+                                       <div class="conteudo-principal__header">
+                                          <h1>Metas/Restulados Inseridos</h1>
+                                          <span class="tooltip-icon">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Os partícipes UFRN e FUNPEC não podem ser removidos e nem cadastrados responsáveis para eles, pois os responsáveis da UFRN e FUNPEC devem ser inseridos automáticamente, a partir de uma tabela auxiliar, que permita que o administrador do modulo altere tais informações quando necessário.  ">
+                                             </i>
+                                          </span>
+                                       </div>
+                                       <div class="conteudo-principal__content m-0 my-3 px-4" id="metasResultadosInstrumento">
+                                          <table class="table table-striped" data-toggle="table">
+                                             <thead>
+                                                <tr>                                                   
+                                                   <th>Tipo</th>
+                                                   <th>Número</th>
+                                                   <th>Descrição</th>
+                                                   <th>Indicador</th>
+                                                   <th>Qtd</th>  
+                                                   <th>Mês Início</th> 
+                                                   <th>Mês Fim</th> 
+                                                   <th class="w-10 text-center">Ações</th>                                               
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>                                                   
+                                                   <td>Meta</td>
+                                                   <td>1</td>
+                                                   <td>Especificação dos Requisitos</td>
+                                                   <td>Documentos de Especificação</td>
+                                                   <td>10</td>
+                                                   <td>1</td>
+                                                   <td>3</td>
+                                                   <td align="right" class="btn-group">
+                                                      <button class="btn btn-link ">
+                                                      <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td> 
+                                                </tr>
+                                                <tr>                                                   
+                                                   <td>Meta</td>
+                                                   <td>2</td>
+                                                   <td>Criação do BDD</td>
+                                                   <td>Cenários de testes</td>
+                                                   <td>10</td>
+                                                   <td>1</td>
+                                                   <td>3</td>
+                                                   <td align="right" class="btn-group">                 
+                                                      <button class="btn btn-link ">
+                                                      <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                   <td>Resultados</td>
+                                                   <td>1</td>
+                                                   <td>Desenvolvimento de Funcionalidade</td>
+                                                   <td>Casos de Uso</td>
+                                                   <td>2</td>
+                                                   <td>4</td>
+                                                   <td>6</td>
+                                                   <td align="right" class="btn-group">
+                                                      <button class="btn btn-link ">
+                                                      <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                   </article>
+                                 </div>
+                              </form>
+                            </section>
+                         </div>
+                     <!--Fim de Metas/Resultados-->
                      <div class="tab-content menu-conteudo">
                         <!-- Modal de Responsável da Entidade -->
                         <div class="modal fade" id="modalresponsavelEntidade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
