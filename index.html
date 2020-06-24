@@ -1504,15 +1504,27 @@
                                  <article class="conteudo-principal">
                                     <div class="conteudo-principal__header">
                                        <h2>Distribuição da Remuneração</h2>
-                                       <output class="form-control" id="text-output" type="text" value="35.000,00" />
+                                       <output class="form-control" id="valorProjeto" type="text" value="35.000,00" />
+                                       <label for="text-output">Valor do Projeto:</label>
+                                       <label for="text-output">60.000,00</label>
+                                       <span class="tooltip-icon">
+                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O valor total do projeto deve ser calculado automáticamente. Para projetos do tipo A e D, o valor do projeto é o somatório das rubricas + valor da fundação + remuneração à UFRN(somatório da remuneração das unidades, centros e fundo acadêmico). Para o tipo B, obedece o cálculo do tipo A, com excessão das remunerações à UFRN. O tipo C é o somatório das rubricas + remuneração à UFRN.">
+                                          </i>
+                                       </span>  
+                                       <output class="form-control" id="baseCalculoUfrn" type="text" value="35.000,00" />
                                        <label for="text-output">Base de Cálculo UFRN:</label>
                                        <label for="text-output">35.000,00</label>
                                        <span class="tooltip-icon">
                                           <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: A base de calculo deve ser obtida através do somatório das rubricas, com excessão das rubricas 47,51 e 52.">
                                           </i>
                                        </span>                       
-                                       <div class="form-inline position-relative">
-                                          <label for="text-input">Base de Cálculo FUNPEC</label>
+                                       <div class="form-inline position-relative" id="baseFunpec">
+                                          <label for="text-input">Base de Cálculo FUNPEC
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Esse campo não se aplica a projetos do tipo C">
+                                                </i>
+                                             </span> 
+                                          </label>
                                           <input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" />
                                        </div>
                                     </div>
@@ -1563,8 +1575,13 @@
                                                    </button>
                                                 </td>
                                              </tr>
-                                             <tr>
-                                                <td>Fundação</td>
+                                             <tr id="remuneracaoFundacao">
+                                                <td>Fundação
+                                                   <span class="tooltip-icon">
+                                                      <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Esse campo não se aplica a projetos do tipo C">
+                                                      </i>
+                                                   </span>
+                                                </td>
                                                 <td>0</td>
                                                 <td>0</td>
                                                 <td>
@@ -1659,7 +1676,7 @@
                                           <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i> Inserir</button>   
                                        </form>
                                    </article>
-                                   <article class="conteudo-principal" id="tabelaParcelaPlano">
+                                   <article class="conteudo-principal">
                                        <div class="conteudo-principal__header">
                                           <h1>Desembolso</h1>
                                           <span class="tooltip-icon">
@@ -1667,7 +1684,7 @@
                                           </i>
                                           </span>
                                        </div>
-                                       <div class="conteudo-principal__content m-0 my-3 px-4">
+                                       <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaDesembolsoMesPlano">
                                           <table class="table table-striped" data-toggle="table">
                                              <thead>
                                                 <tr>
@@ -1683,7 +1700,7 @@
                                                    <td></td>
                                                 </tr>
                                                 <tr>
-                                                   <td>6</td>
+                                                   <td>4</td>
                                                    <td>200.000,00</td>
                                                    <td></td>
                                                 </tr>
@@ -1699,7 +1716,45 @@
                                                 </tr>
                                              </tbody>
                                           </table>
-
+                                       </div>
+                                       <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaParcelaPlano">
+                                          <table class="table table-striped" data-toggle="table">
+                                             <thead>
+                                                <tr>
+                                                   <th>Mês de Execução</th>
+                                                   <th>Valor</th>
+                                                   <th class="w-10 text-center">Ações</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td>1</td>
+                                                   <td>200.000,00</td>
+                                                   <td></td>
+                                                </tr>
+                                                <tr>
+                                                   <td>12</td>
+                                                   <td>200.000,00</td>
+                                                   <td></td>
+                                                </tr>
+                                                <tr>
+                                                   <td>24</td>
+                                                   <td>200.000,00</td>
+                                                   <td></td>
+                                                </tr>
+                                                <tr>
+                                                   <td>36</td>
+                                                   <td>200.000,00</td>
+                                                   <td></td>
+                                                </tr>
+                                                <tr>
+                                                   <td><strong>Total</strong></td>
+                                                   <td>800.000,00</td>
+                                                   <td></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
                                    </article>
                                  </div>
                               </form>
@@ -1817,7 +1872,8 @@
              function ocultarDetalhamentoParcelaPlano(){
                      $('#detalheParcelarPlanoSim').hide();
                      $('#detalheParcelarPlanoNao').show();
-                     $('#tabelaParcelaPlano').show();
+                     $('#tabelaParcelaPlano').hide();
+                     $('#tabelaDesembolsoMesPlano').show();
                      $('#parcelarPlano-nao').prop('checked',true);
             };
 
@@ -1825,12 +1881,25 @@
                 if ($('input[name="parcelarPlano"]:checked').val() === "Sim") {
                     $('#detalheParcelarPlanoSim').show();
                     $('#detalheParcelarPlanoNao').hide();
-                    $('#tabelaParcelaPlano').hide();
+                    $('#tabelaParcelaPlano').show();
+                    $('#tabelaDesembolsoMesPlano').hide();
                     
                 } else {
                     $('#detalheParcelarPlanoSim').hide();
                     $('#detalheParcelarPlanoNao').show();
-                    $('#tabelaParcelaPlano').show();
+                    $('#tabelaParcelaPlano').hide();
+                    $('#tabelaDesembolsoMesPlano').show();
+                }
+            });
+
+             $('input[name="fonte-recurso"]').change(function () {
+                if ($('input[name="fonte-recurso"]:select').val() === "Tipo C") {
+                    $('#baseFunpec').hide();
+                    $('#remuneracaoFundacao').hide();
+                    
+                } else {
+                    $('#baseFunpec').show();
+                    $('#remuneracaoFundacao').show();
                 }
             });
 
