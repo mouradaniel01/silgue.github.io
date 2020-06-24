@@ -638,8 +638,18 @@
                                                    <th>Descrição</th>
                                                    <th>Indicador</th>
                                                    <th>Qtd</th>  
-                                                   <th>Mês Início</th> 
-                                                   <th>Mês Fim</th> 
+                                                   <th>Mês Início
+                                                      <span class="tooltip-icon">
+                                                         <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O mês de início não pode ser inferior a 1.">
+                                                         </i>
+                                                      </span>
+                                                   </th> 
+                                                   <th>Mês Fim
+                                                      <span class="tooltip-icon">
+                                                         <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O mês de fim não pode ser superior ao tempo de execução do projeto.">
+                                                         </i>
+                                                      </span>
+                                                   </th> 
                                                    <th class="w-10 text-center">Ações</th>                                               
                                                 </tr>
                                              </thead>
@@ -653,6 +663,9 @@
                                                    <td>1</td>
                                                    <td>3</td>
                                                    <td align="right" class="btn-group">
+                                                      <button type="button" class="btn btn-link " data-toggle="modal" data-target="#modalMetasResultados">
+                                                         <i class="fas fa-external-link-alt"></i>
+                                                      </button>  
                                                       <button class="btn btn-link ">
                                                       <i class="far fa-trash-alt"></i>
                                                       </button>
@@ -666,7 +679,10 @@
                                                    <td>10</td>
                                                    <td>1</td>
                                                    <td>3</td>
-                                                   <td align="right" class="btn-group">                 
+                                                   <td align="right" class="btn-group"> 
+                                                      <button type="button" class="btn btn-link " data-toggle="modal" data-target="#modalMetasResultados">
+                                                         <i class="fas fa-external-link-alt"></i>
+                                                      </button>                
                                                       <button class="btn btn-link ">
                                                       <i class="far fa-trash-alt"></i>
                                                       </button>
@@ -681,6 +697,9 @@
                                                    <td>4</td>
                                                    <td>6</td>
                                                    <td align="right" class="btn-group">
+                                                      <button type="button" class="btn btn-link " data-toggle="modal" data-target="#modalMetasResultados">
+                                                         <i class="fas fa-external-link-alt"></i>
+                                                      </button>  
                                                       <button class="btn btn-link ">
                                                       <i class="far fa-trash-alt"></i>
                                                       </button>
@@ -695,6 +714,71 @@
                             </section>
                          </div>
                      <!--Fim de Metas/Resultados-->
+                     <!-- Início de Recursos-->
+                         <div class="tab-pane show" id="recursos" role="tabpanel">
+                           <section class="m-3" >
+                              <h4>Recursos
+                              <span class="tooltip-icon">
+                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Esta aba não deve ser solicitada caso o projeto seja do tipo A. ">
+                                 </i>
+                              </span>
+                              </h4>
+                              <form>
+                                 <div class="conteudo-principal__content m-0">
+                                    <article class="conteudo-principal">                                       
+                                       <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaMetasResultadosProjetoPesquisa">
+                                          <div class="form-group position-relative">
+                                             <label for="text-input">Órgão/Entidade</label>
+                                                <input class="form-control m-2" id="entidadeRecurso" type="text" placeholder="Digite o nome do Órgão/Entidade..." />
+                                          </div>
+                                          <div class="form-group position-relative">
+                                             <label for="text-input">Valor Financiado</label>
+                                                <input class="form-control m-2" id="ValorRecurso" type="text" placeholder="Informe o valor que será financiado pelo Órgão/Entidade..." />
+                                          </div>
+                                          <div class="form-group position-relative">
+                                             <label for="text-input">Responsável pela Execução Financeira
+                                                <span class="tooltip-icon">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O responsável pode ser pessoa física ou jurídica. Sempre preencher com FUNPEC, mas permitir que a informação seja alterada.">
+                                                   </i>
+                                                </span>
+                                             </label>
+                                                <input class="form-control m-2" id="responsavelExecucaoRecurso" type="text" placeholder="FUNPEC..." />
+                                          </div>
+
+                                          <div class="form-control m-0 my-3 px-4">
+                                             <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i>        Inserir
+                                             </button> 
+                                          </div> 
+
+                                          <table class="table table-striped" data-toggle="table">
+                                             <thead>
+                                                <tr>                                                   
+                                                   <th>Origem</th>
+                                                   <th>Valor Financiado</th>
+                                                   <th>Responsável</th>
+                                                   <th class="w-10 text-center">Ações</th>                     
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td>Petrobras</td>
+                                                   <td>200.000,00</td>
+                                                   <td>FUNPEC</td>
+                                                   <td>
+                                                      <button class="btn btn-link ">
+                                                         <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>                                                
+                                             </tbody>
+                                          </table>
+                                       </div>                                                                         
+                                   </article>                                   
+                                 </div>
+                              </form>
+                            </section>
+                         </div>
+                     <!--Fim de Recursos-->
                      <div class="tab-content menu-conteudo">
                         <!-- Modal de Responsável da Entidade -->
                         <div class="modal fade" id="modalresponsavelEntidade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -752,7 +836,35 @@
                               </div>
                            </div>
                         </div>
-                        <!-- Fim do modal de Membros-->
+                        <!-- Fim do modal de Responsável Entidade-->
+                        <!-- Modal de Metas/Resultados -->
+                        <div class="modal fade" id="modalMetasResultados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                           <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                 <div class="modal-header">
+                                    <h5 class="modal-title" id="tituloModalMetasResultados">Cronograma Meta/Resultado X</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                 </div>
+                                 <div class="modal-body">
+                                    <div class="form-group position-relative">
+                                          <input class="form-control" id="mesInicioMeta" type="text" placeholder="Informe o mês de início" />
+                                          <label for="mesInicioMeta">Mês Início</label>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                          <input class="form-control" id="mesFimMeta" type="text" placeholder="Informe o mês de Fim" />
+                                          <label for="mesFimMeta">Mês Fim</label>
+                                    </div>                                    
+                                 </div>
+                                 <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <button type="button" class="btn btn-primary">Salvar</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Fim do modal de Metas e Resultados-->
                         <!-- Modal Detalhamento da Rubrica 14 -->
                         <div class="modal fade" id="modalRubrica14" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog modal-lg" role="document">
@@ -2016,15 +2128,7 @@
                          </div>
                          <!--Fim do cronograma de Desembolso-->
                      
-                     <div class="tab-pane" id="participes" role="tabpanel">
-                        <p>Partícipes</p>
-                     </div>
-                     <div class="tab-pane" id="metasResultados" role="tabpanel">
-                        <p>Metas/Resultados</p>
-                     </div>
-                     <div class="tab-pane show" id="recursos" role="tabpanel">
-                        <p>Recursos</p>
-                     </div>
+                     
                      <div class="tab-pane show" id="documentos" role="tabpanel">
                         <p>Documentos</p>
                      </div>
