@@ -1,5 +1,7 @@
 var unidades = ["Superintendência de Informática(1135)","Centro de Tecnologia(1400)", "Pró-Reitoria de Administração(1102)","Pró-Reitoria de Planejamento(1120)","Centro de Biologia(1200)"];
 
+var entidades = ["PETROBRAS S/A", "SHELL", "REPSOL","INSTITUTO 1", "INSTITUTO 2", "UNIVERSIDADE FEDERAL X", "UNIVERSIDADE FEDERAL Y"]
+
 function exibirDetalhes(flag,div){
 	 $('input[name=flag]').change(function () {
              if ($('input[name=flag]:checked').val() === "Sim") {

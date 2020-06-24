@@ -357,6 +357,7 @@
                            </article>
                         </section>
                      </div>
+                     <!-- Inicio Dados Gerais -->
                      <div class="tab-pane show" id="dadosGerais" role="tabpanel">
                            <section class="m-3" >
                               <h4>Dados Gerais</h4>
@@ -426,68 +427,191 @@
                               <!--</article>   -->
                            </section>
                         </div>
+                     <!--Fim Dados Gerais -->
+                     <!-- Início de Partícipes-->
+                         <div class="tab-pane show" id="participes" role="tabpanel">
+                           <section class="m-3" >
+                              <h4>Partícipes
+                              <span class="tooltip-icon">
+                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Para tipo A ou B, o sistema deve inserir a UFRN como partícipe e classificá-la como contratante e inserir a FUNPEC e classificá-la como contratada. Se o tipo for C, o sistema deve inserir a UFRN como contratada e a FUNPEC como contratante. Para o tipo D, o sistema deve cadastrar a UFRN como interveniente/Executora, a FUNPEC como contratada e solicitar a inclusão de outro(s) partícipes que deverão ser classificado(s) como contratante(s). ">
+                                 </i>
+                                 </span>
+                                 </h4>
+                              <form>
+                                 <div class="conteudo-principal__content m-0">
+                                    <article class="conteudo-principal">
+                                       <div class="form-group m-0 my-3 px-4">
+                                          <div class="form-inline position-relative">
+                                             <!--<input id="entidade"
+                                                class="form-control form-autocomplete" data-type="simples" type="text" placeholder="Digite o nome do órgão/Instituição..." />
+                                             <label for="entidade">Órgão/Entidade</label>-->
+                                             <label for="text-input">Órgão/Entidade</label>
+                                             <input class="form-control m-2" id="entidade" type="text" placeholder="Digite o nome do Órgão/Entidade..." />                                          
+                                             <button type="button" class="btn btn-link" href="#">
+                                             <i class="fas fa-search"></i>
+                                             </button>
+                                          </div>
+                                       </div>
+                                          <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaEntidades">
+                                             <table class="table table-striped" data-toggle="table">
+                                                <thead>
+                                                   <tr>
+                                                      <th></th>
+                                                      <th>Nome</th>
+                                                      <th>CNPJ</th>
+                                                      <th>Endereço</th>
+                                                      <th>Cidade</th>
+                                                      <th>UF</th>
+                                                   </tr>
+                                                </thead>
+                                                <tbody>
+                                                   <tr>
+                                                      <td><input class="form-check-input m-2" id="checkEntidade" type="checkbox"  /></td>
+                                                      <td>REPSOL </td>
+                                                      <td>000.0000/0001-01</td>
+                                                      <td>Rua Praia do Botafogo</td>
+                                                      <td>RJ</td>
+                                                      <td>RJ</td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td><input class="form-check-input m-2" id="checkEntidade" type="checkbox"  /></td>
+                                                      <td>REPSOL </td>
+                                                      <td>000.0000/0001-02</td>
+                                                      <td>Av. Paulista</td>
+                                                      <td>SP</td>
+                                                      <td>SP</td>
+                                                   </tr>
+                                                </tbody>
+                                             </table>
+                                          </div>
+                                          <div class="form-control m-0 my-3 px-4 border">
+                                             <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i>        Inserir
+                                             </button> 
+                                          </div>  
+                                       </form>
+                                   </article>
+                                   <article class="conteudo-principal">
+                                       <div class="conteudo-principal__header">
+                                          <h1>Partícipes</h1>
+                                       </div>
+                                       <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaEntidades">
+                                          <table class="table table-striped" data-toggle="table">
+                                             <thead>
+                                                <tr>
+                                                   <th>Tipo</th>
+                                                   <th>Nome</th>
+                                                   <th>CNPJ</th>
+                                                   <th>Endereço</th>
+                                                   <th>Cidade</th>
+                                                   <th>UF</th>
+                                                   <th>Ações</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td>Interveniente/Executora</td>
+                                                   <td>UFRN </td>
+                                                   <td>000.0000/0001-10</td>
+                                                   <td>Av. Salgado Filho, 3000</td>
+                                                   <td>Natal</td>
+                                                   <td>RN</td>
+                                                   <td align="right" class="btn-group">
+                                                      <button type="button" id="inserirResponsavel" class="btn btn-link " data-toggle="modal" data-target="#modalresponsavelEntidade">
+                                                      <i class="fas fa-external-link-alt"></i>
+                                                      </button>
+                                                      <button class="btn btn-link ">
+                                                      <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                                 <tr>
+                                                   <td>Contratada</td>
+                                                   <td>FUNPEC </td>
+                                                   <td>000.0000/0001-20</td>
+                                                   <td>Av. Salgado Filho, 3000</td>
+                                                   <td>Natal</td>
+                                                   <td>RN</td>
+                                                    <td align="right" class="btn-group">
+                                                      <button type="button" id="inserirResponsavel" class="btn btn-link " data-toggle="modal" data-target="#modalresponsavelEntidade">
+                                                      <i class="fas fa-external-link-alt"></i>
+                                                      </button>
+                                                      <button class="btn btn-link ">
+                                                      <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                   <td>Contratante</td>
+                                                   <td>PETROBRAS S/A </td>
+                                                   <td>000.0000/0001-30</td>
+                                                   <td>Rua Rio Grande do Norte</td>
+                                                   <td>Natal</td>
+                                                   <td>RN</td>
+                                                    <td align="right" class="btn-group">
+                                                      <button type="button" id="inserirResponsavel" class="btn btn-link " data-toggle="modal" data-target="#modalresponsavelEntidade">
+                                                      <i class="fas fa-external-link-alt"></i>
+                                                      </button>
+                                                      <button class="btn btn-link ">
+                                                      <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>                                                  
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                   </article>
+                                 </div>
+                              </form>
+                            </section>
+                         </div>
+                         <!--Fim de Partícipes-->
                      <div class="tab-content menu-conteudo">
-                        <!-- Modal de Membros -->
-                        <div class="modal fade" id="modalMembros" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <!-- Modal de Responsável da Entidade -->
+                        <div class="modal fade" id="modalresponsavelEntidade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Associar Membros</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Responsável Órgão/Entidade</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                  </div>
                                  <div class="modal-body">
+                                    <div class="form-group position-relative">
+                                          <input class="form-control" id="nomeResponsavelEntidade" type="text" placeholder="Quantidade de diárias" />
+                                          <label for="nomeResponsavelEntidade">Nome</label>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                          <input class="form-control" id="cpfResponsavelEntidade" type="text" placeholder="Quantidade de diárias" />
+                                          <label for="cpfResponsavelEntidade">CPF</label>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                          <input class="form-control" id="cargoResponsavelEntidade" type="text" placeholder="Quantidade de diárias" />
+                                          <label for="cargoResponsavelEntidade">Cargo/Função</label>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                       <button type="button" class="btn btn-primary">Inserir</button>
+                                    </div>
                                     <table class="table table-striped" data-toggle="table">
                                        <thead>
-                                          <tr>
-                                             <th class="w-10" data-checkbox="true"></th>
-                                             <th>Membro</th>
-                                             <th>Valor</th>
-                                             <th class="w-10 text-center">Plano Individual</th>
+                                          <tr>                                             
+                                             <th>Nome</th>
+                                             <th>CPF</th>
+                                             <th>Cargo/Função</th>
+                                             <th class="w-10 text-center">Ações</th>
                                           </tr>
                                        </thead>
                                        <tbody>
-                                          <tr>
-                                             <td><input class="form-check-input m-2" id="check-1" type="checkbox"  /></td>
-                                             <td>Alysson Rodrigues</td>
-                                             <td><input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" /></td>
+                                          <tr>                                             
+                                             <td>João Humberto</td>
+                                             <td>123.456.789-10</td>
+                                             <td>Diretor</td>
                                              <td>
-                                                <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
-                                                <i class="fas fa-external-link-alt"></i>
-                                                </a>
+                                                <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                </button>
                                              </td>
-                                          </tr>
-                                          <tr>
-                                             <td><input class="form-check-input m-2" id="check-2" type="checkbox"  /></td>
-                                             <td>Brunno Rodrigues</td>
-                                             <td><input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" /></td>
-                                             <td>
-                                                <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
-                                                <i class="fas fa-external-link-alt"></i>
-                                                </a>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td><input class="form-check-input m-2" id="check-3" type="checkbox"  /></td>
-                                             <td>Thalisson Muriel</td>
-                                             <td><input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" /></td>
-                                             <td>
-                                                <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
-                                                <i class="fas fa-external-link-alt"></i>
-                                                </a>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td><input class="form-check-input m-2" id="check-4" type="checkbox"  /></td>
-                                             <td>José Edivan</td>
-                                             <td><input class="form-control m-2" id="text-input" type="text" placeholder="Digite o valor" /></td>
-                                             <td>
-                                                <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
-                                                <i class="fas fa-external-link-alt"></i>
-                                                </a>
-                                             </td>
-                                          </tr>
+                                          </tr>                                       
                                        </tbody>
                                     </table>
                                  </div>
@@ -1792,6 +1916,7 @@
          <script src="js/prototipo.js"></script>
          <script>
             autocomplete(document.getElementById("unidade"), unidades);
+            //autocomplete(document.getElementById("entidade"), entidades);
 
             $('input[id="vlrHoraRubrica36"]').change(function () {
                if(document.getElementById("hrSemanalRubrica36").value.length > 0 && document.getElementById("vlrHoraRubrica36").value.length > 0){
