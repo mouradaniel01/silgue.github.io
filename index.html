@@ -203,7 +203,7 @@
                            </button>
                         </div>
                      </div>
-                     <div class="menu-item">
+                     <div class="menu-item" id="menuRecursos">
                         <i class="far fa-circle"></i>
                         <div class="menu-botao">
                            <button
@@ -211,6 +211,7 @@
                               href="#recursos"
                               role="tab"
                               aria-controls="Recursos"
+                              
                               >
                            Recursos
                            </button>
@@ -2247,8 +2248,15 @@
                 }
             });
 
-
-
+             $('select[name="fonte-recurso"]').change(function () {
+               var select = document.getElementById('select-fonte-recurso');
+               var value = select.options[select.selectedIndex].value;
+                if (value === "A") {
+                    $('#menuRecursos').hide();
+                } else {
+                   $('#menuRecursos').show();
+                }
+            });
 
          </script>
    </body>
