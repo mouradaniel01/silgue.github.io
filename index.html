@@ -367,10 +367,10 @@
                                        <div class="form-group position-relative">
                                           <select class="custom-select" id="select-fonte-recurso" required="required" name="fonte-recurso">
                                              <option value="hide">Selecione</option>
-                                             <option>Tipo A</option>
-                                             <option>Tipo B</option>
-                                             <option>Tipo C</option>
-                                             <option>Tipo D</option>
+                                             <option value="A">Tipo A</option>
+                                             <option value="B">Tipo B</option>
+                                             <option value="C">Tipo C</option>
+                                             <option value="D">Tipo D</option>
                                           </select>
                                           <label class="required" for="select-fonte-recurso">Fonte de Recurso
                                           <span class="tooltip-icon">
@@ -1625,13 +1625,13 @@
                                                 <output class="form-control m-2" id="planoAplicacaoCronograma" type="text" placeholder="valor total."></output>
                                                 </label>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-4" id="doapParcelas">
                                                 <label for="doapParcelas">Doap
                                                 <span class="tooltip-icon">
-                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O DOAP deverá ser pago em parcelas. A quantidade de parcelas é obtida subtraindo o tempo de execução do projeto - 1.">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O DOAP não se aplica a projetos do tipo C. Para os demais, deverá ser pago em parcelas. A quantidade de parcelas é obtida subtraindo o tempo de execução do projeto - 1.">
                                                    </i>
                                                 </span>
-                                                <output class="form-control m-2" id="doapParcelas" type="text" placeholder="Qtd Parcelas."></output>
+                                                <output class="form-control m-2" type="text" placeholder="Qtd Parcelas."></output>
 
                                                 </label>
                                             </div>
@@ -1892,14 +1892,18 @@
                 }
             });
 
-             $('input[name="fonte-recurso"]').change(function () {
-                if ($('input[name="fonte-recurso"]:select').val() === "Tipo C") {
+             $('select[name="fonte-recurso"]').change(function () {
+               var select = document.getElementById('select-fonte-recurso');
+               var value = select.options[select.selectedIndex].value;
+                if (value === "C") {
                     $('#baseFunpec').hide();
                     $('#remuneracaoFundacao').hide();
+                    $('#doapParcelas').hide();
                     
                 } else {
                     $('#baseFunpec').show();
                     $('#remuneracaoFundacao').show();
+                    $('#doapParcelas').show();
                 }
             });
 
