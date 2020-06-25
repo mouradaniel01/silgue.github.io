@@ -678,6 +678,9 @@
                                                       </button>  
                                                       <button class="btn btn-link ">
                                                       <i class="far fa-trash-alt"></i>
+                                                      </button>                                                    
+                                                      <button type="button" class="btn btn-link " data-toggle="modal" data-target="#modalMembros"> 
+                                                           <i class="fas fa-user-plus"></i>
                                                       </button>
                                                    </td> 
                                                 </tr>
@@ -696,6 +699,9 @@
                                                       <button class="btn btn-link ">
                                                       <i class="far fa-trash-alt"></i>
                                                       </button>
+                                                      <button type="button" class="btn btn-link " data-toggle="modal" data-target="#modalMembros"> 
+                                                           <i class="fas fa-user-plus"></i>
+                                                         </button>
                                                    </td>
                                                 </tr>
                                                 <tr>
@@ -712,6 +718,9 @@
                                                       </button>  
                                                       <button class="btn btn-link ">
                                                       <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                      <button type="button" class="btn btn-link " data-toggle="modal" data-target="#modalMembros"> 
+                                                           <i class="fas fa-user-plus"></i>
                                                       </button>
                                                    </td>
                                                 </tr>
@@ -1017,6 +1026,74 @@
                            </div>
                         </div>
                         <!-- Fim do modal de Distribuição de Remuneração Fundação-->
+                        <!-- Modal de Membros -->
+                              <div class="modal fade" id="modalMembros" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Associar Membros</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <table class="table table-striped" data-toggle="table">
+                                                <thead>
+                                                   <tr>
+                                                      <th class="w-10" data-checkbox="true"></th>
+                                                      <th>Membro</th>                                    
+                                                      <th class="w-10 text-center">Plano Individual</th>
+                                                   </tr>
+                                                </thead>
+                                                <tbody>
+                                                   <tr>
+                                                      <td><input class="form-check-input m-2" id="check-1" type="checkbox"  /></td>
+                                                      <td>Alysson Rodrigues</td>                
+                                                      <td>
+                                                         <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
+                                                         <i class="fas fa-external-link-alt"></i>
+                                                </a>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td><input class="form-check-input m-2" id="check-2" type="checkbox"  /></td>
+                                                      <td>Brunno Rodrigues</td>                        
+                                                      <td>
+                                                         <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
+                                                         <i class="fas fa-external-link-alt"></i>
+                                                </a>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td><input class="form-check-input m-2" id="check-3" type="checkbox"  /></td>
+                                                      <td>Thalisson Muriel</td>
+                                                      <td>
+                                                         <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
+                                                         <i class="fas fa-external-link-alt"></i>
+                                                </a>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td><input class="form-check-input m-2" id="check-4" type="checkbox"  /></td>
+                                                      <td>José Edivan</td>                             
+                                                      <td>
+                                                         <a class="link-normal m-2" href="..." rel="noopener noreferrer" target="_blank">
+                                                         <i class="fas fa-external-link-alt"></i>
+                                                </a>
+                                                      </td>
+                                                   </tr>
+                                                   
+                                                </tbody>
+                                             </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                      <button type="button" class="btn btn-primary">Salvar</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- Fim do modal de Membros-->
                         <!-- Modal Detalhamento da Rubrica 14 -->
                         <div class="modal fade" id="modalRubrica14" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog modal-lg" role="document">
