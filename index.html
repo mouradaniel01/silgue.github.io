@@ -387,7 +387,12 @@
                   
                                        <div class="form-group position-relative">
                                           <input class="form-control" id="tempoExecucaoProjeto" type="text" placeholder="tempo de execução do projeto em meses." />
-                                          <label class="required" for="tempoExecucaoProjeto">Tempo de Execução(em meses)</label>
+                                          <label class="required" for="tempoExecucaoProjeto">Tempo de Execução(em meses)
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O tempo de execução não pode ser superior a vigência do projeto de pesquisa.">
+                                                </i>
+                                             </span>
+                                          </label>
                                        </div>
                                        <div class="form-group position-relative">
                                           <select class="custom-select" id="select-partilha-resultados" required="required" name="partilha-resultados">
@@ -2494,10 +2499,7 @@
                                              
                                             <div class="col-md-4">
                                                 <label for="tempoExecucaoProjetoCronograma">Tempo de Execução
-                                                   <span class="tooltip-icon">
-                                                      <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O tempo de execução não pode ser superior a vigência do projeto de pesquisa.">
-                                                      </i>
-                                                   </span>
+                                                   
                                                    <output class="form-control m-2" id="tempoExecucaoProjetoCronograma" type="text" placeholder="valor total."></output>
                                                 </label>
                                             </div>
