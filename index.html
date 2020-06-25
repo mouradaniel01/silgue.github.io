@@ -389,9 +389,9 @@
                                           <input class="form-control" id="tempoExecucaoProjeto" type="text" placeholder="tempo de execução do projeto em meses." />
                                           <label class="required" for="tempoExecucaoProjeto">Tempo de Execução(em meses)
                                              <span class="tooltip-icon">
-                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O tempo de execução não pode ser superior a vigência do projeto de pesquisa.">
-                                                </i>
-                                             </span>
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O tempo de execução não pode ser superior a vigência do projeto de pesquisa.">
+                                             </i>
+                                          </span>                                             
                                           </label>
                                        </div>
                                        <div class="form-group position-relative">
@@ -739,7 +739,12 @@
                                     <article class="conteudo-principal">                                       
                                        <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaMetasResultadosProjetoPesquisa">
                                           <div class="form-group position-relative">
-                                             <label for="text-input">Órgão/Entidade</label>
+                                             <label for="text-input">Órgão/Entidade
+                                                <span class="tooltip-icon">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O órgão/Entidade deve ser uma pessoa jurídica.">
+                                                   </i>
+                                                </span>
+                                             </label>
                                                 <input class="form-control m-2" id="entidadeRecurso" type="text" placeholder="Digite o nome do Órgão/Entidade..." />
                                           </div>
                                           <div class="form-group position-relative">
@@ -1722,17 +1727,51 @@
                                  </div>
                                  <div class="modal-body">
                                     <form class="form border-0 p-0">
-                                    <div class="form-group position-relative" id="campoVlrDetalhamentoRubrica30">
-                                       <input class="form-control" id="vlrDetalhamentoRubrica30" type="text" placeholder="Valor total previsto para o detalhamento da rubrica." />
-                                       <label for="vlrDetalhamentoRubrica30">Valor                                          
+                                    <div class="form-group position-relative">
+                                       <input class="form-control" id="descricaoItemRubrica32" type="text" placeholder="Descrição do item." />
+                                       <label for="descricaoItemRubrica32">Descrição                                          
                                        </label>
                                     </div>
-                                    <div class="form-group position-relative" id="campoVlrDetalhamentoRubrica30">
-                                          <input class="form-control" id="vlrDetalhamentoRubrica30" type="text" placeholder="Valor total previsto para o detalhamento da rubrica." />
-                                          <label for="vlrDetalhamentoRubrica30">Valor                                          
+                                    <div class="form-group position-relative">
+                                          <input class="form-control" id="vlrItemRubrica32" type="text" placeholder="Valor total previsto para o detalhamento da rubrica." />
+                                          <label for="vlrItemRubrica32">Valor                                          
                                           </label>
                                        </div>
                                     </form>
+                                 </div>
+                                 <div class="form-group position-relative">
+                                    <table class="table table-striped" data-toggle="table">
+                                       <thead>
+                                          <tr>
+                                             <th>Descrição</th>
+                                             <th>Qtd</th>
+                                             <th>Valor</th>   
+                                             <th class="w-10 text-center">Ações</th>
+                                          </tr>
+                                       </thead>
+                                       <tbody>
+                                          <tr>
+                                             <td>Livros Didáticos</td>
+                                             <td>100</td>
+                                             <td>10.000,00</td>                                             
+                                             <td>
+                                                <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                </button>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>Panfletos para divulgação</td>
+                                             <td>500</td>
+                                             <td>100,00</td>                                             
+                                             <td>
+                                                <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                </button>
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
                                  </div>
                                  <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
