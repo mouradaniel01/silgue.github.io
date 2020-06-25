@@ -1058,7 +1058,7 @@
                                           </select>
                                           <label class="required" for="select-favorecido">Favorecido
                                               <span class="tooltip-icon">
-                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Um favorecido só pode ser inserido mais de uma vez na listagem caso aFinalidade/Destino e/ou tabela forem diferentes.">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O favorecido só é solicitado caso a opção de detalhar favorecido seja marcada como sim.">
                                                 </i>
                                              </span>
                                           </label>
@@ -1809,7 +1809,12 @@
                                     </button>
                                  </div>
                                  <div class="modal-body">
-                                    <label class="d-block-inline mr-2">Detalhar Rubrica?</label>
+                                    <label class="d-block-inline mr-2">Detalhar Rubrica?
+                                       <span class="tooltip-icon">
+                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Caso não deseje detalhar a rubrica, solicitar somente o valor total e se será internacional ou não.">
+                                          </i>
+                                       </span>
+                                    </label>
                                     <div class="form-check form-check-inline">
                                        <input class="form-check-input" id="detalharPassagens-sim" type="radio" name="detalharPassagens" value="Sim"/>
                                        <label class="form-check-label" for="detalharPassagens-sim">Sim</label>
@@ -2844,7 +2849,8 @@
                if(document.getElementById("hrSemanalRubrica36").value.length > 0 && document.getElementById("vlrHoraRubrica36").value.length > 0){
                   var n1 = parseInt(document.getElementById('hrSemanalRubrica36').value, 10);
                   var n2 = parseInt(document.getElementById('vlrHoraRubrica36').value, 10);
-                  document.getElementById('vlrTotalHoraRubrica36').innerHTML = n1 * n2;
+                  var n3 = parseInt(document.getElementById('qtdSemana').value, 10);
+                  document.getElementById('vlrTotalHoraRubrica36').innerHTML = n1 * n2 * n3;
                }
             });
 
