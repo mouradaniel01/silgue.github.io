@@ -1091,11 +1091,11 @@
                                        </div>
                                        <div class="form-group position-relative">
                                           <input class="form-control" id="text-input" type="text" placeholder="Quantidade de diárias" />
-                                          <label for="text-input">Quantidade</label>
+                                          <label class="required" for="text-input">Quantidade</label>
                                        </div>
                                        <div class="form-group position-relative">
                                           <input class="form-control" id="text-input" type="text" placeholder="Valor unitário da diária" />
-                                          <label for="text-input">Valor da Diária</label>
+                                          <label class="required" for="text-input">Valor da Diária</label>
                                        </div>
                                        <div class="form-group position-relative">
                                        <button type="button" class="btn btn-primary">Inserir</button>
@@ -1182,7 +1182,9 @@
                            <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
-                                    <h5 class="modal-title">Auxílio Financeiro ao Estudante</h5>
+                                    <h5 class="modal-title">Auxílio Financeiro ao Estudante
+                                       <p class="advice">* Campos Obrigatórios</p>
+                                    </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
@@ -1279,7 +1281,7 @@
                                        </div>
                                        <div class="form-group position-relative">
                                           <input class="form-control" id="qtdMesesAux" type="text" placeholder="Quantidade de meses que o estudante receberá o auxílio." />
-                                          <label for="qtdMesesAux">Qtd Meses
+                                          <label class="required" for="qtdMesesAux">Qtd Meses
                                              <span class="tooltip-icon">
                                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="A quantidade de meses não pode ser superior ao tempo de execução do projeto.">
                                                 </i>
@@ -1288,7 +1290,7 @@
                                        </div>
                                        <div class="form-group position-relative">
                                           <input class="form-control" id="vlrAux" type="text" placeholder="Quantidade de meses que o estudante receberá o auxílio." />
-                                          <label for="vlrAux">Valor do Auxílio
+                                          <label class="required" for="vlrAux">Valor do Auxílio
                                              <span class="tooltip-icon">
                                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Caso seja selecionado a referência sendo a resolução 061/2016 - consad, então o valor do auxílio não pode ser superior a DOUTORADO até R$ 3.000,00/m, MESTRADO até R$ 2.500,00/m, EPECIALIZAÇÃO até R$ 1.500,00/m, GRADUAÇÃO E TÉCNICO até R$ 1.200,00/m ">
                                                 </i>
@@ -1506,11 +1508,11 @@
                                              <label class="required" for="select-auxilio-pesquisador">Tipo de Auxílio</label>
                                              <div class="invalid-feedback">Selecione alguma opção</div>
                                           </div>
-                                          <div class="form-group position-relative" id="campoCargaHorariaInstituicao">
+                                          <!--<div class="form-group position-relative" id="campoCargaHorariaInstituicao">
                                              <input class="form-control" id="cargaHorariaInstituicao" type="text" placeholder="Carga Horária do pesquisador, na instituição." />
                                              <label for="cargaHorariaInstituicao">Carga Horária Instituição
                                              </label>
-                                          </div>
+                                          </div>-->
                                           <div class="form-group position-relative" id="campoQtdPesquisadores">
                                              <input class="form-control" id="qtdPesquisadores" type="text" placeholder="Quantidade de pesquisadores que receberão o auxílio." />
                                              <label for="qtdPesquisadores">Qtd Pesquisadores
@@ -1544,7 +1546,7 @@
                                                       <th>Interessado</th>
                                                       <th>Tipo Auxílio</th>
                                                       <th>Qtd Pesquisadores</th>
-                                                      <th>Carga Horária</th>
+                                                      <!--<th>Carga Horária</th>-->
                                                       <th>Qtd Parcelas </th>                           
                                                       <th>Valor</th>
                                                       <th class="w-10 text-center">Ações</th>
@@ -1555,7 +1557,7 @@
                                                       <td>Alysson Rodrigues</td>
                                                       <td>Pesquisa</td>
                                                       <td></td>
-                                                      <td>20</td>
+                                                      <!--<td>20</td>-->
                                                       <td>24</td>
                                                       <td>1.500,00</td>
                                                       <td>                                                   
@@ -1568,7 +1570,7 @@
                                                       <td>Thalisson Muriel</td>
                                                       <td>Pesquisa</td>
                                                       <td></td>
-                                                      <td>20</td>
+                                                      <!--<td>20</td>-->
                                                       <td>24</td>
                                                       <td>1.500,00</td>
                                                       <td>                                                   
@@ -1581,7 +1583,7 @@
                                                       <td>Indefinido</td>
                                                       <td>Pesquisa</td>
                                                       <td>4</td>
-                                                      <td>20</td>
+                                                      <!--<td>20</td>-->
                                                       <td>24</td>
                                                       <td>1.500,00</td>
                                                       <td>                                                   
@@ -1593,7 +1595,7 @@
                                                    <tr>
                                                       <td><strong>Total das Rubricas</strong></td>
                                                       <td></td>
-                                                      <td></td>
+                                                      <!--<td></td>-->
                                                       <td></td>
                                                       <td></td>
                                                       <td>216.000,00</td>
