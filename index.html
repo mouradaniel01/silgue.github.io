@@ -1170,229 +1170,231 @@
                                     </button>
                                  </div>
                                  <div class="modal-body">
-                                    <div class="form-group position-relative">
-                                    <select class="custom-select" id="select-estudante" required="required" name="estudante">
-                                       <option value="hide">Selecione</option>
-                                       <option>Brunno Rodrigues</option>
-                                       <option>Pedro Maure</option>
-                                       <option>Mateus Brito</option>
-                                       <option value="indefinido">Indefinido</option>
-                                    </select>
-                                    <label class="required" for="select-estudante">Estudante
-                                       <span class="tooltip-icon">
-                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O sistema deve listar os membros estudantes que foram inseridos no projeto de pesquisa e apresentar a opção indefinido.">
-                                          </i>
-                                       </span>
-                                    </label>
-                                    <div class="invalid-feedback">Selecione alguma opção</div>
-                                    </div>
-                                    <div class="form-group position-relative" id="campoVinculoEstudanteProjeto">
-                                       <output class="form-control" id="vinculoEstudanteProjeto" type="text" placeholder="Vínculo do Estudante no projeto."></output>
-                                       <label for="vinculoEstudanteProjeto">Vínculo
-                                          <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O sistema deve carregar o vínculo informado no cadastro do membro no projeto de pesquisa. Caso o estudante seja indefinido, o sistema deve solicitar essa informação.">
-                                             </i>
-                                          </span>
-                                       </label>
-                                    </div>
-                                    <div class="form-group position-relative">
-                                       <output class="form-control" id="funcaoMembroEstudanteProjeto" type="text" placeholder="Função do estudante no projeto."></output>
-                                       <label for="funcaoMembroEstudanteProjeto">Função
-                                          <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O sistema deve carregar a função definida para o membro no cadastro do membro no projeto de pesquisa. Um estudante só pode assumir a função de colaborador(a)">
-                                             </i>
-                                          </span>
-                                       </label>
-                                    </div>
-                                    <div class="form-group position-relative" id="campoVinculoMembro">
-                                       <select class="custom-select" id="select-vinculo-membro" required="required" name="vinculo-membro">
+                                    <form class="form border-0 p-0">
+                                       <div class="form-group position-relative">
+                                       <select class="custom-select" id="select-estudante" required="required" name="estudante">
                                           <option value="hide">Selecione</option>
-                                          <option>Doutorado</option>                                         
-                                          <option>Especialização</option>
-                                          <option>Extensão</option>
-                                          <option>Graduação</option>
-                                          <option>Mestrado</option>                                          
-                                          <option>Residência</option>  
-                                          <option>Técnico</option>                               
+                                          <option>Brunno Rodrigues</option>
+                                          <option>Pedro Maure</option>
+                                          <option>Mateus Brito</option>
+                                          <option value="indefinido">Indefinido</option>
                                        </select>
-                                       <label class="required" for="select-vinculo-membro">Vínculo</label>
-                                       <div class="invalid-feedback">Selecione alguma opção</div>
-                                    </div>
-                                    <div class="form-group position-relative" id="campoQtdEstudantes">
-                                       <input class="form-control" id="qtdEstudantes" type="text" placeholder="Quantidade de estudantes que receberão o auxílio." />
-                                       <label for="text-input">Qtd Estudantes
+                                       <label class="required" for="select-estudante">Estudante
                                           <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Campo exibido caso o estudante seja indefinido.">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O sistema deve listar os membros estudantes que foram inseridos no projeto de pesquisa e apresentar a opção indefinido.">
                                              </i>
                                           </span>
                                        </label>
-                                    </div>
-                                    <div class="form-group position-relative">
-                                       <select class="custom-select" id="select-forma-selecao" required="required" name="forma-selecao">
-                                          <option value="hide">Selecione</option>
-                                          <option>Processo Seletivo</option>
-                                          <option>Análise Curricular e Entrevista</option>
-                                          <option>Ordem de Classificação</option>                                      
-                                       </select>
-                                       <label class="required" for="select-forma-selecao">Forma de Seleção</label>
                                        <div class="invalid-feedback">Selecione alguma opção</div>
-                                    </div>
-                                    <div class="form-group position-relative">
-                                       <select class="custom-select" id="select-tabela-aux-estudante" required="required" name="tabela-aux-estudante">
-                                          <option value="hide">Selecione</option>
-                                          <option>Resolução 061/2016 - Consad</option>
-                                          <option value="orgaoFomento">Órgão de Fomento</option>                         
-                                       </select>
-                                       <label class="required" for="select-tabela-aux-estudante">Tabela de Referência</label>
-                                       <div class="invalid-feedback">Selecione alguma opção</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-file">
-                                          <input class="custom-file-input" type="file" id="anexarTabelaOrgaoFomento" />
-                                          <label class="custom-file-label" for="anexarTabelaOrgaoFomento">Escolha seu arquivo</label>
-                                        </div>
-                                        <label>Anexar Tabela do órgão de fomento
-                                          <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O anexo só deve ser solicitado caso a tabela seja órgão de fomento.">
-                                             </i>
-                                          </span>
-                                        </label>
-                                    </div>
-                                    <div class="form-group position-relative">
-                                       <input class="form-control" id="qtdMesesAux" type="text" placeholder="Quantidade de meses que o estudante receberá o auxílio." />
-                                       <label for="qtdMesesAux">Qtd Meses
-                                          <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="A quantidade de meses não pode ser superior ao tempo de execução do projeto.">
-                                             </i>
-                                          </span>
-                                       </label>
-                                    </div>
-                                    <div class="form-group position-relative">
-                                       <input class="form-control" id="vlrAux" type="text" placeholder="Quantidade de meses que o estudante receberá o auxílio." />
-                                       <label for="vlrAux">Valor do Auxílio
-                                          <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Caso seja selecionado a referência sendo a resolução 061/2016 - consad, então o valor do auxílio não pode ser superior a DOUTORADO até R$ 3.000,00/m, MESTRADO até R$ 2.500,00/m, EPECIALIZAÇÃO até R$ 1.500,00/m, GRADUAÇÃO E TÉCNICO até R$ 1.200,00/m ">
-                                             </i>
-                                          </span>
-                                       </label>
-                                    </div>
-                                    <div class="form-group position-relative">
-                                       <button type="button" class="btn btn-primary">Inserir</button>
-                                    </div>
-                                    <div class="form-group position-relative">
-                                       <table class="table table-striped" data-toggle="table">
-                                          <thead>
-                                             <tr>
-                                                <th>Estudante</th>
-                                                <th>Qtd</th>
-                                                <th>Vinculo</th>
-                                                <th>Função</th>
-                                                <th>Forma de Seleção</th>
-                                                <th>Tabela</th>
-                                                <th>Qtd Meses</th>
-                                                <th>Valor</th>
-                                                <th class="w-10 text-center">Ações</th>
-                                             </tr>
-                                          </thead>
-                                          <tbody>
-                                             <tr>
-                                                <td>Brunno Rodrigues</td>
-                                                <td></td>
-                                                <td>Graduação</td>
-                                                <td>Colaborador(a)</td>
-                                                <td>processo seletivo</td>
-                                                <td>Resolução 061/2016 - Consad</td>
-                                                <td>24</td>
-                                                <td>700,00</td>
-                                                <td>                                                   
-                                                   <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                   </button>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <td>Pedro Maure Andrade</td>
-                                                <td></td>
-                                                <td>Graduação</td>
-                                                <td>Colaborador(a)</td>
-                                                <td>processo seletivo</td>
-                                                <td>Resolução 061/2016 - Consad</td>
-                                                <td>24</td>
-                                                <td>700,00</td>
-                                                <td>                                                   
-                                                   <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                   </button>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <td>Mateus Brito</td>
-                                                <td></td>
-                                                <td>Graduação</td>
-                                                <td>Colaborador(a)</td>
-                                                <td>processo seletivo</td>
-                                                <td>Resolução 061/2016 - Consad</td>
-                                                <td>24</td>
-                                                <td>700,00</td>
-                                                <td>                                                   
-                                                   <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                   </button>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <td>Lais Dutra</td>
-                                                <td></td>
-                                                <td>Graduação</td>
-                                                <td>Colaborador(a)</td>
-                                                <td>processo seletivo</td>
-                                                <td>Resolução 061/2016 - Consad</td>
-                                                <td>24</td>
-                                                <td>600,00</td>
-                                                <td>                                                   
-                                                   <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                   </button>
-                                                </td>
-                                             </tr>   
-                                             <tr>
-                                                <td>Gilvan Teixeira Júnior</td>
-                                                <td></td>
-                                                <td>Graduação</td>
-                                                <td>Colaborador(a)</td>
-                                                <td>processo seletivo</td>
-                                                <td>Resolução 061/2016 - Consad</td>
-                                                <td>24</td>
-                                                <td>600,00</td>
-                                                <td>                                                   
-                                                   <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                   </button>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <td>Indefinido</td>
-                                                <td>4</td>
-                                                <td>Graduação</td>
-                                                <td>Colaborador(a)</td>
-                                                <td>processo seletivo</td>
-                                                <td>Resolução 061/2016 - Consad</td>
-                                                <td>24</td>
-                                                <td>600,00</td>
-                                                <td>                                                   
-                                                   <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                   </button>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                   <td colspan="7"><strong>Total das Rubricas</strong></td>
-                                                   <td>93.600,00</td>
-                                                   <td></td>
+                                       </div>
+                                       <div class="form-group position-relative" id="campoVinculoEstudanteProjeto">
+                                          <output class="form-control" id="vinculoEstudanteProjeto" type="text" placeholder="Vínculo do Estudante no projeto."></output>
+                                          <label for="vinculoEstudanteProjeto">Vínculo
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O sistema deve carregar o vínculo informado no cadastro do membro no projeto de pesquisa. Caso o estudante seja indefinido, o sistema deve solicitar essa informação.">
+                                                </i>
+                                             </span>
+                                          </label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <output class="form-control" id="funcaoMembroEstudanteProjeto" type="text" placeholder="Função do estudante no projeto."></output>
+                                          <label for="funcaoMembroEstudanteProjeto">Função
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O sistema deve carregar a função definida para o membro no cadastro do membro no projeto de pesquisa. Um estudante só pode assumir a função de colaborador(a)">
+                                                </i>
+                                             </span>
+                                          </label>
+                                       </div>
+                                       <div class="form-group position-relative" id="campoVinculoMembro">
+                                          <select class="custom-select" id="select-vinculo-membro" required="required" name="vinculo-membro">
+                                             <option value="hide">Selecione</option>
+                                             <option>Doutorado</option>                                         
+                                             <option>Especialização</option>
+                                             <option>Extensão</option>
+                                             <option>Graduação</option>
+                                             <option>Mestrado</option>                                          
+                                             <option>Residência</option>  
+                                             <option>Técnico</option>                               
+                                          </select>
+                                          <label class="required" for="select-vinculo-membro">Vínculo</label>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative" id="campoQtdEstudantes">
+                                          <input class="form-control" id="qtdEstudantes" type="text" placeholder="Quantidade de estudantes que receberão o auxílio." />
+                                          <label for="text-input">Qtd Estudantes
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Campo exibido caso o estudante seja indefinido.">
+                                                </i>
+                                             </span>
+                                          </label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-forma-selecao" required="required" name="forma-selecao">
+                                             <option value="hide">Selecione</option>
+                                             <option>Processo Seletivo</option>
+                                             <option>Análise Curricular e Entrevista</option>
+                                             <option>Ordem de Classificação</option>                                      
+                                          </select>
+                                          <label class="required" for="select-forma-selecao">Forma de Seleção</label>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-tabela-aux-estudante" required="required" name="tabela-aux-estudante">
+                                             <option value="hide">Selecione</option>
+                                             <option>Resolução 061/2016 - Consad</option>
+                                             <option value="orgaoFomento">Órgão de Fomento</option>                         
+                                          </select>
+                                          <label class="required" for="select-tabela-aux-estudante">Tabela de Referência</label>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group">
+                                           <div class="custom-file">
+                                             <input class="custom-file-input" type="file" id="anexarTabelaOrgaoFomento" />
+                                             <label class="custom-file-label" for="anexarTabelaOrgaoFomento">Escolha seu arquivo</label>
+                                           </div>
+                                           <label>Anexar Tabela do órgão de fomento
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O anexo só deve ser solicitado caso a tabela seja órgão de fomento.">
+                                                </i>
+                                             </span>
+                                           </label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="qtdMesesAux" type="text" placeholder="Quantidade de meses que o estudante receberá o auxílio." />
+                                          <label for="qtdMesesAux">Qtd Meses
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="A quantidade de meses não pode ser superior ao tempo de execução do projeto.">
+                                                </i>
+                                             </span>
+                                          </label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="vlrAux" type="text" placeholder="Quantidade de meses que o estudante receberá o auxílio." />
+                                          <label for="vlrAux">Valor do Auxílio
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Caso seja selecionado a referência sendo a resolução 061/2016 - consad, então o valor do auxílio não pode ser superior a DOUTORADO até R$ 3.000,00/m, MESTRADO até R$ 2.500,00/m, EPECIALIZAÇÃO até R$ 1.500,00/m, GRADUAÇÃO E TÉCNICO até R$ 1.200,00/m ">
+                                                </i>
+                                             </span>
+                                          </label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <button type="button" class="btn btn-primary">Inserir</button>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <table class="table table-striped" data-toggle="table">
+                                             <thead>
+                                                <tr>
+                                                   <th>Estudante</th>
+                                                   <th>Qtd</th>
+                                                   <th>Vinculo</th>
+                                                   <th>Função</th>
+                                                   <th>Forma de Seleção</th>
+                                                   <th>Tabela</th>
+                                                   <th>Qtd Meses</th>
+                                                   <th>Valor</th>
+                                                   <th class="w-10 text-center">Ações</th>
                                                 </tr>
-                                          </tbody>
-                                       </table>
-                                    </div>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td>Brunno Rodrigues</td>
+                                                   <td></td>
+                                                   <td>Graduação</td>
+                                                   <td>Colaborador(a)</td>
+                                                   <td>processo seletivo</td>
+                                                   <td>Resolução 061/2016 - Consad</td>
+                                                   <td>24</td>
+                                                   <td>700,00</td>
+                                                   <td>                                                   
+                                                      <button class="btn btn-link ">
+                                                         <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                   <td>Pedro Maure Andrade</td>
+                                                   <td></td>
+                                                   <td>Graduação</td>
+                                                   <td>Colaborador(a)</td>
+                                                   <td>processo seletivo</td>
+                                                   <td>Resolução 061/2016 - Consad</td>
+                                                   <td>24</td>
+                                                   <td>700,00</td>
+                                                   <td>                                                   
+                                                      <button class="btn btn-link ">
+                                                         <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                   <td>Mateus Brito</td>
+                                                   <td></td>
+                                                   <td>Graduação</td>
+                                                   <td>Colaborador(a)</td>
+                                                   <td>processo seletivo</td>
+                                                   <td>Resolução 061/2016 - Consad</td>
+                                                   <td>24</td>
+                                                   <td>700,00</td>
+                                                   <td>                                                   
+                                                      <button class="btn btn-link ">
+                                                         <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                   <td>Lais Dutra</td>
+                                                   <td></td>
+                                                   <td>Graduação</td>
+                                                   <td>Colaborador(a)</td>
+                                                   <td>processo seletivo</td>
+                                                   <td>Resolução 061/2016 - Consad</td>
+                                                   <td>24</td>
+                                                   <td>600,00</td>
+                                                   <td>                                                   
+                                                      <button class="btn btn-link ">
+                                                         <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>   
+                                                <tr>
+                                                   <td>Gilvan Teixeira Júnior</td>
+                                                   <td></td>
+                                                   <td>Graduação</td>
+                                                   <td>Colaborador(a)</td>
+                                                   <td>processo seletivo</td>
+                                                   <td>Resolução 061/2016 - Consad</td>
+                                                   <td>24</td>
+                                                   <td>600,00</td>
+                                                   <td>                                                   
+                                                      <button class="btn btn-link ">
+                                                         <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                   <td>Indefinido</td>
+                                                   <td>4</td>
+                                                   <td>Graduação</td>
+                                                   <td>Colaborador(a)</td>
+                                                   <td>processo seletivo</td>
+                                                   <td>Resolução 061/2016 - Consad</td>
+                                                   <td>24</td>
+                                                   <td>600,00</td>
+                                                   <td>                                                   
+                                                      <button class="btn btn-link ">
+                                                         <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                      <td colspan="7"><strong>Total das Rubricas</strong></td>
+                                                      <td>93.600,00</td>
+                                                      <td></td>
+                                                   </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </form>
                                  </div>
                                  <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -1404,14 +1406,172 @@
                         <!-- Fim do modal de Detalhamento da Rubrica 18-->
                         <!-- Modal da rubrica 20 - Auxilio Financeiro a Pesquisador -->
                         <div class="modal fade" id="modalRubrica20" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog" role="document">
+                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Auxílio Financeiro a Pesquisador</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Auxílio Financeiro a Pesquisador</h5>                          
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                  </div>
+                                    <div class="modal-body">
+                                       <form class="form border-0 p-0">
+                                          <div class="form-group position-relative">
+                                             <select class="custom-select" id="select-interessado" required="required" name="interessado">
+                                                <option value="hide">Selecione</option>
+                                                <option>Alysson Rodrigues</option>
+                                                <option>José Edivan</option>
+                                                <option>Thalisson Muriel</option>
+                                                <option value="indefinido">Indefinido</option>
+                                             </select>
+                                             <label class="required" for="select-estudante">Interessados
+                                                <span class="tooltip-icon">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O sistema deve listar os membros do projeto, com excessão dos estudantes.">
+                                                   </i>
+                                                </span>
+                                             </label>
+                                             <div class="invalid-feedback">Selecione alguma opção</div>
+                                          </div>
+                                          <div class="form-group position-relative" id="campoFormacaoPesquisadorProjeto">
+                                          <output class="form-control" id="formacaoPesquisadorProjeto" type="text" placeholder="Vínculo do Estudante no projeto."></output>
+                                          <label for="formacaoPesquisadorProjeto">Formação
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O sistema deve carregar a formação do interessado de acordo com o informado no cadastro do membro no projeto de pesquisa. Caso o interessado seja indefinido, o sistema deve solicitar essa informação.">
+                                                </i>
+                                             </span>
+                                          </label>
+                                       </div>
+                                          <div class="form-group position-relative" id="campoformacaoPesquisador">
+                                             <select class="custom-select" id="select-formacao-pesquisador" required="required" name="formacao-pesquisador">
+                                                <option value="hide">Selecione</option>
+                                                <option value="1">TÉCNICO PROFISSIONALIZANTE - ENS. MÉDIO</option>
+                                                <option value="2">PÓS-TÉCNICO</option>
+                                                <option value="3">SEQUENCIAL</option>
+                                                <option value="4">GRADUAÇÃO</option>
+                                                <option value="10">ENSINO FUNDAMENTAL INCOMPLETO</option>
+                                                <option value="11">ENSINO FUNDAMENTAL</option>
+                                                <option value="12">ENSINO MÉDIO INCOMPLETO</option>
+                                                <option value="13">ENSINO MÉDIO</option>
+                                                <option value="24">APERFEIÇOAMENTO</option>
+                                                <option value="25">ESPECIALIZAÇÃO</option>
+                                                <option value="26">MESTRADO</option>
+                                                <option value="27">DOUTORADO</option>
+                                                <option value="28">PÓS-DOUTORADO</option>
+                                                <option value="29">DESCONHECIDA</option>
+                                                <option value="33">TECNÓLOGO DE NÍVEL SUPERIOR</option>        
+                                             </select>
+                                             <label class="required" for="select-formacao-pesquisador">Formação                                                
+                                             </label>
+                                             <div class="invalid-feedback">Selecione alguma opção</div>
+                                          </div>
+                                       
+                                          <div class="form-group position-relative" id="campoTipoAuxilioPesquisador">
+                                             <select class="custom-select" id="select-auxilio-pesquisador" required="required" name="auxilio-pesquisador">
+                                                <option value="hide">Selecione</option>
+                                                <option>Pesquisa</option>                                         
+                                                <option>Estimulo à inovação</option> 
+                                             </select>                                         
+                                             <label class="required" for="select-auxilio-pesquisador">Tipo de Auxílio</label>
+                                             <div class="invalid-feedback">Selecione alguma opção</div>
+                                          </div>
+                                          <div class="form-group position-relative" id="campoCargaHorariaInstituicao">
+                                             <input class="form-control" id="cargaHorariaInstituicao" type="text" placeholder="Carga Horária do pesquisador, na instituição." />
+                                             <label for="cargaHorariaInstituicao">Carga Horária Instituição
+                                             </label>
+                                          </div>
+                                          <div class="form-group position-relative" id="campoQtdPesquisadores">
+                                             <input class="form-control" id="qtdPesquisadores" type="text" placeholder="Quantidade de pesquisadores que receberão o auxílio." />
+                                             <label for="qtdPesquisadores">Qtd Pesquisadores
+                                                <span class="tooltip-icon">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Campo exibido caso o interessado seja indefinido.">
+                                                   </i>
+                                                </span>
+                                             </label>
+                                          </div>
+                                          <div class="form-group position-relative" id="campoQtdParcelasAuxilioPesquisadores">
+                                             <input class="form-control" id="qtdParcelasAuxilioPesquisadores" type="text" placeholder="Quantidade de parcelas que serão pagas ao pesquisador." />
+                                             <label for="qtdParcelasAuxilioPesquisadores">Qtd Parcelas
+                                                <span class="tooltip-icon">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="A quantidade de parcelas não pode ser superior ao tempo de execução do projeto.">
+                                                   </i>
+                                                </span>
+                                             </label>
+                                          </div>
+                                          <div class="form-group position-relative" id="campoVlrAuxilioPesquisadores">
+                                             <input class="form-control" id="vlrAuxilioPesquisadores" type="text" placeholder="Valor do auxílio a ser pago ao pesquisador." />
+                                             <label for="vlrAuxilioPesquisadores">Valor                                          
+                                             </label>
+                                          </div>
+                                          <div class="form-group position-relative">
+                                             <button type="button" class="btn btn-primary">Inserir</button>
+                                          </div>
+                                          <div class="form-group position-relative">
+                                             <table class="table table-striped" data-toggle="table">
+                                                <thead>
+                                                   <tr>
+                                                      <th>Interessado</th>
+                                                      <th>Tipo Auxílio</th>
+                                                      <th>Qtd Pesquisadores</th>
+                                                      <th>Carga Horária</th>
+                                                      <th>Qtd Parcelas </th>                           
+                                                      <th>Valor</th>
+                                                      <th class="w-10 text-center">Ações</th>
+                                                   </tr>
+                                                </thead>
+                                                <tbody>
+                                                   <tr>
+                                                      <td>Alysson Rodrigues</td>
+                                                      <td>Pesquisa</td>
+                                                      <td></td>
+                                                      <td>20</td>
+                                                      <td>24</td>
+                                                      <td>1.500,00</td>
+                                                      <td>                                                   
+                                                         <button class="btn btn-link ">
+                                                            <i class="far fa-trash-alt"></i>
+                                                         </button>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td>Thalisson Muriel</td>
+                                                      <td>Pesquisa</td>
+                                                      <td></td>
+                                                      <td>20</td>
+                                                      <td>24</td>
+                                                      <td>1.500,00</td>
+                                                      <td>                                                   
+                                                         <button class="btn btn-link ">
+                                                            <i class="far fa-trash-alt"></i>
+                                                         </button>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td>Indefinido</td>
+                                                      <td>Pesquisa</td>
+                                                      <td>4</td>
+                                                      <td>20</td>
+                                                      <td>24</td>
+                                                      <td>1.500,00</td>
+                                                      <td>                                                   
+                                                         <button class="btn btn-link ">
+                                                            <i class="far fa-trash-alt"></i>
+                                                         </button>
+                                                      </td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td><strong>Total das Rubricas</strong></td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td>108.000,00</td>
+                                                      <td></td>
+                                                   </tr>
+                                                </tbody>
+                                             </table>
+                                          </div>
+                                       </form>
+                                    </div>
                                  <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                     <button type="button" class="btn btn-primary">Salvar</button>
@@ -1927,10 +2087,15 @@
                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                   <td>20 - Auxilio Financeiro a Pesquisador</td>
+                                                   <td>20 - Auxilio Financeiro a Pesquisador
+                                                      <span class="tooltip-icon">
+                                                         <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Essa rubrica não se aplica a projetos de pesquisa sob encomenda.">
+                                                         </i>
+                                                      </span>
+                                                   </td>
                                                    <td id="vlrRubrica20">5.000,00</td>
                                                    <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica20" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica20">
+                                                      <button type="button" id="detalharRubrica20" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica20" onclick="ocultarDetalhamentoRubrica20()">
                                                       <i class="fas fa-external-link-alt"></i>
                                                       </button>
                                                       <button class="btn btn-link ">
@@ -2434,10 +2599,16 @@
                $('#favorecido-nao').prop('checked',true);
             };
 
-             function ocultarDetalhamentoRubrica18(){
+            function ocultarDetalhamentoRubrica18(){
                $('#campoQtdEstudantes').hide();
                $('#campoVinculoMembro').hide();
                $('#campoVinculoEstudanteProjeto').show();
+            };
+
+            function ocultarDetalhamentoRubrica20(){
+               $('#campoQtdPesquisadores').hide();
+               $('#campoformacaoPesquisador').hide();
+               $('#campoFormacaoPesquisadorProjeto').show();
             };
 
             function ocultarDetalhamentoParcelaPlano(){
@@ -2501,6 +2672,20 @@
                   $('#campoQtdEstudantes').hide();
                   $('#campoVinculoMembro').hide();
                   $('#campoVinculoEstudanteProjeto').show();
+                }
+            });
+            $('select[name="interessado"]').change(function () {
+               var select = document.getElementById('select-interessado');
+               var interessado = select.options[select.selectedIndex].value;
+               document.getElementById('formacaoPesquisadorProjeto').innerHTML = 'ESPECIALIZAÇÃO';
+                if (interessado === "indefinido") {
+                  $('#campoQtdPesquisadores').show();
+                  $('#campoformacaoPesquisador').show();
+                  $('#campoFormacaoPesquisadorProjeto').hide();
+                } else {
+                  $('#campoQtdPesquisadores').hide();
+                  $('#campoformacaoPesquisador').hide();
+                  $('#campoFormacaoPesquisadorProjeto').show();
                 }
             });
 
