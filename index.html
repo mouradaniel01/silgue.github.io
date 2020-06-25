@@ -1181,7 +1181,7 @@
                                        </select>
                                        <label class="required" for="select-estudante">Estudante
                                           <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O sistema deve listar os membros estudantes que foram inseridos no projeto de pesquisa e apresentar a opção indefinido.">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O sistema deve listar os membros estudantes que foram inseridos no projeto de pesquisa e apresentar a opção indefinido. Para cada estudante informado, o sistema deverá inserir o valor de R$50,00 na rubrica 39 - serviço de pessoa jurídica.">
                                              </i>
                                           </span>
                                        </label>
@@ -1277,6 +1277,20 @@
                                              </span>
                                           </label>
                                        </div>
+                                       <label class="required mt-3">Realizará Atividade de Campo?
+                                          <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Caso o aluno realize atividade de campo, além da taxa de R$50,00 por aluno, será necessário adicionar o valor de R$100,00 para cada aluno, na rubrica 39 - serviço pessoa jurídica, referente ao adicional de seguro. ">
+                                                </i>
+                                          </span>
+                                       </label>
+                                         <div class="form-check">
+                                           <input id="atividadeCampo-sim" type="radio" name="atividadeCampo" value="sim" required />
+                                           <label class="form-check-label" for="atividadeCampo-sim">Sim</label>
+                                         </div>
+                                         <div class="form-check mb-3">
+                                           <input id="atividadeCampo-nao" type="radio" name="atividadeCampo" value="nao" />
+                                           <label class="form-check-label" for="atividadeCampo-nao">Não</label>
+                                         </div>
                                        <div class="form-group position-relative">
                                           <button type="button" class="btn btn-primary">Inserir</button>
                                        </div>
@@ -1388,7 +1402,7 @@
                                                 </tr>
                                                 <tr>
                                                       <td colspan="7"><strong>Total das Rubricas</strong></td>
-                                                      <td>93.600,00</td>
+                                                      <td>136.800,00</td>
                                                       <td></td>
                                                    </tr>
                                              </tbody>
@@ -1564,7 +1578,7 @@
                                                       <td></td>
                                                       <td></td>
                                                       <td></td>
-                                                      <td>108.000,00</td>
+                                                      <td>216.000,00</td>
                                                       <td></td>
                                                    </tr>
                                                 </tbody>
@@ -1582,7 +1596,7 @@
                         <!-- Fim do modal da Rubrica 20 - Auxilio Financeiro a Pesquisador-->
                         <!-- Modal da Rubrica 30 -  Material de Consumo -->
                         <div class="modal fade" id="modalRubrica30" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog" role="document">
+                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Material de Consumo</h5>
@@ -1590,6 +1604,7 @@
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                  </div>
+
                                  <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                     <button type="button" class="btn btn-primary">Salvar</button>
@@ -1600,7 +1615,7 @@
                         <!-- Fim do modal da Rubrica 30 - Material de Consumo-->
                         <!-- Modal da Rubrica 32 - Material de Consumo/Distruição Gratuita -->
                         <div class="modal fade" id="modalRubrica32" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog" role="document">
+                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Material de Consumo/Distruição Gratuita</h5>
@@ -1618,7 +1633,7 @@
                         <!-- Fim do Modal da Rubrica 32 - Material de Consumo/Distruição Gratuita-->
                         <!-- Início do Modal da Rubrica 33 - Passagens -->
                         <div class="modal fade" id="modalRubrica33" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog" role="document">
+                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Passagens</h5>
@@ -1636,7 +1651,7 @@
                         <!-- Fim do Modal da Rubrica 33 - Passagens-->
                         <!-- Modal de Serviço de Consultoria -->
                         <div class="modal fade" id="modalRubrica35" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog" role="document">
+                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Serviço de Consultoria</h5>
@@ -1654,7 +1669,7 @@
                         <!-- Fim do Modal de Serviço de Consultoria-->
                         <!-- Modal Detalhamento da Rubrica Rubrica 36 - Serviço de Pessoa Física -->
                         <div class="modal fade" id="modalRubrica36" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog" role="document">
+                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <h5 class="modal-title">Rubrica 36 - Serviço de Pessoa Física</h5>
@@ -1788,7 +1803,7 @@
                         <!-- Fim do modal de Detalhamento da Rubrica 36 - Serviço de Pessoa Física-->            
                         <!-- Modal de Serviço de Pessoa Jurídica -->
                         <div class="modal fade" id="modalRubrica39" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog" role="document">
+                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Serviço de Pessoa Jurídica</h5>
@@ -1806,7 +1821,7 @@
                         <!-- Fim do Modal de Serviço de Pessoa Jurídica-->
                         <!-- Modal de Ajuda de Custo -->
                         <div class="modal fade" id="modalRubrica41" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog" role="document">
+                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Ajuda de Custo</h5>
@@ -1824,7 +1839,7 @@
                         <!-- Fim do Modal de Ajuda de Custo-->
                         <!-- Modal de Obrigações Contributivas -->
                         <div class="modal fade" id="modalRubrica47" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog" role="document">
+                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Obrigações Contributivas</h5>
@@ -1842,7 +1857,7 @@
                         <!-- Fim do Modal de Obrigações contributivas-->
                         <!-- Modal Detalhamento da Rubrica 48 - Auxilio a Pessoa Física -->
                         <div class="modal fade" id="modalRubrica48" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog" role="document">
+                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Rubrica 48 - Auxilio a Pessoa Física</h5>
@@ -1980,7 +1995,7 @@
                         
                         <!-- Modal de Obras e Instalações -->
                         <div class="modal fade" id="modalRubrica51" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog" role="document">
+                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Obras e Instalações</h5>
@@ -1998,7 +2013,7 @@
                         <!-- Fim do Modal de Obras e Instalações-->
                         <!-- Modal de Material Permanente -->
                         <div class="modal fade" id="modalRubrica52" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog" role="document">
+                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Material Permanente</h5>
@@ -2016,7 +2031,7 @@
                         <!-- Fim do Modal de Material Permanente-->
                         <!-- Modal de Indenizãção de trabalho de campo -->
                         <div class="modal fade" id="modalRubrica95" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog" role="document">
+                           <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Indenização de trabalho de campo</h5>
@@ -2076,7 +2091,7 @@
                                                          </i>
                                                       </span>
                                                    </td>
-                                                   <td id="vlrRubrica18">93.600,00</td>
+                                                   <td id="vlrRubrica18">136.800,00</td>
                                                    <td align="right" class="btn-group">
                                                       <button type="button" id="detalharRubrica18" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica18" onclick="ocultarDetalhamentoRubrica18()">
                                                       <i class="fas fa-external-link-alt"></i>
@@ -2093,7 +2108,7 @@
                                                          </i>
                                                       </span>
                                                    </td>
-                                                   <td id="vlrRubrica20">5.000,00</td>
+                                                   <td id="vlrRubrica20">216.000,00</td>
                                                    <td align="right" class="btn-group">
                                                       <button type="button" id="detalharRubrica20" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica20" onclick="ocultarDetalhamentoRubrica20()">
                                                       <i class="fas fa-external-link-alt"></i>
