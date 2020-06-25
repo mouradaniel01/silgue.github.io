@@ -1022,13 +1022,15 @@
                            <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
-                                    <h5 class="modal-title">Diárias</h5>
+                                    <h5 class="modal-title">Diárias
+                                       <p class="advice">* Campos Obrigatórios</p>
+                                    </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                  </div>
                                  <div class="modal-body">
-                                    <label class="d-block-inline mr-2">Detalhar Favorecido</label>
+                                    <label class="required" class="d-block-inline mr-2">Detalhar Favorecido</label>
                                     <div class="form-check form-check-inline">
                                        <input class="form-check-input" id="favorecido-sim" type="radio" name="detalharFavorecido" value="Sim"/>
                                        <label class="form-check-label" for="favorecido-sim">Sim</label>
@@ -1040,11 +1042,11 @@
                                     <div id="rubrica14Resumida">
                                        <div class="form-group position-relative">
                                           <input class="form-control" id="text-input" type="text" placeholder="Quantidade de diárias" />
-                                          <label for="text-input">Quantidade</label>
+                                          <label class="required" for="text-input">Quantidade</label>
                                        </div>
                                        <div class="form-group position-relative">
                                           <input class="form-control" id="text-input" type="text" placeholder="Valor unitário da diária" />
-                                          <label for="text-input">Valor da Diária</label>
+                                          <label class="required" for="text-input">Valor da Diária</label>
                                        </div>
                                     </div>
                                     <div id="detalheRubrica14">
@@ -1066,9 +1068,9 @@
                                        </div>
                                        <div class="form-group position-relative">
                                           <input class="form-control" id="text-input" type="text" placeholder="Finalidade/Destino relacionada a diária" />
-                                          <label for="text-input">Finalidade/Destino</label>
+                                          <label class="required" for="text-input">Finalidade/Destino</label>
                                        </div>
-                                       <label class="d-block-inline mr-2">Diária Internacional</label>
+                                       <label class="d-block-inline mr-2 required">Diária Internacional</label>
                                        <div class="form-check form-check-inline">
                                           <input class="form-check-input" id="diaria-internacional-sim" type="radio" name="flagDiariaInternacional" value="Sim" />
                                           <label class="form-check-label" for="diaria-internacional-sim">Sim</label>
@@ -1295,7 +1297,7 @@
                                        </div>
                                        <label class="required mt-3">Realizará Atividade de Campo?
                                           <span class="tooltip-icon">
-                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Caso o aluno realize atividade de campo, além da taxa de R$50,00 por aluno, será necessário adicionar o valor de R$100,00 para cada aluno, na rubrica 39 - serviço pessoa jurídica, referente ao adicional de seguro. ">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Caso o aluno realize atividade de campo será necessário adicionar o valor de R$100,00 para cada aluno. Caso não, será adicionado o valor de R$50,00 na rubrica 39 - serviço pessoa jurídica, referente ao adicional de seguro. ">
                                                 </i>
                                           </span>
                                        </label>
