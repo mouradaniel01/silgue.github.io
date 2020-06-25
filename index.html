@@ -1809,65 +1809,67 @@
                                     </button>
                                  </div>
                                  <div class="modal-body">
-                                    <label class="d-block-inline mr-2">Detalhar Rubrica?
-                                       <span class="tooltip-icon">
-                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Caso não deseje detalhar a rubrica, solicitar somente o valor total e se será internacional ou não.">
-                                          </i>
-                                       </span>
-                                    </label>
-                                    <div class="form-check form-check-inline">
-                                       <input class="form-check-input" id="detalharPassagens-sim" type="radio" name="detalharPassagens" value="Sim"/>
-                                       <label class="form-check-label" for="detalharPassagens-sim">Sim</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                       <input class="form-check-input" id="detalharPassagens-nao" type="radio" name="detalharPassagens" value="Não" checked/>
-                                       <label class="form-check-label" for="detalharPassagens-nao">Não</label>
-                                    </div> 
-                                    <div id="detalhePassagem">
-                                       <div class="form-group-inline position-relative" id="detalheRubrica33">
-                                          <label class="d-block-inline mr-2">Detalhar Favorecido</label>
-                                          <div class="form-check form-check-inline">
-                                             <input class="form-check-input" id="favorecidoPassagens-sim" type="radio" name="favorecidoPassagens" value="Sim"/>
-                                             <label class="form-check-label" for="favorecidoPassagens-sim">Sim</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                             <input class="form-check-input" id="favorecidoPassagens-nao" type="radio" name="favorecidoPassagens" value="Não" checked/>
-                                             <label class="form-check-label" for="favorecidoPassagens-nao">Não</label>
-                                          </div>
-                                          <div class="form-group position-relative">
-                                             <select class="custom-select" id="select-favorecido" required="required" name="favorecido">
-                                                <option value="hide">Selecione</option>
-                                                <option>Alysson Rodrigues</option>
-                                                <option>Brunno Rodrigues</option>
-                                                <option>José Edivan</option>
-                                                <option>Thalisson Muriel</option>
-                                             </select>
-                                             <label class="required" for="select-favorecido">Favorecido
-                                                 <span class="tooltip-icon">
-                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: .">
-                                                   </i>
-                                                </span>
-                                             </label>
-                                             <div class="invalid-feedback">Selecione alguma opção</div>
-                                          </div>
-                                          <div class="form-inline position-relative">
-                                             <label class="d-block">Tipo de Passagem</label>
-                                               <div class="form-check form-check-inline m-2">
-                                                 <input class="form-check-input" id="tipoPassagemArea" type="radio" name="tipoPassagem" value="Aerea" />
-                                                 <label class="form-check-label" for="tipoPassagemArea">Aérea</label>
-                                               </div>
-                                               <div class="form-check form-check-inline m-2">
-                                                 <input class="form-check-input" id="tipoPassagemTerrestre" type="radio" name="tipoPassagem" value="Terrestre" checked/>
-                                                 <label class="form-check-label" for="tipoPassagemTerrestre">Terrestre</label>
-                                               </div>
-                                               <div class="form-check form-check-inline m-2">
-                                                 <input class="form-check-input" id="tipoPassagemMista" type="radio" name="tipoPassagem" value="Mista" checked/>
-                                                 <label class="form-check-label" for="tipoPassagemMista">Mista</label>
-                                               </div>
+                                    <form class="form border-0 p-0">
+                                       <label class="d-block-inline mr-2 required">Detalhar Rubrica?
+                                          <span class="tooltip-icon">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Caso não deseje detalhar a rubrica, solicitar somente o valor total e se será internacional ou não.">
+                                             </i>
+                                          </span>
+                                       </label>
+                                       <div class="form-check form-check-inline">
+                                          <input class="form-check-input" id="detalharPassagens-sim" type="radio" name="detalharPassagens" value="Sim"/>
+                                          <label class="form-check-label" for="detalharPassagens-sim">Sim</label>
+                                       </div>
+                                       <div class="form-check form-check-inline">
+                                          <input class="form-check-input" id="detalharPassagens-nao" type="radio" name="detalharPassagens" value="Não" checked/>
+                                          <label class="form-check-label" for="detalharPassagens-nao">Não</label>
+                                       </div> 
+                                       <div id="detalhePassagem">
+                                          <div class="form-group-inline position-relative">
+                                             <label class="d-block-inline mr-2 required">Detalhar Favorecido</label>
+                                             <div class="form-check form-check-inline">
+                                                <input class="form-check-input" id="favorecidoPassagens-sim" type="radio" name="favorecidoPassagens" value="Sim"/>
+                                                <label class="form-check-label" for="favorecidoPassagens-sim">Sim</label>
+                                             </div>
+                                             <div class="form-check form-check-inline">
+                                                <input class="form-check-input" id="favorecidoPassagens-nao" type="radio" name="favorecidoPassagens" value="No" checked/>
+                                                <label class="form-check-label" for="favorecidoPassagens-nao">Não</label>
+                                             </div>
+                                             <div class="form-group position-relative" id="detalharFavorecidoPassagem">
+                                                <select class="custom-select" id="select-favorecido-passagem" name="favorecidoPassagens">
+                                                   <option value="hide">Selecione</option>
+                                                   <option>Alysson Rodrigues</option>
+                                                   <option>Brunno Rodrigues</option>
+                                                   <option>José Edivan</option>
+                                                   <option>Thalisson Muriel</option>
+                                                </select>
+                                                <label class="required" for="select-favorecido-passagem">Favorecido
+                                                    <span class="tooltip-icon">
+                                                      <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Só será solicitado, se a opção detalhar favorecido for selecionada.">
+                                                      </i>
+                                                   </span>
+                                                </label>
+                                                <div class="invalid-feedback">Selecione alguma opção</div>
+                                             </div>
+                                             <div class="form-inline position-relative">
+                                                <label class="d-block required">Tipo de Passagem</label>
+                                                  <div class="form-check form-check-inline m-2">
+                                                    <input class="form-check-input" id="tipoPassagemArea" type="radio" name="tipoPassagem" value="Aerea" checked />
+                                                    <label class="form-check-label" for="tipoPassagemArea">Aérea</label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline m-2">
+                                                    <input class="form-check-input" id="tipoPassagemTerrestre" type="radio" name="tipoPassagem" value="Terrestre" />
+                                                    <label class="form-check-label" for="tipoPassagemTerrestre">Terrestre</label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline m-2">
+                                                    <input class="form-check-input" id="tipoPassagemMista" type="radio" name="tipoPassagem" value="Mista" />
+                                                    <label class="form-check-label" for="tipoPassagemMista">Mista</label>
+                                                  </div>
+                                             </div>
                                           </div>
                                        </div>
                                        <div class="form-group position-relative" id="passagemInternacional">
-                                          <label class="d-block-inline mr-2">Internacional</label>
+                                          <label class="d-block-inline mr-2 required">Internacional</label>
                                           <div class="form-check form-check-inline">
                                              <input class="form-check-input" id="passagem-internacional-sim" type="radio" name="flagpassagemInternacional" value="Sim" />
                                              <label class="form-check-label" for="passagem-internacional-sim">Sim</label>
@@ -1877,18 +1879,24 @@
                                              <label class="form-check-label" for="passagem-internacional-nao">Não</label>
                                           </div>
                                        </div>
-                                       <div class="form-group position-relative">
+                                       <div class="form-group position-relative" id="campoFinalidadePassagem">
                                           <input class="form-control" id="finalidadePassagem" type="text" placeholder="Finalidade relacionada a Passagem" />
-                                          <label for="finalidadePassagem">Finalidade</label>
-                                       </div> 
-                                       <div class="form-group position-relative">        
-                                          <label class="d-block-inline mr-2">Informar Trechos?</label>
+                                          <label class="required"
+                                          for="finalidadePassagem">Finalidade</label>
+                                       </div>
+                                       <div class="form-group position-relative" id="informarTrecho">        
+                                          <label class="d-block-inline mr-2 required">Informar Trechos?
+                                          <span class="tooltip-icon">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Se for escolhido a opção de informar trecho, serão solicitadas as informações da origem e destino.">
+                                             </i>
+                                          </span>
+                                          </label>
                                           <div class="form-check form-check-inline">
-                                             <input class="form-check-input" id="informarTrecho-sim" type="radio" name="informarTrecho" value="Sim"/>
+                                             <input class="form-check-input" id="informarTrecho-sim" type="radio" name="flagInformarTrecho" value="Sim"/>
                                              <label class="form-check-label" for="informarTrecho-sim">Sim</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                             <input class="form-check-input" id="informarTrecho-nao" type="radio" name="informarTrecho" value="Não" checked/>
+                                             <input class="form-check-input" id="informarTrecho-nao" type="radio" name="flagInformarTrecho" value="Não" checked/>
                                              <label class="form-check-label" for="informarTrecho-nao">Não</label>
                                           </div>
                                        </div> 
@@ -1896,34 +1904,150 @@
                                           <div class="form-group position-relative">
                                              <input id="cidadeOrigem"
                                                 class="form-control form-autocomplete" data-type="simples" type="text" placeholder="Informe a cidade de origem..." />
-                                             <label for="cidadeOrigem">Origem</label>
+                                             <label class="required" for="cidadeOrigem">Origem</label>
                                           </div>
                                           <div class="form-group position-relative">
                                              <input id="cidadeDestino"
                                                 class="form-control form-autocomplete" data-type="simples" type="text" placeholder="Informe a cidade de destino..." />
-                                             <label for="cidadeDestino">Destino</label>
+                                             <label class="required" for="cidadeDestino">Destino</label>
                                           </div>
-                                       </div>
-                                       
+                                          <div class="form-group position-relative">
+                                             <label class="required" class="d-block-inline mr-2">Trecho de ida e volta?</label>
+                                             <div class="form-check form-check-inline">
+                                                <input class="form-check-input" id="idaVolta-sim" type="radio" name="idaVolta" value="Sim"/>
+                                                <label class="form-check-label" for="idaVolta-sim">Sim</label>
+                                             </div>
+                                             <div class="form-check form-check-inline">
+                                                <input class="form-check-input" id="idaVolta-nao" type="radio" name="idaVolta" value="Não" checked/>
+                                                <label class="form-check-label" for="idaVolta-nao">Não</label>
+                                             </div>
+                                          </div>
+                                       </div>                                          
                                        <div id="resumoPassagem">
                                           <div class="form-group position-relative">
                                              <input class="form-control" id="qtdPassagens" type="text" placeholder="Quantidade de passagens" />
-                                             <label for="qtdPassagens">Quantidade</label>
+                                             <label class="required" for="qtdPassagens">Quantidade</label>
                                           </div>
                                           <div class="form-group position-relative">
                                              <input class="form-control" id="valorPassagem" type="text" placeholder="Valor unitário da diária" />
-                                             <label for="valorPassagem">Valor</label>
+                                             <label class="required" for="valorPassagem">Valor</label>
                                           </div>
                                        </div>
                                        <div class="form-group position-relative">
-                                       <button type="button" class="btn btn-primary">Inserir</button>
+                                          <button type="button" class="btn btn-primary">Inserir</button>
                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                       <button type="button" class="btn btn-primary">Salvar</button>
+                                    </form>
+                                    <div class="form-group position-relative">
+                                        <table class="table table-striped" data-toggle="table" id="tabelaPassagemResumida">
+                                          <thead>
+                                             <tr>
+                                                <th>Internacional</th>                                             
+                                                <th>Qtd</th>
+                                                <th>Valor</th>
+                                                <th class="w-10 text-center">Ações</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             <tr>
+                                                <td>Não</td>
+                                                <td>10</td>
+                                                <td>2.000,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>Sim</td>
+                                                <td>4</td>
+                                                <td>6.000,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td colspan="2"><strong>Total</strong></td>
+                                                <td>44.000,00</td>
+                                                <td></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                       <table class="table table-striped" data-toggle="table" id="tabelaPassagemDetalhe">
+                                          <thead>
+                                             <tr>
+                                                <th>Favorecido</th>
+                                                <th>Tipo</th>
+                                                <th>Internacional</th>
+                                                <th>Finalidade</th>
+                                                <th>Trecho</th>                                                
+                                                <th>Ida e Volta</th>
+                                                <th>Qtd</th>
+                                                <th>Valor</th>
+                                                <th class="w-10 text-center">Ações</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             <tr>                                                
+                                                <td>Alysson Rodrigues</td>
+                                                <td>Aérea</td>
+                                                <td>Não</td>
+                                                <td>Reunião Gerencial</td>
+                                                <td>Natal/RN - Brasília/DF</td>           
+                                                <td>Sim</td>
+                                                <td>10</td>
+                                                <td>2.000,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>Thalisson Muriel</td>
+                                                <td>Aérea</td>
+                                                <td>Não</td>
+                                                <td>Levantamento de dados</td>
+                                                <td>Natal/RN - Rio de Janeiro/RJ</td>             
+                                                <td>Sim</td>
+                                                <td>10</td>
+                                                <td>2.000,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>Indefinido</td>
+                                                <td>Terrestre</td>
+                                                <td>Não</td>
+                                                <td>Levantamento de dados</td>
+                                                <td>Natal/RN - Rio Branco/AC</td>          
+                                                <td>Não</td>
+                                                <td>10</td>
+                                                <td>2.000,00</td>
+                                                <td align="right" class="btn-group">
+                                                   <button class="btn btn-link ">
+                                                   <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td colspan="7"><strong>Total</strong></td>
+                                                <td>80.000,00</td>
+                                                <td></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
                                     </div>
                                  </div>
+                                 <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <button type="button" class="btn btn-primary">Salvar</button>
+                                 </div> 
                               </div>
                            </div>
                         </div>
@@ -2433,7 +2557,7 @@
                                                    <td>33 - Passagens</td>
                                                    <td>0,00</td>
                                                    <td align="right" class="btn-group">
-                                                      <button type="button" id="detalharRubrica33" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica33">
+                                                      <button type="button" id="detalharRubrica33" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica33" onclick="ocultarDetalhamentoRubrica33()">
                                                       <i class="fas fa-external-link-alt"></i>
                                                       </button>
                                                       <button class="btn btn-link ">
@@ -2915,6 +3039,17 @@
                $('#campoFormacaoPesquisadorProjeto').show();
             };
 
+            function ocultarDetalhamentoRubrica33(){
+               $('#detalhePassagem').hide();
+              $('#campoFinalidadePassagem').hide();
+              $('#informarTrecho').hide();
+              $('#detalharTrechoPassagem').hide(); 
+              $('#detalharFavorecidoPassagem').hide();
+              $('#tabelaPassagemDetalhe').hide();
+              $('#detalharPassagens-nao').prop('checked',true);
+              $('#favorecidoPassagens-nao').prop('checked',true);
+            };
+
             function ocultarDetalhamentoParcelaPlano(){
                $('#detalheParcelarPlanoSim').hide();
                $('#detalheParcelarPlanoNao').show();
@@ -2992,20 +3127,39 @@
                   $('#campoFormacaoPesquisadorProjeto').show();
                 }
             });
+
             $('input[name="detalharPassagens"]').change(function () {
                 if ($('input[name="detalharPassagens"]:checked').val() === "Sim") {
-                    $('#detalheParcelarPlanoSim').show();
-                    $('#detalheParcelarPlanoNao').hide();
-                    $('#tabelaParcelaPlano').show();
-                    $('#tabelaDesembolsoMesPlano').hide();
-                    
+                  $('#detalhePassagem').show();
+                  $('#campoFinalidadePassagem').show();
+                  $('#informarTrecho').show();
+                  $('#tabelaPassagemDetalhe').show();
+                  $('#tabelaPassagemResumida').hide();
                 } else {
-                    $('#detalheParcelarPlanoSim').hide();
-                    $('#detalheParcelarPlanoNao').show();
-                    $('#tabelaParcelaPlano').hide();
-                    $('#tabelaDesembolsoMesPlano').show();
+                  $('#detalhePassagem').hide();
+                  $('#campoFinalidadePassagem').hide();
+                  $('#informarTrecho').hide();
+                   $('#tabelaPassagemDetalhe').hide();
+                  $('#tabelaPassagemResumida').show();
+                     
+                }
+            });  
+
+            $('input[name="favorecidoPassagens"]').change(function () {
+                if ($('input[name="favorecidoPassagens"]:checked').val() === "Sim") {
+                    $('#detalharFavorecidoPassagem').show();                                                           
+                } else {
+                    $('#detalharFavorecidoPassagem').hide(); 
                 }
             });
+
+            $('input[name="flagInformarTrecho"]').change(function () {
+                if ($('input[name="flagInformarTrecho"]:checked').val() === "Sim") {
+                    $('#detalharTrechoPassagem').show();                                                           
+                } else {
+                    $('#detalharTrechoPassagem').hide(); 
+                }
+            });            
 
          </script>
    </body>
