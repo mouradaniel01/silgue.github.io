@@ -397,11 +397,7 @@
                                              <option>Mútua Colaboração</option>
                                              <option>Institucional</option>
                                           </select>
-                                          <label class="required" for="select-partilha-resultados">Como ocorrerá a partilha dos resultados?
-                                          <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Os projetos são classificados como tipo A, B, C e D de acordo com o art. 3º da resolução 061/2016 - CONSAD">
-                                             </i>
-                                          </span>
+                                          <label class="required" for="select-partilha-resultados">Como ocorrerá a partilha dos resultados?                                          
                                           </label>
                                           
                                           <div class="invalid-feedback">Selecione alguma opção</div>
@@ -448,7 +444,12 @@
                                              <!--<input id="entidade"
                                                 class="form-control form-autocomplete" data-type="simples" type="text" placeholder="Digite o nome do órgão/Instituição..." />
                                              <label for="entidade">Órgão/Entidade</label>-->
-                                             <label for="text-input">Órgão/Entidade</label>
+                                             <label for="text-input">Órgão/Entidade
+                                                <span class="tooltip-icon">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O órgão/Entidade deve ser uma pessoa jurídica.">
+                                                   </i>
+                                                </span>
+                                             </label>
                                              <input class="form-control m-2" id="entidade" type="text" placeholder="Digite o nome do Órgão/Entidade..." />                                          
                                              <button type="button" class="btn btn-link" href="#">
                                              <i class="fas fa-search"></i>
@@ -790,7 +791,12 @@
                            <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Responsável Órgão/Entidade</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Responsável Órgão/Entidade
+                                       <span class="tooltip-icon">
+                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O sistema não deve permitir cadastrar um mesmo responsável para mais de um órgão/Instituição.">
+                                          </i>
+                                       </span>
+                                    </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
@@ -1709,6 +1715,20 @@
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                  </div>
+                                 <div class="modal-body">
+                                    <form class="form border-0 p-0">
+                                    <div class="form-group position-relative" id="campoVlrDetalhamentoRubrica30">
+                                       <input class="form-control" id="vlrDetalhamentoRubrica30" type="text" placeholder="Valor total previsto para o detalhamento da rubrica." />
+                                       <label for="vlrDetalhamentoRubrica30">Valor                                          
+                                       </label>
+                                    </div>
+                                    <div class="form-group position-relative" id="campoVlrDetalhamentoRubrica30">
+                                          <input class="form-control" id="vlrDetalhamentoRubrica30" type="text" placeholder="Valor total previsto para o detalhamento da rubrica." />
+                                          <label for="vlrDetalhamentoRubrica30">Valor                                          
+                                          </label>
+                                       </div>
+                                    </form>
+                                 </div>
                                  <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                     <button type="button" class="btn btn-primary">Salvar</button>
@@ -2462,7 +2482,7 @@
                               <span class="tooltip-icon">
                                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O cronograma de desembolso deve ser preenchido apenas para projetos do tipo B. O tempo de execução é o informado na etapa de dados gerais e o plano de aplicação é o somatório das rubricas informadas.">
                                  </i>
-                                 </span>
+                              </span>
                                  </h4>
                                  <p class="advice">* Campos Obrigatórios</p>
                               <form>
@@ -2474,7 +2494,12 @@
                                              
                                             <div class="col-md-4">
                                                 <label for="tempoExecucaoProjetoCronograma">Tempo de Execução
-                                                   <output class="form-control m-2" id="tempoExecucaoProjetoCronograma" type="text" placeholder="valor total."></output></label>
+                                                   <span class="tooltip-icon">
+                                                      <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O tempo de execução não pode ser superior a vigência do projeto de pesquisa.">
+                                                      </i>
+                                                   </span>
+                                                   <output class="form-control m-2" id="tempoExecucaoProjetoCronograma" type="text" placeholder="valor total."></output>
+                                                </label>
                                             </div>
                                             <div class="col-md-4">
                                                 <label for="planoAplicacaoCronograma">Plano de Aplicação
@@ -2537,7 +2562,7 @@
                                        <div class="conteudo-principal__header">
                                           <h1>Desembolso</h1>
                                           <span class="tooltip-icon">
-                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: .">
+                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Deve ser adicionado pelo menos um desembolso, considerando que essa informação só é solicitada para projetos do tipo B.">
                                           </i>
                                           </span>
                                        </div>
