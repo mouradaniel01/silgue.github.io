@@ -2416,7 +2416,7 @@
                            </div>
                         </div>
                         <!-- Fim do modal de Detalhamento da Rubrica 36 - Serviço de Pessoa Física-->            
-                        <!-- Modal de Serviço de Pessoa Jurídica -->
+                        <!-- Modal Rubrica 39 de Serviço de Pessoa Jurídica -->
                         <div class="modal fade" id="modalRubrica39" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
@@ -2426,6 +2426,90 @@
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                  </div>
+                                 <div class="modal-body">
+                                    <form class="form border-0 p-0">
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-detalhamento-rubrica39" required="required" name="DetalhamentoRubrica39">
+                                             <option value="hide">Selecione</option>                
+                                             <option>3900 - OUTROS SERVICOS DE TERCEIROS-PESSOA JURIDICA</option>
+                                             <option>3901 - ASSINATURAS DE PERIODICOS E ANUIDADES</option>
+                                             <option>3902 - CONDOMINIOS</option>
+                                             <option>3599 - OUTROS SERVICOS DE PESSOA JURÍDICA</option>
+                                             <option value="indefinido">...</option>
+                                          </select>
+                                          <label class="required" for="select-detalhamento-rubrica39">Detalhamento da Rubrica
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O sistema deve listar os detalhamentos das rubricas 39 - Serviço de Pessoa Jurídica. O Sipac possui essa informação.">
+                                                </i>
+                                             </span>
+                                          </label>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="vlrDetalhamentoRubrica35" type="text" placeholder="Valor total previsto para o detalhamento da rubrica." />
+                                          <label class="required" for="vlrDetalhamentoRubrica35">Valor                                          
+                                          </label>
+                                       </div>
+                                       <div class="form-inline position-relative">
+                                          <label  class="d-block required">Cooperativa?
+                                          </label>
+                                          <div class="form-check form-check-inline m-2">
+                                             <input class="form-check-input" id="cooperativa-sim" type="radio" name="cooperativa" value="Sim" />
+                                              <label class="form-check-label" for="cooperativa-sim">Sim</label>
+                                          </div>
+                                          <div class="form-check form-check-inline m-2">
+                                             <input class="form-check-input" id="cooperativa-nao" type="radio" name="cooperativa" value="Nao" checked/>
+                                             <label class="form-check-label" for="cooperativa-nao">Não                                                
+                                             </label>
+                                          </div>
+                                       </div>
+                                       <div class="form-group">
+                                          <textarea class="form-control" id="textareaRubrica35" placeholder="Campo para descrever observações que deverão ser consideradas." data-max-size="100"></textarea>
+                                          <label for="textareaRubrica35">Observações</label>
+                                          <div class="invalid-feedback">Limite de caracteres excedido</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <button type="button" class="btn btn-primary">Inserir</button>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <table class="table table-striped" data-toggle="table">
+                                             <thead>
+                                                <tr>
+                                                   <th>Detalhamento</th>
+                                                   <th>Valor</th>
+                                                   <th>Cooperativa</th>
+                                                   <th>Observações</th>                                 
+                                                   <th class="w-10 text-center">Ações</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td>3900 - OUTROS SERVICOS DE TERCEIROS-PESSOA JURIDICA</td>
+                                                   <td>10.000,00</td>
+                                                   <td>Sim</td>
+                                                   <td>Observações</td>
+                                                   <td>
+                                                      <button class="btn btn-link ">
+                                                         <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                   <td>3902 - CONDOMINIOS</td>
+                                                   <td>5.000,00</td>
+                                                   <td>Sim</td>
+                                                   <td>Observações</td>
+                                                   <td>
+                                                      <button class="btn btn-link ">
+                                                         <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </form>
+                                 </div>
                                  <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                     <button type="button" class="btn btn-primary">Salvar</button>
@@ -2433,7 +2517,7 @@
                               </div>
                            </div>
                         </div>
-                        <!-- Fim do Modal de Serviço de Pessoa Jurídica-->
+                        <!-- Fim do Modal Rubrica 39 - Serviço de Pessoa Jurídica-->
                         <!-- Modal de Ajuda de Custo -->
                         <div class="modal fade" id="modalRubrica41" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog modal-lg" role="document">
