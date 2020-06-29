@@ -2891,15 +2891,110 @@
                            </div>
                         </div>
                         <!-- Fim do Modal de Obras e Instalações-->
-                        <!-- Modal de Material Permanente -->
+                        <!-- Modal da Rubrica 52 -  Equipamento/Material Permanente -->
                         <div class="modal fade" id="modalRubrica52" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Material Permanente</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Equipamento/Material Permanente</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
+                                 </div>
+                                 <div class="modal-body">
+                                    <form class="form border-0 p-0">
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-interessado" required="required" name="interessado">
+                                             <option value="hide">Selecione</option>                
+                                             <option>5202 - AERONAVES</option>
+                                             <option>5235 - EQUIPAMENTOS DE PROCESSAMENTOS DE DADOS</option>
+                                             <option>5248 - VEICULOS DIVERSOS</option>
+                                             <option value="indefinido">...</option>
+                                          </select>
+                                          <label class="required" for="select-estudante">Detalhamento da Rubrica
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O sistema deve os subelementos de despesa vinculados ao elemento 52 - Equipamento/Material Permanente. O SIPAC possui essa informação.">
+                                                </i>
+                                             </span>
+                                          </label>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input id="unidade"
+                                             class="form-control form-autocomplete" data-type="simples" id="unidadeTombamento" type="text" placeholder="Digite o nome ou o código da unidade que o bem deverá ser tombado..." />
+                                          <label for="unidadeTombamento">Unidade Tombamento</label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="descricaoBem" type="text" placeholder="Valor total previsto para o detalhamento da rubrica." />
+                                          <label class="required" for="descricaoBem">Descrição do bem                                          
+                                          </label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="qtdDetalhamentoRubrica52" type="text" placeholder="Valor total previsto para o detalhamento da rubrica." />
+                                          <label class="required" for="qtdDetalhamentoRubrica52">Quantidade                                          
+                                          </label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="vlrDetalhamentoRubrica52" type="text" placeholder="Valor total previsto para o detalhamento da rubrica." />
+                                          <label class="required" for="vlrDetalhamentoRubrica52">Valor                                          
+                                          </label>
+                                       </div>
+                                       <div class="form-inline position-relative">
+                                          <label class="d-block required">Material Importado?
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Se o material for importado, 20% do valor do detalhamento da rubrica deve ser inserida na rubrica 39 - serviço de pessoa jurídica para despesas de importação.">
+                                                </i>
+                                             </span>
+                                          </label>
+                                          <div class="form-check form-check-inline m-2">
+                                             <input class="form-check-input" id="materialPermanenteImportado-sim" type="radio" name="materialPermanenteImportado" value="Sim" />
+                                              <label class="form-check-label" for="materialPermanenteImportado-sim">Sim</label>
+                                          </div>
+                                          <div class="form-check form-check-inline m-2">
+                                             <input class="form-check-input" id="materialPermanenteImportado-nao" type="radio" name="materialPermanenteImportado" value="Nao" checked/>
+                                             <label class="form-check-label" for="materialPermanenteImportado-nao">Não                                                
+                                             </label>
+                                          </div>
+                                       </div>
+                                       <div class="form-group">
+                                          <textarea class="form-control" id="textareaRubrica30" placeholder="Campo para descrever observações que deverão ser consideradas." data-max-size="100"></textarea>
+                                          <label for="textareaRubrica30">Observações</label>
+                                          <div class="invalid-feedback">Limite de caracteres excedido</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <button type="button" class="btn btn-primary">Inserir</button>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <table class="table table-striped" data-toggle="table">
+                                             <thead>
+                                                <tr>
+                                                   <th>Detalhamento</th>
+                                                   <th>Unidade Tombamento</th>
+                                                   <th>Descrição</th>
+                                                   <th>Qtd</th>
+                                                   <th>Valor</th>
+                                                   <th>Material Importado</th>   
+                                                   <th class="w-10 text-center">Ações</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td>5235 - EQUIPAMENTOS DE PROCESSAMENTOS DE DADOS</td>
+                                                   <td>Superintendência de Informática</td>
+                                                   <td>Conjunto Computador + monitor padrão desenvolvimento</td>
+                                                   <td>8</td>
+                                                   <td>60.000,00</td>
+                                                   <td>Não</td>
+                                                   <td>
+                                                      <button class="btn btn-link ">
+                                                         <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </form>
                                  </div>
                                  <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -2908,7 +3003,7 @@
                               </div>
                            </div>
                         </div>
-                        <!-- Fim do Modal de Material Permanente-->
+                        <!-- Fim do Modal da Rubrica 52 - Material Permanente-->
                         <!-- Modal de Indenizãção de trabalho de campo -->
                         <div class="modal fade" id="modalRubrica95" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog modal-lg" role="document">
