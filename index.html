@@ -3004,16 +3004,74 @@
                            </div>
                         </div>
                         <!-- Fim do Modal da Rubrica 52 - Material Permanente-->
-                        <!-- Modal de Indenizãção de trabalho de campo -->
+                         <!-- Modal de Ajuda de Custo -->
                         <div class="modal fade" id="modalRubrica95" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Indenização de trabalho de campo</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Indenização de Trabalho de Campo</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                  </div>
+                                 <div class="modal-body">
+                                    <form class="form border-0 p-0">
+                                       <div class="form-group">
+                                       <textarea class="form-control" id="descricaoRubrica95" placeholder="Campo para descrever observações que deverão ser consideradas." data-max-size="200"></textarea>
+                                       <label class="required" for="descricaoRubrica95">Descrição Detalhada</label>
+                                       <div class="invalid-feedback">Limite de caracteres excedido</div>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                      <input class="form-control" id="qtdRubrica41" type="text" placeholder="Quantidade de indenizações de trabalho de campo" />
+                                      <label class="required" for="qtdRubrica41">Quantidade</label>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                       <input class="form-control" id="vlwRubrica41" type="text" placeholder="Valor da indenização" />
+                                       <label class="required" for="vlwRubrica41">Valor</label>
+                                    </div>
+                                    <div class="form-group">
+                                       <textarea class="form-control" id="textareaRubrica95" placeholder="Campo para descrever observações que deverão ser consideradas." data-max-size="100"></textarea>
+                                       <label for="textareaRubrica95">Observação</label>
+                                       <div class="invalid-feedback">Limite de caracteres excedido</div>
+                                    </div>
+                                 </div>
+                                 <div class="form-group position-relative">
+                                    <button type="button" class="btn btn-primary">Inserir</button>
+                                 </div>
+                                    <div class="form-group position-relative">
+                                       <table class="table table-striped" data-toggle="table">
+                                          <thead>
+                                             <tr>
+                                                <th>Descrição Detalhada</th>
+                                                <th>Quantidade</th>
+                                                <th>Valor</th>
+                                                <th>Obesrvação</th>                                 
+                                                <th class="w-10 text-center">Ações</th>
+                                             </tr>
+                                          </thead>
+                                          <tbody>
+                                             <tr>
+                                                <td>Coletar dados no seridó</td>
+                                                <td>10</td>
+                                                <td>30,00</td>
+                                                <td>observação</td>
+                                                <td>
+                                                   <button class="btn btn-link ">
+                                                      <i class="far fa-trash-alt"></i>
+                                                   </button>
+                                                </td>
+                                             </tr>
+
+                                             <tr>
+                                                <td colspan="2"><strong>Total<strong></td>
+                                                <td>300,00</td>
+                                                <td></td>
+                                                <td></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </div>
+                                 </form>
                                  <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                     <button type="button" class="btn btn-primary">Salvar</button>
@@ -3021,8 +3079,7 @@
                               </div>
                            </div>
                         </div>
-                        <!-- Fim do Modal de Indenização de trabalho de campo-->
-                         
+                        <!-- Fim do Modal de Ajuda de Custo-->
                         <div class="tab-pane show" id="planoAplicacao" role="tabpanel">
                            <section class="m-3" >
                               <h4>Plano de Aplicação</h4>
@@ -3209,7 +3266,7 @@
                                                 </tr>
                                                 <tr>
                                                    <td>52 - Material Permanente</td>
-                                                   <td>0,00</td>
+                                                   <td>60.000,00</td>
                                                    <td align="right" class="btn-group">
                                                       <button type="button" id="detalharRubrica52" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica52">
                                                       <i class="fas fa-external-link-alt"></i>
@@ -3233,7 +3290,7 @@
                                                 </tr>
                                                 <tr>
                                                    <td><strong>Total das Rubricas</strong></td>
-                                                   <td>148.600,00</td>
+                                                   <td>491.300,00</td>
                                                    <td></td>
                                                 </tr>
                                              </tbody>
@@ -3249,16 +3306,16 @@
                                  <article class="conteudo-principal">
                                     <div class="conteudo-principal__header">
                                        <h2>Distribuição da Remuneração</h2>
-                                       <output class="form-control" id="valorProjeto" type="text" value="35.000,00" />
+                                       <output class="form-control" id="valorProjeto" type="text" />
                                        <label for="text-output">Valor do Projeto:</label>
-                                       <label for="text-output">60.000,00</label>
+                                       <label for="text-output">491.300,00</label>
                                        <span class="tooltip-icon">
                                           <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O valor total do projeto deve ser calculado automáticamente. Para projetos do tipo A e D, o valor do projeto é o somatório das rubricas + valor da fundação + remuneração à UFRN(somatório da remuneração das unidades, centros e fundo acadêmico). Para o tipo B, obedece o cálculo do tipo A, com excessão das remunerações à UFRN. O tipo C é o somatório das rubricas + remuneração à UFRN.">
                                           </i>
                                        </span>  
                                        <output class="form-control" id="baseCalculoUfrn" type="text" value="35.000,00" />
                                        <label for="text-output">Base de Cálculo UFRN:</label>
-                                       <label for="text-output">35.000,00</label>
+                                       <label for="text-output">423.300,00</label>
                                        <span class="tooltip-icon">
                                           <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: A base de calculo deve ser obtida através do somatório das rubricas, com excessão das rubricas 47,51 e 52.">
                                           </i>
