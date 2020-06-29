@@ -2611,15 +2611,121 @@
                            </div>
                         </div>
                         <!-- Fim do Modal de Ajuda de Custo-->
-                        <!-- Modal de Obrigações Contributivas -->
+                        <!-- Modal Rubrica Rubrica 47 - Obrigações Contributivas -->
                         <div class="modal fade" id="modalRubrica47" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Obrigações Contributivas</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Obrigações Contributivas
+                                    <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Essa tela o usuário vai associar os tributos com as rubricas informadas no projeto, para isso ele deve selecionar uma rubrica, informar o detalhamento dessa rubrica e então preencher o valor do tributo e, opcionalmente, uma observação.">
+                                                </i>
+                                             </span></h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
+                                 </div>
+                                 <div class="modal-body">
+                                    <form class="form border-0 p-0">
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-associacao-rubrica47" required="required" name="associacaoRubrica47">
+                                             <option value="hide">Selecione</option>                
+                                             <option>14 - Diárias</option>
+                                             <option>18 - Auxílio Financeiro ao Estudante</option>
+                                             <option>20 - Auxílio Financeiro ao Pesquisador</option>
+                                             <option value="indefinido">...</option>
+                                             <option>39 - Serviço de Pessoa Física</option>
+                                             <option value="indefinido">...</option>
+                                             <option>95 - Indenização de Trabalho de campo</option>
+                                          </select>
+                                          <label class="required" for="select-associacao-rubrica47">Rubrica
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O sistema deve listar as rubricas possíveis em um projeto de pesquisa. Aqui estão listados apenas algumas.">
+                                                </i>
+                                             </span>
+                                          </label>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-detalhamento-rubrica47" required="required" name="DetalhamentoRubrica47">
+                                             <option value="hide">Selecione</option>                
+                                             <option>3900 - OUTROS SERVICOS DE TERCEIROS-PESSOA JURIDICA</option>
+                                             <option>3901 - ASSINATURAS DE PERIODICOS E ANUIDADES</option>
+                                             <option>3902 - CONDOMINIOS</option>
+                                             <option>3599 - OUTROS SERVICOS DE PESSOA JURÍDICA</option>
+                                             <option value="indefinido">...</option>
+                                          </select>
+                                          <label class="required" for="select-detalhamento-rubrica47">Detalhamento da Rubrica
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O sistema deve listar os detalhamentos das rubricas de acordo com a rubrica informada, quando houver detalhamento da rubrica. Nesse exemplo estamos simulando que o usuário selecionou a rubrica 39 - Serviço de Pessoa Jurídica">
+                                                </i>
+                                             </span>
+                                          </label>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-tipo-tributo" required="required" name="tipoTributo">
+                                             <option value="hide">Selecione</option>                
+                                             <option>SEGURIDADE</option>
+                                          </select>
+                                          <label class="required" for="select-tipo-tributo">Tipo do Tributo
+                                          </label>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="vlrDetalhamentoRubrica35" type="text" placeholder="Valor total previsto para o detalhamento da rubrica." />
+                                          <label class="required" for="vlrDetalhamentoRubrica35">Valor                                          
+                                          </label>
+                                       </div>
+                                       <div class="form-group">
+                                          <textarea class="form-control" id="textareaRubrica47" placeholder="Campo para descrever observações que deverão ser consideradas." data-max-size="100"></textarea>
+                                          <label for="textareaRubrica47">Observações</label>
+                                          <div class="invalid-feedback">Limite de caracteres excedido</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <button type="button" class="btn btn-primary">Inserir</button>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <table class="table table-striped" data-toggle="table">
+                                             <thead>
+                                                <tr>
+                                                   <th>Rubrica</th>
+                                                   <th>Detalhamento</th>
+                                                   <th>Tipo do Tributo</th>
+                                                   <th>Valor</th>
+                                                   <th>Observações</th>                                 
+                                                   <th class="w-10 text-center">Ações</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td>39 - Serviço de Pessoa Jurídica</td>
+                                                   <td>3900 - OUTROS SERVICOS DE TERCEIROS-PESSOA JURIDICA</td>
+                                                   <td>SEGURIDADE</td>
+                                                   <td>1.000,00</td>
+                                                   <td>Observações</td>
+                                                   <td>
+                                                      <button class="btn btn-link ">
+                                                         <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                   <td>18 - Auxílio Financeiro ao Estudante</td>
+                                                   <td>-</td>
+                                                   <td>SEGURIDADE</td>
+                                                   <td>1.000,00</td>
+                                                   <td>Observações</td>
+                                                   <td>
+                                                      <button class="btn btn-link ">
+                                                         <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </form>
                                  </div>
                                  <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -2628,7 +2734,7 @@
                               </div>
                            </div>
                         </div>
-                        <!-- Fim do Modal de Obrigações contributivas-->
+                        <!-- Fim do Modal Rubrica 47 - Obrigações Contributivas-->                        
                         <!-- Modal Detalhamento da Rubrica 48 - Auxilio a Pessoa Física -->
                         <div class="modal fade" id="modalRubrica48" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog modal-lg" role="document">
