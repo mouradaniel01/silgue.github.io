@@ -2283,131 +2283,139 @@
                               <div class="modal-content">
                                  <div class="modal-header">
                                     <h5 class="modal-title">Rubrica 36 - Serviço de Pessoa Física</h5>
-                                    <form class="form border-0 p-0">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
+                                       <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                       <span aria-hidden="true">&times;</span>
+                                       </button>
                                  </div>
                                  <div class="modal-body">
-                                    <div class="form-group position-relative">
+                                    <form class="form border-0 p-0">
                                        <div class="form-group position-relative">
-                                          <select class="custom-select" id="select-atividade-36-serviço-pessoa-fisica" required="required" name="atividade-36-serviço-pessoa-fisica">
-                                             <option value="hide">Selecione</option>
-                                             <option>Serviço de Natureza Eventual</option>
-                                             <option>Serviço de Pesquisa sob Encomenda</option>
-                                             
-                                          </select>
-                                          <label class="required" for="select-atividade-36-serviço-pessoa-fisica">Atividade
-                                             <span class="tooltip-icon">
-                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Segundo reunião com Prof. Severino, apenas a atividade de Serviço de Natureza eventual e Serviço de Pesquisa sob Encomenda deve ser listada na rubrica 36">
-                                                </i>
-                                             </span>
-                                          </label>
-                                          <div class="invalid-feedback">Selecione alguma opção</div>
-                                       </div>
-                                       <div class="form-group position-relative">
-                                          <select class="custom-select" id="select-membro-36" required="required" name="membro-48">
+                                          <div class="form-group position-relative">
+                                             <select class="custom-select" id="select-atividade-36-serviço-pessoa-fisica" required="required" name="atividade-36-serviço-pessoa-fisica">
                                                 <option value="hide">Selecione</option>
-                                                <option>Alysson Rodrigues</option>
-                                                <option>José Edivan</option>
-                                                <option>Thalisson Muriel</option>
+                                                <option value="servico_eventual">Serviço de Natureza Eventual</option>
+                                                <option value="sob_encomenda">Serviço de Pesquisa sob Encomenda</option>
                                                 
                                              </select>
-                                             <label class="required" for="select-membro-36">Membro
+                                             <label class="required" for="select-atividade-36-serviço-pessoa-fisica">Atividade
                                                 <span class="tooltip-icon">
-                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Esse tipo de auxílio NÃO deve ser pago para membros que sejam servidores da UFRN(docentes ou técnicos administrativos)">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Segundo reunião com Prof. Severino, apenas a atividade de Serviço de Natureza eventual e Serviço de Pesquisa sob Encomenda deve ser listada na rubrica 36. A atividade de serviço de pesquisa sob encomenda só será listada se a possibilidade de partilha dos resultados for sob encomenda. Para o tipo serviço de pesquisa sob encomenda, o sistema deve listar os membros que não são servidores da UFURN. Para o tipo serviço de pesquisa eventual, o sistema não deve solicitar o membro, mas apenas o valor e observação.">
                                                    </i>
                                                 </span>
                                              </label>
                                              <div class="invalid-feedback">Selecione alguma opção</div>
+                                          </div>
+                                          
+                                          <div class="form-group position-relative" id="detalhe-servico-encomenda">
+                                             <div class="form-group position-relative">
+                                                <select class="custom-select" id="select-membro-36" required="required" name="membro-48">
+                                                      <option value="hide">Selecione</option>
+                                                      <option>Alysson Rodrigues</option>
+                                                      <option>José Edivan</option>
+                                                      <option>Thalisson Muriel</option>
+                                                      
+                                                   </select>
+                                                   <label class="required" for="select-membro-36" id="membroRubrica36">Membro
+                                                      <span class="tooltip-icon">
+                                                         <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Esse tipo de auxílio NÃO deve ser pago para membros que sejam servidores da UFRN(docentes ou técnicos administrativos) e o membro só deve ser informado se a atividade for serviço de pesquisa sob encomenda.">
+                                                         </i>
+                                                      </span>
+                                                   </label>
+                                                   <div class="invalid-feedback">Selecione alguma opção</div>
+                                             </div>
+                                             <div class="form-group position-relative">
+                                                <input class="form-control" id="qtdSemana" type="text" placeholder="Quantidade de semanas dedicada ao projeto." />
+                                                <label class="required" for="text-input">Semana(s) dedicada(s)?</label>
+                                             </div>
+                                             <div class="form-group position-relative">
+                                                <input class="form-control" id="hrSemanalRubrica36" type="text" placeholder="Quantidade de horas semanais previstas." />
+                                                <label class="required" for="text-input">Horas semanais previstas?
+                                                </label>
+                                             </div>
+                                             <div class="form-group position-relative">
+                                                <input class="form-control" id="vlrHoraRubrica36" type="text" placeholder="valor por Hora."/>
+                                                <label class="required" for="text-input">Valor por hora?
+                                                   <span class="tooltip-icon">
+                                                      <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Conforme resolução 061/2016, o valor máximo pago por hora não pode ultrapassar o limite estabelecido no anexo V da resolução 061/2016 CONSAD.">
+                                                      </i>
+                                                   </span>
+                                                </label>
+                                             </div>
+                                             <div class="form-group position-relative">
+                                                <output class="form-control" id="vlrTotalHoraRubrica36" type="text" placeholder="valor total."></output>
+                                                <label for="vlrTotalHoraRubrica36">Valor Total?</label>
+                                             </div>
+                                          </div>
                                        </div>
-                                       <div class="form-group position-relative">
-                                          <input class="form-control" id="qtdSemana" type="text" placeholder="Quantidade de semanas dedicada ao projeto." />
-                                          <label class="required" for="text-input">Semana(s) dedicada(s)?</label>
+                                       <div class="form-group position-relative" id="detalhe-servico-eventual">
+                                          <div class="form-group position-relative">
+                                             <input class="form-control" id="vlrRubrica36" type="text" placeholder="valor."/>
+                                             <label class="required" for="vlrRubrica36">Valor?
+                                             </label>
+                                          </div>
                                        </div>
-                                       <div class="form-group position-relative">
-                                          <input class="form-control" id="hrSemanalRubrica36" type="text" placeholder="Quantidade de horas semanais previstas." />
-                                          <label class="required" for="text-input">Horas semanais previstas?
-                                          </label>
+                                       <div class="form-group">
+                                              <textarea class="form-control" id="textareaRubrica36" placeholder="Campo para descrever observações que deverão ser consideradas." data-max-size="200"></textarea>
+                                              <label for="textareaRubrica36">Observações</label>
+                                              <div class="invalid-feedback">Limite de caracteres excedido</div>
                                        </div>
-                                       <div class="form-group position-relative">
-                                          <input class="form-control" id="vlrHoraRubrica36" type="text" placeholder="valor por Hora."/>
-                                          <label class="required" for="text-input">Valor por hora?
-                                             <span class="tooltip-icon">
-                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Conforme resolução 061/2016, o valor máximo pago por hora não pode ultrapassar o limite estabelecido no anexo V da resolução 061/2016 CONSAD.">
-                                                </i>
-                                             </span>
-                                          </label>
-                                       </div>
-
-                                       <div class="form-group position-relative">
-                                          <output class="form-control" id="vlrTotalHoraRubrica36" type="text" placeholder="valor total."></output>
-                                          <label for="vlrTotalHoraRubrica36">Valor Total?</label>
-                                       </div>
-
-                                      <div class="form-group">
-                                        <textarea class="form-control" id="textareaRubrica36" placeholder="Campo para descrever observações que deverão ser consideradas." data-max-size="200"></textarea>
-                                        <label for="textareaRubrica36">Observações</label>
-                                        <div class="invalid-feedback">Limite de caracteres excedido</div>
-                                      </div>
-                                      </form>
-                                   </div>
-                                    
                                        <div class="form-group position-relative">
                                        <button type="button" class="btn btn-primary">Inserir</button>
                                        </div>
-                                       <table class="table table-striped" data-toggle="table">
-                                          <thead>
-                                             <tr>
-                                                <th>Atividade</th>
-                                                <th>Membro</th>
-                                                <th>Qtd Horas
-                                                   <span class="tooltip-icon">
-                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="A quantidade de horas é obtida pela multiplicação da quantidade de semanas dedicadas pelas horas semanas previstas.">
-                                                </i>
-                                             </span>
-                                                </th>
-                                                <th>Valor</th>
-                                                <th>Total</th>
-                                                <th class="w-10 text-center">Ações</th>
-                                             </tr>
-                                          </thead>
-                                          <tbody>
-                                             <tr>
-                                                <td>Serviço de pesquisa sob encomenda</td>
-                                                <td>Brunno Rodrigues</td>
-                                                <td>10</td>
-                                                <td>220,00</td>
-                                                <th>2200,00</th>
-                                                <td align="right" class="btn-group">
-                                                   <button class="btn btn-link ">
-                                                   <i class="far fa-trash-alt"></i>
-                                                   </button>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <td>Serviço de natureza eventual</td>
-                                                <td>José Edivan</td>
-                                                <td>10</td>
-                                                <td>220,00</td>
-                                                <th>2200,00</th>
-                                                <td align="right" class="btn-group">
-                                                   <button class="btn btn-link ">
-                                                   <i class="far fa-trash-alt"></i>
-                                                   </button>
-                                                </td>
-                                             </tr>
-                                             
-                                             <tr>
-                                                <td colspan="3"><strong>Total</strong></td>
-                                                <td>4400,00</td>
-                                                <td></td>
-                                                <td></td>
-                                             </tr>
-                                          </tbody>
-                                       </table>
+                                       <div class="form-group position-relative" id="tabela-servico-encomenda">
+                                          <table class="table table-striped" data-toggle="table">
+                                             <thead>
+                                                <tr>
+                                                   <th>Atividade</th>
+                                                   <th>Membro</th>
+                                                   <th>Qtd Horas
+                                                      <span class="tooltip-icon">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="A quantidade de horas é obtida pela multiplicação da quantidade de semanas dedicadas pelas horas semanas previstas.">
+                                                   </i>
+                                                </span>
+                                                   </th>
+                                                   <th>Valor</th>
+                                                   <th>Total</th>
+                                                   <th class="w-10 text-center">Ações</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td>Serviço de pesquisa sob encomenda</td>
+                                                   <td>Brunno Rodrigues</td>
+                                                   <td>10</td>
+                                                   <td>220,00</td>
+                                                   <th>2200,00</th>
+                                                   <td align="right" class="btn-group">
+                                                      <button class="btn btn-link ">
+                                                      <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                                <tr>
+                                                   <td>Serviço de natureza eventual</td>
+                                                   <td>José Edivan</td>
+                                                   <td>10</td>
+                                                   <td>220,00</td>
+                                                   <th>2200,00</th>
+                                                   <td align="right" class="btn-group">
+                                                      <button class="btn btn-link ">
+                                                      <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                   <td colspan="3"><strong>Total</strong></td>
+                                                   <td>4400,00</td>
+                                                   <td></td>
+                                                   <td></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                       </form>
                                     </div>
-                                 
                                  <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                     <button type="button" class="btn btn-primary">Salvar</button>
@@ -3229,7 +3237,7 @@
                                                    <td>36 - Serviço Pessoa Física</td>
                                                    <td>30.000,00</td>
                                                    <td align="right" class="btn-group">
-                                                       <button type="button" id="detalharRubrica36" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica36">
+                                                       <button type="button" id="detalharRubrica36" class="btn btn-link " data-toggle="modal" data-target="#modalRubrica36" onclick="ocultarDetalhamentoRubrica36()">
                                                       <i class="fas fa-external-link-alt"></i>
                                                       </button>
                                                       <button class="btn btn-link ">
@@ -3701,6 +3709,12 @@
               $('#favorecidoPassagens-nao').prop('checked',true);
             };
 
+            function ocultarDetalhamentoRubrica36(){
+               $('#detalhe-servico-encomenda').hide();
+               $('#detalhe-servico-eventual').hide();
+               $('#tabela-servico-encomenda').hide();
+            };
+
             function ocultarDetalhamentoParcelaPlano(){
                $('#detalheParcelarPlanoSim').hide();
                $('#detalheParcelarPlanoNao').show();
@@ -3776,6 +3790,20 @@
                   $('#campoQtdPesquisadores').hide();
                   $('#campoformacaoPesquisador').hide();
                   $('#campoFormacaoPesquisadorProjeto').show();
+                }
+            });
+
+            $('select[name="atividade-36-serviço-pessoa-fisica"]').change(function () {
+               var select = document.getElementById('select-atividade-36-serviço-pessoa-fisica');
+               var value = select.options[select.selectedIndex].value;
+                if (value === "servico_eventual") {
+                  $('#detalhe-servico-encomenda').hide();
+                  $('#tabela-servico-encomenda').hide();
+                  $('#detalhe-servico-eventual').show();
+                } else {
+                  $('#detalhe-servico-encomenda').show();
+                  $('#tabela-servico-encomenda').show();
+                  $('#detalhe-servico-eventual').hide();
                 }
             });
 
