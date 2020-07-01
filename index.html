@@ -3094,8 +3094,31 @@
                                           <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O coordenador deve informar ao menos uma rubrica. As atividades listadas nas rubricas devem ser obtidas a partir de uma tabela auxiliar, onde serão cadastrados as atividades e associadas às rubricas.">
                                           </i>
                                           </span>
-                                       </div>
+                                       </div>                                       
                                        <div class="conteudo-principal__content m-0 my-3 px-4">
+                                          <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-tabela-rubricas" required="required" name="tabela-rubricas">
+                                             <option value="hide">Selecione</option>
+                                             <option>14 - Diárias</option>
+                                             <option>18 - Auxílio ao Estudante</option>
+                                             <option>20 - Auxílio ao Pesquisador</option>
+                                             <option>30 - Material de Consumo</option>
+                                             <option>32 - Material de Consumo/Distribuição Gratuita</option>
+                                             <option>33 - Passagem</option>
+                                             <option>35 - Serviço de Consultoria</option>
+                                             <option>36 - Serviço de Pessoa Física</option>
+                                             <option>39 - Serviço de Pessoa Jurídica</option>
+                                             <option>41 - Ajuda de Custo</option>
+                                             <option>52 - Equip. Material Permanente</option>
+                                             <option>95 - Indenização de trabalho de campo</option>
+                                          </select>
+                                          <label class="required" for="select-tabela-rubricas">Rubrica</label>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="position-relative">
+                                          <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i> Inserir
+                                          </button>
+                                       </div> 
                                           <table class="table table-striped" data-toggle="table">
                                              <thead>
                                                 <tr>
@@ -3479,7 +3502,10 @@
                                                    <label for="valorParcelaPlanoPeriodo">Valor</label>
                                                 </div>
                                              </div>
-                                          <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i> Inserir</button>   
+                                             <div class="position-relative">
+                                                <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i> Inserir
+                                                </button>
+                                             </div>   
                                        </form>
                                    </article>
                                    <article class="conteudo-principal">
