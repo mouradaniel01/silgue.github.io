@@ -2812,7 +2812,12 @@
 
                                        <div class="form-group position-relative">
                                           <output class="form-control" id="vlrTotalHoraRubrica48" type="text" placeholder="valor total."></output>
-                                          <label for="text-input">Valor Total?</label>
+                                          <label for="text-input">Valor Total?
+                                          <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O valor total é a quantidade de semanas x hr semanais x valor/hora.">
+                                                </i>
+                                             </span>
+                                          </label>
                                        </div>
 
                                       <div class="form-group">
@@ -2831,7 +2836,8 @@
                                              <tr>
                                                 <th>Atividade</th>
                                                 <th>Membro</th>
-                                                <th>Qtd</th>
+                                                <th>Qtd Sem</th>
+                                                <th>Hr Sem</th>
                                                 <th>Valor</th>
                                                 <th>Total</th>
                                                 <th class="w-10 text-center">Ações</th>
@@ -2842,8 +2848,9 @@
                                                 <td>Serviço de pesquisa sob encomenda</td>
                                                 <td>Alysson Rodrigues</td>
                                                 <td>10</td>
+                                                <td>8</td>
                                                 <td>220,00</td>
-                                                <th>2200,00</th>
+                                                <th>17.600,00</th>
                                                 <td align="right" class="btn-group">
                                                    <button class="btn btn-link ">
                                                    <i class="far fa-trash-alt"></i>
@@ -2853,9 +2860,10 @@
                                              <tr>
                                                 <td>Serviço de pesquisa sob encomenda</td>
                                                 <td>Thalisson Muriel</td>
-                                                <td>10</td>
+                                                <td>32</td>
+                                                <td>8</td>
                                                 <td>220,00</td>
-                                                <th>2200,00</th>
+                                                <th>56.320,00</th>
                                                 <td align="right" class="btn-group">
                                                    <button class="btn btn-link ">
                                                    <i class="far fa-trash-alt"></i>
@@ -3793,7 +3801,7 @@
                 }
             });
 
-            $('select[name="atividade-36-serviço-pessoa-fisica"]').change(function () {
+            $('select[name="atividade-36-serviço-pessoa-fisica"rubrica]').change(function () {
                var select = document.getElementById('select-atividade-36-serviço-pessoa-fisica');
                var value = select.options[select.selectedIndex].value;
                 if (value === "servico_eventual") {
