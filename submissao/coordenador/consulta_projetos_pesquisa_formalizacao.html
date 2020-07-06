@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-BR" paleta="administrativa">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="description" content="descrição do sistema">
+      <meta name="designer" content="Equipe Frontend / SINFO - Superintendência de informática">
+      <link rel="preconnect" href="https://static.info.ufrn.br">
+      <link rel="dns-prefetch" href="https://static.info.ufrn.br">
+      <link rel="icon" href="https://static.info.ufrn.br/1.0.6/img/favicon.png">
+      <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/vendors/fontawesome/all.min.css">
+      <!-- Adicionar importação logo após a chamada do CSS do FontAwesome -->
+      <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/vendors/autoComplete/autoComplete.css">
+      <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/base.css">
+      <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/administrativo.css">
+      <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/alto_contraste.css">
+      <title>Protótipo Formalizar Projeto Pesquisa</title>
+   </head>
+   <body>
+      <div id="barra-brasil">
+         <ul id="menu-barra-temp" style="list-style: none">
+            <li style="display:inline; float:left;padding-right:10px; margin-right:10px; border-right:1px solid #EDEDED"><a href="http://brasil.gov.br" target="_blank" rel="noopener" style="font-family:sans,sans-serif; text-decoration:none; color:white;">Portal do Governo Brasileiro</a></li>
+         </ul>
+      </div>
+      <div class="container-principal">
+         <header class="header">
+            <div class="header__left">
+               <button class="icon" id="toggle-menu"><i class="fas fa-bars"></i></button>
+               <div class="header__logo">
+                  <a href="../index.html">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="147.429" height="32.483" viewBox="0 0 147.429 32.483">
+                        <defs>
+                           <style>.a{fill:#70c7cc;}.b{fill:#848fa0;font-size:21px;font-family:Arial-BoldMT, Arial;font-weight:700;}</style>
+                        </defs>
+                        <g transform="translate(-41.068 -28.3)">
+                           <g transform="translate(1 -1)">
+                              <path class="a" d="M52.3,29.3A12.316,12.316,0,0,0,50,53.7a12.24,12.24,0,0,0,10.6-2.9,2.5,2.5,0,0,0-.1-3.5,2.582,2.582,0,0,0-3.4,0,7.315,7.315,0,1,1-4.7-12.9A2.361,2.361,0,0,0,54.8,32a2.636,2.636,0,0,0-2.5-2.7Z"/>
+                              <path class="a" d="M56.5,61.4a12.328,12.328,0,0,0,8.5-23,12.5,12.5,0,0,0-11,0,2.517,2.517,0,0,0-.8,3.4,2.609,2.609,0,0,0,3.3.9,7.315,7.315,0,1,1,1.1,13.7,2.556,2.556,0,0,0-3,1.6,3.088,3.088,0,0,0,1.9,3.4Z"/>
+                           </g>
+                           <text class="b" transform="translate(77.497 52.792)">
+                              <tspan x="0" y="0">SIGProjetos</tspan>
+                           </text>
+                        </g>
+                     </svg>
+                  </a>
+               </div>
+               <div class="header__title">
+                  <h1>Submissão de Projetos Acadêmicos</h1>
+               </div>
+            </div>
+            <div class="header__right">
+               <div class="dropdown" id="ac-container">
+                  <button class="icon dropdown-toggle" data-toggle="dropdown" title="Alterar para o modo de alto contraste">
+                  <i class="fas fa-adjust"></i>
+                  </button>
+                  <div class="dropdown-menu ac">
+                     <div class="dropdown-menu__triangle"></div>
+                     <ul>
+                        <li>
+                           <button class="dropdown-item" title="Tema Padrão">&nbsp;</button>
+                        </li>
+                        <li>
+                           <button class="dropdown-item branco-azul" title="Tema: Fundo Branco, Texto Preto, Destaque Azul"><span>A</span></button>
+                        </li>
+                        <li>
+                           <button class="dropdown-item azul-amarelo" title="Tema: Fundo Azul, Texto Branco, Destaque Amarelo"><span>A</span></button>
+                        </li>
+                        <li>
+                           <button class="dropdown-item preto-amarelo" title="Tema: Fundo Preto, Texto Branco, Destaque Amarelo"><span>A</span></button>
+                        </li>
+                        <li>
+                           <button class="dropdown-item preto-azul" title="Tema: Fundo Preto, Texto Branco, Destaque Azul"><span>A</span></button>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <button class="icon" id="search-button" title="Pesquisar" data-toggle="modal" data-target="#search-modal">
+               <i class="fas fa-search"></i>
+               </button>
+               <div class="modal fade search-modal" id="search-modal" tabindex="-1" role="dialog" aria-labelledby="search-button" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <h2 class="modal-title">O que você procura?</h2>
+                           <button class="close" type="button" data-dismiss="modal" aria-label="Fechar">
+                           <i class="fas fa-times"></i>
+                           </button>
+                        </div>
+                        <div class="modal-body">
+                           <form class="form border-0 p-0">
+                              <div class="form-group--input">
+                                 <i class="fas fa-search"></i>
+                                 <input class="form__text-input" type="text" placeholder="Pesquisar" />
+                              </div>
+                              <button class="btn-primary" type="submit">Buscar</button>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="dropdown" id="user-container">
+                  <div class="header__user dropdown-toggle" data-toggle="dropdown">
+                     <button class="icon">
+                     <img src="https://static.info.ufrn.br/1.0.6/img/img_user.png" alt="Imagem usuário">
+                     </button>
+                     <div class="header__user__info">
+                        <h3 class="header__user__info__title">Nome do usuário<i class="fas fa-caret-down"></i></h3>
+                     </div>
+                  </div>
+                  <div class="dropdown-menu">
+                     <div class="dropdown-menu__triangle"></div>
+                     <a class="dropdown-item" href="#">Alterar Vínculo</a>
+                     <a class="dropdown-item" href="#">Sair</a>
+                  </div>
+               </div>
+            </div>
+         </header>
+         <div class="container-conteudo">
+         <div class="container-conteudo__content w-100">
+         <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+               <li class="breadcrumb-item">
+                  <a class="link" href="index.html"><i class="fas fa-home"></i></a>
+               </li>
+               <li class="breadcrumb-item" aria-current="page">
+                  <h3>Formalização Projeto de Pesquisa</h3>
+               </li>
+            </ol>
+         </nav>
+         <!-- Alerta de Atenção -->
+         <div class="alert alert-warning alert-dismissible fade show d-flex mt-2" role="alert">
+            <div class="alert-icone d-flex justify-content-center align-items-center">
+               <i class="fas fa-exclamation"></i>
+            </div>
+            <div class="alert-information">
+               <p><strong>Atenção</strong></p>
+               <ul>
+                  <li><strong>•</strong> Esse é um protótipo de tela navegável. O usuário poderá verificar as telas na sequência de sua preferência.</li>
+               </ul>
+            </div>
+            <button class="close d-flex" type="button" data-dismiss="alert" aria-label="Close">
+            <i class="fas fa-times"></i>
+            </button>
+         </div>
+         <!-- Navegação lateral -->
+         <div class="navegacao-lateral mt-2">
+            <div class="title-top">
+               <h1>Protótipo - Formalização de projeto de pesquisa</h1>
+            </div>
+            <div class="conteudo-principal m-0">
+               <div class="tab-content menu-conteudo">
+                  <div class="tab-pane show active" 
+                     id="consultaProj" role="tabpanel">
+                     <section class="m-3">
+                        <h4>Consulta de Projetos</h4>
+                        <p class="advice">* Campos Obrigatórios</p>
+                                    
+                           <article class="conteudo-principal">
+                              <div class="conteudo-principal__header">
+                              <h1>Filtro</h1>
+                              </div>
+                              <div class="conteudo-principal__content m-0">
+                                 <form class="border-0 p-0 my-3 mx-40px" id="form-filtro">
+                                    <div class="form-group position-relative">
+                                       <div class="form-inline">
+                                          <label for="date-input">Vigência</label>
+                                          <input class="form-control p-1 m-1" id="date-input" type="date" /> até
+                                          <input class="form-control p-1 m-1" id="date-input" type="date" />
+                                       </div> 
+                                    </div>
+                                    <div class="form-group position-relative">
+                                       <input id="unidade"
+                                          class="form-control form-autocomplete" data-type="simples" id="autocomplete-input-simples" type="text" placeholder="Digite o nomeou o código da unidade..." />
+                                       <label for="autocomplete-input-simples">Unidade Executora</label>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                       <input class="form-control" id="text-input" type="text" placeholder="Título do Projeto" />
+                                       <label for="text-input">Título</label>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                       <input class="form-control" id="text-input" type="text" placeholder="Palavras chaves" />
+                                       <label for="text-input">Palavras chaves</label>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                       <select class="custom-select" id="select-situacao" required="required" name="situacao">
+                                          <option value="hide">Selecione</option>
+                                          <option>Com inovação tecnológica</option>
+                                          <option>Sem inovação tecnológica</option>
+                                       </select>
+                                       <label class="required" for="select-situacao">Classificação da Pesquisa</label>
+                                       <div class="invalid-feedback">Selecione alguma opção</div>
+                                    </div>
+                                    <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i> Buscar</button>
+                                 </form>
+                              </div>
+                        </article>
+                        <article class="conteudo-principal">
+                           <div class="conteudo-principal__header">
+                              <h1>Projetos Homologados</h1>
+                              <span class="tooltip-icon">
+                              <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Deverão ser listados apenas os projetos de pesquisa que tenham sido homologados pela PROPESQ.">
+                              </i>
+                              </span>
+                           </div>
+                           <div class="conteudo-principal__content m-0 my-3 px-4">
+                              <table class="table table-striped" data-toggle="table">
+                                 <thead>
+                                    <tr>
+                                       <th class="w-10" data-checkbox="true"></th>
+                                       <th>Número</th>
+                                       <th>TÍtulo</th>
+                                       <th>Classificação</th>
+                                       <th>Unidade Executora</th>
+                                       <th>Vigência Inicial</th>
+                                       <th>Vigência Final</th>
+                                       <th class="w-10 text-center">Formalizar</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr>
+                                       <td></td>
+                                       <td>00001</td>
+                                       <td>Desenvolvimento do novo sistema de Projetos Acadêmicos</td>
+                                       <td>Com inovação tecnológica</td>
+                                       <td>1135 - SINFO</td>
+                                       <td>01/10/2019</td>
+                                       <td>31/12/2021</td>
+                                       <td>
+                                          <a class="link-normal" href="#">
+                                          <i class="fas fa-external-link-alt"></i>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td></td>
+                                       <td>00002</td>
+                                       <td>Desenvolvimento de Plataforma de Integração entre sistemas estruturantes</td>
+                                       <td>Com inovação tecnológica</td>
+                                       <td>1135 - SINFO</td>
+                                       <td>01/04/2020</td>
+                                       <td>31/12/2024</td>
+                                       <td>
+                                          <a class="link-normal" href="#">
+                                          <i class="fas fa-external-link-alt"></i>
+                                          </a>
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </article>
+                     </section>
+                  </div>
+               </div>
+            </div>   
+         </div>
+                     
+         <script src="https://static.info.ufrn.br/1.0.6/vendors/jquery/jquery.min.js"></script>
+         <script src="https://static.info.ufrn.br/1.0.6/vendors/popper/popper.min.js"></script>
+         <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap/bootstrap.min.js"></script>
+         <script src="https://static.info.ufrn.br/1.0.6/vendors/modernizr/modernizr-custom.js"></script>
+         <script src="https://static.info.ufrn.br/1.0.6/js/check_functions.js"></script>
+         <script src="https://static.info.ufrn.br/1.0.6/js/scripts.js"></script>
+         <!-- Adicionar ao final do body -->
+         <script src="https://static.info.ufrn.br/1.0.6/autoComplete/autoComplete.min.js"></script>
+         <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+         <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+         </script>
+         <script src="../js/prototipo.js"></script>
+         <script>
+            autocomplete(document.getElementById("unidade"), unidades);
+            autocomplete(document.getElementById("cidadeOrigem"), cidades);
+            autocomplete(document.getElementById("cidadeDestino"), cidades);
+            //autocomplete(document.getElementById("entidade"), entidades);
+
+            $('input[id="vlrHoraRubrica36"]').change(function () {
+               if(document.getElementById("hrSemanalRubrica36").value.length > 0 && document.getElementById("vlrHoraRubrica36").value.length > 0){
+                  var n1 = parseInt(document.getElementById('hrSemanalRubrica36').value, 10);
+                  var n2 = parseInt(document.getElementById('vlrHoraRubrica36').value, 10);
+                  var n3 = parseInt(document.getElementById('qtdSemana').value, 10);
+                  document.getElementById('vlrTotalHoraRubrica36').innerHTML = n1 * n2 * n3;
+               }
+            });
+
+            $('input[id="hrSemanalRubrica36"]').change(function () {
+                if(document.getElementById("hrSemanalRubrica36").value.length > 0 && document.getElementById("vlrHoraRubrica36").value.length > 0){
+                  var n1 = parseInt(document.getElementById('hrSemanalRubrica36').value, 10);
+                  var n2 = parseInt(document.getElementById('vlrHoraRubrica36').value, 10);
+                  document.getElementById('vlrTotalHoraRubrica36').innerHTML = n1 * n2;
+               };
+            });
+
+            $('input[id="vlrHoraRubrica48"]').change(function () {
+               if(document.getElementById("hrSemanalRubrica48").value.length > 0 && document.getElementById("vlrHoraRubrica48").value.length > 0){
+                  var n1 = parseInt(document.getElementById('hrSemanalRubrica48').value, 10);
+                  var n2 = parseInt(document.getElementById('vlrHoraRubrica48').value, 10);
+                  document.getElementById('vlrTotalHoraRubrica48').innerHTML = n1 * n2;
+               }
+            });
+
+            $('input[id="hrSemanalRubrica48"]').change(function () {
+                if(document.getElementById("hrSemanalRubrica48").value.length > 0 && document.getElementById("vlrHoraRubrica48").value.length > 0){
+                  var n1 = parseInt(document.getElementById('hrSemanalRubrica48').value, 10);
+                  var n2 = parseInt(document.getElementById('vlrHoraRubrica48').value, 10);
+                  document.getElementById('vlrTotalHoraRubrica48').innerHTML = n1 * n2;
+               };
+            });
+
+            
+            $('input[name="detalharFavorecido"]').change(function () {
+                if ($('input[name="detalharFavorecido"]:checked').val() === "Sim") {
+                    $('#detalheRubrica14').show();
+                    $('#rubrica14Resumida').hide();
+                } else {
+                    $('#detalheRubrica14').hide();
+                    $('#rubrica14Resumida').show();
+                }
+            });
+
+             $('input[id="tempoExecucaoProjeto"]').change(function () {
+               var tempoProjeto = parseInt(document.getElementById('tempoExecucaoProjeto').value, 10);
+               document.getElementById('tempoExecucaoProjetoCronograma').innerHTML = tempoProjeto;
+               document.getElementById('planoAplicacaoCronograma').innerHTML = '55.000,00';
+               document.getElementById('doapParcelas').innerHTML = tempoProjeto -1;
+
+            });
+            
+            function ocultarDetalhamentoRubrica14(){
+               $('#detalheRubrica14').hide();
+               $('#rubrica14Resumida').show();
+               $('#favorecido-nao').prop('checked',true);
+            };
+
+            function ocultarDetalhamentoRubrica18(){
+               $('#campoQtdEstudantes').hide();
+               $('#campoVinculoMembro').hide();
+               $('#campoVinculoEstudanteProjeto').show();
+            };
+
+            function ocultarDetalhamentoRubrica20(){
+               $('#campoQtdPesquisadores').hide();
+               $('#campoformacaoPesquisador').hide();
+               $('#campoFormacaoPesquisadorProjeto').show();
+            };
+
+            function ocultarDetalhamentoRubrica33(){
+               $('#detalhePassagem').hide();
+              $('#campoFinalidadePassagem').hide();
+              $('#informarTrecho').hide();
+              $('#detalharTrechoPassagem').hide(); 
+              $('#detalharFavorecidoPassagem').hide();
+              $('#tabelaPassagemDetalhe').hide();
+              $('#detalharPassagens-nao').prop('checked',true);
+              $('#favorecidoPassagens-nao').prop('checked',true);
+            };
+
+            function ocultarDetalhamentoRubrica36(){
+               $('#detalhe-servico-encomenda').hide();
+               $('#detalhe-servico-eventual').hide();
+               $('#tabela-servico-encomenda').hide();
+            };
+
+            function ocultarDetalhamentoParcelaPlano(){
+               $('#detalheParcelarPlanoSim').hide();
+               $('#detalheParcelarPlanoNao').show();
+               $('#tabelaParcelaPlano').hide();
+               $('#tabelaDesembolsoMesPlano').show();
+               $('#parcelarPlano-nao').prop('checked',true);
+            };
+
+            $('input[name="parcelarPlano"]').change(function () {
+                if ($('input[name="parcelarPlano"]:checked').val() === "Sim") {
+                    $('#detalheParcelarPlanoSim').show();
+                    $('#detalheParcelarPlanoNao').hide();
+                    $('#tabelaParcelaPlano').show();
+                    $('#tabelaDesembolsoMesPlano').hide();
+                    
+                } else {
+                    $('#detalheParcelarPlanoSim').hide();
+                    $('#detalheParcelarPlanoNao').show();
+                    $('#tabelaParcelaPlano').hide();
+                    $('#tabelaDesembolsoMesPlano').show();
+                }
+            });
+
+             $('select[name="fonte-recurso"]').change(function () {
+               var select = document.getElementById('select-fonte-recurso');
+               var value = select.options[select.selectedIndex].value;
+                if (value === "C") {
+                    $('#baseFunpec').hide();
+                    $('#remuneracaoFundacao').hide();
+                    $('#doapParcelas').hide();
+                    
+                } else {
+                    $('#baseFunpec').show();
+                    $('#remuneracaoFundacao').show();
+                    $('#doapParcelas').show();
+                }
+            });
+
+             $('select[name="fonte-recurso"]').change(function () {
+               var select = document.getElementById('select-fonte-recurso');
+               var value = select.options[select.selectedIndex].value;
+                if (value === "A") {
+                    $('#menuRecursos').hide();
+                } else {
+                   $('#menuRecursos').show();
+                }
+            });
+
+            $('select[name="estudante"]').change(function () {
+               var select = document.getElementById('select-estudante');
+               var estudante = select.options[select.selectedIndex].value;
+               document.getElementById('funcaoMembroEstudanteProjeto').innerHTML = 'Colaborador(a)';
+               document.getElementById('vinculoEstudanteProjeto').innerHTML = 'Estudante de Graduação';
+                if (estudante === "indefinido") {
+                  $('#campoQtdEstudantes').show();
+                  $('#campoVinculoMembro').show();
+                  $('#campoVinculoEstudanteProjeto').hide();
+                } else {
+                  $('#campoQtdEstudantes').hide();
+                  $('#campoVinculoMembro').hide();
+                  $('#campoVinculoEstudanteProjeto').show();
+                }
+            });
+            $('select[name="interessado"]').change(function () {
+               var select = document.getElementById('select-interessado');
+               var interessado = select.options[select.selectedIndex].value;
+               document.getElementById('formacaoPesquisadorProjeto').innerHTML = 'ESPECIALIZAÇÃO';
+                if (interessado === "indefinido") {
+                  $('#campoQtdPesquisadores').show();
+                  $('#campoformacaoPesquisador').show();
+                  $('#campoFormacaoPesquisadorProjeto').hide();
+                } else {
+                  $('#campoQtdPesquisadores').hide();
+                  $('#campoformacaoPesquisador').hide();
+                  $('#campoFormacaoPesquisadorProjeto').show();
+                }
+            });
+
+            $('select[name="atividade-36-serviço-pessoa-fisica"]').change(function () {
+               var select = document.getElementById('select-atividade-36-serviço-pessoa-fisica');
+               var value = select.options[select.selectedIndex].value;
+                if (value === "servico_eventual") {
+                  $('#detalhe-servico-encomenda').hide();
+                  $('#tabela-servico-encomenda').hide();
+                  $('#detalhe-servico-eventual').show();
+                } else {
+                  $('#detalhe-servico-encomenda').show();
+                  $('#tabela-servico-encomenda').show();
+                  $('#detalhe-servico-eventual').hide();
+                }
+            });
+
+            $('input[name="detalharPassagens"]').change(function () {
+                if ($('input[name="detalharPassagens"]:checked').val() === "Sim") {
+                  $('#detalhePassagem').show();
+                  $('#campoFinalidadePassagem').show();
+                  $('#informarTrecho').show();
+                  $('#tabelaPassagemDetalhe').show();
+                  $('#tabelaPassagemResumida').hide();
+                } else {
+                  $('#detalhePassagem').hide();
+                  $('#campoFinalidadePassagem').hide();
+                  $('#informarTrecho').hide();
+                   $('#tabelaPassagemDetalhe').hide();
+                  $('#tabelaPassagemResumida').show();
+                     
+                }
+            });  
+
+            $('input[name="favorecidoPassagens"]').change(function () {
+                if ($('input[name="favorecidoPassagens"]:checked').val() === "Sim") {
+                    $('#detalharFavorecidoPassagem').show();                                                           
+                } else {
+                    $('#detalharFavorecidoPassagem').hide(); 
+                }
+            });
+
+            $('input[name="flagInformarTrecho"]').change(function () {
+                if ($('input[name="flagInformarTrecho"]:checked').val() === "Sim") {
+                    $('#detalharTrechoPassagem').show();                                                           
+                } else {
+                    $('#detalharTrechoPassagem').hide(); 
+                }
+            });            
+
+         </script>
+   </body>
+</html>
