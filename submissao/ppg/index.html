@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/base.css">
   <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/administrativo.css">
   <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/alto_contraste.css">
-  <title>Protótipo Módulo PROPLAN</title>
+  <title>Protótipo Módulo PPG</title>
 </head>
 <body>
 
@@ -72,21 +72,21 @@
 
         <div class="dropdown ac-resized" id="vinculos-container">
             <select id="vinculos-usuario-logado" data-api="/vinculos-usuario-logado">
-            <option value="161">DOCENTE (DEPARTAMENTO DE CIÊNCIAS ADMINISTRATIVAS - DEPAD)</option><option value="1449">CHEFIA/DIRETORIA (PRÓ-REITORIA DE PLANEJAMENTO)</option></select>
+            <option value="1589">DOCENTE (DEPARTAMENTO DE ENGENHARIA DE MATERIAIS)</option><option value="1483">CHEFIA/DIRETORIA (PRÓ-REITORIA DE PÓS GRADUAÇÃO)</option><option value="9100">CHEFIA/DIRETORIA (PÓS-GRADUAÇÃO EM CIÊNCIA E ENGENHARIA DE MATERIAIS (CT/CCET))</option></select>
         </div>
 
         <div class="dropdown" id="user-container">
             <div class="header__user dropdown-toggle" data-toggle="dropdown">
                 <button class="icon">
                     <div class="placeholder">
-                        <span>JO</span>
+                        <span>MA</span>
                     </div>
                     <!--<img th:src="${#session.getAttribute('linkFoto')}" alt="Imagem usuário">-->
                 </button>
 
                 <div class="header__user__info">
                     <h3 class="header__user__info__title">
-                        josuevitor <i class="fas fa-caret-down"></i>
+                        maribondo <i class="fas fa-caret-down"></i>
                     </h3>
                 </div>
             </div>
@@ -107,37 +107,32 @@
                 <div class="card m-3">
                     <a class="card-body" href="consulta_projetos_pesquisa_formalizacao_proplan.html">
                         <i class="fas fa-scroll fa-3x card-icon"></i>
-                        <h1 class="card-title text-center">Consulta de Projetos de Pesquisa</h1>
-                        <p class="card-text text-center">Lista os projetos de pesquisa submetidos à formalização do instrumento jurídico</p>
+                        <h1 class="card-title text-center">Consultar Projetos de Pesquisa</h1>
+                        <p class="card-text text-center">Lista os projeto de pesquisa submetidos pelos coordenadores.</p>
                     </a>
                 </div>
-                
+
                 <div class="card m-3">
-                    <a class="card-body" href="#">
+                    <a class="card-body" href="https://app-sustentacao.info.ufrn.br/submissao/pesquisa/gestao/chefia" rel="noopener noreferrer" target="_blank">
                         <i class="fas fa-scroll fa-3x card-icon"></i>
-                        <h1 class="card-title text-center">Análise FUNPEC</h1>
-                        <p class="card-text text-center">Parecer da FUNPEC sobre a análise financeira, planilha clt, dentre outros.</p>
+                        <h1 class="card-title text-center">Autorização da chefia</h1>
+                        <p class="card-text text-center">Funcionalidade para o chefe das unidades autorizarem a participação dos membros</p>
                     </a>
                 </div>
+
                 <div class="card m-3">
-                    <a class="card-body" href="#">
+                    <a class="card-body" href="https://app-sustentacao.info.ufrn.br/submissao/pesquisa/gestao/departamento" rel="noopener noreferrer" target="_blank">
                         <i class="fas fa-scroll fa-3x card-icon"></i>
-                        <h1 class="card-title text-center">Análise Técnica PROPLAN</h1>
-                        <p class="card-text text-center">Parecer técnico emitido pela equipe de análise técnica da PROPLAN.</p>
+                        <h1 class="card-title text-center">Autorização do Projeto</h1>
+                        <p class="card-text text-center">Autorização do projeto pelo departamento</p>
                     </a>
                 </div>
+
                 <div class="card m-3">
-                    <a class="card-body" href="#">
+                    <a class="card-body" href="https://app-sustentacao.info.ufrn.br/submissao/pesquisa/gestao/homologar-projeto" rel="noopener noreferrer" target="_blank">
                         <i class="fas fa-scroll fa-3x card-icon"></i>
-                        <h1 class="card-title text-center">Parecer Fiscalização PROPLAN</h1>
-                        <p class="card-text text-center">Parecer técnico emitido pela equipe de fiscalização da PROPLAN.</p>
-                    </a>
-                </div>
-                <div class="card m-3">
-                    <a class="card-body" href="#">
-                        <i class="fas fa-scroll fa-3x card-icon"></i>
-                        <h1 class="card-title text-center">Parecer Procudoria</h1>
-                        <p class="card-text text-center">Parecer técnico emitido pela equipe de fiscalização da PROPLAN.</p>
+                        <h1 class="card-title text-center">Homologar Projeto de Pesquisa</h1>
+                        <p class="card-text">Homologação do Projeto de pesquisa pela PROPESQ</p>
                     </a>
                 </div>
             </div>
