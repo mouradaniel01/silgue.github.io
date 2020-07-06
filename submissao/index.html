@@ -24,7 +24,7 @@
 
     <div class="header__left">
         <div class="header__logo">
-            <a href="#">
+            <a href="../index.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="155.9" height="30.004" viewBox="0 0 155.9 30.004">
                     <defs>
                         <style>.a{fill:#72a8e5;}.b{fill:#848fa0;font-size:21px;font-family:Arial-BoldMT, Arial;font-weight:700;}.a{fill:#72a8e5}</style>
@@ -105,31 +105,34 @@
         <div class="container-conteudo__content w-100">
             <div class="d-flex flex-wrap justify-content-around mt-5">
                 <div class="card m-3">
-                    <a class="card-body" href="submissao/index.html">
+                    <a class="card-body" href="#">
                         <i class="fas fa-scroll fa-3x card-icon"></i>
-                        <h1 class="card-title">Submissão</h1>
-                        <p class="card-text">Criar projeto de ensino, pesquisa, extensão ou desenvolvimento</p>
+                        <h1 class="card-title">Projeto de Pesquisa</h1>
+                        <p class="card-text">Cria e submete uma proposta de projeto de pesquisa</p>
                     </a>
                 </div>
-                <div class="card m-3" disabled>
-                    <a class="card-body" href="#">
-                        <i class="fas fa-pencil-alt fa-3x card-icon"></i>
-                        <h1 class="card-title">Execução</h1>
-                        <p class="card-text">Atualizar andamento e alterações dos projetos</p>
+
+                <div class="card m-3">
+                    <a class="card-body" th:href="@{'/pesquisa/minhas-propostas'}">
+                        <i class="fas fa-scroll fa-3x card-icon"></i>
+                        <h1 class="card-title">Minhas Propostas</h1>
+                        <p class="card-text">Lista as propostas de projetos de pesquisa</p>
                     </a>
                 </div>
-                <div class="card m-3" disabled>
-                    <a class="card-body" href="#">
-                        <i class="far fa-eye fa-3x card-icon"></i>
-                        <h1 class="card-title">Fiscalização</h1>
-                        <p class="card-text">Verificar andamento dos projetos em execução</p>
+
+                <div class="card m-3">
+                    <a class="card-body" th:href="@{'/pesquisa/meus-projetos'}">
+                        <i class="fas fa-scroll fa-3x card-icon"></i>
+                        <h1 class="card-title text-center">Meus Projetos de Pesquisa</h1>
+                        <p class="card-text">Lista os projetos de pesquisa submetidos</p>
                     </a>
                 </div>
-                <div class="card m-3" disabled>
-                    <a class="card-body" href="#">
-                        <i class="fas fa-search fa-3x card-icon"></i>
-                        <h1 class="card-title">Indicadores</h1>
-                        <p class="card-text">Visualizar projetos e seus andamentos, assim como indicadores</p>
+
+                <div class="card m-3">
+                    <a class="card-body" href="consulta_projetos_pesquisa_formalizacao.html">
+                        <i class="fas fa-scroll fa-3x card-icon"></i>
+                        <h1 class="card-title text-center">Formalizar Projeto de Pesquisa</h1>
+                        <p class="card-text">Formaliza um projeto de pesquisa</p>
                     </a>
                 </div>
             </div>
@@ -152,4 +155,5 @@
     </script>
 
 </body>
+
 </html>
