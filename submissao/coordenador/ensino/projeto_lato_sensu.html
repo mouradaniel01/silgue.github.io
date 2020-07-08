@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-BR" paleta="administrativa">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="description" content="descrição do sistema">
+      <meta name="designer" content="Equipe Frontend / SINFO - Superintendência de informática">
+      <link rel="preconnect" href="https://static.info.ufrn.br">
+      <link rel="dns-prefetch" href="https://static.info.ufrn.br">
+      <link rel="icon" href="https://static.info.ufrn.br/1.0.6/img/favicon.png">
+      <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/vendors/fontawesome/all.min.css">
+      <!-- Adicionar importação logo após a chamada do CSS do FontAwesome -->
+      <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/vendors/autoComplete/autoComplete.css">
+      <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/base.css">
+      <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/administrativo.css">
+      <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/alto_contraste.css">
+      <title>Protótipo Projeto Ensino - Curso Lato Sensu</title>
+   </head>
+   <body>
+      <div id="barra-brasil">
+         <ul id="menu-barra-temp" style="list-style: none">
+            <li style="display:inline; float:left;padding-right:10px; margin-right:10px; border-right:1px solid #EDEDED"><a href="http://barra.brasil.gov.br/static/opensans-bold.woff" target="_blank" rel="noopener" style="font-family:sans,sans-serif; text-decoration:none; color:white;">Portal do Governo Brasileiro</a></li>
+         </ul>
+      </div>
+      <div class="container-principal">
+         <header class="header">
+            <div class="header__left">
+               <button class="icon" id="toggle-menu"><i class="fas fa-bars"></i></button>
+               <div class="header__logo">
+                  <a href="../index.html">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="147.429" height="32.483" viewBox="0 0 147.429 32.483">
+                        <defs>
+                           <style>.a{fill:#70c7cc;}.b{fill:#848fa0;font-size:21px;font-family:Arial-BoldMT, Arial;font-weight:700;}</style>
+                        </defs>
+                        <g transform="translate(-41.068 -28.3)">
+                           <g transform="translate(1 -1)">
+                              <path class="a" d="M52.3,29.3A12.316,12.316,0,0,0,50,53.7a12.24,12.24,0,0,0,10.6-2.9,2.5,2.5,0,0,0-.1-3.5,2.582,2.582,0,0,0-3.4,0,7.315,7.315,0,1,1-4.7-12.9A2.361,2.361,0,0,0,54.8,32a2.636,2.636,0,0,0-2.5-2.7Z"/>
+                              <path class="a" d="M56.5,61.4a12.328,12.328,0,0,0,8.5-23,12.5,12.5,0,0,0-11,0,2.517,2.517,0,0,0-.8,3.4,2.609,2.609,0,0,0,3.3.9,7.315,7.315,0,1,1,1.1,13.7,2.556,2.556,0,0,0-3,1.6,3.088,3.088,0,0,0,1.9,3.4Z"/>
+                           </g>
+                           <text class="b" transform="translate(77.497 52.792)">
+                              <tspan x="0" y="0">SIGProjetos</tspan>
+                           </text>
+                        </g>
+                     </svg>
+                  </a>
+               </div>
+               <div class="header__title">
+                  <h1>Protótipo Projeto Ensino - Curso Lato Sensu</h1>
+               </div>
+            </div>
+            <div class="header__right">
+               <div class="dropdown" id="ac-container">
+                  <button class="icon dropdown-toggle" data-toggle="dropdown" title="Alterar para o modo de alto contraste">
+                  <i class="fas fa-adjust"></i>
+                  </button>
+                  <div class="dropdown-menu ac">
+                     <div class="dropdown-menu__triangle"></div>
+                     <ul>
+                        <li>
+                           <button class="dropdown-item" title="Tema Padrão">&nbsp;</button>
+                        </li>
+                        <li>
+                           <button class="dropdown-item branco-azul" title="Tema: Fundo Branco, Texto Preto, Destaque Azul"><span>A</span></button>
+                        </li>
+                        <li>
+                           <button class="dropdown-item azul-amarelo" title="Tema: Fundo Azul, Texto Branco, Destaque Amarelo"><span>A</span></button>
+                        </li>
+                        <li>
+                           <button class="dropdown-item preto-amarelo" title="Tema: Fundo Preto, Texto Branco, Destaque Amarelo"><span>A</span></button>
+                        </li>
+                        <li>
+                           <button class="dropdown-item preto-azul" title="Tema: Fundo Preto, Texto Branco, Destaque Azul"><span>A</span></button>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <button class="icon" id="search-button" title="Pesquisar" data-toggle="modal" data-target="#search-modal">
+               <i class="fas fa-search"></i>
+               </button>
+               <div class="modal fade search-modal" id="search-modal" tabindex="-1" role="dialog" aria-labelledby="search-button" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <h2 class="modal-title">O que você procura?</h2>
+                           <button class="close" type="button" data-dismiss="modal" aria-label="Fechar">
+                           <i class="fas fa-times"></i>
+                           </button>
+                        </div>
+                        <div class="modal-body">
+                           <form class="form border-0 p-0">
+                              <div class="form-group--input">
+                                 <i class="fas fa-search"></i>
+                                 <input class="form__text-input" type="text" placeholder="Pesquisar" />
+                              </div>
+                              <button class="btn-primary" type="submit">Buscar</button>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="dropdown" id="user-container">
+                  <div class="header__user dropdown-toggle" data-toggle="dropdown">
+                     <button class="icon">
+                     <img src="https://static.info.ufrn.br/1.0.6/img/img_user.png" alt="Imagem usuário">
+                     </button>
+                     <div class="header__user__info">
+                        <h3 class="header__user__info__title">Nome do usuário<i class="fas fa-caret-down"></i></h3>
+                     </div>
+                  </div>
+                  <div class="dropdown-menu">
+                     <div class="dropdown-menu__triangle"></div>
+                     <a class="dropdown-item" href="#">Alterar Vínculo</a>
+                     <a class="dropdown-item" href="#">Sair</a>
+                  </div>
+               </div>
+            </div>
+         </header>
+         <div class="container-conteudo">
+         <div class="container-conteudo__content w-100">
+         <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a class="link" href="../../../index.html"><i class="fas fa-home"></i></a></li>
+              <li class="breadcrumb-item"><a class="link" href="../../index.html">Submissão</a></li>
+              <li class="breadcrumb-item"><a class="link" href="../index.html">Projetos</a></li>
+              <li class="breadcrumb-item"><a class="link" href="menu_ensino.html">Ensino</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                <h3>Proposta de curso Lato Sensu</h3>
+              </li>
+            </ol>
+          </nav>
+         <!-- Alerta de Atenção -->
+         <div class="alert alert-warning alert-dismissible fade show d-flex mt-2" role="alert">
+            <div class="alert-icone d-flex justify-content-center align-items-center">
+               <i class="fas fa-exclamation"></i>
+            </div>
+            <div class="alert-information">
+               <p><strong>Atenção</strong></p>
+               <ul>
+                  <li><strong>•</strong> Esse é um protótipo de tela navegável. O usuário poderá verificar as telas na sequência de sua preferência.</li>
+               </ul>
+            </div>
+            <button class="close d-flex" type="button" data-dismiss="alert" aria-label="Close">
+            <i class="fas fa-times"></i>
+            </button>
+         </div>
+         <!-- Navegação lateral -->
+         <div class="navegacao-lateral mt-2">
+            <div class="title-top">
+               <h1>Protótipo - Proposta de curso Lato Sensu</h1>
+            </div>
+            <div class="row">
+               <div class="col-4 barra-vertical">
+                  <div class="list-group list-group-flush">
+                     <div class="menu-item active">
+                        <i class="far fa-circle"></i>
+                        <div class="menu-botao">
+                           <button
+                              class="list-group-item list-group-item-action"
+                              href="#dadosGerais"
+                              role="tab"
+                              aria-controls="Dados Gerais"
+                              >
+                           Dados gerais
+                           </button>
+                        </div>
+                     </div>
+                     <div class="menu-item">
+                        <i class="far fa-circle"></i>
+                        <div class="menu-botao">
+                           <button
+                              class="list-group-item list-group-item-action"
+                              href="#coordCurso"
+                              role="tab"
+                              aria-controls="Coordenação Curso"
+                              >
+                           Coordenação Curso
+                           </button>
+                        </div>
+                     </div>
+                     <div class="menu-item">
+                        <i class="far fa-circle"></i>
+                        <div class="menu-botao">
+                           <button
+                              class="list-group-item list-group-item-action"
+                              href="#objImportancia"
+                              role="tab"
+                              aria-controls="Objetivo e Importância"
+                              >
+                           Objetivo e Importância
+                           </button>
+                        </div>
+                     </div>
+                     <div class="menu-item" id="menuRecursos">
+                        <i class="far fa-circle"></i>
+                        <div class="menu-botao">
+                           <button
+                              class="list-group-item list-group-item-action"
+                              href="#processoSeletivo"
+                              role="tab"
+                              aria-controls="Processo Seletivo"
+                              
+                              >
+                           Processo Seletivo
+                           </button>
+                        </div>
+                     </div>
+                     <div class="menu-item">
+                        <i class="far fa-circle"></i>
+                        <div class="menu-botao">
+                           <button class="list-group-item list-group-item-action" 
+                           href="#corpoDocente" 
+                           role="tab" 
+                           aria-controls="Corpo Docente">
+                           Corpo Docente
+                           </button>
+                        </div>
+                     </div>
+                     <div class="menu-item">
+                        <i class="far fa-circle"></i>
+                        <div class="menu-botao">
+                           <button
+                              class="list-group-item list-group-item-action"
+                              href="#componentes"
+                              role="tab"
+                              aria-controls="Cronograma de Desembolso"
+                              onclick="ocultarDetalhamentoParcelaPlano()"
+                              >
+                           Componentes
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-8">
+                  <div class="tab-content menu-conteudo">
+                     <!-- Inicio Dados Gerais -->
+                     <div class="tab-pane show active" id="dadosGerais" role="tabpanel">
+                           <section class="m-3" >
+                              <h4>Dados Gerais</h4>
+                              <p class="advice">* Campos Obrigatórios</p>
+                              <div class="conteudo-principal__content m-0">
+                                 <!--<article class="conteudo-principal">-->
+                                    <form class="border-0" id="form-filtro">
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-tipo-curso-lato" required="required" name="tipo-curso-lato">
+                                             <option value="hide">Selecione</option>
+                                             <option value="aperfeicoamento">Aperfeiçoamento</option>
+                                             <option value="especializacao">Especialização</option>
+                                             <option value="residencia">Residência</option>
+                                             
+                                          </select>
+                                          <label class="required" for="select-tipo-curso-lato">Tipo do Curso
+                                          <span class="tooltip-icon">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O tipo de curso deve ser uma tabela auxiliar, que permita inserção, remoção e alteração dos dados. O sistema deve listar todos os tipos ativos. Além do nome do tipo, é necessário armazenar nessa tabela as informações se o tipo está ativo ou não, a carga horária mínima e a carga horária máxima. Não é obrigatório a informação da carga horária.">
+                                             </i>
+                                          </span>
+                                          </label>
+                                           
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative" >
+                                          <label id="labelNomeCursoLatoSensu" class="required" for="nomeCursoLatoSensu">Nome do curso
+                                          </label>
+                                          <span class="tooltip-icon" id="spanTooltipNomeCursoLato">
+                                                <i id="tooltipNomeCursoLato" class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O label desse campo altera conforme o tipo de curso escolhido.">
+                                                </i>
+                                             </span>
+                                          <input class="form-control" id="nomeCursoLatoSensu" type="text" placeholder="Nome do curso." />
+                                          
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="unidadeResponsavel" required="required" name="unidadeResponsavel">
+                                             <option value="hide">Selecione</option>
+
+                                          </select>
+                                          <label class="required" for="unidadeResponsavel">Unidade Responsável
+                                          <span class="tooltip-icon">
+                                                <i id="tooltipNomeCursoLato" class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O sistema deve obter as unidades do sigaa, considerando o tipo de unidade Acadêmica: DEPARTAMENTO,ESCOLA,PROGRAMA_POS,UNID_ACADEMICA_ESPECIALIZADA e ORGAO_SUPLEMENTAR. (select nome from comum.unidade where tipo_academica in (1,2,3,4,7))">
+                                                </i>
+                                             </span>
+                                          </label>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input id="unidadeOrcamentariaCursoLato"
+                                             class="form-control form-autocomplete" data-type="simples" type="text" placeholder="Digite o nome da unidade  orçamentária do curso..." />
+                                          <label class="required" for="unidadeOrcamentariaCursoLato">Unidade Orçamentária
+                                             <span class="tooltip-icon">
+                                                <i id="tooltipNomeCursoLato" class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O sistema deve obter as unidades do sigaa, considerando o atributo unidade_orcamentaria = true.">
+                                                </i>
+                                             </span>
+                                          </label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                           <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modalOutrasUnidadesEnvolvidas">Inserir Outras Unidades Envolvidas</button>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-modalidade_educacao" required="required" name="modalidade_educacao">
+                                             <option value="hide">Selecione</option>
+                                             <option value="adistancia">A Distância</option>
+                                             <option value="presencial">Presencial</option>
+                                             <option value="semipresencial">Semi-Presencial</option>
+                                             
+                                          </select>
+                                          <label class="required" for="select-modalidade_educacao">Modalidade de Educação
+                                          <span class="tooltip-icon">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Buscar as modalidades de educação registradas no SIGAA.">
+                                             </i>
+                                          </span>
+                                          </label>
+                                           
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                    </div>
+                                 </form>
+                              <!--</article>   -->
+                           </section>
+                        </div>
+                     <!--Fim Dados Gerais -->
+                     <!-- Início de Partícipes-->
+                         <div class="tab-pane show" id="coordCurso" role="tabpanel">
+                           <section class="m-3" >
+                              <h4>Coordenação Curso
+                              <span class="tooltip-icon">
+                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Para tipo A ou B, o sistema deve inserir a UFRN como partícipe e classificá-la como contratante e inserir a FUNPEC e classificá-la como contratada. Se o tipo for C, o sistema deve inserir a UFRN como contratada e a FUNPEC como contratante. Para o tipo D, o sistema deve cadastrar a UFRN como interveniente/Executora, a FUNPEC como contratada e solicitar a inclusão de outro(s) partícipes que deverão ser classificado(s) como contratante(s). ">
+                                 </i>
+                              </span>
+                              </h4>
+                              <p class="advice">* Campos Obrigatórios</p>
+                              <form>
+                                 <div class="conteudo-principal__content m-0">
+                                    <article class="conteudo-principal">
+                                       <div class="form-group m-0 my-3 px-4">
+                                          <div class="form-inline position-relative">
+                                             <!--<input id="entidade"
+                                                class="form-control form-autocomplete" data-type="simples" type="text" placeholder="Digite o nome do órgão/Instituição..." />
+                                             <label for="entidade">Órgão/Entidade</label>-->
+                                             <label for="text-input">Órgão/Entidade
+                                                <span class="tooltip-icon">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O órgão/Entidade deve ser uma pessoa jurídica.">
+                                                   </i>
+                                                </span>
+                                             </label>
+                                             <input class="form-control m-2" id="entidade" type="text" placeholder="Digite o nome do Órgão/Entidade..." />                                          
+                                             <button type="button" class="btn btn-link" href="#">
+                                             <i class="fas fa-search"></i>
+                                             </button>
+                                          </div>
+                                       </div>
+                                          <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaEntidades">
+                                             <table class="table table-striped" data-toggle="table">
+                                                <thead>
+                                                   <tr>
+                                                      <th></th>
+                                                      <th>Nome</th>
+                                                      <th>CNPJ</th>
+                                                      <th>Endereço</th>
+                                                      <th>Cidade</th>
+                                                      <th>UF</th>
+                                                   </tr>
+                                                </thead>
+                                                <tbody>
+                                                   <tr>
+                                                      <td><input class="form-check-input m-2" id="checkEntidade" type="checkbox"  /></td>
+                                                      <td>REPSOL </td>
+                                                      <td>000.0000/0001-01</td>
+                                                      <td>Rua Praia do Botafogo</td>
+                                                      <td>RJ</td>
+                                                      <td>RJ</td>
+                                                   </tr>
+                                                   <tr>
+                                                      <td><input class="form-check-input m-2" id="checkEntidade" type="checkbox"  /></td>
+                                                      <td>REPSOL </td>
+                                                      <td>000.0000/0001-02</td>
+                                                      <td>Av. Paulista</td>
+                                                      <td>SP</td>
+                                                      <td>SP</td>
+                                                   </tr>
+                                                </tbody>
+                                             </table>
+                                          </div>
+                                          <div class="form-control m-0 my-3 px-4">
+                                             <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i>        Inserir
+                                             </button> 
+                                          </div>  
+                                       </form>
+                                   </article>
+                                   <article class="conteudo-principal">
+                                       <div class="conteudo-principal__header">
+                                          <h1>Partícipes Inseridos</h1>
+                                          <span class="tooltip-icon">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Os partícipes UFRN e FUNPEC não podem ser removidos e nem cadastrados responsáveis para eles, pois os responsáveis da UFRN e FUNPEC devem ser inseridos automáticamente, a partir de uma tabela auxiliar, que permita que o administrador do modulo altere tais informações quando necessário.  ">
+                                             </i>
+                                          </span>
+                                       </div>
+                                       <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaEntidades">
+                                          <table class="table table-striped" data-toggle="table">
+                                             <thead>
+                                                <tr>
+                                                   <th>Tipo</th>
+                                                   <th>Nome</th>
+                                                   <th>CNPJ</th>
+                                                   <th>Endereço</th>
+                                                   <th>Cidade</th>
+                                                   <th>UF</th>
+                                                   <th>Ações</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td>Interveniente/Executora</td>
+                                                   <td>UFRN </td>
+                                                   <td>000.0000/0001-10</td>
+                                                   <td>Av. Salgado Filho, 3000</td>
+                                                   <td>Natal</td>
+                                                   <td>RN</td>
+                                                   <td>
+                                                   </td>
+                                                </tr>
+                                                 <tr>
+                                                   <td>Contratada</td>
+                                                   <td>FUNPEC </td>
+                                                   <td>000.0000/0001-20</td>
+                                                   <td>Av. Salgado Filho, 3000</td>
+                                                   <td>Natal</td>
+                                                   <td>RN</td>
+                                                   <td></td>
+                                                </tr>
+                                                <tr>
+                                                   <td>Contratante</td>
+                                                   <td>PETROBRAS S/A </td>
+                                                   <td>000.0000/0001-30</td>
+                                                   <td>Rua Rio Grande do Norte</td>
+                                                   <td>Natal</td>
+                                                   <td>RN</td>
+                                                   <td align="right" class="btn-group">
+                                                      <button type="button" id="inserirResponsavel" class="btn btn-link " data-toggle="modal" data-target="#modalresponsavelEntidade">
+                                                      <i class="fas fa-external-link-alt"></i>
+                                                      </button>
+                                                      <button class="btn btn-link ">
+                                                      <i class="far fa-trash-alt"></i>
+                                                      </button>
+                                                   </td>                                                  
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                   </article>
+                                 </div>
+                              </form>
+                            </section>
+                         </div>
+                     <!--Fim de Partícipes-->
+                     <!-- Modal de Outras Unidades Envolvidas -->
+                     <div class="modal fade" id="modalOutrasUnidadesEnvolvidas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h5 class="modal-title">Outras Unidades Envolvidas
+                                 </h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                 <span aria-hidden="true">&times;</span>
+                                 </button>
+                              </div>
+                              <div class="modal-body">
+                                 <div class="form-group position-relative">
+                                    <select class="custom-select" id="outrasUnidadesEnvolvidas" required="required" name="outrasUnidadesEnvolvidas">
+                                       <option value="hide">Selecione</option>
+
+                                    </select>
+                                    <label class="required" for="outrasUnidadesEnvolvidas">Unidade Envolvida
+                                    <span class="tooltip-icon">
+                                          <i id="tooltipNomeCursoLato" class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O sistema deve obter as unidades do sigaa, considerando o tipo de unidade Acadêmica: DEPARTAMENTO,ESCOLA,PROGRAMA_POS,UNID_ACADEMICA_ESPECIALIZADA e ORGAO_SUPLEMENTAR. (select nome from comum.unidade where tipo_academica in (1,2,3,4,7))">
+                                          </i>
+                                       </span>
+                                    </label>
+                                    <div class="invalid-feedback">Selecione alguma opção</div>
+                                 </div>
+                                 <div class="form-group position-relative">
+                                    <button type="button" class="btn btn-primary" onclick="inserirLinhaUnidadesEnvolvidas()">Inserir</button>
+                                 </div>
+                                 <table class="table table-striped" data-toggle="table" id="tabelaUnidadesEnvolvidas">
+                                    <thead>
+                                       <tr>                                             
+                                          <th>Lista das Unidades Envolvidas</th>
+                                          <th class="w-10 text-center">Ações</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>   
+                                          <td></td>
+                                          <td></td>
+                                       </tr>                                       
+                                    </tbody>
+                                 </table>
+                              </div>
+                              <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                 <button type="button" class="btn btn-primary">Salvar</button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Fim do modal de Responsável Entidade-->
+                     <div class="tab-pane show" id="objImportancia" role="tabpanel">
+                        <p>Objetivo e Importância</p>
+                     </div>
+                     <div class="tab-pane show" id="processoSeletivo" role="tabpanel">
+                        <p>Processo Seletivo</p>
+                     </div>
+                     <div class="tab-pane show" id="corpoDocente" role="tabpanel">
+                        <p>Corpo Docente</p>
+                     </div>
+                     <div class="tab-pane show" id="componentes" role="tabpanel">
+                        <p>Componentes</p>
+                     </div>
+                  </div>
+               </div>
+         <script src="https://static.info.ufrn.br/1.0.6/vendors/jquery/jquery.min.js"></script>
+         <script src="https://static.info.ufrn.br/1.0.6/vendors/popper/popper.min.js"></script>
+         <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap/bootstrap.min.js"></script>
+         <script src="https://static.info.ufrn.br/1.0.6/vendors/modernizr/modernizr-custom.js"></script>
+         <script src="https://static.info.ufrn.br/1.0.6/js/check_functions.js"></script>
+         <script src="https://static.info.ufrn.br/1.0.6/js/scripts.js"></script>
+         <!-- Adicionar ao final do body -->
+         <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+         <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+         </script>
+         <script src="../../../js/prototipo.js"></script>
+         <script>
+            
+            autocomplete(document.getElementById("unidadeOrcamentariaCursoLato"), unidadesAcademicas);
+
+            selectUnidades(document.getElementById("unidadeResponsavel"), unidadesAcademicas);
+
+            selectUnidades(document.getElementById("outrasUnidadesEnvolvidas"), unidadesAcademicas);
+
+            function removerLinhaUnidadesEnvolvidas(i){
+               document.getElementById("tabelaUnidadesEnvolvidas").deleteRow(i);
+            }
+
+            function inserirLinhaUnidadesEnvolvidas() {
+
+               // Captura a referência da tabela com id “minhaTabela”
+               var tabela = document.getElementById("tabelaUnidadesEnvolvidas");
+               //Captura o select
+               var select = document.getElementById("outrasUnidadesEnvolvidas");
+               //Captura o valor do select
+               var valor = select.options[select.selectedIndex].value;
+               // Captura a quantidade de linhas já existentes na tabela
+               var numLinhas = tabela.rows.length;
+               // Captura a quantidade de colunas da última linha da tabela
+               var numColunas = tabela.rows[numLinhas-1].cells.length;
+               // Insere uma linha no fim da tabela.
+               var novaLinha = tabela.insertRow(numLinhas);
+
+               novaLinha.setAttribute("id",numLinhas+1);
+               
+               // Faz um loop para criar as colunas
+               for (var j = 0; j < numColunas; j++) {
+                  var a, i;
+                   // Insere uma coluna na nova linha 
+                  novaCelula = novaLinha.insertCell(j);
+                  if(j===0){
+                  novaCelula.innerHTML = valor.toUpperCase();
+                  }else{
+                     a = document.createElement("button");
+                     a.setAttribute("onclick","removerLinhaUnidadesEnvolvidas(this.parentNode.parentNode.rowIndex)");
+                     a.setAttribute("class", "btn btn-link");
+                     i = document.createElement("i");
+                     i.setAttribute("class", "far fa-trash-alt");
+                     a.appendChild(i);
+                     novaCelula.appendChild(a);
+                  }
+               }
+                  
+
+             }
+
+            
+            /*$('select[id="outrasUnidadesEnvolvidas"]').change(function () {
+               var select = document.getElementById('outrasUnidadesEnvolvidas');
+               var value = document.getElementById('outrasUnidadesEnvolvidas').options[select.selectedIndex].value;
+               inserirLinhaTabela(document.getElementById('tabelaUnidadesEnvolvidas'),value);                
+            }); */
+
+
+            function ocultarDetalhamentoRubrica14(){
+               $('#detalheRubrica14').hide();
+               $('#rubrica14Resumida').show();
+               $('#favorecido-nao').prop('checked',true);
+            };
+
+            $('select[id="select-tipo-curso-lato"]').change(function () {
+               var select = document.getElementById('select-tipo-curso-lato');
+               var value = select.options[select.selectedIndex].value;
+               var texto = "";
+                if (value === "aperfeicoamento") {
+                  texto = "Curso de Aperfeiçoamento em:";                   
+                } else if($('select[id="select-tipo-curso-lato"]:checked').val() === "especializacao"){
+                  texto = "Curso de Especialização em:"; 
+                }else{
+                  texto = "Curso de Residência em:"; 
+                }
+
+                document.getElementById('labelNomeCursoLatoSensu').innerHTML = texto;
+                
+            });    
+
+         </script>
+   </body>
+</html>
