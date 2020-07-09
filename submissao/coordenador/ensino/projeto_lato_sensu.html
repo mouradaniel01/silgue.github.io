@@ -134,6 +134,12 @@
             <div class="alert-icone d-flex justify-content-center align-items-center">
                <i class="fas fa-exclamation"></i>
             </div>
+            <div class="alert-information" id="alertInicio">
+               <p><strong>Atenção</strong></p>
+               <ul>
+                  <li><strong>•</strong> Esse é um protótipo de tela navegável. O usuário poderá verificar as telas na sequência de sua preferência.</li>
+               </ul>
+            </div>
             <div class="alert-information">
                <p><strong>Atenção</strong></p>
                <ul>
@@ -160,6 +166,7 @@
                               href="#dadosGerais"
                               role="tab"
                               aria-controls="Dados Gerais"
+                              onclick="inicioDadosGerais()"
                               >
                            Dados gerais
                            </button>
@@ -250,46 +257,52 @@
                                              <option value="residencia">Residência</option>
                                              
                                           </select>
-                                          <label class="required" for="select-tipo-curso-lato">Tipo do Curso
-                                          <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O tipo de curso deve ser uma tabela auxiliar, que permita inserção, remoção e alteração dos dados. O sistema deve listar todos os tipos ativos. Além do nome do tipo, é necessário armazenar nessa tabela as informações se o tipo está ativo ou não, a carga horária mínima e a carga horária máxima. Caso o tipo escolhido seja Residência, o sistema deverá solicitar a carga horária prática.">
-                                             </i>
-                                          </span>
-                                          </label>
+                                          <div class="tooltip-group">
+                                             <label class="required" for="select-tipo-curso-lato">Tipo do Curso
+                                             </label>
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O tipo de curso deve ser uma tabela auxiliar, que permita inserção, remoção e alteração dos dados. O sistema deve listar todos os tipos ativos. Além do nome do tipo, é necessário armazenar nessa tabela as informações se o tipo está ativo ou não, a carga horária mínima e a carga horária máxima. Caso o tipo escolhido seja Residência, o sistema deverá solicitar a carga horária prática.">
+                                                </i>
+                                             </span>
+                                          </div>
                                            
                                           <div class="invalid-feedback">Selecione alguma opção</div>
                                        </div>
                                        <div class="form-group position-relative" >
-                                          <label id="labelNomeCursoLatoSensu" class="required" for="nomeCursoLatoSensu">Nome do curso
-                                          </label>
-                                          <span class="tooltip-icon" id="spanTooltipNomeCursoLato">
+                                          <input class="form-control" id="nomeCursoLatoSensu" type="text" placeholder="Nome do curso." />
+                                          <div class="tooltip-group">
+                                             <label id="labelNomeCursoLatoSensu" class="required" for="nomeCursoLatoSensu">Nome do curso
+                                             </label>
+                                             <span class="tooltip-icon" id="spanTooltipNomeCursoLato">
                                                 <i id="tooltipNomeCursoLato" class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O label desse campo altera conforme o tipo de curso escolhido.">
                                                 </i>
                                              </span>
-                                          <input class="form-control" id="nomeCursoLatoSensu" type="text" placeholder="Nome do curso." />
+                                          </div>
                                        </div>
                                        <div class="form-group position-relative">
                                           <select class="custom-select" id="unidadeResponsavel" required="required" name="unidadeResponsavel">
                                              <option value="hide">Selecione</option>
 
                                           </select>
-                                          <label class="required" for="unidadeResponsavel">Unidade Responsável
+                                          <div class="tooltip-group">
+                                          <label class="required" for="unidadeResponsavel">Unidade Responsável</label>
                                           <span class="tooltip-icon">
                                                 <i id="tooltipNomeCursoLato" class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O sistema deve obter as unidades do sigaa, considerando o tipo de unidade Acadêmica: DEPARTAMENTO,ESCOLA,PROGRAMA_POS,UNID_ACADEMICA_ESPECIALIZADA e ORGAO_SUPLEMENTAR. (select nome from comum.unidade where tipo_academica in (1,2,3,4,7))">
                                                 </i>
                                              </span>
-                                          </label>
+                                          </div>
                                           <div class="invalid-feedback">Selecione alguma opção</div>
                                        </div>
                                        <div class="form-group position-relative">
                                           <input id="unidadeOrcamentariaCursoLato"
                                              class="form-control form-autocomplete" data-type="simples" type="text" placeholder="Digite o nome da unidade  orçamentária do curso..." />
-                                          <label class="required" for="unidadeOrcamentariaCursoLato">Unidade Orçamentária
+                                          <div class="tooltip-group">  
+                                          <label class="required" for="unidadeOrcamentariaCursoLato">Unidade Orçamentária  </label>
                                              <span class="tooltip-icon">
                                                 <i id="tooltipNomeCursoLato" class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O sistema deve obter as unidades do sigaa, considerando o atributo unidade_orcamentaria = true.">
                                                 </i>
                                              </span>
-                                          </label>
+                                         </div>
                                        </div>
                                        <div class="form-group position-relative">
                                            <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modalOutrasUnidadesEnvolvidas">Inserir Outras Unidades Envolvidas</button>
@@ -302,12 +315,14 @@
                                              <option value="semipresencial">Semi-Presencial</option>
                                              
                                           </select>
-                                          <label class="required" for="select-modalidade_educacao">Modalidade de Educação
+                                          <div class="tooltip-group"> 
+                                          <label class="required" for="select-modalidade_educacao">Modalidade de Educação</label>
                                           <span class="tooltip-icon">
                                              <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Buscar as modalidades de educação registradas no SIGAA(comum.modalidade_educacao). Caso a modalidade escohida seja a distância, o sistema deve solicitar os polos EAD.">
                                              </i>
                                           </span>
-                                          </label>
+                                          
+                                       </div>
                                            
                                           <div class="invalid-feedback">Selecione alguma opção</div>
                                        </div>
@@ -319,12 +334,13 @@
                                              <option value="semipresencial">Competência</option>
                                              
                                           </select>
-                                          <label class="required" for="select-metodo-avaliacao">Método de Avaliação
-                                          <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: No sigaa esse campo é parametrizado.">
-                                             </i>
-                                          </span>
-                                          </label>
+                                          <div class="tooltip-group">
+                                             <label class="required" for="select-metodo-avaliacao">Método de Avaliação</label>
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: No sigaa esse campo é parametrizado.">
+                                                </i>
+                                             </span>
+                                          </div>
                                           <div class="invalid-feedback">Selecione alguma opção</div>
                                        </div>
                                        <div class="form-group position-relative" id="divPoloEAD">
@@ -336,13 +352,14 @@
                                           <input class="form-control" id="chCursoLatoSensu" type="text" placeholder="Informe a carga horária prevista para o curso." />
                                        </div>
                                        <div class="form-group position-relative" id="divChPraticaCursoLatoSensu" >
-                                          <label class="required" for="chPraticaCursoLatoSensu">Carga Horária Prática
-                                             <span class="tooltip-icon">
-                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Caso o tipo de curso escolhido seja Residência, o sistema deverá solicitar a carga horária prática.">
-                                                </i>
-                                             </span>
-                                          </label>
                                           <input class="form-control" id="chPraticaCursoLatoSensu" type="text" placeholder="Informe a carga horária prática prevista para o curso." />
+                                          <div class="tooltip-group">
+                                             <label class="required" for="chPraticaCursoLatoSensu">Carga Horária Prática</label>
+                                                <span class="tooltip-icon">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Caso o tipo de curso escolhido seja Residência, o sistema deverá solicitar a carga horária prática.">
+                                                   </i>
+                                                </span>
+                                          </div>
                                        </div>
                                        <div class="form-group position-relative" >
                                           <label class="required" for="numVagasCursoLato">Número de vagas
@@ -351,12 +368,176 @@
                                        </div>
                                        <div class="form-group position-relative">
                                           <output class="form-control" id="numVagasInternosCursoLato" type="text" placeholder="valor total."></output>
-                                          <label for="numVagasInternosCursoLato">Vagas para Servidores Interno
-                                          <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Deve ser 10% do número de vagas informado, considerando números inteiros.">
-                                             </i>
-                                          </span>
+                                          <div class="tooltip-group">
+                                             <label for="numVagasInternosCursoLato">Vagas para Servidores Interno</label>
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Deve ser 10% do número de vagas informado, considerando números inteiros.">
+                                                </i>
+                                             </span>
+                                          </div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-grandeArea" required="required" name="grandeArea">
+                                             <option value="hide">Selecione</option>
+                                             <option value="cienciasagrarias">Ciências Agrárias</option>
+                                             <option value="cienciasbiologicas">Ciências Biológicas</option>
+                                             <option value="cienciasexatas">Ciências Exatas e da Terra</option>
+                                             <option value="70000000">Ciências Humanas</option>
+                                             <option value="60000007">Ciências Sociais Aplicadas</option>
+                                             <option value="cienciasaude">Ciências da Saúde</option>
+                                             <option value="engenharias">Engenharias</option>
+                                             <option value="80000002">Linguística, Letras e Artes</option>
+                                             <option value="90000005">Outra</option>
+                                          </select>
+                                          <div class="tooltip-group">
+                                             <label class="required" for="select-grandeArea">Grande Área</label>
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Considerar a tabela do cnpq ou capes?">
+                                                </i>
+                                             </span>
+                                          </div>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-area" required="required" name="area">
+                                             <option value="hide">Selecione</option>
+                                          </select>
+                                          <div class="tooltip-group">
+                                             <label class="required" for="area">Área</label>
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: A listagem de áreas é preenchida com base na grande área escolhida.">
+                                                </i>
+                                             </span>
+                                          </div>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-subArea"  name="subArea">
+                                             <option value="hide">Selecione</option>
+                                             <option >SubArea 1</option>
+                                             <option >SubÁrea 2</option>
+                                          </select>
+                                          <div class="tooltip-group">
+                                             <label class="required" for="subArea">SubÁrea</label>
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: As subáreas são preenchidas com base na área escolhida e não são obrigatórias.">
+                                                </i>
+                                             </span>
+                                          </div>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-especialidade"  name="especialidade">
+                                             <option value="hide">Selecione</option>
+                                             <option >SubArea 1</option>
+                                             <option >SubÁrea 2</option>
+                                          </select>
+                                          <div class="tooltip-group">
+                                             <label class="required" for="especialidade">Especialidade
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: As especialidades são preenchidas com base na subÁrea escolhida e ñão são obrigatórias.">
+                                                </i>
+                                             </span>
+                                          </div>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-tipoTCC"  name="tipoTCC">
+                                             <option value="hide">Selecione</option>
+                                             <option value="monografia">MONOGRAFIA</option>
+                                             <option value="outros">OUTROS</option>
+                                             <option value="pratica">PRÁTICA</option>
+                                             <option value="seminario">SEMINÁRIO</option>
+                                          </select>
+                                          <div class="tooltip-group">
+                                             <label class="required" for="tipoTCC">Tipo do Trabalho de Conclusão
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Deve listar os tipos de trabalho de conclusão do sigaa. (ensino.tipo_trabalho_conclusao)">
+                                                </i>
+                                             </span>
+                                          </div>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative" id="divChPraticaCursoLatoSensu" >
+                                          <input class="form-control" id="habilitacaoespecifica" type="text" placeholder="Informe a carga horária prática prevista para o curso." />
+                                          <div class="tooltip-group">
+                                             <label class="required" for="habilitacaoespecifica">Habilitação Específica</label>
+                                                <span class="tooltip-icon">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Título que o estudante receberá ao concluir o curso.">
+                                                   </i>
+                                                </span>
+                                          </div>
+                                       </div>
+                                       <div class="form-inline position-relative">
+                                          <label class="d-block required">Banca Examinadora:
                                           </label>
+                                          <div class="form-check form-check-inline m-2">
+                                             <input class="form-check-input" id="bancaexaminadora-sim" type="radio" name="bancaexaminadora" value="Sim" />
+                                              <label class="form-check-label" for="bancaexaminadora-sim">Sim</label>
+                                          </div>
+                                          <div class="form-check form-check-inline m-2">
+                                             <input class="form-check-input" id="bancaexaminadora-nao" type="radio" name="bancaexaminadora" value="Nao" checked/>
+                                             <label class="form-check-label" for="bancaexaminadora-nao">Não                                                
+                                             </label>
+                                          </div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-financiamento"  name="financiamento">
+                                             <option value="hide">Selecione</option>
+                                             <option value="monografia">Convênio</option>
+                                             <option value="outros">Financiamento Aluno</option>
+                                             <option value="pratica">Sem Financiamento</option>
+                                          </select>
+                                          <div class="tooltip-group">
+                                             <label class="required" for="elect-financiamento">Financiamento
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Deve listar os tipos de financiamento lato sensu ativos (lato_sensu.financiamento_curso_lato)">
+                                                </i>
+                                             </span>
+                                          </div>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative" >
+                                         <input class="form-control" id="dataInicioCurso" type="date" />
+                                          <label class="required" for="dataInicioCurso">Data Início do Curso</label> 
+                                       </div>
+                                       <div class="form-group position-relative" id="divDataFimCurso">
+                                         <input class="form-control" id="dataFimCurso" type="date" />
+                                          <label class="required" for="dataFimCurso">Data Fim do Curso</label> 
+                                       </div>
+                                       <div class="form-group position-relative" >
+                                          <input class="form-control" id="qtdMensalidade" type="text" placeholder="Quantidade de mensalidades do curso." />
+                                          <div class="tooltip-group">
+                                             <label for="qtdMensalidade">Quantidade de Mensalidades</label>
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Informação não é obrigatória, mas se informar, deverá informar também o vencimento da 1º mensalidade e o valor das mensalidades.">
+                                                </i>
+                                             </span>
+                                          </div>
+                                       </div>
+                                       <div class="form-group position-relative" id="detalheMensalidade">
+                                          <div class="form-group position-relative">
+                                             <input class="form-control" id="vencimento1mensalidade" type="date" />
+                                             <div class="tooltip-group">
+                                             <label for="vencimento1mensalidade">Vencimento 1º mensalidade</label>
+                                                <span class="tooltip-icon">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: A primeira mensalidade do curso terá esta data de vencimento. As mensalidades subsequentes terão o mesmo dia de vencimento em cada mês. Se um discente for cadastrado até 30 dias antes dessa data ou em uma data posterior então a primeira mensalidade dele será no mês seguinte à data de cadastro com o mesmo dia de vencimento.">
+                                                   </i>
+                                                </span>
+                                             </div>
+                                          </div>
+                                          <div class="form-group position-relative">
+                                             <input class="form-control" id="vlrMensalidade" type="text" placeholder="Valor das mensalidades do curso." />
+                                             <div class="tooltip-group">
+                                                <label class="required" for="vlrMensalidade">Valor das Mensalidades</label>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="form-group position-relative" >
+                                          <input class="form-control" id="publicoAlvo" type="text" placeholder="Público alvo do curso." />
+                                          <div class="tooltip-group">
+                                             <label for="publicoAlvo">Público Alvo</label>
+                                          </div>
                                        </div>
                                  </form>
                               <!--</article>   -->
@@ -624,25 +805,50 @@
          <script>
             new window.VLibras.Widget('https://vlibras.gov.br/app');
          </script>
+         <script src="../../../js/tabela_capes.js"></script>
          <script src="../../../js/unidades.js"></script>
          <script src="../../../js/prototipo.js"></script>
          <script>
             
             autocomplete(document.getElementById("unidadeOrcamentariaCursoLato"), unidadesAcademicas);
 
-            selectUnidades(document.getElementById("unidadeResponsavel"), unidadesAcademicas);
+            populaSelect(document.getElementById("unidadeResponsavel"), unidadesAcademicas);
 
-            selectUnidades(document.getElementById("outrasUnidadesEnvolvidas"), unidadesAcademicas);
+            populaSelect(document.getElementById("outrasUnidadesEnvolvidas"), unidadesAcademicas);
 
-            selectUnidades(document.getElementById("select-polo-ead"), polosEAD);
-
+            populaSelect(document.getElementById("select-polo-ead"), polosEAD);
 
             
-            function ocultarDetalhamentoRubrica14(){
-               $('#detalheRubrica14').hide();
-               $('#rubrica14Resumida').show();
-               $('#favorecido-nao').prop('checked',true);
+            
+            function inicioDadosGerais(){
+               $('#detalheMensalidade').hide();
+               $('#divChPraticaCursoLatoSensu').hide();
+               $('#divPoloEAD').hide();
+               
             }
+
+            $('select[id="select-grandeArea"]').change(function () {
+               var select = document.getElementById('select-grandeArea');
+               var value = select.options[select.selectedIndex].value;
+               var texto = "";
+                if (value === "cienciasexatas") {
+                  limpaSelect(document.getElementById("select-area"));
+                  populaSelect(document.getElementById("select-area"), cienciasexatas);
+                 }else if(value === "cienciasbiologicas"){
+                  limpaSelect(document.getElementById("select-area"));
+                  populaSelect(document.getElementById("select-area"), cienciasbiologicas);
+                 }else if(value === "engenharias"){
+                  limpaSelect(document.getElementById("select-area"));
+                  populaSelect(document.getElementById("select-area"), engenharias);
+                 }else if(value === "cienciasSaude"){
+                  limpaSelect(document.getElementById("select-area"));
+                  populaSelect(document.getElementById("select-area"), cienciasSaude);
+                 }else{
+                  limpaSelect(document.getElementById("select-area"));
+                  populaSelect(document.getElementById("select-area"), outrasAreas);
+                 }
+                
+            }); 
 
             $('select[id="select-tipo-curso-lato"]').change(function () {
                var select = document.getElementById('select-tipo-curso-lato');
@@ -656,6 +862,7 @@
                   texto = "Curso de Especialização em:"; 
                 }else{
                  $('#divChPraticaCursoLatoSensu').show(); 
+                 $('#divDataFimCurso').hide();
                   texto = "Curso de Residência em:"; 
                 }
 
@@ -684,6 +891,14 @@
                   document.getElementById('numVagasInternosCursoLato').innerHTML = n2;
                }
             });
+
+            $('input[id="qtdMensalidade"]').change(function () {
+               if(document.getElementById("qtdMensalidade").value.length > 0){
+                  $('#detalheMensalidade').show();
+               }
+            });
+
+                     
 
          </script>
    </body>

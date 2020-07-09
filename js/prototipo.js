@@ -1,6 +1,12 @@
-function selectUnidades(elemento, array){
-	array.forEach((unidade) => {
-      option = new Option(unidade, unidade.toLowerCase());
+function limpaSelect(elemento){
+	while (elemento.length > 0) {
+	    elemento.remove(elemento.length-1);
+	  }
+  }
+
+function populaSelect(elemento, array){
+	array.forEach((opt) => {
+      option = new Option(opt, opt.toLowerCase());
       elemento.options[elemento.options.length] = option;
     });
 }
