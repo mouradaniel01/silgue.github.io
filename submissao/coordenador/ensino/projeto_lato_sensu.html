@@ -267,7 +267,6 @@
                                                 </i>
                                              </span>
                                           <input class="form-control" id="nomeCursoLatoSensu" type="text" placeholder="Nome do curso." />
-                                          
                                        </div>
                                        <div class="form-group position-relative">
                                           <select class="custom-select" id="unidadeResponsavel" required="required" name="unidadeResponsavel">
@@ -305,14 +304,32 @@
                                           </select>
                                           <label class="required" for="select-modalidade_educacao">Modalidade de Educação
                                           <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Buscar as modalidades de educação registradas no SIGAA.">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Buscar as modalidades de educação registradas no SIGAA(comum.modalidade_educacao).">
                                              </i>
                                           </span>
                                           </label>
                                            
                                           <div class="invalid-feedback">Selecione alguma opção</div>
                                        </div>
-                                    </div>
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-metodo-avaliacao" required="required" name="metodo-avaliacao">
+                                             <option value="hide">Selecione</option>
+                                             <option value="adistancia">Nota</option>
+                                             <option value="presencial">Conceito</option>
+                                             <option value="semipresencial">Competência</option>
+                                             
+                                          </select>
+                                          <label class="required" for="select-metodo-avaliacao">Método de Avaliação
+                                          <span class="tooltip-icon">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: No sigaa esse campo é parametrizado.">
+                                             </i>
+                                          </span>
+                                          </label>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative" id="divPoloEAD">
+                                           <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modalPoloEAD">Inserir Pólo(s)</button>
+                                       </div>
                                  </form>
                               <!--</article>   -->
                            </section>
@@ -478,7 +495,7 @@
                                     <div class="invalid-feedback">Selecione alguma opção</div>
                                  </div>
                                  <div class="form-group position-relative">
-                                    <button type="button" class="btn btn-primary" onclick="inserirLinhaUnidadesEnvolvidas()">Inserir</button>
+                                    <button type="button" class="btn btn-primary" onclick="inserirLinhaTabela('tabelaUnidadesEnvolvidas','outrasUnidadesEnvolvidas')">Inserir</button>
                                  </div>
                                  <table class="table table-striped" data-toggle="table" id="tabelaUnidadesEnvolvidas">
                                     <thead>
@@ -503,6 +520,57 @@
                         </div>
                      </div>
                      <!-- Fim do modal de Responsável Entidade-->
+                     <!-- Modal para inserção de Pólo EAD-->
+                     <div class="modal fade" id="modalPoloEAD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h5 class="modal-title">Pólo EAD
+                                 </h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                 <span aria-hidden="true">&times;</span>
+                                 </button>
+                              </div>
+                              <div class="modal-body">
+                                 <div class="form-group position-relative">
+                                    <select class="custom-select" id="select-polo-ead" required="required" name="poloEAD">
+                                       <option value="hide">Selecione</option>
+
+                                    </select>
+                                    <label class="required" for="select-polo-ead">Pólo EAD
+                                    <span class="tooltip-icon">
+                                          <i id="tooltipNomeCursoLato" class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O pólo só é solicitado caso a modalidade de educação escolhida seja A distância. Os pólos são cadastrados no sigaa e devem ser exibidos no formato nome_da_cidade (obsevacao). Ex.: Natal (Edgar Barbosa) select c.nome,p.observacao from ead.polo p join comum.municipio c on p.id_cidade=c.id_municipio">
+                                          </i>
+                                       </span>
+                                    </label>
+                                    <div class="invalid-feedback">Selecione alguma opção</div>
+                                 </div>
+                                 <div class="form-group position-relative">
+                                    <button type="button" class="btn btn-primary" onclick="inserirLinhaTabela('tabelaPoloEAD','select-polo-ead')">Inserir</button>
+                                 </div>
+                                 <table class="table table-striped" data-toggle="table" id="tabelaPoloEAD">
+                                    <thead>
+                                       <tr>                                             
+                                          <th>Lista das Unidades Envolvidas</th>
+                                          <th class="w-10 text-center">Ações</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>   
+                                          <td></td>
+                                          <td></td>
+                                       </tr>                                       
+                                    </tbody>
+                                 </table>
+                              </div>
+                              <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                 <button type="button" class="btn btn-primary">Salvar</button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Fim do modal de Pólo EAD-->
                      <div class="tab-pane show" id="objImportancia" role="tabpanel">
                         <p>Objetivo e Importância</p>
                      </div>
@@ -528,6 +596,7 @@
          <script>
             new window.VLibras.Widget('https://vlibras.gov.br/app');
          </script>
+         <script src="../../../js/unidades.js"></script>
          <script src="../../../js/prototipo.js"></script>
          <script>
             
@@ -537,61 +606,15 @@
 
             selectUnidades(document.getElementById("outrasUnidadesEnvolvidas"), unidadesAcademicas);
 
-            function removerLinhaUnidadesEnvolvidas(i){
-               document.getElementById("tabelaUnidadesEnvolvidas").deleteRow(i);
-            }
+            selectUnidades(document.getElementById("select-polo-ead"), polosEAD);
 
-            function inserirLinhaUnidadesEnvolvidas() {
-
-               // Captura a referência da tabela com id “minhaTabela”
-               var tabela = document.getElementById("tabelaUnidadesEnvolvidas");
-               //Captura o select
-               var select = document.getElementById("outrasUnidadesEnvolvidas");
-               //Captura o valor do select
-               var valor = select.options[select.selectedIndex].value;
-               // Captura a quantidade de linhas já existentes na tabela
-               var numLinhas = tabela.rows.length;
-               // Captura a quantidade de colunas da última linha da tabela
-               var numColunas = tabela.rows[numLinhas-1].cells.length;
-               // Insere uma linha no fim da tabela.
-               var novaLinha = tabela.insertRow(numLinhas);
-
-               novaLinha.setAttribute("id",numLinhas+1);
-               
-               // Faz um loop para criar as colunas
-               for (var j = 0; j < numColunas; j++) {
-                  var a, i;
-                   // Insere uma coluna na nova linha 
-                  novaCelula = novaLinha.insertCell(j);
-                  if(j===0){
-                  novaCelula.innerHTML = valor.toUpperCase();
-                  }else{
-                     a = document.createElement("button");
-                     a.setAttribute("onclick","removerLinhaUnidadesEnvolvidas(this.parentNode.parentNode.rowIndex)");
-                     a.setAttribute("class", "btn btn-link");
-                     i = document.createElement("i");
-                     i.setAttribute("class", "far fa-trash-alt");
-                     a.appendChild(i);
-                     novaCelula.appendChild(a);
-                  }
-               }
-                  
-
-             }
 
             
-            /*$('select[id="outrasUnidadesEnvolvidas"]').change(function () {
-               var select = document.getElementById('outrasUnidadesEnvolvidas');
-               var value = document.getElementById('outrasUnidadesEnvolvidas').options[select.selectedIndex].value;
-               inserirLinhaTabela(document.getElementById('tabelaUnidadesEnvolvidas'),value);                
-            }); */
-
-
             function ocultarDetalhamentoRubrica14(){
                $('#detalheRubrica14').hide();
                $('#rubrica14Resumida').show();
                $('#favorecido-nao').prop('checked',true);
-            };
+            }
 
             $('select[id="select-tipo-curso-lato"]').change(function () {
                var select = document.getElementById('select-tipo-curso-lato');
@@ -607,7 +630,21 @@
 
                 document.getElementById('labelNomeCursoLatoSensu').innerHTML = texto;
                 
-            });    
+            });  
+
+            $('select[id="select-modalidade_educacao"]').change(function () {
+               var select = document.getElementById('select-modalidade_educacao');
+               var value = select.options[select.selectedIndex].value;
+               var texto = "";
+                if (value === "adistancia") {
+                    $('#divPoloEAD').show();                
+                } else if(value === "semipresencial"){
+                  $('#divPoloEAD').hide();
+                }else{
+                  $('#divPoloEAD').hide();
+                }
+                
+            });  
 
          </script>
    </body>
