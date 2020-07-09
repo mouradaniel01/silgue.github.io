@@ -252,7 +252,7 @@
                                           </select>
                                           <label class="required" for="select-tipo-curso-lato">Tipo do Curso
                                           <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O tipo de curso deve ser uma tabela auxiliar, que permita inserção, remoção e alteração dos dados. O sistema deve listar todos os tipos ativos. Além do nome do tipo, é necessário armazenar nessa tabela as informações se o tipo está ativo ou não, a carga horária mínima e a carga horária máxima. Não é obrigatório a informação da carga horária.">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O tipo de curso deve ser uma tabela auxiliar, que permita inserção, remoção e alteração dos dados. O sistema deve listar todos os tipos ativos. Além do nome do tipo, é necessário armazenar nessa tabela as informações se o tipo está ativo ou não, a carga horária mínima e a carga horária máxima. Caso o tipo escolhido seja Residência, o sistema deverá solicitar a carga horária prática.">
                                              </i>
                                           </span>
                                           </label>
@@ -304,7 +304,7 @@
                                           </select>
                                           <label class="required" for="select-modalidade_educacao">Modalidade de Educação
                                           <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Buscar as modalidades de educação registradas no SIGAA(comum.modalidade_educacao).">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Buscar as modalidades de educação registradas no SIGAA(comum.modalidade_educacao). Caso a modalidade escohida seja a distância, o sistema deve solicitar os polos EAD.">
                                              </i>
                                           </span>
                                           </label>
@@ -328,7 +328,35 @@
                                           <div class="invalid-feedback">Selecione alguma opção</div>
                                        </div>
                                        <div class="form-group position-relative" id="divPoloEAD">
-                                           <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modalPoloEAD">Inserir Pólo(s)</button>
+                                           <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modalPoloEAD">Inserir Pólo(s) EAD</button>
+                                       </div>
+                                       <div class="form-group position-relative" >
+                                          <label class="required" for="chCursoLatoSensu">Carga Horária
+                                          </label>
+                                          <input class="form-control" id="chCursoLatoSensu" type="text" placeholder="Informe a carga horária prevista para o curso." />
+                                       </div>
+                                       <div class="form-group position-relative" id="divChPraticaCursoLatoSensu" >
+                                          <label class="required" for="chPraticaCursoLatoSensu">Carga Horária Prática
+                                             <span class="tooltip-icon">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Caso o tipo de curso escolhido seja Residência, o sistema deverá solicitar a carga horária prática.">
+                                                </i>
+                                             </span>
+                                          </label>
+                                          <input class="form-control" id="chPraticaCursoLatoSensu" type="text" placeholder="Informe a carga horária prática prevista para o curso." />
+                                       </div>
+                                       <div class="form-group position-relative" >
+                                          <label class="required" for="numVagasCursoLato">Número de vagas
+                                          </label>
+                                          <input class="form-control" id="numVagasCursoLato" type="text" placeholder="Informe o número de vagas que o curso ofertará." />
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <output class="form-control" id="numVagasInternosCursoLato" type="text" placeholder="valor total."></output>
+                                          <label for="numVagasInternosCursoLato">Vagas para Servidores Interno
+                                          <span class="tooltip-icon">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Deve ser 10% do número de vagas informado, considerando números inteiros.">
+                                             </i>
+                                          </span>
+                                          </label>
                                        </div>
                                  </form>
                               <!--</article>   -->
@@ -621,10 +649,13 @@
                var value = select.options[select.selectedIndex].value;
                var texto = "";
                 if (value === "aperfeicoamento") {
+                  $('#divChPraticaCursoLatoSensu').hide();
                   texto = "Curso de Aperfeiçoamento em:";                   
                 } else if($('select[id="select-tipo-curso-lato"]:checked').val() === "especializacao"){
+                  $('#divChPraticaCursoLatoSensu').hide();
                   texto = "Curso de Especialização em:"; 
                 }else{
+                 $('#divChPraticaCursoLatoSensu').show(); 
                   texto = "Curso de Residência em:"; 
                 }
 
@@ -645,6 +676,14 @@
                 }
                 
             });  
+
+            $('input[id="numVagasCursoLato"]').change(function () {
+               if(document.getElementById("numVagasCursoLato").value.length > 0){
+                  var n1 = parseInt(document.getElementById('numVagasCursoLato').value, 10);
+                  var n2 =  ((n1/10)).toFixed(0);
+                  document.getElementById('numVagasInternosCursoLato').innerHTML = n2;
+               }
+            });
 
          </script>
    </body>
