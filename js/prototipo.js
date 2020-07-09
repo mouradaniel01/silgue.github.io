@@ -62,6 +62,41 @@ function inserirLinhaTabela(idTabela,idSelect) {
    }
 }
 
+function inserirLinhaTabelaByInput(idTabela,idInput) {
+   // Captura a referência da tabela com id “minhaTabela”
+   var tabela = document.getElementById(idTabela);
+   //Captura o select
+   var input = document.getElementById(idInput);
+   //Captura o valor do select
+   var valor = input.value;
+   // Captura a quantidade de linhas já existentes na tabela
+   var numLinhas = tabela.rows.length;
+   // Captura a quantidade de colunas da última linha da tabela
+   var numColunas = tabela.rows[numLinhas-1].cells.length;
+   // Insere uma linha no fim da tabela.
+   var novaLinha = tabela.insertRow(numLinhas);
+
+   novaLinha.setAttribute("id",numLinhas+1);
+   
+   // Faz um loop para criar as colunas
+   for (var j = 0; j < numColunas; j++) {
+      var a, i;
+       // Insere uma coluna na nova linha 
+      novaCelula = novaLinha.insertCell(j);
+      if(j===0){
+      novaCelula.innerHTML = valor.toUpperCase();
+      }else{
+         a = document.createElement("button");
+         a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
+         a.setAttribute("class", "btn btn-link");
+         i = document.createElement("i");
+         i.setAttribute("class", "far fa-trash-alt");
+         a.appendChild(i);
+         novaCelula.appendChild(a);
+      }
+   }
+}
+
 function removerLinhaTabela(i,idTabela){
    document.getElementById(idTabela).deleteRow(i);
 }

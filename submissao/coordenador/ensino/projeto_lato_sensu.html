@@ -539,6 +539,13 @@
                                              <label for="publicoAlvo">Público Alvo</label>
                                           </div>
                                        </div>
+                                       <div class="form-group position-relative">
+                                           <div class="custom-file">
+                                             <input class="custom-file-input" type="file" id="arquivo" />
+                                             <label class="custom-file-label" for="arquivo">Escolha seu arquivo</label>
+                                           </div>
+                                           <label>Arquivo</label>
+                                         </div>
                                  </form>
                               <!--</article>   -->
                            </section>
@@ -547,134 +554,115 @@
                      <!-- Início de Partícipes-->
                          <div class="tab-pane show" id="coordCurso" role="tabpanel">
                            <section class="m-3" >
-                              <h4>Coordenação Curso
-                              <span class="tooltip-icon">
-                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Para tipo A ou B, o sistema deve inserir a UFRN como partícipe e classificá-la como contratante e inserir a FUNPEC e classificá-la como contratada. Se o tipo for C, o sistema deve inserir a UFRN como contratada e a FUNPEC como contratante. Para o tipo D, o sistema deve cadastrar a UFRN como interveniente/Executora, a FUNPEC como contratada e solicitar a inclusão de outro(s) partícipes que deverão ser classificado(s) como contratante(s). ">
-                                 </i>
-                              </span>
-                              </h4>
                               <p class="advice">* Campos Obrigatórios</p>
-                              <form>
+                              <form class="border-0" id="form-filtro">                                 
                                  <div class="conteudo-principal__content m-0">
                                     <article class="conteudo-principal">
+                                       <div class="conteudo-principal__header">
+                                             <h4>Coordenação do Curso</h4>
+                                          </div>
                                        <div class="form-group m-0 my-3 px-4">
-                                          <div class="form-inline position-relative">
-                                             <!--<input id="entidade"
-                                                class="form-control form-autocomplete" data-type="simples" type="text" placeholder="Digite o nome do órgão/Instituição..." />
-                                             <label for="entidade">Órgão/Entidade</label>-->
-                                             <label for="text-input">Órgão/Entidade
+                                          <div class="form-group position-relative">
+                                             <div class="tooltip-group">
+                                             <label class="required" for="coordenador">Coordenador(a)</label>
                                                 <span class="tooltip-icon">
-                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O órgão/Entidade deve ser uma pessoa jurídica.">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O coordenador do curso deve ser um docente efetivo da UFRN. Coloquei apenas 3 docentes para visualizar: Rubens Maribondo, apuena e itamir barroca. ">
                                                    </i>
                                                 </span>
-                                             </label>
-                                             <input class="form-control m-2" id="entidade" type="text" placeholder="Digite o nome do Órgão/Entidade..." />                                          
-                                             <button type="button" class="btn btn-link" href="#">
-                                             <i class="fas fa-search"></i>
-                                             </button>
+                                             </div>
+                                             <input class="form-control form-autocomplete" data-type="simples" id="coordenador" type="text" placeholder="Informe o docente que será coordenador do curso." /> 
                                           </div>
-                                       </div>
-                                          <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaEntidades">
-                                             <table class="table table-striped" data-toggle="table">
+                                          <div class="form-group position-relative">
+                                             <label class="required" for="emailcoordenador">Email de Contato</label>
+                                             <input class="form-control m-2" id="emailcoordenador" type="text" placeholder="Informe o email para contato com o coordenador." /> 
+                                          </div>
+                                          <div class="form-group position-relative">
+                                             <label class="required" for="telefonecoordenador">Telefone de Contato</label>
+                                             <input class="form-control m-2" id="telefonecoordenador" type="text" placeholder="Informe o telefone para contato com o coordenador." /> 
+                                          </div>
+                                          <div class="form-group position-relative" >
+                                            <input class="form-control" id="dataInicioMandato" type="date" />
+                                             <label  class="required" for="dataInicioMandato">Data Início do Mandato</label> 
+                                          </div>
+                                          <div class="form-group position-relative" >
+                                            <input class="form-control" id="dataFimMandato" type="date" />
+                                             <label class="required" for="dataFimMandato">Data Fim do Mandato</label> 
+                                          </div>
+                                       </article>
+                                       <!--Início Vice Coordenador-->
+                                       <article class="conteudo-principal">
+                                          <div class="conteudo-principal__header">
+                                             <h4>Vice-Coordenação do Curso</h4>
+                                          </div>
+                                          <div class="form-group m-0 my-3 px-4">
+                                             <div class="form-group position-relative">
+                                                <div class="tooltip-group">
+                                                <label class="required" for="coordenador">Vice-Coordenador(a)</label>
+                                                   <span class="tooltip-icon">
+                                                      <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O vice-coordenador do curso deve ser um docente efetivo da UFRN.Coloquei apenas 3 docentes para visualizar: Rubens Maribondo, apuena e itamir barroca.">
+                                                      </i>
+                                                   </span>
+                                                </div>
+                                                <input class="form-control form-autocomplete" data-type="simples" id="vicecoordenador" type="text" placeholder="Informe o docente que será vice-coordenador do curso." /> 
+                                             </div>
+                                             <div class="form-group position-relative">
+                                                <label class="required" for="emailvicecoordenador">Email de Contato</label>
+                                                <input class="form-control m-2" id="emailvicecoordenador" type="text" placeholder="Informe o email para contato com o coordenador." /> 
+                                             </div>
+                                             <div class="form-group position-relative">
+                                                <label class="required" for="telefonevicecoordenador">Telefone de Contato</label>
+                                                <input class="form-control m-2" id="telefonevicecoordenador" type="text" placeholder="Informe o telefone para contato com o coordenador." /> 
+                                             </div>
+                                             <div class="form-group position-relative" >
+                                               <input class="form-control" id="dataInicioMandatoVice" type="date" />
+                                                <label class="required" for="dataInicioMandatoVice">Data Início do Mandato</label> 
+                                             </div>
+                                             <div class="form-group position-relative" >
+                                               <input class="form-control" id="dataFimMandatoVice" type="date" />
+                                                <label class="required" for="dataFimMandatoVice">Data Fim do Mandato</label> 
+                                             </div>
+                                          </div>
+                                       </article>
+                                       <!-- Fim vice coordenador-->
+                                       <!-- Início secretariado-->
+                                       <article class="conteudo-principal">
+                                          <div class="conteudo-principal__header">
+                                             <h4>Secretariado do Curso</h4>
+                                          </div>
+                                          <div class="form-group m-0 my-3 px-4">
+                                             <div class="form-group position-relative">
+                                                <input id="secretarioCurso"
+                                                   class="form-control form-autocomplete" data-type="simples" type="text" placeholder="Digite o nome do servidor técnico administrativo." />
+                                                <div class="tooltip-group">  
+                                                   <label for="secretarioCurso">Servidor  </label>
+                                                   <span class="tooltip-icon">
+                                                      <i id="tooltipNomeCursoLato" class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Não é obrigatório inserir um secretário(a). O(A) secretário(a) deve ser servidor técnico admnistrativo da UFRN. Para visualizar, coloquei Fernanda e Clarissa como exemplo para inserir.">
+                                                      </i>
+                                                   </span>
+                                                </div>
+                                                <div class="form-group position-relative mt-2">
+                                                   <button type="button" class="btn btn-primary" onclick="inserirLinhaTabelaByInput('tabelaSecretariado','secretarioCurso')">Inserir</button>
+                                                </div>
+                                             </div>
+                                             <table class="table table-striped" data-toggle="table" id="tabelaSecretariado">
                                                 <thead>
                                                    <tr>
-                                                      <th></th>
                                                       <th>Nome</th>
-                                                      <th>CNPJ</th>
-                                                      <th>Endereço</th>
-                                                      <th>Cidade</th>
-                                                      <th>UF</th>
+                                                      <th>Ação</th>
                                                    </tr>
                                                 </thead>
                                                 <tbody>
                                                    <tr>
-                                                      <td><input class="form-check-input m-2" id="checkEntidade" type="checkbox"  /></td>
-                                                      <td>REPSOL </td>
-                                                      <td>000.0000/0001-01</td>
-                                                      <td>Rua Praia do Botafogo</td>
-                                                      <td>RJ</td>
-                                                      <td>RJ</td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td><input class="form-check-input m-2" id="checkEntidade" type="checkbox"  /></td>
-                                                      <td>REPSOL </td>
-                                                      <td>000.0000/0001-02</td>
-                                                      <td>Av. Paulista</td>
-                                                      <td>SP</td>
-                                                      <td>SP</td>
+                                                      <td></td>
+                                                      <td></td>
                                                    </tr>
                                                 </tbody>
                                              </table>
                                           </div>
-                                          <div class="form-control m-0 my-3 px-4">
-                                             <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i>        Inserir
-                                             </button> 
-                                          </div>  
-                                       </form>
-                                   </article>
-                                   <article class="conteudo-principal">
-                                       <div class="conteudo-principal__header">
-                                          <h1>Partícipes Inseridos</h1>
-                                          <span class="tooltip-icon">
-                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Os partícipes UFRN e FUNPEC não podem ser removidos e nem cadastrados responsáveis para eles, pois os responsáveis da UFRN e FUNPEC devem ser inseridos automáticamente, a partir de uma tabela auxiliar, que permita que o administrador do modulo altere tais informações quando necessário.  ">
-                                             </i>
-                                          </span>
-                                       </div>
-                                       <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaEntidades">
-                                          <table class="table table-striped" data-toggle="table">
-                                             <thead>
-                                                <tr>
-                                                   <th>Tipo</th>
-                                                   <th>Nome</th>
-                                                   <th>CNPJ</th>
-                                                   <th>Endereço</th>
-                                                   <th>Cidade</th>
-                                                   <th>UF</th>
-                                                   <th>Ações</th>
-                                                </tr>
-                                             </thead>
-                                             <tbody>
-                                                <tr>
-                                                   <td>Interveniente/Executora</td>
-                                                   <td>UFRN </td>
-                                                   <td>000.0000/0001-10</td>
-                                                   <td>Av. Salgado Filho, 3000</td>
-                                                   <td>Natal</td>
-                                                   <td>RN</td>
-                                                   <td>
-                                                   </td>
-                                                </tr>
-                                                 <tr>
-                                                   <td>Contratada</td>
-                                                   <td>FUNPEC </td>
-                                                   <td>000.0000/0001-20</td>
-                                                   <td>Av. Salgado Filho, 3000</td>
-                                                   <td>Natal</td>
-                                                   <td>RN</td>
-                                                   <td></td>
-                                                </tr>
-                                                <tr>
-                                                   <td>Contratante</td>
-                                                   <td>PETROBRAS S/A </td>
-                                                   <td>000.0000/0001-30</td>
-                                                   <td>Rua Rio Grande do Norte</td>
-                                                   <td>Natal</td>
-                                                   <td>RN</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="inserirResponsavel" class="btn btn-link " data-toggle="modal" data-target="#modalresponsavelEntidade">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>                                                  
-                                                </tr>
-                                             </tbody>
-                                          </table>
-                                       </div>
-                                   </article>
-                                 </div>
-                              </form>
+                                       </article>
+                                       <!--Fim do secretariado do curso-->
+                                    </div>
+                                 </form>
                             </section>
                          </div>
                      <!--Fim de Partícipes-->
@@ -805,12 +793,19 @@
          <script>
             new window.VLibras.Widget('https://vlibras.gov.br/app');
          </script>
+         <script src="../../../js/pessoa.js"></script>
          <script src="../../../js/tabela_capes.js"></script>
          <script src="../../../js/unidades.js"></script>
          <script src="../../../js/prototipo.js"></script>
          <script>
             
             autocomplete(document.getElementById("unidadeOrcamentariaCursoLato"), unidadesAcademicas);
+
+            autocomplete(document.getElementById("secretarioCurso"), servidores);
+
+            autocomplete(document.getElementById("coordenador"), docentes);
+
+            autocomplete(document.getElementById("vicecoordenador"), docentes);
 
             populaSelect(document.getElementById("unidadeResponsavel"), unidadesAcademicas);
 
