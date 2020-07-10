@@ -329,9 +329,9 @@
                                        <div class="form-group position-relative">
                                           <select class="custom-select" id="select-metodo-avaliacao" required="required" name="metodo-avaliacao">
                                              <option value="hide">Selecione</option>
-                                             <option value="adistancia">Nota</option>
-                                             <option value="presencial">Conceito</option>
-                                             <option value="semipresencial">Competência</option>
+                                             <option value="nota">Nota</option>
+                                             <option value="conceito">Conceito</option>
+                                             <option value="competencia">Competência</option>
                                              
                                           </select>
                                           <div class="tooltip-group">
@@ -551,7 +551,7 @@
                            </section>
                         </div>
                      <!--Fim Dados Gerais -->
-                     <!-- Início de Partícipes-->
+                     <!-- Início de Coordenação Curso-->
                          <div class="tab-pane show" id="coordCurso" role="tabpanel">
                            <section class="m-3" >
                               <p class="advice">* Campos Obrigatórios</p>
@@ -559,8 +559,8 @@
                                  <div class="conteudo-principal__content m-0">
                                     <article class="conteudo-principal">
                                        <div class="conteudo-principal__header">
-                                             <h4>Coordenação do Curso</h4>
-                                          </div>
+                                          <h4>Coordenação do Curso</h4>
+                                       </div>
                                        <div class="form-group m-0 my-3 px-4">
                                           <div class="form-group position-relative">
                                              <div class="tooltip-group">
@@ -672,9 +672,9 @@
                               <h4>Objetivos e Importância</h4>
                               <p class="advice">* Campos Obrigatórios</p>
                               <div class="conteudo-principal__content m-0">
-                                 <!--<article class="conteudo-principal">-->
+                                 
                                  <form class="border-0" id="form-filtro">
-                                    <article class="conteudo-principal">
+                                    <article class="conteudo-principal m-0 my-3 px-4">
                                        <div class="form-group position-relative">
                                            <textarea class="form-control" id="justificativa-curso-novo" placeholder="Placeholder" data-max-size="1000"></textarea>
                                            <label class="required" for="justificativa-curso-novo">Justificativa/Objetivos</label>
@@ -682,7 +682,7 @@
                                            </div>
                                          </div>
                                     </article>
-                                    <article class="conteudo-principal">
+                                    <article class="conteudo-principal m-0 my-3 px-4">
                                        <div class="form-group position-relative">
                                            <textarea class="form-control" id="local-curso-novo" placeholder="Placeholder" data-max-size="200"></textarea>
                                            <label for="local-curso-novo">Local do curso</label>
@@ -691,18 +691,85 @@
                                          </div>
                                     </article>
                                  </form>
-                              </div>
+                              
                            </section>  
                      </div>
                      <!-- Fim da aba Objetivo e Importância
                      <!-- Inicio Processo Seletivo -->
                      <div class="tab-pane show" id="processoSeletivo" role="tabpanel">
                            <section class="m-3" >
-                              <h4>Processo Seletivo</h4>
+                              <h4>Processo Seletivo
+                                 <span class="tooltip-icon">
+                                    <i id="tooltipNomeCursoLato" class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: De acordo com a modalidade de avaliação escolhida, o sistema irá solicitar o conceito ou nota. No caso de competência, não será solicitado informação adicional.">
+                                    </i>
+                                 </span>
+                              </h4>
                               <p class="advice">* Campos Obrigatórios</p>
                               <div class="conteudo-principal__content m-0">
-                                 <!--<article class="conteudo-principal">-->
+                                 <div class="form-group m-0 my-3 px-4">
                                  <form class="border-0" id="form-filtro">
+                                    <div class="form-group position-relative">
+                                       <label>Forma de Seleção</label>
+                                       <div class="form-check">
+                                          <input class="form-check-input" id="curriculum" type="checkbox"  />
+                                          <label class="form-check-label" for="curriculum">Curriculum vitae</label>
+                                       </div>
+                                       <div class="form-check">
+                                          <input class="form-check-input" id="entrevista" type="checkbox"  />
+                                          <label class="form-check-label" for="entrevista">Entrevista</label>
+                                       </div>
+                                       <div class="form-check">
+                                          <input class="form-check-input" id="indicacao" type="checkbox"  />
+                                          <label class="form-check-label" for="indicacao">Indicação do Empregador</label>
+                                       </div>
+                                       <div class="form-check">
+                                          <input class="form-check-input" id="provas" type="checkbox"  />
+                                          <label class="form-check-label" for="provas">Provas</label>
+                                       </div>
+                                       <div class="form-check">
+                                          <input class="form-check-input" id="outraformaselecao" type="checkbox"  />
+                                          <label class="form-check-label" for="outraformaselecao">Outra</label>
+                                       </div>
+                                    </div>
+                                       <div class="form-group position-relative">
+                                          <label>Forma de Avaliação</label>
+                                          <div class="form-check">
+                                             <input class="form-check-input" id="avaliacaoMonografia" type="checkbox"  />
+                                             <label class="form-check-label" for="avaliacaoMonografia">Monografias</label>
+                                          </div>
+                                          <div class="form-check">
+                                             <input class="form-check-input" id="avaliacaoProva" type="checkbox"  />
+                                             <label class="form-check-label" for="avaliacaoProva">Provas</label>
+                                          </div>
+                                          <div class="form-check">
+                                             <input class="form-check-input" id="avaliacaoSeminarios" type="checkbox"  />
+                                             <label class="form-check-label" for="avaliacaoSeminarios">Seminários</label>
+                                          </div>
+                                          <div class="form-check">
+                                             <input class="form-check-input" id="avaliacaoTrabalhoFinalDisciplina" type="checkbox"  />
+                                             <label class="form-check-label" for="avaliacaoTrabalhoFinalDisciplina">Trabalho Final de disciplina</label>
+                                          </div>
+                                       </div>
+                                       <div class="form-group position-relative" id="mediaNotaAprovacao" >
+                                          <div class="form-group position-relative" id="divConceitoAprovacao">
+                                             <select class="custom-select" id="conceitoAprovacao" required="required" name="conceitoAprovacao">
+                                                <option value="hide">Selecione</option>
+
+                                             </select>
+                                             <label class="required" for="conceitoAprovacao">Conceito Mínimo para Aprovação</label>
+                                             <div class="invalid-feedback">Selecione alguma opção</div>
+                                          </div>
+                                          <div class="form-group-inline position-relative" id="divNotaAprovacao">
+                                             <label id="labelNomeCursoLatoSensu" class="required" for="notaAprovacao">Nota mínima para aprovação
+                                             </label>
+                                             <input class="form-control" id="notaAprovacao" type="text" placeholder="Nota mínima para aprovação." />   
+                                          </div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="frequenciaAprovacao" type="text" placeholder="Informe o percentual da frequência mínima." />        
+                                          <label id="labelNomeCursoLatoSensu" class="required" for="frequenciaAprovacao">Frequência mínima para aprovação(%)
+                                          </label>
+                                       </div>
                                  </form>
                               </div>
                            </section>  
@@ -714,8 +781,9 @@
                               <h4>Corpo Docente</h4>
                               <p class="advice">* Campos Obrigatórios</p>
                               <div class="conteudo-principal__content m-0">
-                                 <!--<article class="conteudo-principal">-->
                                  <form class="border-0" id="form-filtro">
+                                    <article class="conteudo-principal m-0 my-3 px-4">
+                                    </article>
                                  </form>
                               </div>
                            </section>  
@@ -727,8 +795,9 @@
                               <h4>Componentes/h4>
                               <p class="advice">* Campos Obrigatórios</p>
                               <div class="conteudo-principal__content m-0">
-                                 <!--<article class="conteudo-principal">-->
                                  <form class="border-0" id="form-filtro">
+                                    <article class="conteudo-principal m-0 my-3 px-4">
+                                    </article>
                                  </form>
                               </div>
                            </section>  
@@ -868,8 +937,6 @@
             populaSelect(document.getElementById("outrasUnidadesEnvolvidas"), unidadesAcademicas);
 
             populaSelect(document.getElementById("select-polo-ead"), polosEAD);
-
-            
             
             function inicioDadosGerais(){
                $('#detalheMensalidade').hide();
@@ -877,6 +944,24 @@
                $('#divPoloEAD').hide();
                
             }
+
+            $('select[id="select-metodo-avaliacao"]').change(function () {
+               var conceito = ["A","B","C","D","E"];
+               var select = document.getElementById('select-metodo-avaliacao');
+               var value = select.options[select.selectedIndex].value;
+               var texto = "";
+                if (value === "nota") {
+                  $('#divNotaAprovacao').show();
+                  $('#divConceitoAprovacao').hide();
+                 }else if(value === "conceito"){
+                  $('#divNotaAprovacao').hide();
+                  $('#divConceitoAprovacao').show();
+                  limpaSelect(document.getElementById("conceitoAprovacao"));
+                  populaSelect(document.getElementById("conceitoAprovacao"), conceito);
+                 }else {
+                  $('#mediaNotaAprovacao').hide();
+                 }
+            }); 
 
             $('select[id="select-grandeArea"]').change(function () {
                var select = document.getElementById('select-grandeArea');
