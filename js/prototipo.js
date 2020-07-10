@@ -140,9 +140,9 @@ function inserirLinhaTabelaMembroInterno(idTabela,idInput) {
          	a.appendChild(i);
          	novaCelula.appendChild(a);
 
-         	b = document.createElement("button");
+         	b = document.createElement("a");
          	b.setAttribute("href","http://lattes.cnpq.br/8671649752936793");
-         	b.setAttribute("class", "btn btn-link");
+         	b.setAttribute("class", "link-normal m-2");
          	b.setAttribute("rel","noopener noreferrer");
          	b.setAttribute("target", "_blank");
          	i = document.createElement("i");
@@ -172,9 +172,9 @@ function inserirLinhaTabelaMembroInterno(idTabela,idInput) {
          	a.appendChild(i);
          	novaCelula.appendChild(a);
 
-         	b = document.createElement("button");
+         	b = document.createElement("a");
          	b.setAttribute("href","http://lattes.cnpq.br/0601161335088804");
-         	b.setAttribute("class", "btn btn-link");
+         	b.setAttribute("class", "link-normal m-2");
          	b.setAttribute("rel","noopener noreferrer");
          	b.setAttribute("target", "_blank");
          	i = document.createElement("i");
@@ -204,9 +204,9 @@ function inserirLinhaTabelaMembroInterno(idTabela,idInput) {
          	a.appendChild(i);
          	novaCelula.appendChild(a);
 
-         	b = document.createElement("button");
+         	b = document.createElement("a");
          	b.setAttribute("href","http://lattes.cnpq.br/1093675040121205");
-         	b.setAttribute("class", "btn btn-link");
+         	b.setAttribute("class", "link-normal m-2");
          	b.setAttribute("rel","noopener noreferrer");
          	b.setAttribute("target", "_blank");
          	i = document.createElement("i");
