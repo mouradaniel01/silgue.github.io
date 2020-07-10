@@ -20,7 +20,7 @@
    <body>
       <div id="barra-brasil">
          <ul id="menu-barra-temp" style="list-style: none">
-            <li style="display:inline; float:left;padding-right:10px; margin-right:10px; border-right:1px solid #EDEDED"><a href="http://barra.brasil.gov.br/static/opensans-bold.woff" target="_blank" rel="noopener" style="font-family:sans,sans-serif; text-decoration:none; color:white;">Portal do Governo Brasileiro</a></li>
+            <li style="display:inline; float:left;padding-right:10px; margin-right:10px; border-right:1px solid #EDEDED"><a href="http://brasil.gov.br" target="_blank" rel="noopener" style="font-family:sans,sans-serif; text-decoration:none; color:white;">Portal do Governo Brasileiro</a></li>
          </ul>
       </div>
       <div class="container-principal">
@@ -560,6 +560,12 @@
                                     <article class="conteudo-principal">
                                        <div class="conteudo-principal__header">
                                           <h4>Coordenação do Curso</h4>
+                                          <span class="tooltip-icon">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Não pode ter mais de uma coordenação: verificar se tem coordenação ativa e em vigência(no sigaa, classe que valida é cursoLatoValidator e chama método findOutrosCursosLatoComCoordenacoesAtivas da classe CoordenacaoCursoDao para buscar as coordenações);
+                                             Não pode ser vicecoordenador se já tiver vigência ativa; (no sigaa, classe que valida é cursoLatoValidator e chama método findOutrosCursosLatoComCoordenacoesAtivas da classe CoordenacaoCursoDao para buscar as coordenações);
+                                             Não pode ser coordenador ou vice se tiver relatório final pendente de aprovação. (no sigaa, classe que valida é cursoLatoValidator e chama método findCoordenacoesComRelatorioFimPendente da classe CoordenacaoCursoDao para buscar se há relatórios pendentes)">
+                                             </i>
+                                          </span>
                                        </div>
                                        <div class="form-group m-0 my-3 px-4">
                                           <div class="form-group position-relative">
@@ -774,8 +780,58 @@
                               <p class="advice">* Campos Obrigatórios</p>
                               <div class="conteudo-principal__content m-0">
                                  <form class="border-0" id="form-filtro">
-                                    <article class="conteudo-principal m-0 my-3 px-4">
-                                    </article>
+                                    <!--<article class="conteudo-principal m-0 my-3 px-4">-->
+                                       <div class="form-inline position-relative">
+                                          <label class="d-block required">Participante Externo:
+                                          </label>
+                                          <div class="form-check form-check-inline m-2">
+                                             <input class="form-check-input" id="participanteExterno-sim" type="radio" name="participanteExterno" value="Sim" />
+                                              <label class="form-check-label" for="participanteExterno-sim">Sim</label>
+                                          </div>
+                                          <div class="form-check form-check-inline m-2">
+                                             <input class="form-check-input" id="participanteExterno-nao" type="radio" name="participanteExterno" value="Nao" checked/>
+                                             <label class="form-check-label" for="participanteExterno-nao">Não                                                
+                                             </label>
+                                          </div>
+                                       </div>
+                                       <div class="form-group position-relative" id="divDocenteInterno">
+                                          
+                                          <input class="form-control form-autocomplete" data-type="simples" id="docenteInterno" type="text" placeholder="Informe o docente que será membro do curso." />
+                                          <div class="tooltip-group"> 
+                                          <label class="required" for="docenteInterno">Docente</label>
+                                          <span class="tooltip-icon">
+                                             <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Os membros do curso devem ser  docentes efetivos da UFRN. Coloquei apenas 3 docentes para visualizar: Rubens Maribondo, apuena e itamir barroca. ">
+                                             </i>
+                                          </span>
+                                          </div>
+                                       </div>
+                                       <div class="form-group position-relative mt-2">
+                                          <button type="button" class="btn btn-primary" onclick="inserirLinhaTabelaMembroInterno('tabelaMembrosDocentesInternos','docenteInterno')">Inserir</button>
+                                       </div>
+                                       <div class="form-inline position-relative">     
+                                          <table class="table table-striped" data-toggle="table" id="tabelaMembrosDocentesInternos">
+                                             <thead>
+                                                <tr>
+                                                   <th>SIAPE/Matricula</th>
+                                                   <th>Nome</th>
+                                                   <th>Titulação</th>
+                                                   <th>Vínculo</th>
+                                                   <th>Instituição em que Trabalha</th>
+                                                   <th>Ações</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td align="right" class="btn-group"></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
                                  </form>
                               </div>
                            </section>  
@@ -923,6 +979,8 @@
             autocomplete(document.getElementById("coordenador"), docentes);
 
             autocomplete(document.getElementById("vicecoordenador"), docentes);
+
+            autocomplete(document.getElementById("docenteInterno"), docentes);
 
             populaSelect(document.getElementById("unidadeResponsavel"), unidadesAcademicas);
 

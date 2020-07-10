@@ -97,6 +97,128 @@ function inserirLinhaTabelaByInput(idTabela,idInput) {
    }
 }
 
+function inserirLinhaTabelaMembroInterno(idTabela,idInput) {
+   // Captura a referência da tabela com id “minhaTabela”
+   var tabela = document.getElementById(idTabela);
+   //Captura o select
+   var input = document.getElementById(idInput);
+   //Captura o valor do select
+   var valor = input.value;
+   // Captura a quantidade de linhas já existentes na tabela
+   var numLinhas = tabela.rows.length;
+   // Captura a quantidade de colunas da última linha da tabela
+   var numColunas = tabela.rows[numLinhas-1].cells.length;
+   // Insere uma linha no fim da tabela.
+   var novaLinha = tabela.insertRow(numLinhas);
+
+   novaLinha.setAttribute("id",numLinhas+1);
+   
+   // Faz um loop para criar as colunas
+   for (var j = 0; j < numColunas; j++) {
+      var a, b, i;
+       // Insere uma coluna na nova linha 
+      novaCelula = novaLinha.insertCell(j);
+      if(valor === "RUBENS MARIBONDO DO NASCIMENTO"){
+      	if(j===0){
+      		novaCelula.innerHTML = "1234567";
+      	}else if(j===1){
+       		novaCelula.innerHTML = valor.toUpperCase();
+     	}else if(j===2){
+      		novaCelula.innerHTML = "DOUTORADO";
+      	}else if(j===3){
+      		novaCelula.innerHTML = "PROFESSOR DE MAGISTÉRIO SUPERIOR";
+      	}else if(j===4){
+      		novaCelula.innerHTML = "UFRN"
+      	}else{//rel="noopener noreferrer" target="_blank
+      	novaCelula.setAttribute("align","right");
+      	novaCelula.setAttribute("class","btn-group");
+      		a = document.createElement("button");
+         	a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
+         	a.setAttribute("class", "btn btn-link");
+         	i = document.createElement("i");
+         	i.setAttribute("class", "far fa-trash-alt");
+         	a.appendChild(i);
+         	novaCelula.appendChild(a);
+
+         	b = document.createElement("button");
+         	b.setAttribute("href","http://lattes.cnpq.br/8671649752936793");
+         	b.setAttribute("class", "btn btn-link");
+         	b.setAttribute("rel","noopener noreferrer");
+         	b.setAttribute("target", "_blank");
+         	i = document.createElement("i");
+         	i.setAttribute("class", "fas fa-search");
+         	b.appendChild(i);
+         	novaCelula.appendChild(b);
+         }
+      }else if(valor === "APUENA VIEIRA GOMES"){
+      	if(j===0){
+      		novaCelula.innerHTML = "1234568";
+      	}else if(j===1){
+       		novaCelula.innerHTML = valor.toUpperCase();
+     	}else if(j===2){
+      		novaCelula.innerHTML = "DOUTORADO";
+      	}else if(j===3){
+      		novaCelula.innerHTML = "PROFESSOR DE MAGISTÉRIO SUPERIOR";
+      	}else if(j===4){
+      		novaCelula.innerHTML = "UFRN"
+      	}else{
+      		novaCelula.setAttribute("align","right");
+      		novaCelula.setAttribute("class","btn-group");
+      		a = document.createElement("button");
+         	a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
+         	a.setAttribute("class", "btn btn-link");
+         	i = document.createElement("i");
+         	i.setAttribute("class", "far fa-trash-alt");
+         	a.appendChild(i);
+         	novaCelula.appendChild(a);
+
+         	b = document.createElement("button");
+         	b.setAttribute("href","http://lattes.cnpq.br/0601161335088804");
+         	b.setAttribute("class", "btn btn-link");
+         	b.setAttribute("rel","noopener noreferrer");
+         	b.setAttribute("target", "_blank");
+         	i = document.createElement("i");
+         	i.setAttribute("class", "fas fa-search");
+         	b.appendChild(i);
+         	novaCelula.appendChild(b);
+         }
+      }else{
+      	if(j===0){
+      		novaCelula.innerHTML = "1234569";
+      	}else if(j===1){
+       		novaCelula.innerHTML = valor.toUpperCase();
+     	}else if(j===2){
+      		novaCelula.innerHTML = "DOUTORADO";
+      	}else if(j===3){
+      		novaCelula.innerHTML = "PROFESSOR DE ENSINO BASICO TECNICO E TECNOLOGICO";
+      	}else if(j===4){
+      		novaCelula.innerHTML = "UFRN"
+      	}else{
+      		novaCelula.setAttribute("align","right");
+      		novaCelula.setAttribute("class","btn-group");
+      		a = document.createElement("button");
+         	a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
+         	a.setAttribute("class", "btn btn-link");
+         	i = document.createElement("i");
+         	i.setAttribute("class", "far fa-trash-alt");
+         	a.appendChild(i);
+         	novaCelula.appendChild(a);
+
+         	b = document.createElement("button");
+         	b.setAttribute("href","http://lattes.cnpq.br/1093675040121205");
+         	b.setAttribute("class", "btn btn-link");
+         	b.setAttribute("rel","noopener noreferrer");
+         	b.setAttribute("target", "_blank");
+         	i = document.createElement("i");
+         	i.setAttribute("class", "fas fa-search");
+         	b.appendChild(i);
+         	novaCelula.appendChild(b);
+      }
+    }
+ }
+}
+
+
 function removerLinhaTabela(i,idTabela){
    document.getElementById(idTabela).deleteRow(i);
 }
