@@ -588,41 +588,41 @@
                                             <input class="form-control" id="dataFimMandato" type="date" />
                                              <label class="required" for="dataFimMandato">Data Fim do Mandato</label> 
                                           </div>
-                                       </article>
-                                       <!--Início Vice Coordenador-->
-                                       <article class="conteudo-principal">
-                                          <div class="conteudo-principal__header">
-                                             <h4>Vice-Coordenação do Curso</h4>
+                                    </article>
+                                    <!--Início Vice Coordenador-->
+                                    <article class="conteudo-principal">
+                                       <div class="conteudo-principal__header">
+                                          <h4>Vice-Coordenação do Curso</h4>
+                                       </div>
+                                       <div class="form-group m-0 my-3 px-4">
+                                          <div class="form-group position-relative">
+                                             <div class="tooltip-group">
+                                             <label class="required" for="coordenador">Vice-Coordenador(a)</label>
+                                                <span class="tooltip-icon">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O vice-coordenador do curso deve ser um docente efetivo da UFRN.Coloquei apenas 3 docentes para visualizar: Rubens Maribondo, apuena e itamir barroca.">
+                                                   </i>
+                                                </span>
+                                             </div>
+                                             <input class="form-control form-autocomplete" data-type="simples" id="vicecoordenador" type="text" placeholder="Informe o docente que será vice-coordenador do curso." /> 
                                           </div>
-                                          <div class="form-group m-0 my-3 px-4">
-                                             <div class="form-group position-relative">
-                                                <div class="tooltip-group">
-                                                <label class="required" for="coordenador">Vice-Coordenador(a)</label>
-                                                   <span class="tooltip-icon">
-                                                      <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O vice-coordenador do curso deve ser um docente efetivo da UFRN.Coloquei apenas 3 docentes para visualizar: Rubens Maribondo, apuena e itamir barroca.">
-                                                      </i>
-                                                   </span>
-                                                </div>
-                                                <input class="form-control form-autocomplete" data-type="simples" id="vicecoordenador" type="text" placeholder="Informe o docente que será vice-coordenador do curso." /> 
-                                             </div>
-                                             <div class="form-group position-relative">
-                                                <label class="required" for="emailvicecoordenador">Email de Contato</label>
-                                                <input class="form-control m-2" id="emailvicecoordenador" type="text" placeholder="Informe o email para contato com o coordenador." /> 
-                                             </div>
-                                             <div class="form-group position-relative">
-                                                <label class="required" for="telefonevicecoordenador">Telefone de Contato</label>
-                                                <input class="form-control m-2" id="telefonevicecoordenador" type="text" placeholder="Informe o telefone para contato com o coordenador." /> 
-                                             </div>
-                                             <div class="form-group position-relative" >
-                                               <input class="form-control" id="dataInicioMandatoVice" type="date" />
-                                                <label class="required" for="dataInicioMandatoVice">Data Início do Mandato</label> 
-                                             </div>
-                                             <div class="form-group position-relative" >
-                                               <input class="form-control" id="dataFimMandatoVice" type="date" />
-                                                <label class="required" for="dataFimMandatoVice">Data Fim do Mandato</label> 
-                                             </div>
+                                          <div class="form-group position-relative">
+                                             <label class="required" for="emailvicecoordenador">Email de Contato</label>
+                                             <input class="form-control m-2" id="emailvicecoordenador" type="text" placeholder="Informe o email para contato com o coordenador." /> 
                                           </div>
-                                       </article>
+                                          <div class="form-group position-relative">
+                                             <label class="required" for="telefonevicecoordenador">Telefone de Contato</label>
+                                             <input class="form-control m-2" id="telefonevicecoordenador" type="text" placeholder="Informe o telefone para contato com o coordenador." /> 
+                                          </div>
+                                          <div class="form-group position-relative" >
+                                            <input class="form-control" id="dataInicioMandatoVice" type="date" />
+                                             <label class="required" for="dataInicioMandatoVice">Data Início do Mandato</label> 
+                                          </div>
+                                          <div class="form-group position-relative" >
+                                            <input class="form-control" id="dataFimMandatoVice" type="date" />
+                                             <label class="required" for="dataFimMandatoVice">Data Fim do Mandato</label> 
+                                          </div>
+                                       </div>
+                                    </article>
                                        <!-- Fim vice coordenador-->
                                        <!-- Início secretariado-->
                                        <article class="conteudo-principal">
@@ -665,7 +665,75 @@
                                  </form>
                             </section>
                          </div>
-                     <!--Fim de Partícipes-->
+                        <!--Fim de aba coordenação-->
+                        <!-- Inicio Objetivos e importância -->
+                        <div class="tab-pane show" id="objImportancia" role="tabpanel">
+                           <section class="m-3" >
+                              <h4>Objetivos e Importância</h4>
+                              <p class="advice">* Campos Obrigatórios</p>
+                              <div class="conteudo-principal__content m-0">
+                                 <!--<article class="conteudo-principal">-->
+                                 <form class="border-0" id="form-filtro">
+                                    <article class="conteudo-principal">
+                                       <div class="form-group position-relative">
+                                           <textarea class="form-control" id="justificativa-curso-novo" placeholder="Placeholder" data-max-size="1000"></textarea>
+                                           <label class="required" for="justificativa-curso-novo">Justificativa/Objetivos</label>
+                                           <div class="invalid-feedback">Limite de caracteres excedido
+                                           </div>
+                                         </div>
+                                    </article>
+                                    <article class="conteudo-principal">
+                                       <div class="form-group position-relative">
+                                           <textarea class="form-control" id="local-curso-novo" placeholder="Placeholder" data-max-size="200"></textarea>
+                                           <label for="local-curso-novo">Local do curso</label>
+                                           <div class="invalid-feedback">Limite de caracteres excedido
+                                           </div>
+                                         </div>
+                                    </article>
+                                 </form>
+                              </div>
+                           </section>  
+                     </div>
+                     <!-- Fim da aba Objetivo e Importância
+                     <!-- Inicio Processo Seletivo -->
+                     <div class="tab-pane show" id="processoSeletivo" role="tabpanel">
+                           <section class="m-3" >
+                              <h4>Processo Seletivo</h4>
+                              <p class="advice">* Campos Obrigatórios</p>
+                              <div class="conteudo-principal__content m-0">
+                                 <!--<article class="conteudo-principal">-->
+                                 <form class="border-0" id="form-filtro">
+                                 </form>
+                              </div>
+                           </section>  
+                     </div>
+                     <!--Fim do Processo Seletivo-->
+                     <!-- Inicio Aba Corpo Docente-->
+                     <div class="tab-pane show" id="corpoDocente" role="tabpanel">
+                           <section class="m-3" >
+                              <h4>Corpo Docente</h4>
+                              <p class="advice">* Campos Obrigatórios</p>
+                              <div class="conteudo-principal__content m-0">
+                                 <!--<article class="conteudo-principal">-->
+                                 <form class="border-0" id="form-filtro">
+                                 </form>
+                              </div>
+                           </section>  
+                     </div>
+                     <!--Fim da Aba Corpo Docente-->
+                     <!-- Inicio Aba Componentes-->
+                     <div class="tab-pane show" id="componentes" role="tabpanel">
+                           <section class="m-3" >
+                              <h4>Componentes/h4>
+                              <p class="advice">* Campos Obrigatórios</p>
+                              <div class="conteudo-principal__content m-0">
+                                 <!--<article class="conteudo-principal">-->
+                                 <form class="border-0" id="form-filtro">
+                                 </form>
+                              </div>
+                           </section>  
+                     </div>
+                     <!--Fim da Aba Componentes-->
                      <!-- Modal de Outras Unidades Envolvidas -->
                      <div class="modal fade" id="modalOutrasUnidadesEnvolvidas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -768,18 +836,6 @@
                         </div>
                      </div>
                      <!-- Fim do modal de Pólo EAD-->
-                     <div class="tab-pane show" id="objImportancia" role="tabpanel">
-                        <p>Objetivo e Importância</p>
-                     </div>
-                     <div class="tab-pane show" id="processoSeletivo" role="tabpanel">
-                        <p>Processo Seletivo</p>
-                     </div>
-                     <div class="tab-pane show" id="corpoDocente" role="tabpanel">
-                        <p>Corpo Docente</p>
-                     </div>
-                     <div class="tab-pane show" id="componentes" role="tabpanel">
-                        <p>Componentes</p>
-                     </div>
                   </div>
                </div>
          <script src="https://static.info.ufrn.br/1.0.6/vendors/jquery/jquery.min.js"></script>
