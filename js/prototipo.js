@@ -97,6 +97,68 @@ function inserirLinhaTabelaByInput(idTabela,idInput) {
    }
 }
 
+function inserirLinhaTabelaMembroExterno(idTabela, cpfParticipante, 
+	nomeParticipante, formacaoParticipante, instituicaoParticipante){
+	var tabela = document.getElementById(idTabela);
+
+	var cpf_passaporte = document.getElementById(cpfParticipante).value;
+   
+   	var nome = document.getElementById(nomeParticipante).value;
+
+   	var select = document.getElementById(formacaoParticipante);
+
+   	var formacao = select.options[select.selectedIndex].value;
+
+   	var instituicao = document.getElementById(instituicaoParticipante).value;
+   	// Captura a quantidade de linhas já existentes na tabela
+   	var numLinhas = tabela.rows.length;
+   	// Captura a quantidade de colunas da última linha da tabela
+   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+   	// Insere uma linha no fim da tabela.
+   	var novaLinha = tabela.insertRow(numLinhas);
+
+   	novaLinha.setAttribute("id",numLinhas+1);
+
+   	// Faz um loop para criar as colunas
+   	for (var j = 0; j < numColunas; j++) {
+      	var a, b, i;
+       	// Insere uma coluna na nova linha 
+      	novaCelula = novaLinha.insertCell(j);
+	    if(j===0){
+	      		novaCelula.innerHTML = "";
+	      	}else if(j===1){
+	       		novaCelula.innerHTML = nome.toUpperCase();
+	     	}else if(j===2){
+	      		novaCelula.innerHTML = formacao.toUpperCase();
+	      	}else if(j===3){
+	      		novaCelula.innerHTML = "DOCENTE EXTERNO LATO SENSU";
+	      	}else if(j===4){
+	      		novaCelula.innerHTML = instituicao;
+	      	}else{ 
+	      		novaCelula.setAttribute("align","right");
+      			novaCelula.setAttribute("class","btn-group");
+	      		a = document.createElement("button");
+	         	a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
+	         	a.setAttribute("class", "btn btn-link");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "far fa-trash-alt");
+	         	a.appendChild(i);
+	         	novaCelula.appendChild(a);
+
+	         	b = document.createElement("a");
+	         	b.setAttribute("href","http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=forwardPaginaResultados&registros=0;10&query=idx_cpf:"+cpf_passaporte);
+	         	b.setAttribute("class", "link-normal m-2");
+	         	b.setAttribute("rel","noopener noreferrer");
+	         	b.setAttribute("target", "_blank");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "fas fa-search");
+	         	b.appendChild(i);
+	         	novaCelula.appendChild(b);
+	        }
+	    }
+  	
+}
+
 function inserirLinhaTabelaMembroInterno(idTabela,idInput) {
    // Captura a referência da tabela com id “minhaTabela”
    var tabela = document.getElementById(idTabela);

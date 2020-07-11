@@ -218,7 +218,8 @@
                            <button class="list-group-item list-group-item-action" 
                            href="#corpoDocente" 
                            role="tab" 
-                           aria-controls="Corpo Docente">
+                           aria-controls="Corpo Docente"
+                           onclick="inicioCorpoDocente()">
                            Corpo Docente
                            </button>
                         </div>
@@ -753,7 +754,6 @@
                                           <div class="form-group position-relative" id="divConceitoAprovacao">
                                              <select class="custom-select" id="conceitoAprovacao" required="required" name="conceitoAprovacao">
                                                 <option value="hide">Selecione</option>
-
                                              </select>
                                              <label class="required" for="conceitoAprovacao">Conceito Mínimo para Aprovação</label>
                                              <div class="invalid-feedback">Selecione alguma opção</div>
@@ -794,8 +794,113 @@
                                              </label>
                                           </div>
                                        </div>
+                                       <div class="form-group position-relative" id="divParticipanteExterno">
+                                          <div class="form-inline position-relative">
+                                             <label class="d-block required">Estrangeiro:
+                                             </label>
+                                             <div class="form-check form-check-inline m-2">
+                                                <input class="form-check-input" id="estrangeiro-sim" type="radio" name="estrangeiro" value="Sim" />
+                                                 <label class="form-check-label" for="estrangeiro-sim">Sim</label>
+                                             </div>
+                                             <div class="form-check form-check-inline m-2">
+                                                <input class="form-check-input" id="estrangeiro-nao" type="radio" name="estrangeiro" value="Nao" checked/>
+                                                <label class="form-check-label" for="estrangeiro-nao">Não                                                
+                                                </label>
+                                             </div>
+                                          </div>
+                                          <div class="form-group position-relative">
+                                             <input class="form-control" id="cpf_passaporte_membro" type="text" placeholder="Informe o CPF ou, caso seja estrangeiro, o Passaporte do participantes externo." />
+                                             <div class="tooltip-group">
+                                                <label id="label_cpf_passaporte_membro" class="required" for="cpf_passaporte_membro">
+                                                </label>
+                                                <span class="tooltip">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-toogle="tooltip" data-trigger="click" data-type="tooltip-info" title=" Caso o CPF ou Passaporte já esteja cadastrado, o sistema deve preencher as demais informações, mas permitir edição.">
+                                                   </i>
+                                                </span>
+                                             </div>
+                                          </div>
+                                          <div class="form-group position-relative">
+                                             <label class="required" for="nomeParticipanteExterno">Nome
+                                             </label>
+                                             <input class="form-control" id="nomeParticipanteExterno" type="text" placeholder="Nome do Participante Externo." />
+                                          </div>
+                                          <div class="form-group position-relative">
+                                             <label class="required" for="nomeDaMaeParticipanteExterno">Nome da Mãe
+                                             </label>
+                                             <input class="form-control" id="nomeDaMaeParticipanteExterno" type="text" placeholder="Nome da Mãe do Participante Externo." />
+                                          </div>
+                                          <div class="form-group position-relative">
+                                             <label class="required" for="emailParticipanteExterno">Email
+                                             </label>
+                                             <input class="form-control" id="emailParticipanteExterno" type="text" placeholder="email do Participante Externo." />
+                                          </div>
+                                          <div class="form-group position-relative" >
+                                             <select class="custom-select" id="select-genero" required="required" name="genero">
+                                                <option value="hide">Selecione</option>
+                                                <option>Feminino</option>
+                                                <option>Masculino</option>
+                                                <option>Não Especificar</option>
+                                             </select>
+                                             <label class="required" for="genero">Gênero</label>
+                                             <div class="invalid-feedback">Selecione alguma opção</div>
+                                          </div>
+                                          <div class="form-inline position-relative">
+                                             <label class="d-block required">Técnico UFRN:
+                                             </label>
+                                             <div class="form-check form-check-inline m-2">
+                                                <input class="form-check-input" id="tecnicoUFRN-sim" type="radio" name="tecnicoUFRN" value="Sim" />
+                                                 <label class="form-check-label" for="tecnicoUFRN-sim">Sim</label>
+                                             </div>
+                                             <div class="form-check form-check-inline m-2">
+                                                <input class="form-check-input" id="tecnicoUFRN-nao" type="radio" name="tecnicoUFRN" value="Nao" checked/>
+                                                <label class="form-check-label" for="tecnicoUFRN-nao">Não                                                
+                                                </label>
+                                             </div>
+                                          </div>
+                                          <div class="form-group position-relative" >
+                                             <select class="custom-select" id="select-formacao-participante-externo" required="required" name="formacao-participante-externo">
+                                                <option value="hide">Selecione</option>
+                                                <option value="APERFEIÇOAMENTO">APERFEIÇOAMENTO</option>
+                                                <option value="DESCONHECIDA">DESCONHECIDA</option>
+                                                <option value="DOUTORADO">DOUTORADO</option>
+                                                <option value="ENSINO FUNDAMENTAL">ENSINO FUNDAMENTAL</option>
+                                                <option value="ENSINO FUNDAMENTAL INCOMPLETO">ENSINO FUNDAMENTAL INCOMPLETO</option>
+                                                <option value="ENSINO MÉDIO">ENSINO MÉDIO</option>
+                                                <option value="ENSINO MÉDIO INCOMPLETO">ENSINO MÉDIO INCOMPLETO</option>
+                                                <option value="ESPECIALIZAÇÃO">ESPECIALIZAÇÃO</option>
+                                                <option value="GRADUAÇÃO">GRADUAÇÃO</option>
+                                                <option value="MESTRADO">MESTRADO</option>
+                                                <option value="NÃO INFORMADA">NÃO INFORMADA</option>
+                                                <option value="PÓS-DOUTORADO">PÓS-DOUTORADO</option>
+                                                <option value="PÓS-TÉCNICO">PÓS-TÉCNICO</option>
+                                                <option value="SEQUENCIAL">SEQUENCIAL</option>
+                                                <option value="TECNÓLOGO DE NÍVEL SUPERIOR">TECNÓLOGO DE NÍVEL SUPERIOR</option>
+                                                <option value="TÉCNICO PROFISSIONALIZANTE - ENS. MÉDIO">TÉCNICO PROFISSIONALIZANTE - ENS. MÉDIO</option>
+                                             </select>
+                                             <label class="required" for="select-formacao-participante-externo">Formação</label>
+                                             <div class="invalid-feedback">Selecione alguma opção</div>
+                                          </div>
+                                          <!--<div class="form-group position-relative" >
+                                             <select class="custom-select" id="select-instituicao-participante-externo" required="required" name="instituicao-participante-externo">
+                                                <option value="hide">Selecione</option>
+                                             </select>
+                                             <label class="required" for="select-instituicao-participante-externo">Instituição em que trabalha</label>
+                                             <div class="invalid-feedback">Selecione alguma opção</div>
+                                          </div>-->
+                                          <div class="form-group position-relative">     
+                                             <input class="form-control form-autocomplete" data-type="simples" id="instituicaoParticipanteExterno" type="text" placeholder="Informe a instituição de ensino que o participante trabalha." /> 
+                                             <label class="required" for="instituicaoParticipanteExterno">Instituição</label>
+                                          </div>
+                                          <div class="form-group position-relative" >
+                                            <input class="form-control" id="participanteExternoValidoAte" type="date" />
+                                             <label class="required" for="participanteExternoValidoAte">Valido Até</label> 
+                                          </div>
+                                          <div class="form-group position-relative mt-2">
+                                          <button type="button" class="btn btn-primary" onclick="inserirLinhaTabelaMembroExterno('tabelaMembrosDocentesInternos','cpf_passaporte_membro','nomeParticipanteExterno','select-formacao-participante-externo','instituicaoParticipanteExterno')">Inserir
+                                          </button>
+                                       </div>
+                                       </div>
                                        <div class="form-group position-relative" id="divDocenteInterno">
-                                          
                                           <input class="form-control form-autocomplete" data-type="simples" id="docenteInterno" type="text" placeholder="Informe o docente que será membro do curso." />
                                           <div class="tooltip-group"> 
                                           <label class="required" for="docenteInterno">Docente</label>
@@ -804,9 +909,9 @@
                                              </i>
                                           </span>
                                           </div>
-                                       </div>
-                                       <div class="form-group position-relative mt-2">
-                                          <button type="button" class="btn btn-primary" onclick="inserirLinhaTabelaMembroInterno('tabelaMembrosDocentesInternos','docenteInterno')">Inserir</button>
+                                           <div class="form-group position-relative mt-2">
+                                             <button type="button" class="btn btn-primary" onclick="inserirLinhaTabelaMembroInterno('tabelaMembrosDocentesInternos','docenteInterno')">Inserir</button>
+                                          </div>
                                        </div>
                                        <div class="form-inline position-relative">     
                                           <table class="table table-striped" data-toggle="table" id="tabelaMembrosDocentesInternos">
@@ -987,12 +1092,22 @@
             populaSelect(document.getElementById("outrasUnidadesEnvolvidas"), unidadesAcademicas);
 
             populaSelect(document.getElementById("select-polo-ead"), polosEAD);
+
+            autocomplete(document.getElementById("instituicaoParticipanteExterno"), instituicoesEnsino);
             
             function inicioDadosGerais(){
                $('#detalheMensalidade').hide();
                $('#divChPraticaCursoLatoSensu').hide();
                $('#divPoloEAD').hide();
                
+            }
+
+            function inicioCorpoDocente(){
+               $('#participanteExterno-nao').prop('checked',true);
+               $('#divParticipanteExterno').hide();
+               $('#divDocenteInterno').show();
+               $('#estrangeiro-nao').prop('checked',true);
+               document.getElementById('label_cpf_passaporte_membro').innerHTML = "CPF";
             }
 
             $('select[id="select-metodo-avaliacao"]').change(function () {
@@ -1072,7 +1187,7 @@
 
             $('input[id="numVagasCursoLato"]').change(function () {
                if(document.getElementById("numVagasCursoLato").value.length > 0){
-                  var n1 = parseInt(document.getElementById('numVagasCursoLato').value, 10);
+                  var valor = document.getElementById("numVagasCursoLato").value;
                   var n2 =  ((n1/10)).toFixed(0);
                   document.getElementById('numVagasInternosCursoLato').innerHTML = n2;
                }
@@ -1081,6 +1196,24 @@
             $('input[id="qtdMensalidade"]').change(function () {
                if(document.getElementById("qtdMensalidade").value.length > 0){
                   $('#detalheMensalidade').show();
+               }
+            });
+
+            $('input[name="participanteExterno"]').change(function () {
+                if ($('input[name="participanteExterno"]:checked').val() === "Sim") {
+                  $('#divParticipanteExterno').show();
+                  $('#divDocenteInterno').hide();
+               }else{
+                  $('#divParticipanteExterno').hide();
+                  $('#divDocenteInterno').show();
+               }
+            });
+
+            $('input[name="estrangeiro"]').change(function () {
+                if ($('input[name="estrangeiro"]:checked').val() === "Sim") {
+                  document.getElementById('label_cpf_passaporte_membro').innerHTML = "Passaporte";
+               }else{
+                  document.getElementById('label_cpf_passaporte_membro').innerHTML = "CPF";
                }
             });
 
