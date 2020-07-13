@@ -231,8 +231,8 @@
                               class="list-group-item list-group-item-action"
                               href="#componentes"
                               role="tab"
-                              aria-controls="Cronograma de Desembolso"
-                              onclick="ocultarDetalhamentoParcelaPlano()"
+                              aria-controls="Componentes"
+                              onclick="inicioComponentes()"
                               >
                            Componentes
                            </button>
@@ -681,17 +681,17 @@
                               <div class="conteudo-principal__content m-0">
                                  <form class="border-0" id="form-filtro">
                                     <div class="form-group position-relative">
-                                        <textarea class="form-control" id="justificativa-curso-novo" placeholder="Placeholder" data-max-size="1000"></textarea>
+                                        <textarea class="form-control" id="justificativa-curso-novo" placeholder="Justificativa e/ou Objetivos do curso" data-max-size="1000"></textarea>
                                         <label class="required" for="justificativa-curso-novo">Justificativa/Objetivos</label>
                                         <div class="invalid-feedback">Limite de caracteres excedido
                                         </div>
                                       </div>
                                     <div class="form-group position-relative">
-                                        <textarea class="form-control" id="local-curso-novo" placeholder="Placeholder" data-max-size="200"></textarea>
-                                        <label for="local-curso-novo">Local do curso</label>
-                                        <div class="invalid-feedback">Limite de caracteres excedido
-                                        </div>
-                                      </div>
+                                       <textarea class="form-control" id="local-curso-novo" placeholde="Informações sobre o local do curso" data-max-size="200"></textarea>
+                                       <label for="local-curso-novo">Local do curso</label>
+                                       <div class="invalid-feedback">Limite de caracteres excedido
+                                       </div>
+                                    </div>
                                  </form>
                            </section>  
                      </div>
@@ -880,16 +880,15 @@
                                              <label class="required" for="select-formacao-participante-externo">Formação</label>
                                              <div class="invalid-feedback">Selecione alguma opção</div>
                                           </div>
-                                          <!--<div class="form-group position-relative" >
-                                             <select class="custom-select" id="select-instituicao-participante-externo" required="required" name="instituicao-participante-externo">
-                                                <option value="hide">Selecione</option>
-                                             </select>
-                                             <label class="required" for="select-instituicao-participante-externo">Instituição em que trabalha</label>
-                                             <div class="invalid-feedback">Selecione alguma opção</div>
-                                          </div>-->
                                           <div class="form-group position-relative">     
-                                             <input class="form-control form-autocomplete" data-type="simples" id="instituicaoParticipanteExterno" type="text" placeholder="Informe a instituição de ensino que o participante trabalha." /> 
-                                             <label class="required" for="instituicaoParticipanteExterno">Instituição</label>
+                                             <input class="form-control form-autocomplete" data-type="simples" id="instituicaoParticipanteExterno" type="text" placeholder="Informe a instituição de ensino que o participante trabalha." />
+                                             <div class="tooltip-group"> 
+                                                <label class="required" for="instituicaoParticipanteExterno">Instituição</label>
+                                                <span class="tooltip">
+                                                   <i class="fas fa-info-circle" tabindex="0" data-trigger="click" data-toggle="tooltip" data-type="tooltip-info" title="Regra de Negócio: As instituições são listadas em comum.institucoes_ensino.">                      
+                                                   </i>
+                                                </span>
+                                             </div>
                                           </div>
                                           <div class="form-group position-relative" >
                                             <input class="form-control" id="participanteExternoValidoAte" type="date" />
@@ -945,13 +944,108 @@
                      <!-- Inicio Aba Componentes-->
                      <div class="tab-pane show" id="componentes" role="tabpanel">
                            <section class="m-3" >
-                              <h4>Componentes/h4>
+                              <h4>Componentes</h4>
                               <p class="advice">* Campos Obrigatórios</p>
-                              <div class="conteudo-principal__content m-0">
-                                 <form class="border-0" id="form-filtro">
-                                    <article class="conteudo-principal m-0 my-3 px-4">
-                                    </article>
-                                 </form>
+                              <div class="conteudo-principal m-0 my-3 px-4">
+                                 <div class="conteudo-principal__content m-0">
+                                    <form class="border-0" id="form-filtro">
+                                       <div class="form-inline position-relative">
+                                             <label class="d-block required">Componente:
+                                             </label>
+                                             <div class="form-check form-check-inline m-2">
+                                                <input class="form-check-input" id="componenteLatoSensu-novo" type="radio" name="componenteLatoSensu" value="Novo" checked/>
+                                                 <label class="form-check-label" for="componenteLatoSensu-novo">Novo</label>
+                                             </div>
+                                             <div class="form-check form-check-inline m-2">
+                                                <input class="form-check-input" id="componenteLatoSensu-antigo" type="radio" name="componenteLatoSensu" value="Antigo" />
+                                                <label class="form-check-label" for="componenteLatoSensu-antigo">Antigo                                                
+                                                </label>
+                                             </div>
+                                          </div>
+                                          <div class="form-group position-relative" id="divNovoComponente">
+                                             <div class="form-group position-relative">
+                                                <select class="custom-select" id="select-tipo-componente" required="required" name="tipo-componente">
+                                                   <option value="hide">Selecione</option>
+                                                   <option value="MÓDULO">MÓDULO</option>
+                                                   <option value="ATIVIDADE">ATIVIDADE</option>
+                                                </select>
+                                                <label class="required" for="select-tipo-componente">Tipo do Componente</label>
+                                                <div class="invalid-feedback">Selecione alguma opção</div>
+                                             </div>
+                                             <div class="form-group position-relative" id="div-forma-participacao">
+                                                <select class="custom-select" id="select-forma-participacao" required="required" name="forma-participacao">
+                                                   <option value="Selecione">Selecione</option>
+                                                   <option value="ATIVIDADE AUTÔNOMA">ATIVIDADE AUTÔNOMA</option>
+                                                   <option value="ATIVIDADE COLETIVA">ATIVIDADE COLETIVA</option>
+                                                   <option value="ATIVIDADE DE ORIENTAÇÃO INDIVIDUAL">ATIVIDADE DE ORIENTAÇÃO INDIVIDUAL</option>
+                                                </select>
+                                                <label class="required" for="select-forma-participacao">Forma de Participação</label>
+                                                <div class="invalid-feedback">Selecione alguma opção</div>
+                                             </div>
+                                          </div>
+                                          <input type="hidden" id="carga-horaria-total" value=""/>
+                                          <div class="form-group position-relative">
+                                             <input class="form-control" id="nome-componente" type="text" placeholder="Nome do componente do curso." />
+                                             <label class="required" for="nome-componente">Nome
+                                             </label>
+                                          </div>
+                                          <div class="form-group position-relative" id="div-carga-horaria-aula">
+                                             <input class="form-control" id="carga-horaria-aula" type="text" placeholder="Quantidade de horas dedicadas a orientação de alunos." />
+                                             <label class="required" for="carga-horaria-aula">Carga Horária de Aula
+                                             </label>
+                                          </div>
+                                          <div class="form-group position-relative" id="div-carga-horaria-laboratorio">
+                                             <input class="form-control" id="carga-horaria-laboratorio" type="text" placeholder="Quantidade de horas que devem ser realizadas em Laboratório." />
+                                             <label class="required" for="carga-horaria-laboratorio">Carga Horária Laboratório
+                                             </label>
+                                          </div>
+                                          <div class="form-group position-relative" id="div-carga-horaria-estagio">
+                                             <input class="form-control" id="carga-horaria-estagio" type="text" placeholder="Quantidade de horas dedicadas a estágio." />
+                                             <label class="required" for="carga-horaria-estagio">Carga Horária de Estágio
+                                             </label>
+                                          </div>
+                                          <div class="form-group position-relative" id="div-carga-horaria-orientacao">
+                                             <input class="form-control" id="carga-horaria-orientacao" type="text" placeholder="Quantidade de horas dedicadas a orientação de alunos." />
+                                             <label class="required" for="carga-horaria-orientacao">Carga Horária de Orientação
+                                             </label>
+                                          </div>
+                                          <div class="form-group position-relative">
+                                              <textarea class="form-control" id="ementa-componente" placeholder="Ementa do Componente" data-max-size="400"></textarea>
+                                              <label class="required" for="ementa-componente">Ementa</label>
+                                              <div class="invalid-feedback">Limite de caracteres excedido
+                                              </div>
+                                            </div>
+                                          <div class="form-group position-relative">
+                                             <textarea class="form-control" id="bibliografia-componente" placeholde="Bibliografia" data-max-size="200"></textarea>
+                                             <label for="bibliografia-componente">Bibliografia</label>
+                                             <div class="invalid-feedback">Limite de caracteres excedido
+                                             </div>
+                                          </div>
+                                          <div class="form-group position-relative">
+                                             <button type="button" class="btn btn-primary" onclick="inserirLinhaTabelaComponente('tabela-componentes','nome-componente','ementa-componente','bibliografia-componente','carga-horaria-total')">Inserir</button>
+                                          </div>
+                                          <div class="form-group position-relative">     
+                                          <table class="table table-striped" data-toggle="table" id="tabela-componentes">
+                                             <thead>
+                                                <tr>
+                                                   <th>Codigo</th>
+                                                   <th>Nome</th>
+                                                   <th>Carga Horária</th>
+                                                   <th>Ações</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td align="right" class="btn-group"></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </form>
+                                 </div>
                               </div>
                            </section>  
                      </div>
@@ -1058,6 +1152,87 @@
                         </div>
                      </div>
                      <!-- Fim do modal de Pólo EAD-->
+                     <!-- Modal para exibir ementa e bibliografia -->
+                     <div class="modal fade" id="modalEmentas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h5 class="modal-title">Ementa e Bibliografia
+                                 </h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                 <span aria-hidden="true">&times;</span>
+                                 </button>
+                              </div>
+                              <div class="modal-body">
+                                 <div class="form-group position-relative">
+                                    <table class="table table-striped" data-toggle="table" id="tabela-ementa">
+                                    <thead>
+                                       <tr>                                             
+                                          <th>Ementa</th>
+                                          <th>Bibliografia</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>   
+                                          <td id="coluna-ementa"></td>
+                                          <td id="coluna-bibliografia"></td>
+                                       </tr>                                       
+                                    </tbody>
+                                 </table>
+                                 </div>
+                              </div>
+                              <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                 <button type="button" class="btn btn-primary">Salvar</button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Fim do modal para exibir ementa e bibiografia-->
+                     <!--Inicio do modal para associar docente aos componentes-->
+                     <div class="modal fade" id="modalDocentesComponente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h5 class="modal-title">Associar Docentes ao Componente
+                                 </h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                 <span aria-hidden="true">&times;</span>
+                                 </button>
+                              </div>
+                              <div class="modal-body">
+                                 <div class="form-group position-relative">
+                                    <select class="custom-select" id="select-docente-componente" required="required" name="docente-componente">
+                                       <option value="hide">Selecione</option>
+
+                                    </select>
+                                    <label class="required" for="select-docente-componente">Docente
+                                    </label>
+                                    <div class="invalid-feedback">Selecione alguma opção</div>
+                                 </div>
+                                 <div class="form-group position-relative">
+                                    <button type="button" class="btn btn-primary" onclick="inserirLinhaTabelaDocenteComponente('tabelaDocentesComponente','docenteComponente','chDocenteComponente')">Inserir</button>
+                                 </div>
+                                 <table class="table table-striped" data-toggle="table" id="tabelaDocentesComponente">
+                                    <thead>
+                                       <tr>                                             
+                                          <th>Docente</th>
+                                          <th>CH</th>
+                                          <th class="w-10 text-center">Ações</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>   
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                       </tr>                                       
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div>
+                        </div>
+                     <!--Fim do modal de associar docente ao componente-->
                   </div>
                </div>
          <script src="https://static.info.ufrn.br/1.0.6/vendors/jquery/jquery.min.js"></script>
@@ -1087,13 +1262,15 @@
 
             autocomplete(document.getElementById("docenteInterno"), docentes);
 
+            autocomplete(document.getElementById("instituicaoParticipanteExterno"), instituicoesEnsino);
+
             populaSelect(document.getElementById("unidadeResponsavel"), unidadesAcademicas);
 
             populaSelect(document.getElementById("outrasUnidadesEnvolvidas"), unidadesAcademicas);
 
             populaSelect(document.getElementById("select-polo-ead"), polosEAD);
 
-            autocomplete(document.getElementById("instituicaoParticipanteExterno"), instituicoesEnsino);
+            populaSelect(document.getElementById("select-docente-componente"), docentesCurso);            
             
             function inicioDadosGerais(){
                $('#detalheMensalidade').hide();
@@ -1108,6 +1285,22 @@
                $('#divDocenteInterno').show();
                $('#estrangeiro-nao').prop('checked',true);
                document.getElementById('label_cpf_passaporte_membro').innerHTML = "CPF";
+            }
+
+            function inicioComponentes(){
+               $('#componenteLatoSensu-novo').prop('checked',true);
+               $('#div-forma-participacao').hide();
+            }
+
+            function exibirEmenta(nomeComponente){
+               
+               var array = mapaComponente.get(nomeComponente);
+
+               document.getElementById('coluna-ementa').innerHTML = array[0];
+
+               document.getElementById('coluna-bibliografia').innerHTML = array[1];
+
+               $('#modalEmentas').modal('toogle');
             }
 
             $('select[id="select-metodo-avaliacao"]').change(function () {
@@ -1183,7 +1376,41 @@
                   $('#divPoloEAD').hide();
                 }
                 
-            });  
+            }); 
+
+            $('select[id="select-tipo-componente"]').change(function () {
+               var select = document.getElementById('select-tipo-componente');
+               var value = select.options[select.selectedIndex].value;
+               document.getElementById('select-forma-participacao').setAttribute("value","Selecione");
+
+               $('#div-carga-horaria-orientacao').hide();
+               $('#div-carga-horaria-aula').show();
+               $('#div-carga-horaria-laboratorio').show();
+               $('#div-carga-horaria-estagio').show();
+               
+               if(value === "ATIVIDADE"){
+                  $('#div-forma-participacao').show(); 
+               }else{
+                  $('#div-forma-participacao').hide();
+               }
+            }); 
+
+            $('select[id="select-forma-participacao"]').change(function () {
+               var select = document.getElementById('select-forma-participacao');
+               var value = select.options[select.selectedIndex].value;
+                if (value === "ATIVIDADE COLETIVA") {
+                  $('#div-carga-horaria-orientacao').hide();
+                  $('#div-carga-horaria-aula').show();
+                  $('#div-carga-horaria-estagio').show();
+                  $('#div-carga-horaria-laboratorio').show();
+                } 
+                else{
+                  $('#div-carga-horaria-orientacao').show();
+                  $('#div-carga-horaria-aula').hide();
+                  $('#div-carga-horaria-estagio').hide();
+                  $('#div-carga-horaria-laboratorio').hide();
+                }                
+            });
 
             $('input[id="numVagasCursoLato"]').change(function () {
                if(document.getElementById("numVagasCursoLato").value.length > 0){
@@ -1216,6 +1443,27 @@
                   document.getElementById('label_cpf_passaporte_membro').innerHTML = "CPF";
                }
             });
+
+            
+            $('input[name="estrangeiro"]').change(function () {
+                if ($('input[name="estrangeiro"]:checked').val() === "Sim") {
+                  document.getElementById('label_cpf_passaporte_membro').innerHTML = "Passaporte";
+               }else{
+                  document.getElementById('label_cpf_passaporte_membro').innerHTML = "CPF";
+               }
+            });
+
+            $('input[name="componenteLatoSensu"]').change(function () {
+                if ($('input[name="componenteLatoSensu"]:checked').val() === "Novo") {
+                  $('#divNovoComponente').show();
+               }else{
+                   $('#divNovoComponente').hide();;
+               }
+            });
+
+            
+
+            
 
                      
 

@@ -1,3 +1,9 @@
+var numListaComponente = 0;
+var mapaComponente = new Map();
+var docentesCurso = [""];
+var chTotal = 0;
+var chSemiTotal = 0;
+
 function limpaSelect(elemento){
 	while (elemento.length > 0) {
 	    elemento.remove(elemento.length-1);
@@ -97,6 +103,136 @@ function inserirLinhaTabelaByInput(idTabela,idInput) {
    }
 }
 
+function inserirLinhaTabelaDocenteComponente(idTabela, nomeDocente, chDocenteComponente){
+
+	//mapaComponente.set(document.getElementById(nomeComponente).value,[document.getElementById(ementa).value,document.getElementById(bibliografia).value]);
+
+	var tabela = document.getElementById(idTabela);
+
+	var chDocente = document.getElementById(chDocenteComponente).value;
+   
+   	var nome = document.getElementById(nomeDocente).value;
+
+   	// Captura a quantidade de linhas já existentes na tabela
+   	var numLinhas = tabela.rows.length;
+   	// Captura a quantidade de colunas da última linha da tabela
+   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+   	// Insere uma linha no fim da tabela.
+   	var novaLinha = tabela.insertRow(numLinhas);
+
+   	novaLinha.setAttribute("id",numLinhas+1);
+
+   	// Faz um loop para criar as colunas
+   	for (var j = 0; j < numColunas; j++) {
+      	var a, b, i;
+       	// Insere uma coluna na nova linha 
+      	novaCelula = novaLinha.insertCell(j);
+	    if(j===0){
+	      	novaCelula.innerHTML = nome.toUpperCase();
+	      	}else if(j===1){
+	       		novaCelula.innerHTML = chDocente;
+	     	}else{ 
+	      		novaCelula.setAttribute("align","right");
+      			novaCelula.setAttribute("class","btn-group");
+	      		a = document.createElement("button");
+	         	a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
+	         	a.setAttribute("class", "btn btn-link");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "far fa-trash-alt");
+	         	a.appendChild(i);
+	         	novaCelula.appendChild(a);
+	        }
+	    }
+  	
+}
+
+
+function inserirLinhaTabelaComponente(idTabela, nomeComponente, ementa, bibliografia,
+	cargaHorariaTotal){
+	
+   	if(document.getElementById("carga-horaria-aula").value.length > 0){
+      chTotal = document.getElementById("carga-horaria-aula").value + chSemiTotal;
+      chSemiTotal = chTotal;
+   	}
+   	if(document.getElementById("carga-horaria-laboratorio").value.length > 0){
+      chTotal = parseInt(document.getElementById("carga-horaria-aula").value,10) + chSemiTotal;
+      chSemiTotal = chTotal;
+   	}
+   	if(document.getElementById("carga-horaria-estagio").value.length > 0){
+      chTotal = parseInt(document.getElementById("carga-horaria-estagio").value,10) + chSemiTotal;
+      chSemiTotal = chTotal;
+   	}
+   	if(document.getElementById("carga-horaria-orientacao").value.length > 0){
+      chTotal = parseInt(document.getElementById("carga-horaria-orientacao").value,10) + chSemiTotal;
+      chSemiTotal = chTotal;
+   	}
+   	document.getElementById('carga-horaria-total').setAttribute("value",chTotal);
+
+	var ementa = document.getElementById(ementa).value;
+
+	var bibliografia = document.getElementById(bibliografia).value;
+	
+	var tabela = document.getElementById(idTabela);
+
+	var chTotal = document.getElementById(cargaHorariaTotal).value;
+   
+   	var nome = document.getElementById(nomeComponente).value;
+
+   	mapaComponente.set(nome,[ementa,bibliografia]);
+
+   	// Captura a quantidade de linhas já existentes na tabela
+   	var numLinhas = tabela.rows.length;
+   	// Captura a quantidade de colunas da última linha da tabela
+   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+   	// Insere uma linha no fim da tabela.
+   	var novaLinha = tabela.insertRow(numLinhas);
+
+   	novaLinha.setAttribute("id",numLinhas+1);
+
+   	// Faz um loop para criar as colunas
+   	for (var j = 0; j < numColunas; j++) {
+      	var a, b, i;
+       	// Insere uma coluna na nova linha 
+      	novaCelula = novaLinha.insertCell(j);
+	    if(j===0){
+	    	numListaComponente++;
+	      	novaCelula.innerHTML = "LAT"+ numListaComponente;
+	      	}else if(j===1){
+	       		novaCelula.innerHTML = nome.toUpperCase();
+	     	}else if(j===2){
+	      		novaCelula.innerHTML = chTotal;
+	      	}else{ 
+	      		novaCelula.setAttribute("align","right");
+      			novaCelula.setAttribute("class","btn-group");
+	      		a = document.createElement("button");
+	         	a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
+	         	a.setAttribute("class", "btn btn-link");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "far fa-trash-alt");
+	         	a.appendChild(i);
+	         	novaCelula.appendChild(a);
+
+	         	b = document.createElement("button");
+	         	b.setAttribute("class", "btn btn-link");
+	         	b.setAttribute("onclick","exibirEmenta('"+nomeComponente+"')");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "fas fa-search");
+	         	b.appendChild(i);
+	         	novaCelula.appendChild(b);
+
+	         	c = document.createElement("button");
+	         	c.setAttribute("class", "btn btn-link");
+	         	c.setAttribute("data-togger","modal");
+	         	c.setAttribute("data-target", "#modalDocentesComponentes");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "fas fa-external-link-alt");
+	         	c.appendChild(i);
+	         	novaCelula.appendChild(c);
+	        }
+	    }
+  	
+}
+
 function inserirLinhaTabelaMembroExterno(idTabela, cpfParticipante, 
 	nomeParticipante, formacaoParticipante, instituicaoParticipante){
 	var tabela = document.getElementById(idTabela);
@@ -118,6 +254,9 @@ function inserirLinhaTabelaMembroExterno(idTabela, cpfParticipante,
    	var novaLinha = tabela.insertRow(numLinhas);
 
    	novaLinha.setAttribute("id",numLinhas+1);
+
+   	//inserir no mapa de docentes
+   	docentesCurso.push(nome);
 
    	// Faz um loop para criar as colunas
    	for (var j = 0; j < numColunas; j++) {
@@ -174,6 +313,9 @@ function inserirLinhaTabelaMembroInterno(idTabela,idInput) {
    var novaLinha = tabela.insertRow(numLinhas);
 
    novaLinha.setAttribute("id",numLinhas+1);
+
+   //inserir no mapa de docentes
+   docentesCurso.push(valor);
    
    // Faz um loop para criar as colunas
    for (var j = 0; j < numColunas; j++) {
