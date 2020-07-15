@@ -983,7 +983,6 @@
                                                 <div class="invalid-feedback">Selecione alguma opção</div>
                                              </div>
                                           </div>
-                                          <input type="hidden" id="carga-horaria-total" value=""/>
                                           <div class="form-group position-relative">
                                              <input class="form-control" id="nome-componente" type="text" placeholder="Nome do componente do curso." />
                                              <label class="required" for="nome-componente">Nome
@@ -1022,7 +1021,7 @@
                                              </div>
                                           </div>
                                           <div class="form-group position-relative">
-                                             <button type="button" class="btn btn-primary" onclick="inserirLinhaTabelaComponente('tabela-componentes','nome-componente','ementa-componente','bibliografia-componente','carga-horaria-total')">Inserir</button>
+                                             <button type="button" class="btn btn-primary" onclick="inserirLinhaTabelaComponente('tabela-componentes','nome-componente','ementa-componente','bibliografia-componente')">Inserir</button>
                                           </div>
                                           <div class="form-group position-relative">     
                                           <table class="table table-striped" data-toggle="table" id="tabela-componentes">
@@ -1153,7 +1152,7 @@
                      </div>
                      <!-- Fim do modal de Pólo EAD-->
                      <!-- Modal para exibir ementa e bibliografia -->
-                     <div class="modal fade" id="modalEmentas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                     <div class="modal fade" id="modalEmenta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                            <div class="modal-content">
                               <div class="modal-header">
@@ -1211,9 +1210,14 @@
                                     <div class="invalid-feedback">Selecione alguma opção</div>
                                  </div>
                                  <div class="form-group position-relative">
-                                    <button type="button" class="btn btn-primary" onclick="inserirLinhaTabelaDocenteComponente('tabelaDocentesComponente','docenteComponente','chDocenteComponente')">Inserir</button>
+                                    <input class="form-control" id="carga-horaria-docente" type="text" placeholder="Carga Horária que o docente irá ministrar no componente." />
+                                    <label class="required" for="carga-horaria-docente">Carga Horária
+                                    </label>
                                  </div>
-                                 <table class="table table-striped" data-toggle="table" id="tabelaDocentesComponente">
+                                 <div class="form-group position-relative">
+                                    <button type="button" class="btn btn-primary" onclick="inserirLinhaTabelaDocenteComponente('tabela-docentes-componente','select-docente-componente','carga-horaria-docente')">Inserir</button>
+                                 </div>
+                                 <table class="table table-striped" data-toggle="table" id="tabela-docentes-componente">
                                     <thead>
                                        <tr>                                             
                                           <th>Docente</th>
@@ -1229,6 +1233,10 @@
                                        </tr>                                       
                                     </tbody>
                                  </table>
+                              </div>
+                              <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <button type="button" class="btn btn-primary">Salvar</button>
                               </div>
                            </div>
                         </div>
@@ -1269,8 +1277,7 @@
             populaSelect(document.getElementById("outrasUnidadesEnvolvidas"), unidadesAcademicas);
 
             populaSelect(document.getElementById("select-polo-ead"), polosEAD);
-
-            populaSelect(document.getElementById("select-docente-componente"), docentesCurso);            
+                       
             
             function inicioDadosGerais(){
                $('#detalheMensalidade').hide();
@@ -1290,17 +1297,19 @@
             function inicioComponentes(){
                $('#componenteLatoSensu-novo').prop('checked',true);
                $('#div-forma-participacao').hide();
+               populaSelect(document.getElementById('select-docente-componente'), docentesCurso);
             }
 
             function exibirEmenta(nomeComponente){
-               
+
                var array = mapaComponente.get(nomeComponente);
 
-               document.getElementById('coluna-ementa').innerHTML = array[0];
+               console.log(array[0]);
+               console.log(array[1]);
 
-               document.getElementById('coluna-bibliografia').innerHTML = array[1];
+               document.getElementById('coluna-ementa').innerHTML = array[0].toString();
 
-               $('#modalEmentas').modal('toogle');
+               document.getElementById('coluna-bibliografia').innerHTML = array[1].toString();
             }
 
             $('select[id="select-metodo-avaliacao"]').change(function () {

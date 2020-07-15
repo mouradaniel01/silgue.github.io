@@ -1,8 +1,7 @@
 var numListaComponente = 0;
 var mapaComponente = new Map();
-var docentesCurso = [""];
+var docentesCurso = [];
 var chTotal = 0;
-var chSemiTotal = 0;
 
 function limpaSelect(elemento){
 	while (elemento.length > 0) {
@@ -111,7 +110,7 @@ function inserirLinhaTabelaDocenteComponente(idTabela, nomeDocente, chDocenteCom
 
 	var chDocente = document.getElementById(chDocenteComponente).value;
    
-   	var nome = document.getElementById(nomeDocente).value;
+   	var nome = document.getElementById(nomeDocente).value.toUpperCase();
 
    	// Captura a quantidade de linhas já existentes na tabela
    	var numLinhas = tabela.rows.length;
@@ -147,38 +146,35 @@ function inserirLinhaTabelaDocenteComponente(idTabela, nomeDocente, chDocenteCom
 }
 
 
-function inserirLinhaTabelaComponente(idTabela, nomeComponente, ementa, bibliografia,
-	cargaHorariaTotal){
+function inserirLinhaTabelaComponente(idTabela, nomeComponente, ementa, bibliografia){
+	chTotal = 0;
+	var array = [];
 	
    	if(document.getElementById("carga-horaria-aula").value.length > 0){
-      chTotal = document.getElementById("carga-horaria-aula").value + chSemiTotal;
-      chSemiTotal = chTotal;
+      chTotal += parseInt(document.getElementById("carga-horaria-aula").value,10);
    	}
    	if(document.getElementById("carga-horaria-laboratorio").value.length > 0){
-      chTotal = parseInt(document.getElementById("carga-horaria-aula").value,10) + chSemiTotal;
-      chSemiTotal = chTotal;
+      chTotal += parseInt(document.getElementById("carga-horaria-laboratorio").value,10);
    	}
    	if(document.getElementById("carga-horaria-estagio").value.length > 0){
-      chTotal = parseInt(document.getElementById("carga-horaria-estagio").value,10) + chSemiTotal;
-      chSemiTotal = chTotal;
+      chTotal += parseInt(document.getElementById("carga-horaria-estagio").value,10);
    	}
    	if(document.getElementById("carga-horaria-orientacao").value.length > 0){
-      chTotal = parseInt(document.getElementById("carga-horaria-orientacao").value,10) + chSemiTotal;
-      chSemiTotal = chTotal;
+      chTotal += parseInt(document.getElementById("carga-horaria-orientacao").value,10);
    	}
-   	document.getElementById('carga-horaria-total').setAttribute("value",chTotal);
-
+   	
 	var ementa = document.getElementById(ementa).value;
 
 	var bibliografia = document.getElementById(bibliografia).value;
 	
 	var tabela = document.getElementById(idTabela);
 
-	var chTotal = document.getElementById(cargaHorariaTotal).value;
-   
    	var nome = document.getElementById(nomeComponente).value;
 
-   	mapaComponente.set(nome,[ementa,bibliografia]);
+   	array.push(ementa);
+   	array.push(bibliografia);
+
+   	mapaComponente.set(nome,array);
 
    	// Captura a quantidade de linhas já existentes na tabela
    	var numLinhas = tabela.rows.length;
@@ -213,17 +209,21 @@ function inserirLinhaTabelaComponente(idTabela, nomeComponente, ementa, bibliogr
 	         	novaCelula.appendChild(a);
 
 	         	b = document.createElement("button");
+	         	b.setAttribute("type", "button");
 	         	b.setAttribute("class", "btn btn-link");
-	         	b.setAttribute("onclick","exibirEmenta('"+nomeComponente+"')");
+	         	b.setAttribute("data-toggle","modal");
+	         	b.setAttribute("data-target", "#modalEmenta");
+	         	b.setAttribute("onclick","exibirEmenta('"+nome+"')");
 	         	i = document.createElement("i");
 	         	i.setAttribute("class", "fas fa-search");
 	         	b.appendChild(i);
 	         	novaCelula.appendChild(b);
 
 	         	c = document.createElement("button");
+	         	c.setAttribute("type", "button");
 	         	c.setAttribute("class", "btn btn-link");
-	         	c.setAttribute("data-togger","modal");
-	         	c.setAttribute("data-target", "#modalDocentesComponentes");
+	         	c.setAttribute("data-toggle","modal");
+	         	c.setAttribute("data-target", "#modalDocentesComponente");
 	         	i = document.createElement("i");
 	         	i.setAttribute("class", "fas fa-external-link-alt");
 	         	c.appendChild(i);
@@ -239,7 +239,7 @@ function inserirLinhaTabelaMembroExterno(idTabela, cpfParticipante,
 
 	var cpf_passaporte = document.getElementById(cpfParticipante).value;
    
-   	var nome = document.getElementById(nomeParticipante).value;
+   	var nome = document.getElementById(nomeParticipante).value.toUpperCase();
 
    	var select = document.getElementById(formacaoParticipante);
 
