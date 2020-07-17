@@ -4483,7 +4483,7 @@
             });
 
              $('select[name="financiamento"]').change(function () {
-               var select = document.getElementById('select-fonte-recurso');
+               var select = document.getElementById('select-financiamento');
                var value = select.options[select.selectedIndex].value;
                 if (value === "Financiamento Aluno" || value === "Sem Financiamento") {
                     $('#menuRecursos').hide();
