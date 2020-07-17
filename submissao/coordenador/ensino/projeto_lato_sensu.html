@@ -541,9 +541,9 @@
                                        <div class="form-group position-relative">
                                           <select class="custom-select" id="select-financiamento"  name="financiamento">
                                              <option value="hide">Selecione</option>
-                                             <option value="monografia">Convênio</option>
-                                             <option value="outros">Financiamento Aluno</option>
-                                             <option value="pratica">Sem Financiamento</option>
+                                             <option value="Convênio">Convênio</option>
+                                             <option value="Financiamento Aluno">Financiamento Aluno</option>
+                                             <option value="Sem Financiamento">Sem Financiamento</option>
                                           </select>
                                           <div class="tooltip-group">
                                              <label class="required" for="elect-financiamento">Financiamento
@@ -4467,10 +4467,10 @@
                 }
             });
 
-             $('select[name="fonte-recurso"]').change(function () {
-               var select = document.getElementById('select-fonte-recurso');
+             $('select[name="financiamento"]').change(function () {
+               var select = document.getElementById('select-financiamento');
                var value = select.options[select.selectedIndex].value;
-                if (value === "C") {
+                if (value === "Sem Financiamento") {
                     $('#baseFunpec').hide();
                     $('#remuneracaoFundacao').hide();
                     $('#doapParcelas').hide();
@@ -4482,10 +4482,10 @@
                 }
             });
 
-             $('select[name="fonte-recurso"]').change(function () {
+             $('select[name="financiamento"]').change(function () {
                var select = document.getElementById('select-fonte-recurso');
                var value = select.options[select.selectedIndex].value;
-                if (value === "A") {
+                if (value === "Financiamento Aluno" || value === "Sem Financiamento") {
                     $('#menuRecursos').hide();
                 } else {
                    $('#menuRecursos').show();
