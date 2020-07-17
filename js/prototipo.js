@@ -487,7 +487,9 @@ function inserirLinhaTabelaMembroExterno(idTabela, cpfParticipante,
    	novaLinha.setAttribute("id",numLinhas+1);
 
    	//inserir no mapa de docentes
-   	docentesCurso.push(nome);
+   	docentesCursoSelect.push(nome);
+
+   	docente = new Docente(nome,'Docente Externo','Brasileira',cpf_passaporte,'',formacao,'Participante Externo',instituicao,'');
 
    	// Faz um loop para criar as colunas
    	for (var j = 0; j < numColunas; j++) {
@@ -526,7 +528,8 @@ function inserirLinhaTabelaMembroExterno(idTabela, cpfParticipante,
 	         	novaCelula.appendChild(b);
 	        }
 	    }
-  	
+
+	docentesCurso.push(docente);
 }
 
 function inserirLinhaTabelaMembroInterno(idTabela,idNome, ) {
