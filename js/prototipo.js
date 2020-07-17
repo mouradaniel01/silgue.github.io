@@ -1,7 +1,39 @@
 var numListaComponente = 0;
 var mapaComponente = new Map();
 var docentesCurso = [];
+var docentesCursoSelect = [];
 var chTotal = 0;
+var mapaDocenteComponente = new Map();
+var componentes = [];
+var docentesComponente = [];
+
+function Componente(codigo, nome, tipo, chAula, chEstagio, chOrientacao, chLaboratorio, chTotal, ementa, bibliografia, docentes){
+	this.codigo = codigo;
+	this.nome = nome;
+	this.tipo = tipo;
+	this.chAula = chAula;
+	this.chEstagio = chEstagio;
+	this.chOrientacao = chOrientacao;
+	this.chLaboratorio = chLaboratorio;
+	this.chTotal = chTotal;
+	this.ementa = ementa;
+	this.bibliografia = bibliografia;
+	this.docentes = docentes; 
+}
+
+function Docente(nome, tipo, nacionalidade, cpf_passaporte, matricula, formacao, vinculo, instituicao, ch){
+	this.nome = nome;
+	this.tipo = tipo;
+	this.nacionalidade = nacionalidade;
+	this.cpf_passaporte = cpf_passaporte;
+	this.matricula = matricula;
+	this.formacao = formacao;
+	this.vinculo = vinculo;
+	this.instituicao = instituicao;
+	this.ch = ch;
+}
+
+
 
 function limpaSelect(elemento){
 	while (elemento.length > 0) {
@@ -32,13 +64,9 @@ function calcular(vlr1,vlr2,resultado) {
               document.getElementById('resultado').innerHTML = n1 + n2;
 }
 
-function inserirLinhaTabela(idTabela,idSelect) {
+function inserirLinhaTabela(idTabela) {
    // Captura a referência da tabela com id “minhaTabela”
    var tabela = document.getElementById(idTabela);
-   //Captura o select
-   var select = document.getElementById(idSelect);
-   //Captura o valor do select
-   var valor = select.options[select.selectedIndex].value;
    // Captura a quantidade de linhas já existentes na tabela
    var numLinhas = tabela.rows.length;
    // Captura a quantidade de colunas da última linha da tabela
@@ -47,24 +75,6 @@ function inserirLinhaTabela(idTabela,idSelect) {
    var novaLinha = tabela.insertRow(numLinhas);
 
    novaLinha.setAttribute("id",numLinhas+1);
-   
-   // Faz um loop para criar as colunas
-   for (var j = 0; j < numColunas; j++) {
-      var a, i;
-       // Insere uma coluna na nova linha 
-      novaCelula = novaLinha.insertCell(j);
-      if(j===0){
-      novaCelula.innerHTML = valor.toUpperCase();
-      }else{
-         a = document.createElement("button");
-         a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
-         a.setAttribute("class", "btn btn-link");
-         i = document.createElement("i");
-         i.setAttribute("class", "far fa-trash-alt");
-         a.appendChild(i);
-         novaCelula.appendChild(a);
-      }
-   }
 }
 
 function inserirLinhaTabelaByInput(idTabela,idInput) {
@@ -102,34 +112,104 @@ function inserirLinhaTabelaByInput(idTabela,idInput) {
    }
 }
 
-function inserirLinhaTabelaDocenteComponente(idTabela, nomeDocente, chDocenteComponente){
+function populaTabelaDocentesComponente(nomeComponente, idTabela){
 
-	//mapaComponente.set(document.getElementById(nomeComponente).value,[document.getElementById(ementa).value,document.getElementById(bibliografia).value]);
+	var docentes = [];
 
 	var tabela = document.getElementById(idTabela);
 
-	var chDocente = document.getElementById(chDocenteComponente).value;
-   
-   	var nome = document.getElementById(nomeDocente).value.toUpperCase();
+	document.getElementById('nome-componente-oculto').value = nomeComponente;
 
-   	// Captura a quantidade de linhas já existentes na tabela
+	while(tabela.rows.length >2){
+		tabela.deleteRow(length-1);
+	}
+
+	componentes.forEach(function (componente) {
+		if(componente.nome === nomeComponente){
+			
+			// Captura a quantidade de linhas já existentes na tabela
+		   	var numLinhas = tabela.rows.length;
+		   	// Captura a quantidade de colunas da última linha da tabela
+		   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+
+		   	console.log("ação de popular tabela ");
+		   	console.log(componente);
+
+	   		componente.docentes.forEach(function (docente) {
+		   		var novaLinha = tabela.insertRow(numLinhas);
+		   		novaLinha.setAttribute("id",numLinhas+1);
+
+		   		for (var j = 0; j < numColunas; j++) {
+		      	var a, b, i;
+		       	// Insere uma coluna na nova linha 
+		      	novaCelula = novaLinha.insertCell(j);
+			    if(j===0){
+			      	novaCelula.innerHTML = docente.nome;
+			      	}else if(j===1){
+			       		novaCelula.innerHTML = docente.ch;
+			     	}else{ 
+			      		novaCelula.setAttribute("align","right");
+		      			novaCelula.setAttribute("class","btn-group");
+			      		a = document.createElement("button");
+			         	a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
+			         	a.setAttribute("class", "btn btn-link");
+			         	i = document.createElement("i");
+			         	i.setAttribute("class", "far fa-trash-alt");
+			         	a.appendChild(i);
+			         	novaCelula.appendChild(a);
+			        }
+			    }
+			});
+		}
+	});
+}
+
+function popularTabelaDocenteComponente(nomeComponente, idTabela){
+
+	var nome = nomeComponente.toUpperCase();
+
+	var docentesComponente = new Map();
+
+	document.getElementById('nome-componente-oculto').value = nomeComponente;
+
+	if(mapaDocenteComponente.has(nome)){
+		console.log("o mapa tem esse componente");
+   		docentesComponente = mapaDocenteComponente.get(nome);
+   	}else{
+   		console.log("o mapa não tem esse componente");
+   		mapaDocenteComponente.set(nome,docentesComponente);
+   	}
+   	console.log(nome);
+   	
+   	console.log(docentesComponente);
+
+	var tabela = document.getElementById(idTabela);
+
+	while(tabela.rows.length >2){
+		tabela.deleteRow(length-1);
+	}
+
+	// Captura a quantidade de linhas já existentes na tabela
    	var numLinhas = tabela.rows.length;
    	// Captura a quantidade de colunas da última linha da tabela
    	var numColunas = tabela.rows[numLinhas-1].cells.length;
-   	// Insere uma linha no fim da tabela.
-   	var novaLinha = tabela.insertRow(numLinhas);
 
-   	novaLinha.setAttribute("id",numLinhas+1);
-
-   	// Faz um loop para criar as colunas
-   	for (var j = 0; j < numColunas; j++) {
+   	for (var [key, value] of docentesComponente) {
+   		console.log(key,value);
+	    // Insere uma linha no fim da tabela.
+   		var novaLinha = tabela.insertRow(numLinhas);
+   		novaLinha.setAttribute("id",numLinhas+1);
+   		// Faz um loop para criar as colunas
+   		for (var j = 0; j < numColunas; j++) {
       	var a, b, i;
        	// Insere uma coluna na nova linha 
       	novaCelula = novaLinha.insertCell(j);
 	    if(j===0){
-	      	novaCelula.innerHTML = nome.toUpperCase();
+	    	console.log("inserindo nome");
+	      	novaCelula.innerHTML = Key;
 	      	}else if(j===1){
-	       		novaCelula.innerHTML = chDocente;
+	      		console.log("inserindo ch");
+	       		novaCelula.innerHTML = value;
 	     	}else{ 
 	      		novaCelula.setAttribute("align","right");
       			novaCelula.setAttribute("class","btn-group");
@@ -142,7 +222,157 @@ function inserirLinhaTabelaDocenteComponente(idTabela, nomeDocente, chDocenteCom
 	         	novaCelula.appendChild(a);
 	        }
 	    }
-  	
+	}
+}
+
+function inserirLinhaTabelaDocenteComponente(idTabela,nomeDocente, chDocenteComponente){
+
+	var tabela = document.getElementById(idTabela);
+
+	var docentes = [];
+
+	var chDocente = document.getElementById(chDocenteComponente).value;
+   
+   	var nome = document.getElementById(nomeDocente).value.toUpperCase();
+
+   	var nomeComponente = document.getElementById('nome-componente-oculto').value;
+
+   	console.log("Inserindo docente no componente:" + nomeComponente);
+
+   	componentes.forEach(function (componente) {
+   		console.log(componente);
+		if(componente.nome === nomeComponente){
+			console.log("achou o componente");
+			docentes = componente.docentes;
+			var docenteComponente = new Docente();
+			console.log("docentes do curso");
+			docentesCurso.forEach(function (docente) {
+				console.log("procurando o docente:" + nome);
+				console.log(docente);
+				if(docente.nome === nome){
+					console.log("Achou o docente:" + nome);
+					console.log(docente);
+					docenteComponente = docente;
+					docenteComponente.ch = chDocente;
+					console.log("inseriu as informações do docente");
+					console.log(docenteComponente);
+					docentes.push(docenteComponente);
+					console.log(docentes);
+				}
+			});
+
+			componente.docentes = docentes;
+			console.log("inseriu o docente no componente");
+			console.log(componente);
+		}
+	});
+
+	populaTabelaDocentesComponente(nomeComponente,idTabela);
+
+}
+
+function inserirComponente(idTabela, nomeComponente, tipoComponente, chAulaComponente, chEstagioComponente, 
+	chOrientacaoComponente, chLaboratorioComponente, ementaComponente, bibliografiaComponente){
+
+	var codigo = "LAT" + (componentes.length + 1);
+	chTotal = 0;
+
+	var nome = document.getElementById(nomeComponente).value;
+	var tipo = document.getElementById(tipoComponente).value;
+	var chAula = document.getElementById(chAulaComponente).value;
+	var chEstagio = document.getElementById(chEstagioComponente).value;
+	var chOrientacao = document.getElementById(chOrientacaoComponente).value;
+	var chLaboratorio = document.getElementById(chLaboratorioComponente).value;
+	var ementa = document.getElementById(ementaComponente).value;
+	var bibliografia = document.getElementById(bibliografiaComponente).value;
+
+
+   	if(document.getElementById("carga-horaria-aula").value.length > 0){
+      chTotal += parseInt(document.getElementById("carga-horaria-aula").value,10);
+   	}
+   	if(document.getElementById("carga-horaria-laboratorio").value.length > 0){
+      chTotal += parseInt(document.getElementById("carga-horaria-laboratorio").value,10);
+   	}
+   	if(document.getElementById("carga-horaria-estagio").value.length > 0){
+      chTotal += parseInt(document.getElementById("carga-horaria-estagio").value,10);
+   	}
+   	if(document.getElementById("carga-horaria-orientacao").value.length > 0){
+      chTotal += parseInt(document.getElementById("carga-horaria-orientacao").value,10);
+   	}
+
+	var componente = new Componente(codigo, nome, tipo, chAula, chEstagio, chOrientacao, chLaboratorio, chTotal, ementa, bibliografia,[]);
+
+	componentes.push(componente);
+
+	populaTabelaComponentes(idTabela, componente);
+}
+
+function populaTabelaComponentes(idTabela, componente){
+
+	var tabela = document.getElementById(idTabela);
+		// Captura a quantidade de linhas já existentes na tabela
+
+	while(tabela.rows.length >2){
+		tabela.deleteRow(length-1);
+	}
+	
+	componentes.forEach(function (componente) {
+		
+	   	var numLinhas = tabela.rows.length;
+	   	// Captura a quantidade de colunas da última linha da tabela
+	   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+	   	// Insere uma linha no fim da tabela.
+	   	var novaLinha = tabela.insertRow(numLinhas);
+
+	   	novaLinha.setAttribute("id",numLinhas+1);
+
+	   	// Faz um loop para criar as colunas
+	   	for (var j = 0; j < numColunas; j++) {
+	      	var a, b, i;
+	       	// Insere uma coluna na nova linha 
+	      	novaCelula = novaLinha.insertCell(j);
+		    if(j===0){
+		    	numListaComponente++;
+		      	novaCelula.innerHTML = componente.codigo;
+		    }else if(j===1){
+		       	novaCelula.innerHTML = componente.nome;
+		    }else if(j===2){
+		      	novaCelula.innerHTML = componente.chTotal;
+		    }else{ 
+	      		novaCelula.setAttribute("align","right");
+      			novaCelula.setAttribute("class","btn-group");
+	      		a = document.createElement("button");
+	         	a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
+	         	a.setAttribute("class", "btn btn-link");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "far fa-trash-alt");
+	         	a.appendChild(i);
+	         	novaCelula.appendChild(a);
+
+	         	b = document.createElement("button");
+	         	b.setAttribute("type", "button");
+	         	b.setAttribute("class", "btn btn-link");
+	         	b.setAttribute("data-toggle","modal");
+	         	b.setAttribute("data-target", "#modalEmenta");
+	         	b.setAttribute("onclick","exibirEmenta('"+componente.nome+"')");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "fas fa-search");
+	         	b.appendChild(i);
+	         	novaCelula.appendChild(b);
+
+	         	c = document.createElement("button");
+	         	c.setAttribute("type", "button");
+	         	c.setAttribute("class", "btn btn-link");
+	         	c.setAttribute("data-toggle","modal");
+	         	c.setAttribute("data-target", "#modalDocentesComponente");
+	         	c.setAttribute("onclick","populaTabelaDocentesComponente('"+componente.nome+"','tabela-docentes-componente')");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "fas fa-external-link-alt");
+	         	c.appendChild(i);
+	         	novaCelula.appendChild(c);
+	        }
+		}
+	});
 }
 
 
@@ -224,6 +454,7 @@ function inserirLinhaTabelaComponente(idTabela, nomeComponente, ementa, bibliogr
 	         	c.setAttribute("class", "btn btn-link");
 	         	c.setAttribute("data-toggle","modal");
 	         	c.setAttribute("data-target", "#modalDocentesComponente");
+	         	c.setAttribute("onclick","popularTabelaDocenteComponente('"+nome+"','tabela-docentes-componente')");
 	         	i = document.createElement("i");
 	         	i.setAttribute("class", "fas fa-external-link-alt");
 	         	c.appendChild(i);
@@ -298,13 +529,16 @@ function inserirLinhaTabelaMembroExterno(idTabela, cpfParticipante,
   	
 }
 
-function inserirLinhaTabelaMembroInterno(idTabela,idInput) {
+function inserirLinhaTabelaMembroInterno(idTabela,idNome, ) {
+
+	var docente = new Docente();
+
    // Captura a referência da tabela com id “minhaTabela”
    var tabela = document.getElementById(idTabela);
    //Captura o select
-   var input = document.getElementById(idInput);
+   var input = document.getElementById(idNome);
    //Captura o valor do select
-   var valor = input.value;
+   var nome = input.value;
    // Captura a quantidade de linhas já existentes na tabela
    var numLinhas = tabela.rows.length;
    // Captura a quantidade de colunas da última linha da tabela
@@ -314,112 +548,118 @@ function inserirLinhaTabelaMembroInterno(idTabela,idInput) {
 
    novaLinha.setAttribute("id",numLinhas+1);
 
+   docentesCursoSelect.push(nome);
+
    //inserir no mapa de docentes
-   docentesCurso.push(valor);
+   //docentesCurso.push(nome);
    
    // Faz um loop para criar as colunas
-   for (var j = 0; j < numColunas; j++) {
-      var a, b, i;
-       // Insere uma coluna na nova linha 
-      novaCelula = novaLinha.insertCell(j);
-      if(valor === "RUBENS MARIBONDO DO NASCIMENTO"){
-      	if(j===0){
-      		novaCelula.innerHTML = "1234567";
-      	}else if(j===1){
-       		novaCelula.innerHTML = valor.toUpperCase();
-     	}else if(j===2){
-      		novaCelula.innerHTML = "DOUTORADO";
-      	}else if(j===3){
-      		novaCelula.innerHTML = "PROFESSOR DE MAGISTÉRIO SUPERIOR";
-      	}else if(j===4){
-      		novaCelula.innerHTML = "UFRN"
-      	}else{//rel="noopener noreferrer" target="_blank
-      	novaCelula.setAttribute("align","right");
-      	novaCelula.setAttribute("class","btn-group");
-      		a = document.createElement("button");
-         	a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
-         	a.setAttribute("class", "btn btn-link");
-         	i = document.createElement("i");
-         	i.setAttribute("class", "far fa-trash-alt");
-         	a.appendChild(i);
-         	novaCelula.appendChild(a);
+    for (var j = 0; j < numColunas; j++) {
+      	var a, b, i;
+       	// Insere uma coluna na nova linha 
+      	novaCelula = novaLinha.insertCell(j);
+    	if(nome === "RUBENS MARIBONDO DO NASCIMENTO"){
+	      	docente = new Docente(nome,'Docente Interno','Brasileira','8671649752936793','1234567','DOUTORADO','PROFESSOR DE MAGISTÉRIO SUPERIOR','UFRN','');
+	      	if(j===0){
+	      		novaCelula.innerHTML = "1234567";
+	      	}else if(j===1){
+	       		novaCelula.innerHTML = nome.toUpperCase();
+	     	}else if(j===2){
+	      		novaCelula.innerHTML = "DOUTORADO";
+	      	}else if(j===3){
+	      		novaCelula.innerHTML = "PROFESSOR DE MAGISTÉRIO SUPERIOR";
+	      	}else if(j===4){
+	      		novaCelula.innerHTML = "UFRN"
+	      	}else{//rel="noopener noreferrer" target="_blank
+		      	novaCelula.setAttribute("align","right");
+		      	novaCelula.setAttribute("class","btn-group");
+	      		a = document.createElement("button");
+	         	a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
+	         	a.setAttribute("class", "btn btn-link");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "far fa-trash-alt");
+	         	a.appendChild(i);
+	         	novaCelula.appendChild(a);
 
-         	b = document.createElement("a");
-         	b.setAttribute("href","http://lattes.cnpq.br/8671649752936793");
-         	b.setAttribute("class", "link-normal m-2");
-         	b.setAttribute("rel","noopener noreferrer");
-         	b.setAttribute("target", "_blank");
-         	i = document.createElement("i");
-         	i.setAttribute("class", "fas fa-search");
-         	b.appendChild(i);
-         	novaCelula.appendChild(b);
-         }
-      }else if(valor === "APUENA VIEIRA GOMES"){
-      	if(j===0){
-      		novaCelula.innerHTML = "1234568";
-      	}else if(j===1){
-       		novaCelula.innerHTML = valor.toUpperCase();
-     	}else if(j===2){
-      		novaCelula.innerHTML = "DOUTORADO";
-      	}else if(j===3){
-      		novaCelula.innerHTML = "PROFESSOR DE MAGISTÉRIO SUPERIOR";
-      	}else if(j===4){
-      		novaCelula.innerHTML = "UFRN"
-      	}else{
-      		novaCelula.setAttribute("align","right");
-      		novaCelula.setAttribute("class","btn-group");
-      		a = document.createElement("button");
-         	a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
-         	a.setAttribute("class", "btn btn-link");
-         	i = document.createElement("i");
-         	i.setAttribute("class", "far fa-trash-alt");
-         	a.appendChild(i);
-         	novaCelula.appendChild(a);
+	         	b = document.createElement("a");
+	         	b.setAttribute("href","http://lattes.cnpq.br/8671649752936793");
+	         	b.setAttribute("class", "link-normal m-2");
+	         	b.setAttribute("rel","noopener noreferrer");
+	         	b.setAttribute("target", "_blank");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "fas fa-search");
+	         	b.appendChild(i);
+	         	novaCelula.appendChild(b);
+	        }
+    	}else if(nome === "APUENA VIEIRA GOMES"){
+      		docente = new Docente(nome,'Docente Interno','Brasileira','0601161335088804','1234568','DOUTORADO','PROFESSOR DE MAGISTÉRIO SUPERIOR','UFRN','');
+	      	if(j===0){
+	      		novaCelula.innerHTML = "1234568";
+	      	}else if(j===1){
+	       		novaCelula.innerHTML = nome.toUpperCase();
+	     	}else if(j===2){
+	      		novaCelula.innerHTML = "DOUTORADO";
+	      	}else if(j===3){
+	      		novaCelula.innerHTML = "PROFESSOR DE MAGISTÉRIO SUPERIOR";
+	      	}else if(j===4){
+	      		novaCelula.innerHTML = "UFRN"
+	      	}else{
+	      		novaCelula.setAttribute("align","right");
+	      		novaCelula.setAttribute("class","btn-group");
+	      		a = document.createElement("button");
+	         	a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
+	         	a.setAttribute("class", "btn btn-link");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "far fa-trash-alt");
+	         	a.appendChild(i);
+	         	novaCelula.appendChild(a);
 
-         	b = document.createElement("a");
-         	b.setAttribute("href","http://lattes.cnpq.br/0601161335088804");
-         	b.setAttribute("class", "link-normal m-2");
-         	b.setAttribute("rel","noopener noreferrer");
-         	b.setAttribute("target", "_blank");
-         	i = document.createElement("i");
-         	i.setAttribute("class", "fas fa-search");
-         	b.appendChild(i);
-         	novaCelula.appendChild(b);
-         }
-      }else{
-      	if(j===0){
-      		novaCelula.innerHTML = "1234569";
-      	}else if(j===1){
-       		novaCelula.innerHTML = valor.toUpperCase();
-     	}else if(j===2){
-      		novaCelula.innerHTML = "DOUTORADO";
-      	}else if(j===3){
-      		novaCelula.innerHTML = "PROFESSOR DE ENSINO BASICO TECNICO E TECNOLOGICO";
-      	}else if(j===4){
-      		novaCelula.innerHTML = "UFRN"
-      	}else{
-      		novaCelula.setAttribute("align","right");
-      		novaCelula.setAttribute("class","btn-group");
-      		a = document.createElement("button");
-         	a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
-         	a.setAttribute("class", "btn btn-link");
-         	i = document.createElement("i");
-         	i.setAttribute("class", "far fa-trash-alt");
-         	a.appendChild(i);
-         	novaCelula.appendChild(a);
+	         	b = document.createElement("a");
+	         	b.setAttribute("href","http://lattes.cnpq.br/0601161335088804");
+	         	b.setAttribute("class", "link-normal m-2");
+	         	b.setAttribute("rel","noopener noreferrer");
+	         	b.setAttribute("target", "_blank");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "fas fa-search");
+	         	b.appendChild(i);
+	         	novaCelula.appendChild(b);
+        	}
+    	}else{
+      		docente = new Docente(nome,'Docente Interno','Brasileira','1093675040121205','1234568','DOUTORADO','PROFESSOR DE ENSINO BASICO TECNICO E TECNOLOGICO','IMD','');
+	      	if(j===0){
+	      		novaCelula.innerHTML = "1234569";
+	      	}else if(j===1){
+	       		novaCelula.innerHTML = nome.toUpperCase();
+	     	}else if(j===2){
+	      		novaCelula.innerHTML = "DOUTORADO";
+	      	}else if(j===3){
+	      		novaCelula.innerHTML = "PROFESSOR DE ENSINO BASICO TECNICO E TECNOLOGICO";
+	      	}else if(j===4){
+	      		novaCelula.innerHTML = "IMD";
+	      	}else{
+	      		novaCelula.setAttribute("align","right");
+	      		novaCelula.setAttribute("class","btn-group");
+	      		a = document.createElement("button");
+	         	a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
+	         	a.setAttribute("class", "btn btn-link");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "far fa-trash-alt");
+	         	a.appendChild(i);
+	         	novaCelula.appendChild(a);
 
-         	b = document.createElement("a");
-         	b.setAttribute("href","http://lattes.cnpq.br/1093675040121205");
-         	b.setAttribute("class", "link-normal m-2");
-         	b.setAttribute("rel","noopener noreferrer");
-         	b.setAttribute("target", "_blank");
-         	i = document.createElement("i");
-         	i.setAttribute("class", "fas fa-search");
-         	b.appendChild(i);
-         	novaCelula.appendChild(b);
-      }
+	         	b = document.createElement("a");
+	         	b.setAttribute("href","http://lattes.cnpq.br/1093675040121205");
+	         	b.setAttribute("class", "link-normal m-2");
+	         	b.setAttribute("rel","noopener noreferrer");
+	         	b.setAttribute("target", "_blank");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "fas fa-search");
+	         	b.appendChild(i);
+	         	novaCelula.appendChild(b);
+	        }
+    	}
     }
- }
+    docentesCurso.push(docente);
 }
 
 

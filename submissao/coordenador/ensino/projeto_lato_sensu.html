@@ -140,12 +140,6 @@
                   <li><strong>•</strong> Esse é um protótipo de tela navegável. O usuário poderá verificar as telas na sequência de sua preferência.</li>
                </ul>
             </div>
-            <div class="alert-information">
-               <p><strong>Atenção</strong></p>
-               <ul>
-                  <li><strong>•</strong> Esse é um protótipo de tela navegável. O usuário poderá verificar as telas na sequência de sua preferência.</li>
-               </ul>
-            </div>
             <button class="close d-flex" type="button" data-dismiss="alert" aria-label="Close">
             <i class="fas fa-times"></i>
             </button>
@@ -1020,8 +1014,11 @@
                                              <div class="invalid-feedback">Limite de caracteres excedido
                                              </div>
                                           </div>
-                                          <div class="form-group position-relative">
+                                          <!--<div class="form-group position-relative">
                                              <button type="button" class="btn btn-primary" onclick="inserirLinhaTabelaComponente('tabela-componentes','nome-componente','ementa-componente','bibliografia-componente')">Inserir</button>
+                                          </div>-->
+                                          <div class="form-group position-relative">
+                                             <button type="button" class="btn btn-primary" onclick="inserirComponente('tabela-componentes','nome-componente','select-tipo-componente','carga-horaria-aula','carga-horaria-estagio','carga-horaria-orientacao','carga-horaria-aula','ementa-componente','bibliografia-componente')">Inserir</button>
                                           </div>
                                           <div class="form-group position-relative">     
                                           <table class="table table-striped" data-toggle="table" id="tabela-componentes">
@@ -1029,7 +1026,12 @@
                                                 <tr>
                                                    <th>Codigo</th>
                                                    <th>Nome</th>
-                                                   <th>Carga Horária</th>
+                                                   <th>Carga Horária
+                                                      <span class="tooltip-icon">
+                                                         <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: a carga horária do componente é a soma das cargas horárias informadas.">
+                                                         </i>
+                                                      </span>
+                                                   </th>
                                                    <th>Ações</th>
                                                 </tr>
                                              </thead>
@@ -1200,6 +1202,7 @@
                                  </button>
                               </div>
                               <div class="modal-body">
+                                 <input class="form-control" id="nome-componente-oculto" type="hidden" value="" />
                                  <div class="form-group position-relative">
                                     <select class="custom-select" id="select-docente-componente" required="required" name="docente-componente">
                                        <option value="hide">Selecione</option>
@@ -1211,8 +1214,14 @@
                                  </div>
                                  <div class="form-group position-relative">
                                     <input class="form-control" id="carga-horaria-docente" type="text" placeholder="Carga Horária que o docente irá ministrar no componente." />
-                                    <label class="required" for="carga-horaria-docente">Carga Horária
-                                    </label>
+                                    <div class="tooltip-group">
+                                       <label class="required" for="carga-horaria-docente">Carga Horária
+                                       </label>
+                                        <span class="tooltip-icon">
+                                          <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: A carga horária do docente não pode ser superior a carga horária do componente e a soma da carga horária do docente, em todos os componentes, não pode ser superior a 25% da carga horária total das disciplinas(o docente não pode dar mais que 25% de todos os componentes).">
+                                          </i>
+                                       </span>
+                                 </div>
                                  </div>
                                  <div class="form-group position-relative">
                                     <button type="button" class="btn btn-primary" onclick="inserirLinhaTabelaDocenteComponente('tabela-docentes-componente','select-docente-componente','carga-horaria-docente')">Inserir</button>
@@ -1297,19 +1306,21 @@
             function inicioComponentes(){
                $('#componenteLatoSensu-novo').prop('checked',true);
                $('#div-forma-participacao').hide();
-               populaSelect(document.getElementById('select-docente-componente'), docentesCurso);
+               populaSelect(document.getElementById('select-docente-componente'), docentesCursoSelect);
             }
 
-            function exibirEmenta(nomeComponente){
+            function exibirEmenta(nome_componente){
 
-               var array = mapaComponente.get(nomeComponente);
+               var nomeComponente = nome_componente;
 
-               console.log(array[0]);
-               console.log(array[1]);
+               componentes.forEach(function (componente) {
+                  console.log(componente);
+                  if(componente.nome === nomeComponente){
+                     document.getElementById('coluna-ementa').innerHTML = componente.ementa;
 
-               document.getElementById('coluna-ementa').innerHTML = array[0].toString();
-
-               document.getElementById('coluna-bibliografia').innerHTML = array[1].toString();
+                     document.getElementById('coluna-bibliografia').innerHTML = componente.bibliografia;
+                  }
+               });
             }
 
             $('select[id="select-metodo-avaliacao"]').change(function () {
