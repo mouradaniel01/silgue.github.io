@@ -171,19 +171,17 @@ function selecionarEntidade(entidadeSelecionada){
 
 	console.log("selecionando entidade");
 
+	entidadesSelecionadas = [];
+
    var nomeEntidade = entidadeSelecionada;
 
    console.log(nomeEntidade);
 
    if($('input[id="'+nomeEntidade+'"]').is(':checked')){
-   		console.log("checado");
        listaEntidades.forEach(function (entidade) {
-       	console.log(entidade);
          if(nomeEntidade === entidade.nome){
-         	console.log("achou a entidade na listagem");
             entidade.tipo = 'Contratante';
             entidadesSelecionadas.push(entidade);
-            console.log(entidadesSelecionadas);
          }
       });
    } else {
