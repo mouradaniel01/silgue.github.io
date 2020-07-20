@@ -341,13 +341,13 @@
                                                 </span>
                                              </label>
                                              <input class="form-control m-2" id="entidade" type="text" placeholder="Digite o nome do Órgão/Entidade..." />                                          
-                                             <button type="button" class="btn btn-link" href="#">
+                                             <button type="button" class="btn btn-link" href="#" onclick="buscarEntidade(document.getElementById('entidade').value)">
                                              <i class="fas fa-search"></i>
                                              </button>
                                           </div>
                                        </div>
-                                          <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaEntidades">
-                                             <table class="table table-striped" data-toggle="table">
+                                          <div class="conteudo-principal__content m-0 my-3 px-4" >
+                                             <table id="tabela-entidades" class="table table-striped" data-toggle="table">
                                                 <thead>
                                                    <tr>
                                                       <th></th>
@@ -360,26 +360,18 @@
                                                 </thead>
                                                 <tbody>
                                                    <tr>
-                                                      <td><input class="form-check-input m-2" id="checkEntidade" type="checkbox"  /></td>
-                                                      <td>REPSOL </td>
-                                                      <td>000.0000/0001-01</td>
-                                                      <td>Rua Praia do Botafogo</td>
-                                                      <td>RJ</td>
-                                                      <td>RJ</td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td><input class="form-check-input m-2" id="checkEntidade" type="checkbox"  /></td>
-                                                      <td>REPSOL </td>
-                                                      <td>000.0000/0001-02</td>
-                                                      <td>Av. Paulista</td>
-                                                      <td>SP</td>
-                                                      <td>SP</td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td></td>
                                                    </tr>
                                                 </tbody>
                                              </table>
                                           </div>
                                           <div class="form-control m-0 my-3 px-4">
-                                             <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i>        Inserir
+                                             <button class="btn-primary" type="button" onclick="inserirEntidadeParticipe()"><i class="fas fa-chevron "></i>        Inserir
                                              </button> 
                                           </div>  
                                        </form>
@@ -392,8 +384,8 @@
                                              </i>
                                           </span>
                                        </div>
-                                       <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaEntidades">
-                                          <table class="table table-striped" data-toggle="table">
+                                       <div class="conteudo-principal__content m-0 my-3 px-4" >
+                                          <table id="tabela-participes" class="table table-striped" data-toggle="table">
                                              <thead>
                                                 <tr>
                                                    <th>Tipo</th>
@@ -407,39 +399,13 @@
                                              </thead>
                                              <tbody>
                                                 <tr>
-                                                   <td>Interveniente/Executora</td>
-                                                   <td>UFRN </td>
-                                                   <td>000.0000/0001-10</td>
-                                                   <td>Av. Salgado Filho, 3000</td>
-                                                   <td>Natal</td>
-                                                   <td>RN</td>
-                                                   <td>
-                                                   </td>
-                                                </tr>
-                                                 <tr>
-                                                   <td>Contratada</td>
-                                                   <td>FUNPEC </td>
-                                                   <td>000.0000/0001-20</td>
-                                                   <td>Av. Salgado Filho, 3000</td>
-                                                   <td>Natal</td>
-                                                   <td>RN</td>
                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                   <td>Contratante</td>
-                                                   <td>PETROBRAS S/A </td>
-                                                   <td>000.0000/0001-30</td>
-                                                   <td>Rua Rio Grande do Norte</td>
-                                                   <td>Natal</td>
-                                                   <td>RN</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="inserirResponsavel" class="btn btn-link " data-toggle="modal" data-target="#modalresponsavelEntidade">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>                                                  
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
                                                 </tr>
                                              </tbody>
                                           </table>
@@ -2982,6 +2948,7 @@
                            </div>
                         </div>
                         <!-- Fim do Modal de Ajuda de Custo-->
+                        <!--Inicio plano de aplicação-->
                         <div class="tab-pane show" id="planoAplicacao" role="tabpanel">
                            <section class="m-3" >
                               <h4>Plano de Aplicação</h4>
@@ -3326,7 +3293,7 @@
                             </section>
                         </div>
                          <!--Fim do plano de aplicação-->
-                         <!-- Início do cronograma de Desembolso-->
+                        <!-- Início do cronograma de Desembolso-->
                         <div class="tab-pane show" id="cronogramaDes" role="tabpanel">
                            <section class="m-3" >
                               <h4>Cronograma de Desembolso
@@ -3514,6 +3481,10 @@
          <script>
             new window.VLibras.Widget('https://vlibras.gov.br/app');
          </script>
+          <script src="../../../js/pessoa.js"></script>
+         <script src="../../../js/tabela_capes.js"></script>
+         <script src="../../../js/unidades.js"></script>
+         <script src="../../../js/cidades.js"></script>
          <script src="../../../js/prototipo.js"></script>
          <script>
             autocomplete(document.getElementById("unidade"), unidades);
