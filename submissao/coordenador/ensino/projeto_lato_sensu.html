@@ -232,7 +232,7 @@
                            </button>
                         </div>
                      </div>
-                     <div class="menu-item">
+                     <div class="menu-item" id="abaParticipes">
                         <i class="far fa-circle"></i>
                         <div class="menu-botao">
                            <button
@@ -548,7 +548,7 @@
                                           <div class="tooltip-group">
                                              <label class="required" for="elect-financiamento">Financiamento
                                              <span class="tooltip-icon">
-                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Deve listar os tipos de financiamento lato sensu ativos (lato_sensu.financiamento_curso_lato)">
+                                                <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Deve listar os tipos de financiamento lato sensu ativos (lato_sensu.financiamento_curso_lato). Se for financiamento Aluno, o sistema irá sugerir o tipo de projeto como sendo tipo A. Se for convênio, tipo B. Se for convênio e houver partícipes externos, então o tipo será D. Se for sem financiamento, não receberá essa classificação.">
                                                 </i>
                                              </span>
                                           </div>
@@ -1128,19 +1128,23 @@
                                     <article class="conteudo-principal">
                                        <div class="form-group m-0 my-3 px-4">
                                           <div class="form-inline position-relative">
-                                             <input id="entidade-participe"
+                                             <!--<input id="entidade"
                                                 class="form-control form-autocomplete" data-type="simples" type="text" placeholder="Digite o nome do órgão/Instituição..." />
-                                             <label for="entidade">Órgão/Entidade</label>
+                                             <label for="entidade">Órgão/Entidade</label>-->
                                              <label for="text-input">Órgão/Entidade
                                                 <span class="tooltip-icon">
                                                    <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O órgão/Entidade deve ser uma pessoa jurídica.">
                                                    </i>
                                                 </span>
                                              </label>
+                                             <input class="form-control m-2" id="entidade" type="text" placeholder="Digite o nome do Órgão/Entidade..." />                                          
+                                             <button type="button" class="btn btn-link" href="#" onclick="buscarEntidade(document.getElementById('entidade').value)">
+                                             <i class="fas fa-search"></i>
+                                             </button>
                                           </div>
                                        </div>
-                                          <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaEntidades">
-                                             <table class="table table-striped" data-toggle="table">
+                                          <div class="conteudo-principal__content m-0 my-3 px-4" >
+                                             <table id="tabela-entidades" class="table table-striped" data-toggle="table">
                                                 <thead>
                                                    <tr>
                                                       <th></th>
@@ -1153,26 +1157,18 @@
                                                 </thead>
                                                 <tbody>
                                                    <tr>
-                                                      <td><input class="form-check-input m-2" id="checkEntidade" type="checkbox"  /></td>
-                                                      <td>REPSOL </td>
-                                                      <td>000.0000/0001-01</td>
-                                                      <td>Rua Praia do Botafogo</td>
-                                                      <td>RJ</td>
-                                                      <td>RJ</td>
-                                                   </tr>
-                                                   <tr>
-                                                      <td><input class="form-check-input m-2" id="checkEntidade" type="checkbox"  /></td>
-                                                      <td>REPSOL </td>
-                                                      <td>000.0000/0001-02</td>
-                                                      <td>Av. Paulista</td>
-                                                      <td>SP</td>
-                                                      <td>SP</td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td></td>
+                                                      <td></td>
                                                    </tr>
                                                 </tbody>
                                              </table>
                                           </div>
                                           <div class="form-control m-0 my-3 px-4">
-                                             <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i>        Inserir
+                                             <button class="btn-primary" type="button" onclick="inserirEntidadeParticipe()"><i class="fas fa-chevron "></i>        Inserir
                                              </button> 
                                           </div>  
                                        </form>
@@ -1185,8 +1181,8 @@
                                              </i>
                                           </span>
                                        </div>
-                                       <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaEntidades">
-                                          <table class="table table-striped" data-toggle="table">
+                                       <div class="conteudo-principal__content m-0 my-3 px-4" >
+                                          <table id="tabela-participes" class="table table-striped" data-toggle="table">
                                              <thead>
                                                 <tr>
                                                    <th>Tipo</th>
@@ -1200,39 +1196,13 @@
                                              </thead>
                                              <tbody>
                                                 <tr>
-                                                   <td>Interveniente/Executora</td>
-                                                   <td>UFRN </td>
-                                                   <td>000.0000/0001-10</td>
-                                                   <td>Av. Salgado Filho, 3000</td>
-                                                   <td>Natal</td>
-                                                   <td>RN</td>
-                                                   <td>
-                                                   </td>
-                                                </tr>
-                                                 <tr>
-                                                   <td>Contratada</td>
-                                                   <td>FUNPEC </td>
-                                                   <td>000.0000/0001-20</td>
-                                                   <td>Av. Salgado Filho, 3000</td>
-                                                   <td>Natal</td>
-                                                   <td>RN</td>
                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                   <td>Contratante</td>
-                                                   <td>PETROBRAS S/A </td>
-                                                   <td>000.0000/0001-30</td>
-                                                   <td>Rua Rio Grande do Norte</td>
-                                                   <td>Natal</td>
-                                                   <td>RN</td>
-                                                   <td align="right" class="btn-group">
-                                                      <button type="button" id="inserirResponsavel" class="btn btn-link " data-toggle="modal" data-target="#modalresponsavelEntidade">
-                                                      <i class="fas fa-external-link-alt"></i>
-                                                      </button>
-                                                      <button class="btn btn-link ">
-                                                      <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>                                                  
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
                                                 </tr>
                                              </tbody>
                                           </table>
@@ -4139,8 +4109,6 @@
 
             autocomplete(document.getElementById("instituicaoParticipanteExterno"), instituicoesEnsino);
 
-            autocomplete(document.getElementById("entidade-participe"), instituicoesEnsino);
-
             autocomplete(document.getElementById("unidade"), unidadesAcademicas);
 
             autocomplete(document.getElementById("cidadeOrigem"), cidades);
@@ -4197,6 +4165,8 @@
                   }
                });
             }
+
+
 
             $('select[id="select-metodo-avaliacao"]').change(function () {
                var conceito = ["A","B","C","D","E"];
@@ -4451,6 +4421,7 @@
                $('#parcelarPlano-nao').prop('checked',true);
             };
 
+            
             $('input[name="parcelarPlano"]').change(function () {
                 if ($('input[name="parcelarPlano"]:checked').val() === "Sim") {
                     $('#detalheParcelarPlanoSim').show();
@@ -4473,11 +4444,20 @@
                     $('#baseFunpec').hide();
                     $('#remuneracaoFundacao').hide();
                     $('#doapParcelas').hide();
+                    $('#abaParticipes').hide();
                     
-                } else {
+                } else if(value === "Financiamento Aluno"){
                     $('#baseFunpec').show();
                     $('#remuneracaoFundacao').show();
                     $('#doapParcelas').show();
+                    $('#abaParticipes').show();
+                    inserirUFRNFunpec('A');
+                } else{
+                  $('#baseFunpec').show();
+                    $('#remuneracaoFundacao').show();
+                    $('#doapParcelas').show();
+                    $('#abaParticipes').show();
+                    inserirUFRNFunpec('B');
                 }
             });
 

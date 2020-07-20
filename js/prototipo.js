@@ -6,6 +6,18 @@ var chTotal = 0;
 var mapaDocenteComponente = new Map();
 var componentes = [];
 var docentesComponente = [];
+var listaEntidades = [];
+var entidadesSelecionadas = [];
+var entidadesParticipes = [];
+
+function EntidadeParticipe(tipo,nome,cnpj, endereco, cidade, uf){
+	this.tipo = tipo;
+	this.nome = nome;
+	this.cnpj = cnpj;
+	this.endereco = endereco;
+	this.cidade = cidade;
+	this.uf = uf;
+}
 
 function Componente(codigo, nome, tipo, chAula, chEstagio, chOrientacao, chLaboratorio, chTotal, ementa, bibliografia, docentes){
 	this.codigo = codigo;
@@ -33,7 +45,40 @@ function Docente(nome, tipo, nacionalidade, cpf_passaporte, matricula, formacao,
 	this.ch = ch;
 }
 
+function gera_random(n){
+var ranNum = Math.round(Math.random()*n);
+return ranNum;
+}
 
+function mod(dividendo,divisor){
+return Math.round(dividendo - (Math.floor(dividendo/divisor)*divisor));
+}
+
+function gerarCnpj(){
+ var n = 9;
+ var n1 = gera_random(n);
+ var n2 = gera_random(n);
+ var n3 = gera_random(n);
+ var n4 = gera_random(n);
+ var n5 = gera_random(n);
+ var n6 = gera_random(n);
+ var n7 = gera_random(n);
+ var n8 = gera_random(n);
+ var n9 = 0;//gera_random(n);
+ var n10 = 0;//gera_random(n);
+ var n11 = 0;//gera_random(n);
+ var n12 = 1;//gera_random(n);
+ var d1 = n12*2+n11*3+n10*4+n9*5+n8*6+n7*7+n6*8+n5*9+n4*2+n3*3+n2*4+n1*5;
+ d1 = 11 - ( mod(d1,11) );
+ if (d1>=10) d1 = 0;
+ var d2 = d1*2+n12*3+n11*4+n10*5+n9*6+n8*7+n7*8+n6*9+n5*2+n4*3+n3*4+n2*5+n1*6;
+ d2 = 11 - ( mod(d2,11) );
+ if (d2>=10) d2 = 0;
+var resultado = ''+n1+n2+'.'+n3+n4+n5+'.'+n6+n7+n8+'/'+n9+n10+n11+n12+'-'+d1+d2;
+
+return resultado;
+
+}
 
 function limpaSelect(elemento){
 	while (elemento.length > 0) {
@@ -110,6 +155,194 @@ function inserirLinhaTabelaByInput(idTabela,idInput) {
          novaCelula.appendChild(a);
       }
    }
+}
+
+function buscarEntidade(nome){
+    var instituicoes = [];
+    instituicoesEnsino.forEach(function (instituicao) {
+        if (instituicao.toLowerCase().indexOf(nome.toLowerCase()) != -1) {
+         	instituicoes.push(instituicao);
+         }
+    });
+    populaTabelaOrgaoEntidade(instituicoes);
+} 
+
+function selecionarEntidade(entidadeSelecionada){
+
+	console.log("selecionando entidade");
+
+   var nomeEntidade = entidadeSelecionada;
+
+   console.log(nomeEntidade);
+
+   if($('input[id="'+nomeEntidade+'"]').is(':checked')){
+   		console.log("checado");
+       listaEntidades.forEach(function (entidade) {
+       	console.log(entidade);
+         if(nomeEntidade === entidade.nome){
+         	console.log("achou a entidade na listagem");
+            entidade.tipo = 'Contratante';
+            entidadesSelecionadas.push(entidade);
+            console.log(entidadesSelecionadas);
+         }
+      });
+   } else {
+   	console.log("desmarcado");
+      entidadesSelecionadas.splice(list.indexOf(entidadeSelecionada), 1);
+   }
+}
+
+function populaTabelaOrgaoEntidade(instituicoes){
+
+	listaEntidades = [];
+
+	var tabela = document.getElementById('tabela-entidades');
+
+	while(tabela.rows.length >2){
+		tabela.deleteRow(length-1);
+	}
+
+	instituicoes.forEach(function (instituicao) {
+		
+		var nome = instituicao;	
+		var cnpj = gerarCnpj();
+		var endereco = "Avenida Salgado Filho, 3000";
+		var cidade = "Natal";
+		var uf = "RN";
+		// Captura a quantidade de linhas já existentes na tabela
+	   	var numLinhas = tabela.rows.length;
+	   	// Captura a quantidade de colunas da última linha da tabela
+	   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+
+   		var novaLinha = tabela.insertRow(numLinhas);
+   		novaLinha.setAttribute("id",numLinhas+1);
+
+   		var entidade = new EntidadeParticipe('',nome,cnpj, endereco, cidade, uf);
+
+   		listaEntidades.push(entidade);
+
+   		for (var j = 0; j < numColunas; j++) {
+      	var a, b, i;
+       	// Insere uma coluna na nova linha 
+      	novaCelula = novaLinha.insertCell(j);
+	    if(j===0){
+	    	novaCelula.setAttribute("align","right");
+  			novaCelula.setAttribute("class","form-check");
+      		a = document.createElement("input");
+         	a.setAttribute("class", "form-check-input");
+         	a.setAttribute("id", entidade.nome);
+         	a.setAttribute("type","checkbox");
+         	a.setAttribute("onclick","selecionarEntidade('"+entidade.nome+"')");
+         	i = document.createElement("label");
+         	i.setAttribute("class", "form-check-label");
+         	i.setAttribute("for",entidade.nome);
+         	novaCelula.appendChild(a);
+         	novaCelula.appendChild(i);
+	      	}else if(j===1){
+	      	novaCelula.innerHTML = entidade.nome;
+	      	}else if(j===2){
+	       		novaCelula.innerHTML = entidade.cnpj;
+	     	}else if(j===3){
+	       		novaCelula.innerHTML = entidade.endereco;
+	     	}else if(j===4){
+	       		novaCelula.innerHTML = entidade.cidade;
+	     	}else{
+	       		novaCelula.innerHTML = entidade.uf;
+	     	}
+	    }
+	});
+}
+
+
+function inserirEntidadeParticipe(){
+	console.log("inserindo entidade");
+	console.log(entidadesSelecionadas);
+	entidadesSelecionadas.forEach(function (entidade) {
+		entidadesParticipes.push(entidade);
+	});
+	console.log("inserido com sucesso");
+	console.log(entidadesParticipes);
+	inserirUFRNFunpec('D');
+	populaTabelaParticipe();
+}
+
+function inserirUFRNFunpec(tipoProjeto){
+
+	var ufrn = new EntidadeParticipe('Contratante','UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE',gerarCnpj(),'Avenida Salgado Filho,3000','Natal', 'RN');
+	var funpec = new EntidadeParticipe('Contratada','Fundação Norte-Rio-Grandense de Pesquisa e Cultura',gerarCnpj(),'Avenida Salgado Filho,3000','Natal', 'RN');
+
+
+	if(tipoProjeto === 'D'){
+		entidadesParticipes.forEach(function (entidade) {
+			if(entidade.nome === ufrn.nome ){
+				entidade.tipo = 'Interveniente/Executora';
+			}
+			if(entidade.nome === funpec.nome){
+				entidade.tipo = 'Contratada';
+			}
+		});
+	}else{
+		entidadesParticipes.push(ufrn);
+		entidadesParticipes.push(funpec);
+		entidadesParticipes.forEach(function (entidade) {
+			if(entidade.nome === ufrn.nome ){
+				entidade.tipo = 'Contratante';
+			}
+			if(entidade.nome === funpec.nome){
+				entidade.tipo = 'Contratada';
+			}
+		});
+	}
+	populaTabelaParticipe();
+}
+
+function populaTabelaParticipe(){
+
+	var tabela = document.getElementById('tabela-participes');
+
+	while(tabela.rows.length >2){
+		tabela.deleteRow(length-1);
+	}
+
+	entidadesParticipes.forEach(function (entidade) {
+		
+		// Captura a quantidade de linhas já existentes na tabela
+	   	var numLinhas = tabela.rows.length;
+	   	// Captura a quantidade de colunas da última linha da tabela
+	   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+
+   		var novaLinha = tabela.insertRow(numLinhas);
+   		novaLinha.setAttribute("id",numLinhas+1);
+
+   		for (var j = 0; j < numColunas; j++) {
+      	var a, b, i;
+       	// Insere uma coluna na nova linha 
+      	novaCelula = novaLinha.insertCell(j);
+	    if(j===0){
+	      	novaCelula.innerHTML = entidade.tipo;
+	      	}else if(j===1){
+	       		novaCelula.innerHTML = entidade.nome;
+	     	}else if(j===2){
+	       		novaCelula.innerHTML = entidade.cnpj;
+	     	}else if(j===3){
+	       		novaCelula.innerHTML = entidade.endereco;
+	     	}else if(j===4){
+	       		novaCelula.innerHTML = entidade.cidade;
+	     	}else if(j===5){
+	       		novaCelula.innerHTML = entidade.uf;
+	     	}else{ 
+	      		novaCelula.setAttribute("align","right");
+      			novaCelula.setAttribute("class","btn-group");
+	      		a = document.createElement("button");
+	         	a.setAttribute("onclick","removerLinhaTabelaParticipes(this.parentNode.parentNode.rowIndex,'tabela-participes','"+entidade.nome+"')");
+	         	a.setAttribute("class", "btn btn-link");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "far fa-trash-alt");
+	         	a.appendChild(i);
+	         	novaCelula.appendChild(a);
+	        }
+	    }
+	});
 }
 
 function populaTabelaDocentesComponente(nomeComponente, idTabela){
@@ -668,6 +901,18 @@ function inserirLinhaTabelaMembroInterno(idTabela,idNome, ) {
 
 function removerLinhaTabela(i,idTabela){
    document.getElementById(idTabela).deleteRow(i);
+}
+
+function removerLinhaTabelaParticipes(i,idTabela,nomeEntidade){
+	entidadesParticipes.forEach(function(entidade){
+		console.log("buscando o partícipe na listagem");
+		if(entidade.nome === nomeEntidade){
+			console.log("encontrado");
+			entidadesParticipes.splice(entidadesParticipes.indexOf(entidade), 1);
+		}
+	});
+	
+    document.getElementById(idTabela).deleteRow(i);
 }
 
 function autocomplete(inp, arr) {
