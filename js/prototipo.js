@@ -11,11 +11,70 @@ var entidadesSelecionadas = [];
 var entidadesParticipes = [];
 var tiposDocumentos = ['ATA APROVAÇÃO DEPARTAMENTO', 'AUTORIZAÇÃO PARTICIPAÇÃO EM PESQUISA', 'LIMITE DE CARGA HORÁRIA/REMUNERAÇÃO', 'HOMOLOGAÇÃO PROPESQ', 'HOMOLOGAÇÃO PROPLAN', 'HOMOLOGAÇÃO PPG'];
 var arquivosProjeto = [];
+var projetosPesquisa = [];
+
+var projetoPesquisa1 = new ProjetoPesquisa(
+		{
+			"informacoes_sigilosas": "sim",
+			"hipotese_legal": "",
+			"propriedeade_intelectual":"sim",
+			"classificacao_pesquisa":"com_inovacao_tecnologica"
+		},
+		{
+			"numero_projeto": "0001",
+			"titulo":"Desenvolvimento do novo sistema de projetos acadêmicos",
+			"unidade_lotacao": "1135 - Superintendência de Informática",
+			"unidade_execucao": "1135 - Superintendência de Informática",
+			"palavras_chaves":"sigprojetos",
+			"email":["alysson@gmail.com","alysson@hotmail.com"],
+			"ano":"2020",
+			"vigencia_inicio":"01/08/2020",
+			"vigencia_fim": "01/08/2021"
+		},
+		{
+		"grande_area": "Ciências Exatas e da Terra",
+		"area":"Ciências da Computação",
+		"subarea":"",
+		"especialidade":"",
+		"grupo_de_pesquisa":"",
+		"resumo": "Desenvolvimento de um novo sistema de gestão de projetos acadêmicos",
+		"Introducao": "Introdução do projeto",
+		"Objetivos": "Os objetivos são: 1 - isso, 2 - aquilo",
+		"objetivos_especificos":{
+			"nome":"Objetivo específico 1",
+			"metas":[{
+				"numero":"1",
+				"descricao": "descrição meta 1",
+				"indicador":"funcionalidades",
+				"qtd":"5"
+			}],
+			"resultados":[{
+				"numero":"1",
+				"descricao": "descrição resultado 1",
+				"indicador":"funcionalidades",
+				"qtd":"10"
+			}],
+		}
+	},
+	{
+	"situacao":"Homologado pela PROPESQ"
+	}	
+);
+
+projetosPesquisa.push(projetoPesquisa1);
 
 var ufrn = new EntidadeParticipe('Contratante','UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE','24.823.767/0001-89','Avenida Salgado Filho,3000','Natal', 'RN');
 var funpec = new EntidadeParticipe('Contratada','Fundação Norte-Rio-Grandense de Pesquisa e Cultura','76.824.797/0001-03','Avenida Salgado Filho,3000','Natal', 'RN');
 
 entidadesParticipes.push(ufrn,funpec);
+
+
+function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,tramitacao){
+	this.informacoes_preliminares = informacoes_preliminares;
+	this.dados_gerais = dados_gerais;
+	this.dados_projeto = dados_projeto;
+	this.tramitacao = tramitacao;
+}
 
 function ArquivoProjeto(tipo,nome,descricao, arquivo){
 	this.tipo = tipo;
@@ -121,6 +180,53 @@ function calcular(vlr1,vlr2,resultado) {
               var n1 = parseInt(document.getElementById('vlr1').value, 10);
               var n2 = parseInt(document.getElementById('vlr2').value, 10);
               document.getElementById('resultado').innerHTML = n1 + n2;
+}
+
+function popularTabelaProjetosPesquisa(){
+
+	var tabela = document.getElementById('tabela-projetos-pesquisa');
+
+	while(tabela.rows.length >2){
+		tabela.deleteRow(length-1);
+	}
+
+	projetosPesquisa.forEach(function(projeto) {
+		
+		// Captura a quantidade de linhas já existentes na tabela
+	   	var numLinhas = tabela.rows.length;
+	   	// Captura a quantidade de colunas da última linha da tabela
+	   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+
+   		var novaLinha = tabela.insertRow(numLinhas);
+   		novaLinha.setAttribute("id",numLinhas+1);
+
+   		for (var j = 0; j < numColunas; j++) {
+	      var a, i;
+	       // Insere uma coluna na nova linha 
+	      novaCelula = novaLinha.insertCell(j);
+	      if(j===0){
+	      	novaCelula.innerHTML = projeto.dados_gerais.numero_projeto;
+	      }else if(j===1){
+	      	novaCelula.innerHTML = projeto.dados_gerais.titulo;
+	      }else if(j===2){
+	      	novaCelula.innerHTML = projeto.tramitacao.situacao;
+	      }else if(j===3){
+	      	novaCelula.innerHTML = projeto.dados_gerais.unidade_execucao;
+	      }else if(j===4){
+	      	novaCelula.innerHTML = projeto.dados_gerais.ano;
+	      }else{
+	      	a = document.createElement("button");
+	        a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'tabela-tipos-documentos')");
+	        a.setAttribute("class", "btn btn-link");
+	        i = document.createElement("i");
+	        i.setAttribute("class", "far fa-trash-alt");
+	        a.appendChild(i);
+	        novaCelula.appendChild(a);
+	    	
+	      }
+	   }
+	});
+
 }
 
 function inserirTipoDocumento(){
