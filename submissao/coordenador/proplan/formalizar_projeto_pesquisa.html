@@ -656,6 +656,47 @@
                          </div>
                      <!--Fim de Recursos-->
                      <div class="tab-content menu-conteudo">
+                        <!-- Início Modal cadastro de tipos de documentos -->
+                        <div class="modal fade" id="modal-tipos-documentos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                           <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                 <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Tipos de Documentos
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                 </div>
+                                 <div class="modal-body">
+                                    <div class="form-group position-relative">
+                                          <input class="form-control" id="nome-tipo-documento" type="text" placeholder="Quantidade de diárias" />
+                                          <label for="nome-tipo-documento">Nome</label>
+                                    </div>
+                                    <div class="form-group position-relative">
+                                       <button type="button" class="btn btn-primary" onclick="inserirTipoDocumento()">Inserir</button>
+                                    </div>
+                                    <table class="table table-striped" data-toggle="table" id="tabela-tipos-documentos">
+                                       <thead>
+                                          <tr>                                             
+                                             <th>Nome</th>
+                                             <th class="w-10 text-center">Ações</th>
+                                          </tr>
+                                       </thead>
+                                       <tbody>
+                                          <tr>                                             
+                                             <td></td>
+                                             <td></td>
+                                          </tr>                                       
+                                       </tbody>
+                                    </table>
+                                 </div>
+                                 <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Fim do modal de cadastro de tipos de documentos-->
                         <!-- Modal de Responsável da Entidade -->
                         <div class="modal fade" id="modalresponsavelEntidade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog" role="document">
@@ -3459,14 +3500,74 @@
                                  </div>
                               </form>
                             </section>
-                         </div>
-                         <!--Fim do cronograma de Desembolso-->
-                     
-                     
+                        </div>
+                        <!--Fim do cronograma de Desembolso-->
+                     <!-- Inicio Aba Documentos-->
                      <div class="tab-pane show" id="documentos" role="tabpanel">
-                        <p>Documentos</p>
+                        <section class="m-3" >
+                           <h4>Documentos</h4>
+                           <p class="advice">* Campos Obrigatórios</p>
+                           <div class="conteudo-principal__content m-0">
+                              <form class="border-0" id="form-filtro">
+                                 <!--<article class="conteudo-principal m-0 my-3 px-4">-->
+                                    <div class="form-group position-relative">
+                                       <div class="form-group position-relative">
+                                          <select class="custom-select" id="select-tipos-documentos" required="required" name="tipo-documentos">
+                                             <option value="hide">Selecione</option>
+
+                                          </select>
+                                          <label class="required" for="select-tipos-documentos">Tipo do Documento
+                                             <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-tipos-documentos" onclick="populaTiposDocumento()"><i class="fas fa-plus-circle"></i></button>
+                                          </label>
+                                          <div class="invalid-feedback">Selecione alguma opção</div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <input class="form-control" id="nome-arquivo" type="text" placeholder="Informe o nome do arquivo..." />
+                                          <label for="nome-arquivo">Nome do Arquivo</label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <textarea class="form-control" id="descricao-arquivo" placeholder="Descreva de forma resumida do que se trata o arquivo" data-max-size="100"></textarea>
+                                          <label class="required" for="descricao-arquivo">Descrição do Arquivo</label>
+                                          <div class="invalid-feedback">Limite de caracteres excedido
+                                          </div>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                           <div class="custom-file">
+                                             <input class="custom-file-input" type="file" id="arquivo-projeto" />
+                                             <label class="custom-file-label" for="arquivo-projeto">Escolha seu arquivo</label>
+                                           </div>
+                                           <label>Arquivo</label>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <button type="button" class="btn btn-primary" onclick="inserirArquivo()">Inserir</button>
+                                       </div>
+                                       <div class="form-group position-relative">
+                                          <table class="table table-striped" data-toggle="table" id="tabela-arquivos">
+                                             <thead>
+                                                <tr>
+                                                   <th>Tipo</th>
+                                                   <th>Nome</th>
+                                                   <th>Descrição</th>
+                                                   <th>Arquivo</th>
+                                                   <th>Ações</th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </div>
+                              </form>
+                           </div>
+                        </section>
                      </div>
-                     
                   </div>
                </div>
          <script src="https://static.info.ufrn.br/1.0.6/vendors/jquery/jquery.min.js"></script>
@@ -3491,6 +3592,8 @@
             autocomplete(document.getElementById("cidadeOrigem"), cidades);
             autocomplete(document.getElementById("cidadeDestino"), cidades);
             //autocomplete(document.getElementById("entidade"), entidades);
+
+            populaSelect(document.getElementById("select-tipos-documentos"), tiposDocumentos);
 
             $('input[id="vlrHoraRubrica36"]').change(function () {
                if(document.getElementById("hrSemanalRubrica36").value.length > 0 && document.getElementById("vlrHoraRubrica36").value.length > 0){
