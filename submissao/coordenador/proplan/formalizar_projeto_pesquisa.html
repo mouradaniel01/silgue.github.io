@@ -3605,27 +3605,35 @@
              $('select[name="fonte-recurso"]').change(function () {
                var select = document.getElementById('select-fonte-recurso');
                var value = select.options[select.selectedIndex].value;
-                if (value === "C") {
-                    $('#baseFunpec').hide();
-                    $('#remuneracaoFundacao').hide();
-                    $('#doapParcelas').hide();
-                    
-                } else {
-                    $('#baseFunpec').show();
-                    $('#remuneracaoFundacao').show();
-                    $('#doapParcelas').show();
-                }
+                
+               if (value === "A") {
+                  $('#menuRecursos').hide();
+                  $('#baseFunpec').show();
+                  $('#remuneracaoFundacao').show();
+                  $('#doapParcelas').show();
+                  inserirUFRNFunpec("A");
+               }else if (value === "B") {
+                  $('#menuRecursos').show();
+                  $('#baseFunpec').show();
+                  $('#remuneracaoFundacao').show();
+                  $('#doapParcelas').show();
+                  inserirUFRNFunpec("B");
+               }else if (value === "C") {
+                  $('#baseFunpec').hide();
+                  $('#remuneracaoFundacao').hide();
+                  $('#doapParcelas').hide();
+                  $('#menuRecursos').show();
+                  inserirUFRNFunpec("C");
+               }else {
+                  $('#menuRecursos').show();
+                  $('#baseFunpec').show();
+                  $('#remuneracaoFundacao').show();
+                  $('#doapParcelas').show();
+                  inserirUFRNFunpec("D");
+               }
             });
 
-             $('select[name="fonte-recurso"]').change(function () {
-               var select = document.getElementById('select-fonte-recurso');
-               var value = select.options[select.selectedIndex].value;
-                if (value === "A") {
-                    $('#menuRecursos').hide();
-                } else {
-                   $('#menuRecursos').show();
-                }
-            });
+             
 
             $('select[name="estudante"]').change(function () {
                var select = document.getElementById('select-estudante');

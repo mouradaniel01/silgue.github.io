@@ -10,6 +10,11 @@ var listaEntidades = [];
 var entidadesSelecionadas = [];
 var entidadesParticipes = [];
 
+var ufrn = new EntidadeParticipe('Contratante','UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE','24.823.767/0001-89','Avenida Salgado Filho,3000','Natal', 'RN');
+var funpec = new EntidadeParticipe('Contratada','Fundação Norte-Rio-Grandense de Pesquisa e Cultura','76.824.797/0001-03','Avenida Salgado Filho,3000','Natal', 'RN');
+
+entidadesParticipes.push(ufrn,funpec);
+
 function EntidadeParticipe(tipo,nome,cnpj, endereco, cidade, uf){
 	this.tipo = tipo;
 	this.nome = nome;
@@ -266,10 +271,7 @@ function inserirEntidadeParticipe(){
 
 function inserirUFRNFunpec(tipoProjeto){
 
-	var ufrn = new EntidadeParticipe('Contratante','UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE',gerarCnpj(),'Avenida Salgado Filho,3000','Natal', 'RN');
-	var funpec = new EntidadeParticipe('Contratada','Fundação Norte-Rio-Grandense de Pesquisa e Cultura',gerarCnpj(),'Avenida Salgado Filho,3000','Natal', 'RN');
-
-
+	
 	if(tipoProjeto === 'D'){
 		entidadesParticipes.forEach(function (entidade) {
 			if(entidade.nome === ufrn.nome ){
@@ -279,15 +281,31 @@ function inserirUFRNFunpec(tipoProjeto){
 				entidade.tipo = 'Contratada';
 			}
 		});
-	}else{
-		entidadesParticipes.push(ufrn);
-		entidadesParticipes.push(funpec);
+	}else if(tipoProjeto === 'A'){
 		entidadesParticipes.forEach(function (entidade) {
 			if(entidade.nome === ufrn.nome ){
 				entidade.tipo = 'Contratante';
 			}
 			if(entidade.nome === funpec.nome){
 				entidade.tipo = 'Contratada';
+			}
+		});
+	}else if(tipoProjeto === 'B'){
+		entidadesParticipes.forEach(function (entidade) {
+			if(entidade.nome === ufrn.nome ){
+				entidade.tipo = 'Contratante';
+			}
+			if(entidade.nome === funpec.nome){
+				entidade.tipo = 'Contratada';
+			}
+		});
+	}else if(tipoProjeto === 'C'){
+		entidadesParticipes.forEach(function (entidade) {
+			if(entidade.nome === ufrn.nome ){
+				entidade.tipo = 'Contratada';
+			}
+			if(entidade.nome === funpec.nome){
+				entidade.tipo = 'Contratante';
 			}
 		});
 	}
@@ -329,6 +347,7 @@ function populaTabelaParticipe(){
 	     	}else if(j===5){
 	       		novaCelula.innerHTML = entidade.uf;
 	     	}else{ 
+	     		if(entidade.nome != ufrn.nome && entidade.nome != funpec.nome){
 	      		novaCelula.setAttribute("align","right");
       			novaCelula.setAttribute("class","btn-group");
 	      		a = document.createElement("button");
@@ -338,6 +357,7 @@ function populaTabelaParticipe(){
 	         	i.setAttribute("class", "far fa-trash-alt");
 	         	a.appendChild(i);
 	         	novaCelula.appendChild(a);
+	         	}
 	        }
 	    }
 	});
