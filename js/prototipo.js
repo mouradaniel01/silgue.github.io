@@ -11,70 +11,7 @@ var entidadesSelecionadas = [];
 var entidadesParticipes = [];
 var tiposDocumentos = ['ATA APROVAÇÃO DEPARTAMENTO', 'AUTORIZAÇÃO PARTICIPAÇÃO EM PESQUISA', 'LIMITE DE CARGA HORÁRIA/REMUNERAÇÃO', 'HOMOLOGAÇÃO PROPESQ', 'HOMOLOGAÇÃO PROPLAN', 'HOMOLOGAÇÃO PPG'];
 var arquivosProjeto = [];
-var projetosPesquisa = [];
 
-var projetoPesquisa1 = new ProjetoPesquisa(
-		{
-			"informacoes_sigilosas": "sim",
-			"hipotese_legal": "",
-			"propriedeade_intelectual":"sim",
-			"classificacao_pesquisa":"com_inovacao_tecnologica"
-		},
-		{
-			"numero_projeto": "0001",
-			"titulo":"Desenvolvimento do novo sistema de projetos acadêmicos",
-			"unidade_lotacao": "1135 - Superintendência de Informática",
-			"unidade_execucao": "1135 - Superintendência de Informática",
-			"palavras_chaves":"sigprojetos",
-			"email":["alysson@gmail.com","alysson@hotmail.com"],
-			"ano":"2020",
-			"vigencia_inicio":"01/08/2020",
-			"vigencia_fim": "01/08/2021"
-		},
-		{
-		"grande_area": "Ciências Exatas e da Terra",
-		"area":"Ciências da Computação",
-		"subarea":"",
-		"especialidade":"",
-		"grupo_de_pesquisa":"",
-		"resumo": "Desenvolvimento de um novo sistema de gestão de projetos acadêmicos",
-		"Introducao": "Introdução do projeto",
-		"Objetivos": "Os objetivos são: 1 - isso, 2 - aquilo",
-		"objetivos_especificos":{
-			"nome":"Objetivo específico 1",
-			"metas":[{
-				"numero":"1",
-				"descricao": "descrição meta 1",
-				"indicador":"funcionalidades",
-				"qtd":"5"
-			}],
-			"resultados":[{
-				"numero":"1",
-				"descricao": "descrição resultado 1",
-				"indicador":"funcionalidades",
-				"qtd":"10"
-			}],
-		}
-	},
-	{
-	"situacao":"Homologado pela PROPESQ"
-	}	
-);
-
-projetosPesquisa.push(projetoPesquisa1);
-
-var ufrn = new EntidadeParticipe('Contratante','UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE','24.823.767/0001-89','Avenida Salgado Filho,3000','Natal', 'RN');
-var funpec = new EntidadeParticipe('Contratada','Fundação Norte-Rio-Grandense de Pesquisa e Cultura','76.824.797/0001-03','Avenida Salgado Filho,3000','Natal', 'RN');
-
-entidadesParticipes.push(ufrn,funpec);
-
-
-function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,tramitacao){
-	this.informacoes_preliminares = informacoes_preliminares;
-	this.dados_gerais = dados_gerais;
-	this.dados_projeto = dados_projeto;
-	this.tramitacao = tramitacao;
-}
 
 function ArquivoProjeto(tipo,nome,descricao, arquivo){
 	this.tipo = tipo;

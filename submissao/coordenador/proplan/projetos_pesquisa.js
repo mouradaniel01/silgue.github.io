@@ -1,3 +1,4 @@
+[
 {
 	"informacoes_preliminares":{
 		"informacoes_sigilosas": "sim",
@@ -46,3 +47,4 @@
 	}
 	
 }
+]

@@ -153,17 +153,19 @@
             </ol>
           </nav>
           <div class="row m-0">
-              <table id="tabela-projetos-pesquisa" class="table table-striped" data-url="https://silgue.github.io/submissao/coordenador/proplan/projetos_pesquisa.json" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true">
+              <table id="tabela-projetos-pesquisa" class="table table-striped" data-toggle="table">
                 <thead>
                   <tr>
-                    <th data-field="dados_gerais.numero_projeto" data-sortable="true">Número</th>
-                    <th data-field="dados_gerais.titulo" data-sortable="true">Título</th>
+                    <th data-field="dados_gerais.numero_projeto">Número</th>
+                    <th data-field="dados_gerais.titulo">Título</th>
                     <th data-field="tramitacao.situacao">Situação</th>
                     <th data-field="dados_gerais.unidade_execucao">Unid. Executora</th>
                     <th data-field="dados_gerais.ano">Ano</th>
+                    <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -182,20 +184,21 @@
       </footer>
     </div>
     <script src="https://static.info.ufrn.br/1.0.6/vendors/jquery/jquery.min.js"></script>
-    <!--<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>-->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/vendors/popper/popper.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap/bootstrap.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/js/scripts.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap-table/bootstrap-table.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap-table/bootstrap-table-pt-BR.min.js"></script>
-    <script src="../../../js/prototipo.js"></script> 
-    <!--<script type="text/javascript">
+    <script src="../../../js/projetos_pesquisa.js"></script> 
+    <script type="text/javascript">
       $(document).ready(function () {
         $('#tabela-projetos-pesquisa').DataTable( {
-            language: {
-                search: "_INPUT_",
-                searchPlaceholder: "Pesquisar",
-            }
+          lengthChange: false,
+          language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Pesquisar",
+          }
 
 
         } );
@@ -203,7 +206,6 @@
 
       popularTabelaProjetosPesquisa();
       
-    </script> -->
-    
+    </script> 
   </body>
 </html>
