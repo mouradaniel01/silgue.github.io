@@ -203,68 +203,91 @@
               </div>
             </article>
           </div>
-          <!-- Modal de Responsável da Entidade -->
+          <!-- Modal de Visualizar dados do projetos -->
           <div class="modal fade" id="modal-visualizar-projeto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                 <div class="modal-content">
                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Responsável Órgão/Entidade
-                         <span class="tooltip-icon">
-                            <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O sistema não deve permitir cadastrar um mesmo responsável para mais de um órgão/Instituição.">
-                            </i>
-                         </span>
+                      <h5 class="modal-title" id="exampleModalLabel">Visualizar Informações do Projeto
                       </h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                       <span aria-hidden="true">&times;</span>
                       </button>
-                   </div>
-                   <div class="modal-body">
-                      <div class="form-group position-relative">
-                            <input class="form-control" id="nomeResponsavelEntidade" type="text" placeholder="Quantidade de diárias" />
-                            <label for="nomeResponsavelEntidade">Nome</label>
-                      </div>
-                      <div class="form-group position-relative">
-                            <input class="form-control" id="cpfResponsavelEntidade" type="text" placeholder="Quantidade de diárias" />
-                            <label for="cpfResponsavelEntidade">CPF</label>
-                      </div>
-                      <div class="form-group position-relative">
-                            <input class="form-control" id="cargoResponsavelEntidade" type="text" placeholder="Quantidade de diárias" />
-                            <label for="cargoResponsavelEntidade">Cargo/Função</label>
-                      </div>
-                      <div class="form-group position-relative">
-                         <button type="button" class="btn btn-primary">Inserir</button>
-                      </div>
-                      <table class="table table-striped" data-toggle="table">
-                         <thead>
-                            <tr>                                             
-                               <th>Nome</th>
-                               <th>CPF</th>
-                               <th>Cargo/Função</th>
-                               <th class="w-10 text-center">Ações</th>
-                            </tr>
-                         </thead>
-                         <tbody>
-                            <tr>                                             
-                               <td>João Humberto</td>
-                               <td>123.456.789-10</td>
-                               <td>Diretor</td>
-                               <td>
-                                  <button class="btn btn-link ">
-                                     <i class="far fa-trash-alt"></i>
-                                  </button>
-                               </td>
-                            </tr>                                       
-                         </tbody>
-                      </table>
-                   </div>
-                   <div class="modal-footer">
+                  </div>
+                  <div class="modal-body">
+                    <div class="menu-botao">
+                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-dados-gerais">Dados Gerais</button>
+                    </div>
+                    <div class="menu-botao">
+                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-participes">Partícipes</button>
+                    </div>
+                    <div class="menu-botao">
+                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-metas-resultados">Metas/Resultados</button>
+                    </div>
+                    <div class="menu-botao">
+                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-recursos">Recursos</button>
+                    </div>
+                    <div class="menu-botao">
+                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-plano-aplicacao">Plano de Aplicação</button>
+                    </div>
+                    <div class="menu-botao">
+                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-cronograma-desembolso">Cronograma de Desembolso</button>
+                    </div>
+                    <div class="menu-botao">
+                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-documentos">Documentos</button>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                      <button type="button" class="btn btn-primary">Salvar</button>
-                   </div>
+                  </div>
                 </div>
              </div>
           </div>
-          <!-- Fim do modal de Responsável Entidade-->
+          <!-- Fim do modal de visualizar dados do projeto-->
+          <!-- Modal de visualizar os dados gerais do projeto -->
+          <div class="modal fade" id="modal-dados-gerais" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Dados Gerais do Projeto
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar os dados gerais do projeto-->
+          <!-- Modal de visualizar os partícipes do projeto -->
+          <div class="modal fade" id="modal-participes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Partícipes do Projeto
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do Modal de visualizar os partícipes do projetoo-->
         </div>
       </div>
       <footer class="rodape">
