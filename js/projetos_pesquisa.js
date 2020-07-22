@@ -167,9 +167,9 @@ function popularTabelaAnaliseFunpec(){
 		      	novaCelula.innerHTML = projeto.plano_aplicacao.doap;
 		      }else{
 		      	a = document.createElement("a");
-		        a.setAttribute("href","analise_funpec.html");
+		        a.setAttribute("href","visualizar_projeto.html");
 		        a.setAttribute("class", "link-normal");
-		        a.setAttribute("onclick","popularTabelaAnaliseFunpec('"+projeto.dados_gerais.numero_projeto+"')");
+		        //a.setAttribute("onclick","popularTabelaAnaliseFunpec('"+projeto.dados_gerais.numero_projeto+"')");
 		        i = document.createElement("i");
 		        i.setAttribute("class", "fas fa-search");
 		        a.appendChild(i);
