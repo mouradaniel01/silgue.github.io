@@ -6,7 +6,18 @@ function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,pla
 	this.tramitacao = tramitacao;
 }
 
+function ArquivoProjeto(tipo,nome,descricao, arquivo){
+	this.tipo = tipo;
+	this.nome = nome;
+	this.descricao = descricao;
+	this.arquivo = arquivo;
+}
+
+var arquivosProjeto = [];
+
 var numero_projeto = "0001";
+
+var tiposDocumentos = ['ATA APROVAÇÃO DEPARTAMENTO', 'AUTORIZAÇÃO PARTICIPAÇÃO EM PESQUISA', 'LIMITE DE CARGA HORÁRIA/REMUNERAÇÃO', 'HOMOLOGAÇÃO PROPESQ', 'HOMOLOGAÇÃO PROPLAN', 'HOMOLOGAÇÃO PPG'];
 
 var projetosPesquisa = [];
 
@@ -20,6 +31,7 @@ var projetoPesquisa1 = new ProjetoPesquisa(
 		{
 			"numero_projeto": "0001",
 			"titulo":"Desenvolvimento do novo sistema de projetos acadêmicos",
+			"coordenador":"Alysson Rodrigues",
 			"unidade_lotacao": "Superintendência de Informática",
 			"unidade_execucao": "Superintendência de Informática",
 			"palavras_chaves":"sigprojetos",
@@ -75,6 +87,7 @@ var projetoPesquisa2 = new ProjetoPesquisa(
 		{
 			"numero_projeto": "0002",
 			"titulo":"Integração com Plataforma CNPq",
+			"coordenador":"Alysson Rodrigues",
 			"unidade_lotacao": "Superintendência de Informática",
 			"unidade_execucao": "Superintendência de Informática",
 			"palavras_chaves":"sigprojetos",
@@ -127,6 +140,12 @@ function passarNumeroProjeto(numero){
      sessionStorage.setItem('num_projeto', numero_projeto );
 }
 
+function limpaSelect(elemento){
+	while (elemento.length > 0) {
+	    elemento.remove(elemento.length-1);
+	  }
+  }
+
 function popularTabelaAnaliseFunpec(){
 
 	var numero_projeto = JSON.parse(sessionStorage.getItem('num_projeto'));
@@ -159,7 +178,7 @@ function popularTabelaAnaliseFunpec(){
 		      }else if(j===1){
 		      	novaCelula.innerHTML = projeto.dados_gerais.titulo;
 		      }else if(j===2){
-		      	novaCelula.innerHTML = projeto.dados_gerais.unidade_execucao;
+		      	novaCelula.innerHTML = projeto.dados_gerais.coordenador;
 		      }else if(j===3){
 		      	novaCelula.innerHTML = projeto.dados_gerais.ano;
 		      }else if(j===4){
@@ -219,10 +238,16 @@ function popularTabelaProjetosPesquisaFunpec(){
 	      }else if(j===1){
 	      	novaCelula.innerHTML = projeto.dados_gerais.titulo;
 	      }else if(j===2){
-	      	novaCelula.innerHTML = projeto.tramitacao.situacao;
+	      	novaCelula.innerHTML = projeto.dados_gerais.coordenador;
 	      }else if(j===3){
-	      	novaCelula.innerHTML = projeto.dados_gerais.unidade_execucao;
+	      	novaCelula.innerHTML = projeto.plano_aplicacao.fonte_recurso;
 	      }else if(j===4){
+	      	novaCelula.innerHTML = projeto.plano_aplicacao.valor_projeto;
+	      }else if(j===5){
+	      	novaCelula.innerHTML = projeto.tramitacao.situacao;
+	      }else if(j===6){
+	      	novaCelula.innerHTML = projeto.dados_gerais.unidade_execucao;
+	      }else if(j===7){
 	      	novaCelula.innerHTML = projeto.dados_gerais.ano;
 	      }else{
 	      	a = document.createElement("a");
@@ -284,6 +309,118 @@ function popularTabelaProjetosPesquisa(){
 	   }
 	});
 
+}
+
+function populaSelect(elemento, array){
+	array.forEach((opt) => {
+      option = new Option(opt, opt);
+      elemento.options[elemento.options.length] = option;
+    });
+}
+
+function inserirTipoDocumento(){
+	tiposDocumentos.push(document.getElementById('nome-tipo-documento').value);
+	limpaSelect(document.getElementById('select-tipos-documentos'));
+	populaSelect(document.getElementById('select-tipos-documentos'), tiposDocumentos);
+	populaTiposDocumento();
+}
+
+function populaTiposDocumento(){
+
+	var tabela = document.getElementById('tabela-tipos-documentos');
+
+	while(tabela.rows.length >2){
+		tabela.deleteRow(length-1);
+	}
+
+	tiposDocumentos.forEach(function (tipo) {
+		
+		// Captura a quantidade de linhas já existentes na tabela
+	   	var numLinhas = tabela.rows.length;
+	   	// Captura a quantidade de colunas da última linha da tabela
+	   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+
+   		var novaLinha = tabela.insertRow(numLinhas);
+   		novaLinha.setAttribute("id",numLinhas+1);
+
+   		for (var j = 0; j < numColunas; j++) {
+	      var a, i;
+	       // Insere uma coluna na nova linha 
+	      novaCelula = novaLinha.insertCell(j);
+	      if(j===0){
+	      novaCelula.innerHTML = tipo;
+	      }else{
+	      	if(tipo != 'ATA APROVAÇÃO DEPARTAMENTO' && tipo !=  'AUTORIZAÇÃO PARTICIPAÇÃO EM PESQUISA' && tipo != 'LIMITE DE CARGA HORÁRIA/REMUNERAÇÃO' && tipo != 'HOMOLOGAÇÃO PROPESQ' && tipo != 'HOMOLOGAÇÃO PROPLAN' && tipo != 'HOMOLOGAÇÃO PPG'){
+	      		a = document.createElement("button");
+	        a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'tabela-tipos-documentos')");
+	        a.setAttribute("class", "btn btn-link");
+	        i = document.createElement("i");
+	        i.setAttribute("class", "far fa-trash-alt");
+	        a.appendChild(i);
+	        novaCelula.appendChild(a);
+	    	}
+	      }
+	   }
+	});
+
+}
+
+function inserirArquivo(){
+
+	var tipo = document.getElementById('select-tipos-documentos').value;
+	var nome = document.getElementById('nome-arquivo').value;
+	var descricao = document.getElementById('descricao-arquivo').value;
+	var arquivo = document.getElementById('arquivo-projeto').value;
+
+	var arquivoProjeto = new ArquivoProjeto(tipo,nome,descricao,arquivo);
+
+	arquivosProjeto.push(arquivoProjeto);
+
+	populaTabelaArquivos();
+
+}
+
+function populaTabelaArquivos(){
+
+	var tabela = document.getElementById('tabela-arquivos');
+
+	while(tabela.rows.length >2){
+		tabela.deleteRow(length-1);
+	}
+
+	arquivosProjeto.forEach(function (arquivo) {
+		
+		// Captura a quantidade de linhas já existentes na tabela
+	   	var numLinhas = tabela.rows.length;
+	   	// Captura a quantidade de colunas da última linha da tabela
+	   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+
+   		var novaLinha = tabela.insertRow(numLinhas);
+   		novaLinha.setAttribute("id",numLinhas+1);
+
+   		for (var j = 0; j < numColunas; j++) {
+	      var a, i;
+	       // Insere uma coluna na nova linha 
+	      novaCelula = novaLinha.insertCell(j);
+	      if(j===0){
+	      	novaCelula.innerHTML = arquivo.tipo;
+	      }else if(j===1){
+	      	novaCelula.innerHTML = arquivo.nome;
+	      }else if(j===2){
+	      	novaCelula.innerHTML = arquivo.descricao;
+	      }else if(j===3){
+	      	novaCelula.innerHTML = arquivo.arquivo;
+	      }else{
+	      	a = document.createElement("button");
+	        a.setAttribute("onclick","removerLinhaTabelaArquivo(this.parentNode.parentNode.rowIndex,'tabela-arquivos','"+arquivo.nome+"')");
+	        a.setAttribute("class", "btn btn-link");
+	        i = document.createElement("i");
+	        i.setAttribute("class", "far fa-trash-alt");
+	        a.appendChild(i);
+	        novaCelula.appendChild(a);
+	      }
+	   }
+	});
 }
 
 /* Adicione
