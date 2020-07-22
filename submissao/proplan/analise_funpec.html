@@ -256,47 +256,89 @@
                 </div>
               </article>
             </div>
-          <!-- Modal de Visualizar dados do projetos -->
-          <div class="modal fade" id="modal-visualizar-projeto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-             <div class="modal-dialog" role="document">
+          <!-- Modal de dados do projeto -->
+            <div class="modal fade" id="modal-visualizar-projeto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                   <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Visualizar Informações do Projeto
-                      </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                      <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
                   <div class="modal-body">
-                    <div class="menu-botao">
-                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-dados-gerais">Dados Gerais</button>
-                    </div>
-                    <div class="menu-botao">
-                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-participes">Partícipes</button>
-                    </div>
-                    <div class="menu-botao">
-                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-metas-resultados">Metas/Resultados</button>
-                    </div>
-                    <div class="menu-botao">
-                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-recursos">Recursos</button>
-                    </div>
-                    <div class="menu-botao">
-                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-plano-aplicacao">Plano de Aplicação</button>
-                    </div>
-                    <div class="menu-botao">
-                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-cronograma-desembolso">Cronograma de Desembolso</button>
-                    </div>
-                    <div class="menu-botao">
-                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-documentos">Documentos</button>
-                    </div>
+                    <article class="conteudo-principal">
+                      <div class="conteudo-principal__header">
+                        <button type="button" class="btn btn-link border-0" onclick="expandirDivModal('div-dados-gerais')"><h4>Dados Gerais</h4></button>
+                      </div>
+                      <div class="form-group m-0 my-3 px-4" id="div-dados-gerais">
+                        <div class="form-group position-relative">
+                          <p>dados gerais</p>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="conteudo-principal">
+                      <div class="conteudo-principal__header">
+                        <button type="button" class="btn btn-link border-0" onclick="expandirDivModal('div-participes')"><h4>Partícipes</h4></button>
+                      </div>
+                      <div class="form-group m-0 my-3 px-4" id="div-participes">
+                        <div class="form-group position-relative">
+                          <p>partícipes</p>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="conteudo-principal">
+                      <div class="conteudo-principal__header">
+                        <button type="button" class="btn btn-link border-0" onclick="expandirDivModal('div-metas-resultados')"><h4>Metas e Resultados</h4></button>
+                      </div>
+                      <div class="form-group m-0 my-3 px-4" id="div-metas-resultados">
+                        <div class="form-group position-relative">
+                          <p>Metas e Resultados</p>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="conteudo-principal">
+                      <div class="conteudo-principal__header">
+                        <button type="button" class="btn btn-link border-0" onclick="expandirDivModal('div-recursos')"><h4>Recursos</h4></button>
+                      </div>
+                      <div class="form-group m-0 my-3 px-4" id="div-recursos">
+                        <div class="form-group position-relative">
+                          <p>Informações sobre os recursos</p>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="conteudo-principal">
+                      <div class="conteudo-principal__header">
+                        <button type="button" class="btn btn-link border-0" onclick="expandirDivModal('div-plano-aplicacao')"><h4>Plano de Aplicação</h4></button>
+                      </div>
+                      <div class="form-group m-0 my-3 px-4" id="div-plano-aplicacao">
+                        <div class="form-group position-relative">
+                          <p>Informações sobre o plano de aplicação</p>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="conteudo-principal">
+                      <div class="conteudo-principal__header">
+                        <button type="button" class="btn btn-link border-0" onclick="expandirDivModal('div-cronograma-desembolso')"><h4>Cronograma de Desembolso</h4></button>
+                      </div>
+                      <div class="form-group m-0 my-3 px-4" id="div-cronograma-desembolso">
+                        <div class="form-group position-relative">
+                          <p>Informações sobre o cronograma de desembolso</p>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="conteudo-principal">
+                      <div class="conteudo-principal__header">
+                        <button type="button" class="btn btn-link border-0" onclick="expandirDivModal('div-documentos-projeto')"><h4>Documentos</h4></button>
+                      </div>
+                      <div class="form-group m-0 my-3 px-4" id="div-documentos-projeto">
+                        <div class="form-group position-relative">
+                          <p>Informações sobre os documentos inseridos</p>
+                        </div>
+                      </div>
+                    </article>
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                  </div>
+                   </div>
                 </div>
-             </div>
-          </div>
-          <!-- Fim do modal de visualizar dados do projeto-->
+              </div>
+            </div>
+            <!-- fim do modal dados do projeto -->
           <!-- Início Modal cadastro de tipos de documentos -->
           <div class="modal fade" id="modal-tipos-documentos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
              <div class="modal-dialog" role="document">
@@ -400,6 +442,26 @@
     <script type="text/javascript">
       popularTabelaAnaliseFunpec();
       populaSelect(document.getElementById("select-tipos-documentos"), tiposDocumentos);
+
+      function contrairSecao(){
+        $('#div-dados-gerais').hide();
+        $('#div-participes').hide();
+        $('#div-metas-resultados').hide();
+        $('#div-recursos').hide();
+        $('#div-plano-aplicacao').hide();
+        $('#div-cronograma-desembolso').hide();
+        $('#div-documentos-projeto').hide();
+      }
+
+      function expandirDivModal(div){
+        var div = "#"+div;
+        console.log(div);
+        if($(div).is(':hidden')){
+          $(div).show();
+        }else{
+          $(div).hide();
+        }
+      }
     </script> 
   </body>
 </html>

@@ -249,7 +249,7 @@ function popularTabelaAnaliseFunpec(){
 	         	b.setAttribute("class", "btn btn-link");
 	         	b.setAttribute("data-toggle","modal");
 	         	b.setAttribute("data-target", "#modal-visualizar-projeto");
-	         	b.setAttribute("onclick","carregarProjeto('"+projeto.dados_gerais.numero_projeto+"')");
+	         	b.setAttribute("onclick","contrairSecao()");
 	         	i = document.createElement("i");
 	         	i.setAttribute("class", "fas fa-search");
 	         	b.appendChild(i);
@@ -262,6 +262,8 @@ function popularTabelaAnaliseFunpec(){
 	});
 
 }
+
+
 
 
 
@@ -483,6 +485,8 @@ function populaTabelaArquivos(){
 	   }
 	});
 }
+
+
 
 /* Adicione
  * <script src="https://static.info.ufrn.br/1.0.6/js/scripts.js"></script>
