@@ -11,12 +11,18 @@ var entidadesSelecionadas = [];
 var entidadesParticipes = [];
 var tiposDocumentos = ['ATA APROVAÇÃO DEPARTAMENTO', 'AUTORIZAÇÃO PARTICIPAÇÃO EM PESQUISA', 'LIMITE DE CARGA HORÁRIA/REMUNERAÇÃO', 'HOMOLOGAÇÃO PROPESQ', 'HOMOLOGAÇÃO PROPLAN', 'HOMOLOGAÇÃO PPG'];
 var arquivosProjeto = [];
+var recursos = [];
 
 var ufrn = new EntidadeParticipe('Contratante','UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE','24.823.767/0001-89','Avenida Salgado Filho,3000','Natal', 'RN');
 var funpec = new EntidadeParticipe('Contratada','Fundação Norte-Rio-Grandense de Pesquisa e Cultura','76.824.797/0001-03','Avenida Salgado Filho,3000','Natal', 'RN');
 
 entidadesParticipes.push(ufrn,funpec);
 
+function Recurso(entidade,valor_financiado,responsavel){
+	this.entidade = entidade;
+	this.valor_financiado = valor_financiado;
+	this.responsavel = responsavel;
+}
 
 function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,tramitacao){
 	this.informacoes_preliminares = informacoes_preliminares;
@@ -129,6 +135,75 @@ function calcular(vlr1,vlr2,resultado) {
               var n1 = parseInt(document.getElementById('vlr1').value, 10);
               var n2 = parseInt(document.getElementById('vlr2').value, 10);
               document.getElementById('resultado').innerHTML = n1 + n2;
+}
+
+function inserirRecurso(){
+
+	var entidade = document.getElementById('entidade-recurso').value;
+	var valor = document.getElementById('valor-recurso').value;
+	var responsavel = document.getElementById('responsavel-execucao-recurso').value;
+	var recurso = new Recurso(entidade, valor, responsavel);
+
+	recursos.push(recurso);
+
+	popularTabelaRecurso();
+
+}
+
+function removerLinhaTabelaRecurso(i,idTabela,nomeEntidade){
+	recursos.forEach(function(recurso){
+		console.log(nomeEntidade);
+		console.log(recurso.entidade)
+		if(recurso.entidade === nomeEntidade){
+			console.log("achou a entidade");
+			recursos.splice(recursos.indexOf(recurso), 1);
+		}
+	});
+	
+    document.getElementById(idTabela).deleteRow(i);
+}
+
+function popularTabelaRecurso(){
+
+	var tabela = document.getElementById('tabela-recursos');
+
+	while(tabela.rows.length >2){
+		tabela.deleteRow(length-1);
+	}
+
+	recursos.forEach(function(recurso) {
+		
+		// Captura a quantidade de linhas já existentes na tabela
+	   	var numLinhas = tabela.rows.length;
+	   	// Captura a quantidade de colunas da última linha da tabela
+	   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+
+   		var novaLinha = tabela.insertRow(numLinhas);
+   		novaLinha.setAttribute("id",numLinhas+1);
+
+   		for (var j = 0; j < numColunas; j++) {
+	      var a, i;
+	       // Insere uma coluna na nova linha 
+	      novaCelula = novaLinha.insertCell(j);
+	      if(j===0){
+	      	novaCelula.innerHTML = recurso.entidade;
+	      }else if(j===1){
+	      	novaCelula.innerHTML = recurso.valor_financiado;
+	      }else if(j===2){
+	      	novaCelula.innerHTML = recurso.responsavel;
+	      }else{
+	      	a = document.createElement("button");
+	        a.setAttribute("onclick","removerLinhaTabelaRecurso(this.parentNode.parentNode.rowIndex,'tabela-recursos','"+recurso.entidade+"')");
+	        a.setAttribute("class", "btn btn-link");
+	        i = document.createElement("i");
+	        i.setAttribute("class", "far fa-trash-alt");
+	        a.appendChild(i);
+	        novaCelula.appendChild(a);
+	    	
+	      }
+	   }
+	});
+
 }
 
 function popularTabelaProjetosPesquisa(){

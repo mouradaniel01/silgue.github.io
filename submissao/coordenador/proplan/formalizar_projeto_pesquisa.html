@@ -371,9 +371,9 @@
                                                 </tbody>
                                              </table>
                                              <div class="position-relative mt-2">
-                                             <button class="btn-primary" type="button" onclick="inserirEntidadeParticipe()"><i class="fas fa-chevron "></i>        Inserir
-                                             </button> 
-                                          </div> 
+                                                <button class="btn-primary" type="button" onclick="inserirEntidadeParticipe()"><i class="fas fa-chevron "></i>        Inserir
+                                                </button> 
+                                             </div> 
                                           </div>
                                            
                                        </form>
@@ -591,7 +591,7 @@
                            <section class="m-3" >
                               <h4>Recursos
                               <span class="tooltip-icon">
-                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Esta aba não deve ser solicitada caso o projeto seja do tipo A. ">
+                                 <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: Esta aba não deve ser solicitada caso o projeto seja do tipo A. O sistema não deve permitir cadastrar uma entidade mais de uma vez para o mesmo responsável pela execução financeira.  ">
                                  </i>
                               </span>
                               </h4>
@@ -601,34 +601,30 @@
                                     <article class="conteudo-principal">                                       
                                        <div class="conteudo-principal__content m-0 my-3 px-4" id="tabelaMetasResultadosProjetoPesquisa">
                                           <div class="form-group position-relative">
-                                             <label for="text-input">Órgão/Entidade
-                                                <span class="tooltip-icon">
-                                                   <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O órgão/Entidade deve ser uma pessoa jurídica.">
-                                                   </i>
-                                                </span>
-                                             </label>
-                                                <input class="form-control m-2" id="entidadeRecurso" type="text" placeholder="Digite o nome do Órgão/Entidade..." />
+                                             <input id="entidade-recurso"
+                                                class="form-control form-autocomplete" data-type="simples" type="text" placeholder="Informe a entidade financiadora..." />
+                                             <label class="required" for="entidade-recurso">Órgão/Entidade</label>
                                           </div>
                                           <div class="form-group position-relative">
-                                             <label for="text-input">Valor Financiado</label>
-                                                <input class="form-control m-2" id="ValorRecurso" type="text" placeholder="Informe o valor que será financiado pelo Órgão/Entidade..." />
+                                             <label for="valor-recurso">Valor Financiado</label>
+                                                <input class="form-control" id="valor-recurso" type="text" placeholder="Informe o valor que será financiado pelo Órgão/Entidade..." />
                                           </div>
                                           <div class="form-group position-relative">
-                                             <label for="text-input">Responsável pela Execução Financeira
+                                             <label for="responsavel-execucao-recurso">Responsável pela Execução Financeira
                                                 <span class="tooltip-icon">
                                                    <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O responsável pode ser pessoa física ou jurídica. Sempre preencher com FUNPEC, mas permitir que a informação seja alterada.">
                                                    </i>
                                                 </span>
                                              </label>
-                                                <input class="form-control m-2" id="responsavelExecucaoRecurso" type="text" placeholder="FUNPEC..." />
+                                                <input class="form-control" id="responsavel-execucao-recurso" type="text" placeholder="FUNPEC..." />
                                           </div>
 
-                                          <div class="position-relative">
-                                             <button class="btn-primary" type="submit"><i class="fas fa-chevron "></i>        Inserir
+                                          <div class="form-control">
+                                             <button class="btn-primary" type="button" onclick="inserirRecurso()"><i class="fas fa-chevron "></i>        Inserir
                                              </button> 
                                           </div> 
 
-                                          <table class="table table-striped" data-toggle="table">
+                                          <table id="tabela-recursos" class="table table-striped" data-toggle="table">
                                              <thead>
                                                 <tr>                                                   
                                                    <th>Origem</th>
@@ -639,14 +635,10 @@
                                              </thead>
                                              <tbody>
                                                 <tr>
-                                                   <td>Petrobras</td>
-                                                   <td>200.000,00</td>
-                                                   <td>FUNPEC</td>
-                                                   <td>
-                                                      <button class="btn btn-link ">
-                                                         <i class="far fa-trash-alt"></i>
-                                                      </button>
-                                                   </td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
+                                                   <td></td>
                                                 </tr>                                                
                                              </tbody>
                                           </table>
@@ -3592,6 +3584,7 @@
             autocomplete(document.getElementById("unidade"), unidades);
             autocomplete(document.getElementById("cidadeOrigem"), cidades);
             autocomplete(document.getElementById("cidadeDestino"), cidades);
+            autocomplete(document.getElementById("entidade-recurso"), instituicoesEnsino);
             //autocomplete(document.getElementById("entidade"), entidades);
 
             populaSelect(document.getElementById("select-tipos-documentos"), tiposDocumentos);
