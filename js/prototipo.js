@@ -12,6 +12,18 @@ var entidadesParticipes = [];
 var tiposDocumentos = ['ATA APROVAÇÃO DEPARTAMENTO', 'AUTORIZAÇÃO PARTICIPAÇÃO EM PESQUISA', 'LIMITE DE CARGA HORÁRIA/REMUNERAÇÃO', 'HOMOLOGAÇÃO PROPESQ', 'HOMOLOGAÇÃO PROPLAN', 'HOMOLOGAÇÃO PPG'];
 var arquivosProjeto = [];
 
+var ufrn = new EntidadeParticipe('Contratante','UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE','24.823.767/0001-89','Avenida Salgado Filho,3000','Natal', 'RN');
+var funpec = new EntidadeParticipe('Contratada','Fundação Norte-Rio-Grandense de Pesquisa e Cultura','76.824.797/0001-03','Avenida Salgado Filho,3000','Natal', 'RN');
+
+entidadesParticipes.push(ufrn,funpec);
+
+
+function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,tramitacao){
+	this.informacoes_preliminares = informacoes_preliminares;
+	this.dados_gerais = dados_gerais;
+	this.dados_projeto = dados_projeto;
+	this.tramitacao = tramitacao;
+}
 
 function ArquivoProjeto(tipo,nome,descricao, arquivo){
 	this.tipo = tipo;
