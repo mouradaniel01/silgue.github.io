@@ -166,14 +166,17 @@ function popularTabelaAnaliseFunpec(){
 		      }else if(j===8){
 		      	novaCelula.innerHTML = projeto.plano_aplicacao.doap;
 		      }else{
-		      	a = document.createElement("a");
-		        a.setAttribute("href","visualizar_projeto.html");
-		        a.setAttribute("class", "link-normal");
-		        //a.setAttribute("onclick","popularTabelaAnaliseFunpec('"+projeto.dados_gerais.numero_projeto+"')");
-		        i = document.createElement("i");
-		        i.setAttribute("class", "fas fa-search");
-		        a.appendChild(i);
-		        novaCelula.appendChild(a);
+
+		        b = document.createElement("button");
+	         	b.setAttribute("type", "button");
+	         	b.setAttribute("class", "btn btn-link");
+	         	b.setAttribute("data-toggle","modal");
+	         	b.setAttribute("data-target", "#modal-visualizar-projeto");
+	         	b.setAttribute("onclick","carregarProjeto('"+projeto.dados_gerais.numero_projeto+"')");
+	         	i = document.createElement("i");
+	         	i.setAttribute("class", "fas fa-search");
+	         	b.appendChild(i);
+	         	novaCelula.appendChild(b);
 		    	
 		      }
 		   }
