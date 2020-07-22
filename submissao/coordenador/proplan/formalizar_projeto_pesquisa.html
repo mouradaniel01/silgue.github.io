@@ -150,11 +150,6 @@
                <h1>Protótipo - Formalização de projeto de pesquisa</h1>
                
             </div>
-            <article class="float-right">
-               <button class="btn btn-link" type="button" onclick="inserirEntidadeParticipe()">
-                  <i class="fas fa-chevron "></i>Submeter
-               </button>
-            </article>
             <div class="row">
                <div class="col-4 barra-vertical">
                   <div class="list-group list-group-flush">
@@ -334,7 +329,7 @@
                               <p class="advice">* Campos Obrigatórios</p>
                               <form>
                                  <div class="conteudo-principal__content m-0">
-                                    <article class="conteudo-principal">
+                                    <article class="conteudo-principal" id="div-orgao-entidade">
                                        <div class="form-group m-0 my-3 px-4">
                                           <div class="form-inline position-relative">
                                              <!--<input id="entidade"
@@ -3716,11 +3711,13 @@
                 
                if (value === "A") {
                   $('#menuRecursos').hide();
+                  $('#div-orgao-entidade').hide();
                   $('#baseFunpec').show();
                   $('#remuneracaoFundacao').show();
                   $('#doapParcelas').show();
                   inserirUFRNFunpec("A");
                }else if (value === "B") {
+                  $('#div-orgao-entidade').hide();
                   $('#menuRecursos').show();
                   $('#baseFunpec').show();
                   $('#remuneracaoFundacao').show();
@@ -3728,11 +3725,13 @@
                   inserirUFRNFunpec("B");
                }else if (value === "C") {
                   $('#baseFunpec').hide();
+                  $('#div-orgao-entidade').hide();
                   $('#remuneracaoFundacao').hide();
                   $('#doapParcelas').hide();
                   $('#menuRecursos').show();
                   inserirUFRNFunpec("C");
                }else {
+                  $('#div-orgao-entidade').show();
                   $('#menuRecursos').show();
                   $('#baseFunpec').show();
                   $('#remuneracaoFundacao').show();
