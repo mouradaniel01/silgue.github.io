@@ -20,8 +20,8 @@ var projetoPesquisa1 = new ProjetoPesquisa(
 		{
 			"numero_projeto": "0001",
 			"titulo":"Desenvolvimento do novo sistema de projetos acadêmicos",
-			"unidade_lotacao": "1135 - Superintendência de Informática",
-			"unidade_execucao": "1135 - Superintendência de Informática",
+			"unidade_lotacao": "Superintendência de Informática",
+			"unidade_execucao": "Superintendência de Informática",
 			"palavras_chaves":"sigprojetos",
 			"email":["alysson@gmail.com","alysson@hotmail.com"],
 			"ano":"2020",
@@ -75,8 +75,8 @@ var projetoPesquisa2 = new ProjetoPesquisa(
 		{
 			"numero_projeto": "0002",
 			"titulo":"Integração com Plataforma CNPq",
-			"unidade_lotacao": "1135 - Superintendência de Informática",
-			"unidade_execucao": "1135 - Superintendência de Informática",
+			"unidade_lotacao": "Superintendência de Informática",
+			"unidade_execucao": "Superintendência de Informática",
 			"palavras_chaves":"sigprojetos",
 			"email":["alysson@gmail.com","alysson@hotmail.com"],
 			"ano":"2019",
@@ -122,7 +122,14 @@ var projetoPesquisa2 = new ProjetoPesquisa(
 
 projetosPesquisa.push(projetoPesquisa1, projetoPesquisa2);
 
+function passarNumeroProjeto(numero){
+	var numero_projeto = JSON.stringify(numero);
+     sessionStorage.setItem('num_projeto', numero_projeto );
+}
+
 function popularTabelaAnaliseFunpec(){
+
+	var numero_projeto = JSON.parse(sessionStorage.getItem('num_projeto'));
 
 	var tabela = document.getElementById('tabela-formalizacao-projeto-funpec');
 
@@ -221,7 +228,7 @@ function popularTabelaProjetosPesquisaFunpec(){
 	      	a = document.createElement("a");
 	        a.setAttribute("href","analise_funpec.html");
 	        a.setAttribute("class", "link-normal");
-	        a.setAttribute("onclick","carregaNumeroProjeto('"+projeto.dados_gerais.numero_projeto+"')");
+	        a.setAttribute("onclick","passarNumeroProjeto('"+projeto.dados_gerais.numero_projeto+"')");
 	        i = document.createElement("i");
 	        i.setAttribute("class", "fas fa-external-link-alt");
 	        a.appendChild(i);
@@ -231,11 +238,6 @@ function popularTabelaProjetosPesquisaFunpec(){
 	   }
 	});
 }
-
-function carregaNumeroProjeto(numprojeto){
-	numero_projeto = numprojeto;
-}
-
 
 function popularTabelaProjetosPesquisa(){
 
