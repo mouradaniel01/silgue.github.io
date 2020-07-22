@@ -31,9 +31,8 @@ function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,tra
 	this.tramitacao = tramitacao;
 }
 
-function ArquivoProjeto(tipo,nome,descricao, arquivo){
+function ArquivoProjeto(tipo,descricao, arquivo){
 	this.tipo = tipo;
-	this.nome = nome;
 	this.descricao = descricao;
 	this.arquivo = arquivo;
 }
@@ -303,11 +302,11 @@ function populaTiposDocumento(){
 function inserirArquivo(){
 
 	var tipo = document.getElementById('select-tipos-documentos').value;
-	var nome = document.getElementById('nome-arquivo').value;
+	//var nome = document.getElementById('nome-arquivo').value;
 	var descricao = document.getElementById('descricao-arquivo').value;
 	var arquivo = document.getElementById('arquivo-projeto').value;
 
-	var arquivoProjeto = new ArquivoProjeto(tipo,nome,descricao,arquivo);
+	var arquivoProjeto = new ArquivoProjeto(tipo,descricao,arquivo);
 
 	arquivosProjeto.push(arquivoProjeto);
 
@@ -340,14 +339,12 @@ function populaTabelaArquivos(){
 	      if(j===0){
 	      	novaCelula.innerHTML = arquivo.tipo;
 	      }else if(j===1){
-	      	novaCelula.innerHTML = arquivo.nome;
-	      }else if(j===2){
 	      	novaCelula.innerHTML = arquivo.descricao;
-	      }else if(j===3){
+	      }else if(j===2){
 	      	novaCelula.innerHTML = arquivo.arquivo;
 	      }else{
 	      	a = document.createElement("button");
-	        a.setAttribute("onclick","removerLinhaTabelaArquivo(this.parentNode.parentNode.rowIndex,'tabela-arquivos','"+arquivo.nome+"')");
+	        a.setAttribute("onclick","removerLinhaTabelaArquivo(this.parentNode.parentNode.rowIndex,'tabela-arquivos','"+arquivo.descricao+"')");
 	        a.setAttribute("class", "btn btn-link");
 	        i = document.createElement("i");
 	        i.setAttribute("class", "far fa-trash-alt");
@@ -358,9 +355,9 @@ function populaTabelaArquivos(){
 	});
 }
 
-function removerLinhaTabelaArquivo(i,idTabela,nomeArquivo){
+function removerLinhaTabelaArquivo(i,idTabela,descricao){
 	arquivosProjeto.forEach(function(arquivo){
-		if(arquivo.nome === nomeArquivo){
+		if(arquivo.descricao === descricao){
 			arquivosProjeto.splice(arquivosProjeto.indexOf(arquivo), 1);
 		}
 	});

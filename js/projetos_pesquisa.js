@@ -6,9 +6,8 @@ function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,pla
 	this.tramitacao = tramitacao;
 }
 
-function ArquivoProjeto(tipo,nome,descricao, arquivo){
+function ArquivoProjeto(tipo,descricao, arquivo){
 	this.tipo = tipo;
-	this.nome = nome;
 	this.descricao = descricao;
 	this.arquivo = arquivo;
 }
@@ -146,6 +145,58 @@ function limpaSelect(elemento){
 	  }
   }
 
+function popularTabelaProjetosPesquisaAnaliseTecnica(){
+	var tabela = document.getElementById('tabela-projetos-pesquisa-analise-tecnica');
+
+	while(tabela.rows.length >2){
+		tabela.deleteRow(length-1);
+	}
+
+	projetosPesquisa.forEach(function(projeto) {
+		
+		// Captura a quantidade de linhas já existentes na tabela
+	   	var numLinhas = tabela.rows.length;
+	   	// Captura a quantidade de colunas da última linha da tabela
+	   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+
+   		var novaLinha = tabela.insertRow(numLinhas);
+   		novaLinha.setAttribute("id",numLinhas+1);
+
+   		for (var j = 0; j < numColunas; j++) {
+	      var a, i;
+	       // Insere uma coluna na nova linha 
+	      novaCelula = novaLinha.insertCell(j);
+	      if(j===0){
+	      	novaCelula.innerHTML = projeto.dados_gerais.numero_projeto;
+	      }else if(j===1){
+	      	novaCelula.innerHTML = projeto.dados_gerais.titulo;
+	      }else if(j===2){
+	      	novaCelula.innerHTML = projeto.dados_gerais.coordenador;
+	      }else if(j===3){
+	      	novaCelula.innerHTML = projeto.plano_aplicacao.fonte_recurso;
+	      }else if(j===4){
+	      	novaCelula.innerHTML = projeto.plano_aplicacao.valor_projeto;
+	      }else if(j===5){
+	      	novaCelula.innerHTML = projeto.tramitacao.situacao;
+	      }else if(j===6){
+	      	novaCelula.innerHTML = projeto.dados_gerais.unidade_execucao;
+	      }else if(j===7){
+	      	novaCelula.innerHTML = projeto.dados_gerais.ano;
+	      }else{
+	      	a = document.createElement("a");
+	        a.setAttribute("href","analise_tecnica.html");
+	        a.setAttribute("class", "link-normal");
+	        a.setAttribute("onclick","passarNumeroProjeto('"+projeto.dados_gerais.numero_projeto+"')");
+	        i = document.createElement("i");
+	        i.setAttribute("class", "fas fa-external-link-alt");
+	        a.appendChild(i);
+	        novaCelula.appendChild(a);
+	    	
+	      }
+	   }
+	});
+}
+
 function popularTabelaAnaliseFunpec(){
 
 	var numero_projeto = JSON.parse(sessionStorage.getItem('num_projeto'));
@@ -211,6 +262,8 @@ function popularTabelaAnaliseFunpec(){
 	});
 
 }
+
+
 
 function popularTabelaProjetosPesquisaFunpec(){
 	var tabela = document.getElementById('tabela-projetos-pesquisa');
@@ -365,14 +418,24 @@ function populaTiposDocumento(){
 
 }
 
+function removerLinhaTabelaArquivo(i,idTabela,descricao){
+	arquivosProjeto.forEach(function(arquivo){
+		if(arquivo.descricao === descricao){
+			arquivosProjeto.splice(arquivosProjeto.indexOf(arquivo), 1);
+		}
+	});
+	
+    document.getElementById(idTabela).deleteRow(i);
+}
+
 function inserirArquivo(){
 
 	var tipo = document.getElementById('select-tipos-documentos').value;
-	var nome = document.getElementById('nome-arquivo').value;
+	//var nome = document.getElementById('nome-arquivo').value;
 	var descricao = document.getElementById('descricao-arquivo').value;
 	var arquivo = document.getElementById('arquivo-projeto').value;
 
-	var arquivoProjeto = new ArquivoProjeto(tipo,nome,descricao,arquivo);
+	var arquivoProjeto = new ArquivoProjeto(tipo,descricao,arquivo);
 
 	arquivosProjeto.push(arquivoProjeto);
 
@@ -405,14 +468,12 @@ function populaTabelaArquivos(){
 	      if(j===0){
 	      	novaCelula.innerHTML = arquivo.tipo;
 	      }else if(j===1){
-	      	novaCelula.innerHTML = arquivo.nome;
-	      }else if(j===2){
 	      	novaCelula.innerHTML = arquivo.descricao;
-	      }else if(j===3){
+	      }else if(j===2){
 	      	novaCelula.innerHTML = arquivo.arquivo;
 	      }else{
 	      	a = document.createElement("button");
-	        a.setAttribute("onclick","removerLinhaTabelaArquivo(this.parentNode.parentNode.rowIndex,'tabela-arquivos','"+arquivo.nome+"')");
+	        a.setAttribute("onclick","removerLinhaTabelaArquivo(this.parentNode.parentNode.rowIndex,'tabela-arquivos','"+arquivo.descricao+"')");
 	        a.setAttribute("class", "btn btn-link");
 	        i = document.createElement("i");
 	        i.setAttribute("class", "far fa-trash-alt");

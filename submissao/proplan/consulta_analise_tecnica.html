@@ -116,11 +116,11 @@
                 <div class="submenu__items">
                   <h5>Pesquisa</h5>
                   <ul>
-                    <li><a tabindex="-1" href="consulta_analise_funpec.html"><span>Análise FUNPEC</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_tecnica.html"><span>Análise Técnica</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_fiscalizacao.html"><span>Análise Fiscalização</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_instrumento_juridico.html"><span>Análise Instrumento Jurídico</span></a></li>
-                    <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Autorizar Formalização</span></a></li>
+                    <li><a tabindex="-1" href="analise_funpec.html"><span>Análise FUNPEC</span></a></li>
+                    <li><a tabindex="-1" href="analise_tecnica.html"><span>Análise Técnica</span></a></li>
+                    <li><a tabindex="-1" href="analise_fiscalizacao.html"><span>Análise Fiscalização</span></a></li>
+                    <li><a tabindex="-1" href="analise_instrumento_juridico.html"><span>Análise Instrumento Jurídico</span></a></li>
+                    <li><a tabindex="-1" href="autorizar_formalizacao.html"><span>Autorizar Formalização</span></a></li>
                     <li><a tabindex="-1" href="menu_proplan.html"><span>Consultar pedidos de formalização</span></a></li>
                   </ul>
                 </div>
@@ -154,234 +154,43 @@
               <li class="breadcrumb-item"><a class="link" href="../../../index.html"><i class="fas fa-home"></i></a></li>
               <li class="breadcrumb-item"><a class="link" href="../../index.html">Submissão</a></li>
               <li class="breadcrumb-item"><a class="link" href="../index.html">Projetos</a></li>
-              <li class="breadcrumb-item"><a class="link" href="consulta_analise_funpec.html">Formalização de Projetos de Pesquisa</a></li>
               <li class="breadcrumb-item active" aria-current="page">
-                <h3>Análise Funpec</h3>
+                <h3>Formalização de Projetos</h3>
               </li>
             </ol>
           </nav>
           <div class="row m-0">
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">
-                <table id="tabela-formalizacao-projeto-funpec" class="table table-striped" data-toggle="table">
-                  <thead>
-                    <tr>
-                      <th style="width: 100px">Número</th>
-                      <th style="width: 140px">Título</th>
-                      <th style="width: 140px">Coordenador</th>
-                      <th style="width: 70px">Ano</th>
-                      <th style="width: 90px">Duração</th>
-                      <th style="width: 60px">Tipo</th>
-                      <th style="width: 100px">Valor do Projeto</th>
-                      <th style="width: 100px">Plano de Aplicação</th>
-                      <th style="width: 90px">DOAP</th>
-                      <th>Ações</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tbody>
-                </table>
-              </div>
-            </article>
-            <article class="conteudo-principal">
-              <div class="conteudo-principal__content parse-markdown my-4">              
-                <div class="form-group position-relative">
-                  <textarea class="form-control" id="parecer-funpec" placeholder="Parecer de aprovação ou recomendação..." data-max-size="4000"></textarea>
-                  <label class="required" for="parecer-funpec">Parecer Funpec</label>
-                  <div class="invalid-feedback">Limite de caracteres excedido
-                  </div>
-                </div>
-              </div>
-              </article>
-              <article class="conteudo-principal">
-                <div class="conteudo-principal__content parse-markdown my-4"> 
-                  <div class="form-group position-relative">
-                     <div class="form-group position-relative">
-                        <select class="custom-select" id="select-tipos-documentos" required="required" name="tipo-documentos">
-                           <option value="hide">Selecione</option>
-
-                        </select>
-                        <label class="required" for="select-tipos-documentos">Tipo do Documento
-                           <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-tipos-documentos" onclick="populaTiposDocumento()"><i class="fas fa-plus-circle"></i></button>
-                        </label>
-                        <div class="invalid-feedback">Selecione alguma opção</div>
-                     </div>
-                     <div class="form-group position-relative">
-                        <textarea class="form-control" id="descricao-arquivo" placeholder="Descreva de forma resumida do que se trata o arquivo" data-max-size="100"></textarea>
-                        <label class="required" for="descricao-arquivo">Descrição do Arquivo</label>
-                        <div class="invalid-feedback">Limite de caracteres excedido
-                        </div>
-                     </div>
-                     <div class="form-group position-relative">
-                         <div class="custom-file">
-                           <input class="custom-file-input" type="file" id="arquivo-projeto" />
-                           <label class="custom-file-label" for="arquivo-projeto">Escolha seu arquivo</label>
-                         </div>
-                         <label>Arquivo</label>
-                     </div>
-                     <div class="form-group position-relative">
-                        <button type="button" class="btn btn-primary" onclick="inserirArquivo()">Inserir</button>
-                     </div>
-                     <div class="form-group position-relative">
-                        <table class="table table-striped" data-toggle="table" id="tabela-arquivos">
-                           <thead>
-                              <tr>
-                                 <th>Tipo</th>
-                                 <th>Descrição</th>
-                                 <th>Arquivo</th>
-                                 <th>Ações</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                              <tr>
-                                 <td></td>
-                                 <td></td>
-                                 <td></td>
-                                 <td></td>
-                              </tr>
-                           </tbody>
-                        </table>
-                     </div>
-                  </div>
-                </div>
-              </article>
+              <table id="tabela-projetos-pesquisa-analise-tecnica" class="table table-striped" data-toggle="table">
+                <thead>
+                  <tr>
+                    <th style="width: 60px">Número</th>
+                    <th style="width: 120px">Título</th>
+                    <th style="width: 120px">Coordenador</th>
+                    <th style="width: 60px">Tipo</th>
+                    <th style="width: 80px">Valor do Projeto</th>
+                    <th style="width: 100px">Situação</th>
+                    <th style="width: 140px">Unid. Executora</th>
+                    <th style="width: 40px">Ano</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tbody>
+              </table>
             </div>
-          <!-- Modal de Visualizar dados do projetos -->
-          <div class="modal fade" id="modal-visualizar-projeto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                   <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Visualizar Informações do Projeto
-                      </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                      <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="menu-botao">
-                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-dados-gerais">Dados Gerais</button>
-                    </div>
-                    <div class="menu-botao">
-                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-participes">Partícipes</button>
-                    </div>
-                    <div class="menu-botao">
-                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-metas-resultados">Metas/Resultados</button>
-                    </div>
-                    <div class="menu-botao">
-                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-recursos">Recursos</button>
-                    </div>
-                    <div class="menu-botao">
-                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-plano-aplicacao">Plano de Aplicação</button>
-                    </div>
-                    <div class="menu-botao">
-                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-cronograma-desembolso">Cronograma de Desembolso</button>
-                    </div>
-                    <div class="menu-botao">
-                        <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-documentos">Documentos</button>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                  </div>
-                </div>
-             </div>
+          </article>
           </div>
-          <!-- Fim do modal de visualizar dados do projeto-->
-          <!-- Início Modal cadastro de tipos de documentos -->
-          <div class="modal fade" id="modal-tipos-documentos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                   <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Tipos de Documentos
-                      </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                      <span aria-hidden="true">&times;</span>
-                      </button>
-                   </div>
-                   <div class="modal-body">
-                      <div class="form-group position-relative">
-                            <input class="form-control" id="nome-tipo-documento" type="text" placeholder="Quantidade de diárias" />
-                            <label for="nome-tipo-documento">Nome</label>
-                      </div>
-                      <div class="form-group position-relative">
-                         <button type="button" class="btn btn-primary" onclick="inserirTipoDocumento()">Inserir</button>
-                      </div>
-                      <table class="table table-striped" data-toggle="table" id="tabela-tipos-documentos">
-                         <thead>
-                            <tr>                                             
-                               <th>Nome</th>
-                               <th class="w-10 text-center">Ações</th>
-                            </tr>
-                         </thead>
-                         <tbody>
-                            <tr>                                             
-                               <td></td>
-                               <td></td>
-                            </tr>                                       
-                         </tbody>
-                      </table>
-                   </div>
-                   <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                   </div>
-                </div>
-             </div>
-          </div>
-          <!-- Fim do modal de cadastro de tipos de documentos-->
-          <!-- Modal de visualizar os dados gerais do projeto -->
-          <div class="modal fade" id="modal-dados-gerais" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                   <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Dados Gerais do Projeto
-                      </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                      <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                    
-                  </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Fim do modal de visualizar os dados gerais do projeto-->
-          <!-- Modal de visualizar os partícipes do projeto -->
-          <div class="modal fade" id="modal-participes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                   <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Partícipes do Projeto
-                      </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                      <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                    
-                  </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Fim do Modal de visualizar os partícipes do projetoo-->
         </div>
       </div>
       <footer class="rodape">
@@ -398,8 +207,22 @@
     <script src="https://static.info.ufrn.br/1.0.6/js/scripts.js"></script>
     <script src="../../js/projetos_pesquisa.js"></script> 
     <script type="text/javascript">
-      popularTabelaAnaliseFunpec();
-      populaSelect(document.getElementById("select-tipos-documentos"), tiposDocumentos);
+      $(document).ready(function () {
+        $('#tabela-projetos-pesquisa-analise-tecnica').DataTable( {
+          lengthChange: false,
+          language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Pesquisar",
+          }
+
+
+        } );
+      });
+
+      popularTabelaProjetosPesquisaAnaliseTecnica();
+
+      
+      
     </script> 
   </body>
 </html>
