@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/base.css">
     <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/administrativo.css">
     <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/alto_contraste.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css"/>
     <title>SIGProjetos</title>
   </head>
   <body>
@@ -115,11 +116,11 @@
                 <div class="submenu__items">
                   <h5>Pesquisa</h5>
                   <ul>
-                    <li><a tabindex="-1" href="consulta_analise_funpec.html"><span>Análise FUNPEC</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_tecnica.html"><span>Análise Técnica</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_fiscalizacao.html"><span>Análise Fiscalização</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_instrumento_juridico.html"><span>Análise Instrumento Jurídico</span></a></li>
-                    <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Autorizar Formalização</span></a></li>
+                    <li><a tabindex="-1" href="analise_funpec.html"><span>Análise FUNPEC</span></a></li>
+                    <li><a tabindex="-1" href="analise_tecnica.html"><span>Análise Técnica</span></a></li>
+                    <li><a tabindex="-1" href="analise_fiscalizacao.html"><span>Análise Fiscalização</span></a></li>
+                    <li><a tabindex="-1" href="analise_instrumento_juridico.html"><span>Análise Instrumento Jurídico</span></a></li>
+                    <li><a tabindex="-1" href="autorizar_formalizacao.html"><span>Autorizar Formalização</span></a></li>
                     <li><a tabindex="-1" href="menu_proplan.html"><span>Consultar pedidos de formalização</span></a></li>
                   </ul>
                 </div>
@@ -159,92 +160,26 @@
             </ol>
           </nav>
           <div class="row m-0">
-            <article class="conteudo-principal col-md-4 col-lg-12 col-xl-4 col-12 p-0">
-              <div class="conteudo-principal__header">
-                <h1>Filtro</h1>
-              </div>
-              <div class="conteudo-principal__content m-0">
-                <form class="border-0 p-0 my-3 mx-40px" id="form-filtro">
-                  <p class="advice">* Campos Obrigatórios</p>
-                  <div class="form-group">
-                    <label for="date-input">Vigência</label>
-                    <input class="form-control p-1 m-1" id="date-input" type="date" /> até
-                    <input class="form-control p-1 m-1" id="date-input" type="date" />
-                 </div> 
-                  <div class="form-group position-relative">
-                     <input id="unidade"
-                        class="form-control form-autocomplete" data-type="simples" id="autocomplete-input-simples" type="text" placeholder="Digite o nomeou o código da unidade..." />
-                     <label for="autocomplete-input-simples">Unidade Executora</label>
-                  </div>
-                  <div class="form-group position-relative">
-                    <input class="form-control" id="text-input" type="text" placeholder="Título do Projeto" />
-                    <label for="text-input">Título</label>
-                  </div>
-                  <div class="form-group position-relative">
-                     <input class="form-control" id="text-input" type="text" placeholder="Palavras chaves" />
-                     <label for="text-input">Palavras chaves</label>
-                  </div>
-                  <div class="form-group position-relative">
-                    <select class="custom-select" id="select-situacao" required="required" name="situacao">
-                      <option value="hide">Selecione</option>
-                      <option>Com inovação tecnológica</option>
-                      <option>Sem inovação tecnológica</option>
-                    </select>
-                    <label class="required" for="select-situacao">Classificação da Pesquisa</label>
-                    <div class="invalid-feedback">Selecione alguma opção</div>
-                  </div>
-                  <button class="btn-primary" type="submit"><i class="fas fa-chevron-right"></i> Buscar</button>
-                </form>
-              </div>
-            </article>
-            <article class="conteudo-principal col-md ml-md-3 col-lg-12 ml-lg-0 col-xl col-12 ml-xl-3 p-0">
-              <div class="conteudo-principal__header">
-                <h1>Projetos Submetidos (3)</h1>
-              </div>
-              <div class="conteudo-principal__content m-0 my-3 px-4">
-                <table class="table table-striped" data-toggle="table">
-                 <thead>
-                    <tr>
-                       <th class="w-10" data-checkbox="true"></th>
-                       <th>Número</th>
-                       <th>TÍtulo</th>
-                       <th>Classificação</th>
-                       <th>Unidade Executora</th>
-                       <th>Ano</th>
-                       <th class="w-10 text-center">Ações</th>
-                    </tr>
-                 </thead>
-                 <tbody>
-                    <tr>
-                       <td></td>
-                       <td>00001</td>
-                       <td>Desenvolvimento do novo sistema de Projetos Acadêmicos</td>
-                       <td>Com inovação tecnológica</td>
-                       <td>1135 - SINFO</td>
-                       <td>2019</td>
-                       <td>
-                          <a class="link-normal" href="#">
-                          <i class="fas fa-search"></i>
-                          </a>
-                       </td>
-                    </tr>
-                    <tr>
-                       <td></td>
-                       <td>00002</td>
-                       <td>Desenvolvimento de Plataforma de Integração entre sistemas estruturantes</td>
-                       <td>Com inovação tecnológica</td>
-                       <td>1135 - SINFO</td>
-                       <td>2020</td>
-                       <td>
-                          <a class="link-normal" href="#">
-                          <i class="fas fa-search"></i>
-                          </a>
-                       </td>
-                    </tr>
-                 </tbody>
+              <table id="tabela-projetos-pesquisa" class="table table-striped" data-toggle="table">
+                <thead>
+                  <tr>
+                    <th>Número</th>
+                    <th>Título</th>
+                    <th>Situação</th>
+                    <th>Unid. Executora</th>
+                    <th>Ano</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tbody>
               </table>
-              </div>
-            </article>
           </div>
         </div>
       </div>
@@ -256,12 +191,26 @@
       </footer>
     </div>
     <script src="https://static.info.ufrn.br/1.0.6/vendors/jquery/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/vendors/popper/popper.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap/bootstrap.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/js/scripts.js"></script>
-    <script src="../js/prototipo.js"></script>
-     <script>
-        autocomplete(document.getElementById("unidade"), unidades);
-      </script>
+    <script src="../../js/projetos_pesquisa.js"></script> 
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#tabela-projetos-pesquisa').DataTable( {
+          lengthChange: false,
+          language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Pesquisar",
+          }
+
+
+        } );
+      });
+
+      popularTabelaProjetosPesquisaFunpec();
+      
+    </script> 
   </body>
 </html>
