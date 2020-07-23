@@ -166,12 +166,12 @@
                 <table id="tabela-analise-instrumento_juridico" class="table table-striped" data-toggle="table">
                   <thead>
                     <tr>
-                      <th style="width: 100px">Número</th>
+                      <th style="width: 85px">Número</th>
                       <th style="width: 140px">Título</th>
-                      <th style="width: 140px">Coordenador</th>
-                      <th style="width: 70px">Ano</th>
-                      <th style="width: 90px">Duração</th>
-                      <th style="width: 60px">Tipo</th>
+                      <th style="width: 125px">Coordenador</th>
+                      <th style="width: 60px">Ano</th>
+                      <th style="width: 85px">Duração</th>
+                      <th style="width: 55px">Tipo</th>
                       <th style="width: 100px">Valor do Projeto</th>
                       <th style="width: 100px">Plano de Aplicação</th>
                       <th style="width: 90px">DOAP</th>
@@ -191,6 +191,16 @@
                     <td></td>
                   </tbody>
                 </table>
+                <div class="form-group position-relative mt-2">
+                  <output class="form-control" id="responsavel-tecnico" type="text" placeholder="responsável técnico que está analisando o projeto."></output>
+                  <div class="tooltip-group">
+                     <label for="numVagasInternosCursoLato">Responsável Técnico</label>
+                     <span class="tooltip-icon">
+                        <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O responsável técnico só poderia ser informado pelo líder da equipe. O sistema deve armazenar a informação da data, hora e login de quem informou o responsável.">
+                        </i>
+                     </span>
+                  </div>
+                </div>
               </div>
             </article>
             <article class="conteudo-principal">
@@ -371,50 +381,32 @@
              </div>
           </div>
           <!-- Fim do modal de cadastro de tipos de documentos-->
-          <!-- Modal de visualizar os dados gerais do projeto -->
-          <div class="modal fade" id="modal-dados-gerais" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <!-- Modal de cadastro responsável projeto -->
+          <div class="modal fade" id="modal-cadastrar-responsavel" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                 <div class="modal-content">
                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Dados Gerais do Projeto
+                      <h5 class="modal-title" id="cadastrar-responsavel">Cadastrar Responsável
                       </h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                       <span aria-hidden="true">&times;</span>
                       </button>
                   </div>
                   <div class="modal-body">
-                    
+                    <div class="form-group position-relative">
+                          <input class="form-control" id="nome-responsavel-tecnico" type="text" placeholder="Quantidade de diárias" />
+                          <label for="nome-responsavel-tecnico">Responsável Técnico</label>
+                    </div>
                   </div>
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('nome-responsavel-tecnico')">Salvar</button>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Fim do modal de visualizar os dados gerais do projeto-->
-          <!-- Modal de visualizar os partícipes do projeto -->
-          <div class="modal fade" id="modal-participes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                   <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Partícipes do Projeto
-                      </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                      <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                    
-                  </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Fim do Modal de visualizar os partícipes do projetoo-->
+          <!-- Fim do modal de cadastro responsável projeto-->
         </div>
       </div>
       <footer class="rodape">
@@ -435,6 +427,7 @@
     <script type="text/javascript">
       popularTabelaAnaliseProplan('tabela-analise-instrumento_juridico');
       populaSelect(document.getElementById("select-tipos-documentos"), tiposDocumentos);
+      carregaResponsavel('responsavel-tecnico');
 
     </script> 
   </body>

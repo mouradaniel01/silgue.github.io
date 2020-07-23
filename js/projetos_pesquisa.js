@@ -1,5 +1,5 @@
 
-var numero_projeto = "";
+var numero_projeto = JSON.parse(sessionStorage.getItem('num_projeto'));
 
 var projetosPesquisa = [];
 
@@ -55,7 +55,8 @@ var projetoPesquisa1 = new ProjetoPesquisa(
 		"fonte_recurso":"B"
 	},
 	{
-	"situacao":"Homologado pela PROPESQ"
+	"situacao":"Homologado pela PROPESQ",
+	"responsavel":" "
 	}	
 );
 
@@ -111,7 +112,8 @@ var projetoPesquisa2 = new ProjetoPesquisa(
 		"fonte_recurso":"B"
 	},
 	{
-	"situacao":"Homologado pela PROPESQ"
+	"situacao":"Homologado pela PROPESQ",
+	"responsavel":" "
 	}	
 );
 
@@ -142,7 +144,7 @@ function popularTabelaConsulta(idTabela,redirect){
  	projetosPesquisa.forEach(function (projeto){
  		var infoProjeto = [];
  		infoProjeto.push(projeto.dados_gerais.numero_projeto,projeto.dados_gerais.titulo,projeto.dados_gerais.coordenador,
- 			projeto.plano_aplicacao.fonte_recurso, projeto.plano_aplicacao.valor_projeto, projeto.tramitacao.situacao, projeto.dados_gerais.unidade_execucao,projeto.dados_gerais.ano);
+ 			projeto.plano_aplicacao.fonte_recurso, projeto.plano_aplicacao.valor_projeto, projeto.tramitacao.situacao, projeto.tramitacao.responsavel,projeto.dados_gerais.ano);
  		numProjeto.push(projeto.dados_gerais.numero_projeto);
  		infoProjetos.push(infoProjeto);
  	});
@@ -167,8 +169,27 @@ function popularTabelaConsulta(idTabela,redirect){
  		}
  	});
 
- 	popularTabela(idTabela,infoProjetos,[['modal','#modal-visualizar-projeto','',idTabela]]);
+ 	popularTabela(idTabela,infoProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela]]);
 
+ }
+
+ function carregaResponsavel(idCampo){
+ 	projetosPesquisa.forEach(function(projeto) {
+ 		if(projeto.dados_gerais.numero_projeto === numero_projeto){
+ 			document.getElementById(idCampo).innerHTML = projeto.tramitacao.responsavel;
+ 		}
+ 	});
+
+ }
+
+ function inserirResponsavel(idNome){
+ 	var responsavel = document.getElementById('nome-responsavel-tecnico').value;
+ 	projetosPesquisa.forEach(function(projeto) {
+ 		if(projeto.dados_gerais.numero_projeto === numero_projeto){
+ 			projeto.tramitacao.responsavel = responsavel;
+ 		}
+ 	});
+ 	document.getElementById('responsavel-tecnico').innerHTML = responsavel;
  }
 
 function popularTabelaProjetosPesquisaFunpec(){

@@ -68,7 +68,7 @@ function criarBotaoAcao(acao,parametro){ //nomeAcao,link,onclick_,idTabela, para
 	    i = document.createElement("i");
 	    i.setAttribute("class", "fas fa-external-link-alt");
 	    botao.appendChild(i);
-	}else if(nomeAcao === 'modal'){
+	}else if(nomeAcao === 'modal-exibicao' || nomeAcao === 'modal-cadastro'){
 		botao = document.createElement("button");
 	    botao.setAttribute("type", "button");
 	    botao.setAttribute("class", "btn btn-link");
@@ -76,7 +76,11 @@ function criarBotaoAcao(acao,parametro){ //nomeAcao,link,onclick_,idTabela, para
 	    botao.setAttribute("data-target", href);
 	    botao.setAttribute("onclick",onclick);
 	    i = document.createElement("i");
-	    i.setAttribute("class", "fas fa-search");
+	    if(nomeAcao === 'modal-cadastro'){
+	    	i.setAttribute("class", "fas fa-user-plus");
+	    }else{
+	    	i.setAttribute("class", "fas fa-search");
+	    }
 	    botao.appendChild(i);
 	}
 	return botao;
@@ -123,7 +127,9 @@ function popularTabela(idTabela,array,acoes){
 		      	
 		    }else{
 		      	acoes.forEach( function (acao){
-		      		novaCelula.appendChild(criarBotaoAcao(acao,resultado[0]));
+		      	novaCelula.setAttribute("align","right");
+      			novaCelula.setAttribute("class","btn-group");
+		      	novaCelula.appendChild(criarBotaoAcao(acao,resultado[0]));
 		      	});
 		    }
 	   }
