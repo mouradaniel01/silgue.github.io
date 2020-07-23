@@ -44,7 +44,7 @@ function criarBotaoAcao(acao,parametro){ //nomeAcao,link,onclick_,idTabela, para
 	var idTabela = acao[3];
 	var param = parametro;
 
-	if(onclickFunction.indexOf("()") != -1){
+	if(onclickFunction !='' && onclickFunction.indexOf("()") != -1){
 		var onclick = onclickFunction;
 	}else{
 		var onclick = onclickFunction + "('" + param + "')";
@@ -62,7 +62,9 @@ function criarBotaoAcao(acao,parametro){ //nomeAcao,link,onclick_,idTabela, para
 		botao = document.createElement("a");
 	    botao.setAttribute("href",href);
 	    botao.setAttribute("class", "link-normal");
+	    if(onclick != ''){
 	    botao.setAttribute("onclick",onclick);
+	    }
 	    i = document.createElement("i");
 	    i.setAttribute("class", "fas fa-external-link-alt");
 	    botao.appendChild(i);

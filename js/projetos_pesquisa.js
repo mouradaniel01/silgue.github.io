@@ -117,8 +117,6 @@ var projetoPesquisa2 = new ProjetoPesquisa(
 
 projetosPesquisa.push(projetoPesquisa1, projetoPesquisa2);
 
-
-
 function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,plano_aplicacao,tramitacao){
 	this.informacoes_preliminares = informacoes_preliminares;
 	this.dados_gerais = dados_gerais;
@@ -126,8 +124,6 @@ function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,pla
 	this.plano_aplicacao = plano_aplicacao;
 	this.tramitacao = tramitacao;
 }
-
-
 
 function passarNumeroProjeto(numero){
 	var numero_projeto = JSON.stringify(numero);
@@ -139,17 +135,6 @@ function limpaSelect(elemento){
 	    elemento.remove(elemento.length-1);
 	  }
 }
-
-
-
-
-
-
-
-
-
-
- 
 
 function popularTabelaProjetosPesquisaAnaliseTecnica(){
 	var tabela = document.getElementById('tabela-projetos-pesquisa-analise-tecnica');
@@ -201,7 +186,11 @@ function popularTabelaProjetosPesquisaAnaliseTecnica(){
 	});
 }
 
-function popularTabelaConsultaFunpec(){
+function popularTabelaAnaliseTecnica(){
+
+}
+
+function popularTabelaConsulta(idTabela,redirect){
  	var infoProjetos = [];
  	var numProjeto = [];
  	projetosPesquisa.forEach(function (projeto){
@@ -212,14 +201,12 @@ function popularTabelaConsultaFunpec(){
  		infoProjetos.push(infoProjeto);
  	});
 
- 	popularTabela('tabela-projetos-pesquisa',infoProjetos,[['redirecionar','analise_funpec.html','passarNumeroProjeto','tabela-projetos-pesquisa']]);
+ 	popularTabela(idTabela,infoProjetos,[['redirecionar',redirect,'passarNumeroProjeto',idTabela]]);
 
  }
 
- function popularTabelaAnaliseFunpec(){
+ function popularTabelaAnaliseProplan(idTabela){
  	var infoProjetos = [];
-
- 	var idTabela = 'tabela-formalizacao-projeto-funpec';
 
  	var numero_projeto = JSON.parse(sessionStorage.getItem('num_projeto'));
 
@@ -234,75 +221,9 @@ function popularTabelaConsultaFunpec(){
  		}
  	});
 
- 	popularTabela(idTabela,infoProjetos,[['modal','#modal-visualizar-projeto','contrairSecao()',idTabela]]);
+ 	popularTabela(idTabela,infoProjetos,[['modal','#modal-visualizar-projeto','',idTabela]]);
 
  }
-
-/*function popularTabelaAnaliseFunpec(){
-
-	var numero_projeto = JSON.parse(sessionStorage.getItem('num_projeto'));
-
-	var tabela = document.getElementById('tabela-formalizacao-projeto-funpec');
-
-	while(tabela.rows.length >2){
-		tabela.deleteRow(length-1);
-	}
-
-	projetosPesquisa.forEach(function(projeto) {
-		console.log(projeto);
-
-			if(projeto.dados_gerais.numero_projeto === numero_projeto){
-			// Captura a quantidade de linhas já existentes na tabela
-		   	var numLinhas = tabela.rows.length;
-		   	// Captura a quantidade de colunas da última linha da tabela
-		   	var numColunas = tabela.rows[numLinhas-1].cells.length;
-
-	   		var novaLinha = tabela.insertRow(numLinhas);
-	   		novaLinha.setAttribute("id",numLinhas+1);
-
-	   		for (var j = 0; j < numColunas; j++) {
-		      var a, i;
-		       // Insere uma coluna na nova linha 
-		      novaCelula = novaLinha.insertCell(j);
-
-		      if(j===0){
-		      	novaCelula.innerHTML = projeto.dados_gerais.numero_projeto;
-		      }else if(j===1){
-		      	novaCelula.innerHTML = projeto.dados_gerais.titulo;
-		      }else if(j===2){
-		      	novaCelula.innerHTML = projeto.dados_gerais.coordenador;
-		      }else if(j===3){
-		      	novaCelula.innerHTML = projeto.dados_gerais.ano;
-		      }else if(j===4){
-		      	novaCelula.innerHTML = projeto.plano_aplicacao.tempo_execucao;
-		      }else if(j===5){
-		      	novaCelula.innerHTML = projeto.plano_aplicacao.fonte_recurso;
-		      }else if(j===6){
-		      	novaCelula.innerHTML = projeto.plano_aplicacao.valor_projeto;
-		      }else if(j===7){
-		      	novaCelula.innerHTML = projeto.plano_aplicacao.valor_plano_aplicacao;
-		      }else if(j===8){
-		      	novaCelula.innerHTML = projeto.plano_aplicacao.doap;
-		      }else{
-
-		        b = document.createElement("button");
-	         	b.setAttribute("type", "button");
-	         	b.setAttribute("class", "btn btn-link");
-	         	b.setAttribute("data-toggle","modal");
-	         	b.setAttribute("data-target", "#modal-visualizar-projeto");
-	         	b.setAttribute("onclick","contrairSecao()");
-	         	i = document.createElement("i");
-	         	i.setAttribute("class", "fas fa-search");
-	         	b.appendChild(i);
-	         	novaCelula.appendChild(b);
-		    	
-		      }
-		   }
-		}
-		
-	});
-
-}*/
 
 function popularTabelaProjetosPesquisaFunpec(){
 	var tabela = document.getElementById('tabela-projetos-pesquisa');

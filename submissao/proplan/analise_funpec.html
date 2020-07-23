@@ -163,7 +163,7 @@
           <div class="row m-0">
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">
-                <table id="tabela-formalizacao-projeto-funpec" class="table table-striped" data-toggle="table">
+                <table id="tabela-analise-funpec" class="table table-striped" data-toggle="table">
                   <thead>
                     <tr>
                       <th style="width: 100px">Número</th>
@@ -432,28 +432,9 @@
     <script src="../../js/projetos_pesquisa.js"></script> 
     <script src="../../js/tabelas.js"></script>
     <script type="text/javascript">
-      popularTabelaAnaliseFunpec();
+      popularTabelaAnaliseProplan('tabela-analise-funpec');
       populaSelect(document.getElementById("select-tipos-documentos"), tiposDocumentos);
 
-      function contrairSecao(){
-        $('#div-dados-gerais').hide();
-        $('#div-participes').hide();
-        $('#div-metas-resultados').hide();
-        $('#div-recursos').hide();
-        $('#div-plano-aplicacao').hide();
-        $('#div-cronograma-desembolso').hide();
-        $('#div-documentos-projeto').hide();
-      }
-
-      function expandirDivModal(div){
-        var div = "#"+div;
-        console.log(div);
-        if($(div).is(':hidden')){
-          $(div).show();
-        }else{
-          $(div).hide();
-        }
-      }
     </script> 
   </body>
 </html>

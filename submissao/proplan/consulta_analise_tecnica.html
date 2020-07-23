@@ -162,7 +162,7 @@
           <div class="row m-0">
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">
-              <table id="tabela-projetos-pesquisa-analise-tecnica" class="table table-striped" data-toggle="table">
+              <table id="tabela-consulta-analise-tecnica" class="table table-striped" data-toggle="table">
                 <thead>
                   <tr>
                     <th style="width: 60px">Número</th>
@@ -206,9 +206,10 @@
     <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap/bootstrap.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/js/scripts.js"></script>
     <script src="../../js/projetos_pesquisa.js"></script> 
+    <script src="../../js/tabelas.js"></script> 
     <script type="text/javascript">
       $(document).ready(function () {
-        $('#tabela-projetos-pesquisa-analise-tecnica').DataTable( {
+        $('#tabela-consulta-analise-tecnica').DataTable( {
           lengthChange: false,
           language: {
             search: "_INPUT_",
@@ -219,7 +220,7 @@
         } );
       });
 
-      popularTabelaProjetosPesquisaAnaliseTecnica();
+      popularTabelaConsulta('tabela-consulta-analise-tecnica','analise_tecnica.html');
 
       
       
