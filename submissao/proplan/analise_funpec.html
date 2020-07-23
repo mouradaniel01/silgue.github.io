@@ -261,76 +261,67 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-body">
-                    <article class="conteudo-principal">
-                      <div class="conteudo-principal__header">
-                        <button type="button" class="btn btn-link border-0" onclick="expandirDivModal('div-dados-gerais')"><h4>Dados Gerais</h4></button>
+                    <ul class="nav nav-tabs" id="tabExample" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="dados-gerais-tab" data-toggle="tab" href="#dados-gerais" role="tab" aria-controls="dados-gerais" aria-selected="true">
+                          Dados Gerais
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="participes-tab" data-toggle="tab" href="#participes" role="tab" aria-controls="participes" aria-selected="false">
+                          Partícipes
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="metas-resultados-tab" data-toggle="tab" href="#metas-resultados" role="tab" aria-controls="metas-resultados" aria-selected="false">
+                          Metas e Resultados
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="recursos-tab" data-toggle="tab" href="#recursos" role="tab" aria-controls="recursos" aria-selected="false">
+                          Recursos
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="plano-aplicacao-tab" data-toggle="tab" href="#plano-aplicacao" role="tab" aria-controls="plano-aplicacao" aria-selected="false">
+                          Plano de Aplicação
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="cronograma-tab" data-toggle="tab" href="#cronograma" role="tab" aria-controls="cronograma" aria-selected="false">
+                          Cronograma de Desembolso
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="documentos-tab" data-toggle="tab" href="#documentos" role="tab" aria-controls="documentos" aria-selected="false">
+                          Documentos
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="tabContent">
+                      <div class="tab-pane fade show active" id="dados-gerais" role="tabpanel" aria-labelledby="dados-gerais-tab">
+                        <p>Informações sobre os dados gerais</p>
                       </div>
-                      <div class="form-group m-0 my-3 px-4" id="div-dados-gerais">
-                        <div class="form-group position-relative">
-                          <p>dados gerais</p>
-                        </div>
+                      <div class="tab-pane fade" id="participes" role="tabpanel" aria-labelledby="participes-tab">
+                        <p>Informações dos partícipes</p>
                       </div>
-                    </article>
-                    <article class="conteudo-principal">
-                      <div class="conteudo-principal__header">
-                        <button type="button" class="btn btn-link border-0" onclick="expandirDivModal('div-participes')"><h4>Partícipes</h4></button>
+                      <div class="tab-pane fade" id="metas-resultados" role="tabpanel" aria-labelledby="metas-resultados-tab">
+                        <p>Informações das metas e resultados</p>
                       </div>
-                      <div class="form-group m-0 my-3 px-4" id="div-participes">
-                        <div class="form-group position-relative">
-                          <p>partícipes</p>
-                        </div>
+                      <div class="tab-pane fade" id="recursos" role="tabpanel" aria-labelledby="recursos-tab">
+                        <p>Informações dos Recursos</p>
                       </div>
-                    </article>
-                    <article class="conteudo-principal">
-                      <div class="conteudo-principal__header">
-                        <button type="button" class="btn btn-link border-0" onclick="expandirDivModal('div-metas-resultados')"><h4>Metas e Resultados</h4></button>
+                      <div class="tab-pane fade" id="plano-aplicacao" role="tabpanel" aria-labelledby="plano-aplicacao-tab">
+                        <p>Informações do Plano de Aplicação</p>
                       </div>
-                      <div class="form-group m-0 my-3 px-4" id="div-metas-resultados">
-                        <div class="form-group position-relative">
-                          <p>Metas e Resultados</p>
-                        </div>
+                      <div class="tab-pane fade" id="cronograma" role="tabpanel" aria-labelledby="cronograma-tab">
+                        <p>Informações do Cronograma</p>
                       </div>
-                    </article>
-                    <article class="conteudo-principal">
-                      <div class="conteudo-principal__header">
-                        <button type="button" class="btn btn-link border-0" onclick="expandirDivModal('div-recursos')"><h4>Recursos</h4></button>
+                      <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="documentos-tab">
+                        <p>Documentos</p>
                       </div>
-                      <div class="form-group m-0 my-3 px-4" id="div-recursos">
-                        <div class="form-group position-relative">
-                          <p>Informações sobre os recursos</p>
-                        </div>
-                      </div>
-                    </article>
-                    <article class="conteudo-principal">
-                      <div class="conteudo-principal__header">
-                        <button type="button" class="btn btn-link border-0" onclick="expandirDivModal('div-plano-aplicacao')"><h4>Plano de Aplicação</h4></button>
-                      </div>
-                      <div class="form-group m-0 my-3 px-4" id="div-plano-aplicacao">
-                        <div class="form-group position-relative">
-                          <p>Informações sobre o plano de aplicação</p>
-                        </div>
-                      </div>
-                    </article>
-                    <article class="conteudo-principal">
-                      <div class="conteudo-principal__header">
-                        <button type="button" class="btn btn-link border-0" onclick="expandirDivModal('div-cronograma-desembolso')"><h4>Cronograma de Desembolso</h4></button>
-                      </div>
-                      <div class="form-group m-0 my-3 px-4" id="div-cronograma-desembolso">
-                        <div class="form-group position-relative">
-                          <p>Informações sobre o cronograma de desembolso</p>
-                        </div>
-                      </div>
-                    </article>
-                    <article class="conteudo-principal">
-                      <div class="conteudo-principal__header">
-                        <button type="button" class="btn btn-link border-0" onclick="expandirDivModal('div-documentos-projeto')"><h4>Documentos</h4></button>
-                      </div>
-                      <div class="form-group m-0 my-3 px-4" id="div-documentos-projeto">
-                        <div class="form-group position-relative">
-                          <p>Informações sobre os documentos inseridos</p>
-                        </div>
-                      </div>
-                    </article>
+                    </div>
+                    
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
