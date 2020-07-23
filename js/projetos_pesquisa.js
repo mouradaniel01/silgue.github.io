@@ -1,22 +1,5 @@
-function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,plano_aplicacao,tramitacao){
-	this.informacoes_preliminares = informacoes_preliminares;
-	this.dados_gerais = dados_gerais;
-	this.dados_projeto = dados_projeto;
-	this.plano_aplicacao = plano_aplicacao;
-	this.tramitacao = tramitacao;
-}
 
-function ArquivoProjeto(tipo,descricao, arquivo){
-	this.tipo = tipo;
-	this.descricao = descricao;
-	this.arquivo = arquivo;
-}
-
-var arquivosProjeto = [];
-
-var numero_projeto = "0001";
-
-var tiposDocumentos = ['ATA APROVAÇÃO DEPARTAMENTO', 'AUTORIZAÇÃO PARTICIPAÇÃO EM PESQUISA', 'LIMITE DE CARGA HORÁRIA/REMUNERAÇÃO', 'HOMOLOGAÇÃO PROPESQ', 'HOMOLOGAÇÃO PROPLAN', 'HOMOLOGAÇÃO PPG'];
+var numero_projeto = "";
 
 var projetosPesquisa = [];
 
@@ -134,6 +117,18 @@ var projetoPesquisa2 = new ProjetoPesquisa(
 
 projetosPesquisa.push(projetoPesquisa1, projetoPesquisa2);
 
+
+
+function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,plano_aplicacao,tramitacao){
+	this.informacoes_preliminares = informacoes_preliminares;
+	this.dados_gerais = dados_gerais;
+	this.dados_projeto = dados_projeto;
+	this.plano_aplicacao = plano_aplicacao;
+	this.tramitacao = tramitacao;
+}
+
+
+
 function passarNumeroProjeto(numero){
 	var numero_projeto = JSON.stringify(numero);
      sessionStorage.setItem('num_projeto', numero_projeto );
@@ -143,14 +138,23 @@ function limpaSelect(elemento){
 	while (elemento.length > 0) {
 	    elemento.remove(elemento.length-1);
 	  }
-  }
+}
+
+
+
+
+
+
+
+
+
+
+ 
 
 function popularTabelaProjetosPesquisaAnaliseTecnica(){
 	var tabela = document.getElementById('tabela-projetos-pesquisa-analise-tecnica');
 
-	while(tabela.rows.length >2){
-		tabela.deleteRow(length-1);
-	}
+	limpaTabela(tabela);
 
 	projetosPesquisa.forEach(function(projeto) {
 		
@@ -197,7 +201,44 @@ function popularTabelaProjetosPesquisaAnaliseTecnica(){
 	});
 }
 
-function popularTabelaAnaliseFunpec(){
+function popularTabelaConsultaFunpec(){
+ 	var infoProjetos = [];
+ 	var numProjeto = [];
+ 	projetosPesquisa.forEach(function (projeto){
+ 		var infoProjeto = [];
+ 		infoProjeto.push(projeto.dados_gerais.numero_projeto,projeto.dados_gerais.titulo,projeto.dados_gerais.coordenador,
+ 			projeto.plano_aplicacao.fonte_recurso, projeto.plano_aplicacao.valor_projeto, projeto.tramitacao.situacao, projeto.dados_gerais.unidade_execucao,projeto.dados_gerais.ano);
+ 		numProjeto.push(projeto.dados_gerais.numero_projeto);
+ 		infoProjetos.push(infoProjeto);
+ 	});
+
+ 	popularTabela('tabela-projetos-pesquisa',infoProjetos,[['redirecionar','analise_funpec.html','passarNumeroProjeto','tabela-projetos-pesquisa']]);
+
+ }
+
+ function popularTabelaAnaliseFunpec(){
+ 	var infoProjetos = [];
+
+ 	var idTabela = 'tabela-formalizacao-projeto-funpec';
+
+ 	var numero_projeto = JSON.parse(sessionStorage.getItem('num_projeto'));
+
+	var tabela = document.getElementById(idTabela);
+
+ 	projetosPesquisa.forEach(function (projeto){
+ 		if(projeto.dados_gerais.numero_projeto === numero_projeto){
+ 			var infoProjeto = [];
+ 		infoProjeto.push(projeto.dados_gerais.numero_projeto,projeto.dados_gerais.titulo,projeto.dados_gerais.coordenador,
+ 			projeto.dados_gerais.ano, projeto.plano_aplicacao.tempo_execucao, projeto.plano_aplicacao.fonte_recurso, projeto.plano_aplicacao.valor_projeto, projeto.plano_aplicacao.valor_plano_aplicacao,projeto.plano_aplicacao.doap);
+ 		infoProjetos.push(infoProjeto);
+ 		}
+ 	});
+
+ 	popularTabela(idTabela,infoProjetos,[['modal','#modal-visualizar-projeto','contrairSecao()',idTabela]]);
+
+ }
+
+/*function popularTabelaAnaliseFunpec(){
 
 	var numero_projeto = JSON.parse(sessionStorage.getItem('num_projeto'));
 
@@ -261,11 +302,7 @@ function popularTabelaAnaliseFunpec(){
 		
 	});
 
-}
-
-
-
-
+}*/
 
 function popularTabelaProjetosPesquisaFunpec(){
 	var tabela = document.getElementById('tabela-projetos-pesquisa');
@@ -373,12 +410,6 @@ function populaSelect(elemento, array){
     });
 }
 
-function inserirTipoDocumento(){
-	tiposDocumentos.push(document.getElementById('nome-tipo-documento').value);
-	limpaSelect(document.getElementById('select-tipos-documentos'));
-	populaSelect(document.getElementById('select-tipos-documentos'), tiposDocumentos);
-	populaTiposDocumento();
-}
 
 function populaTiposDocumento(){
 
@@ -430,21 +461,6 @@ function removerLinhaTabelaArquivo(i,idTabela,descricao){
     document.getElementById(idTabela).deleteRow(i);
 }
 
-function inserirArquivo(){
-
-	var tipo = document.getElementById('select-tipos-documentos').value;
-	//var nome = document.getElementById('nome-arquivo').value;
-	var descricao = document.getElementById('descricao-arquivo').value;
-	var arquivo = document.getElementById('arquivo-projeto').value;
-
-	var arquivoProjeto = new ArquivoProjeto(tipo,descricao,arquivo);
-
-	arquivosProjeto.push(arquivoProjeto);
-
-	populaTabelaArquivos();
-
-}
-
 function populaTabelaArquivos(){
 
 	var tabela = document.getElementById('tabela-arquivos');
@@ -486,288 +502,3 @@ function populaTabelaArquivos(){
 	});
 }
 
-
-
-/* Adicione
- * <script src="https://static.info.ufrn.br/1.0.6/js/scripts.js"></script>
- * ao final do seu body, ou copie o código abaixo.
- */
-
-(function() {
-  const bootstrapTables = document.querySelectorAll(
-    'table[data-toggle="table"]'
-  );
-
-  bootstrapTables.forEach((bootstrapTable, tableIndex) => {
-    const removePaginationClass = bsTable => {
-      const [bootstrapTableContainer] = $(bsTable).parents('.bootstrap-table');
-
-      const paginationContainer = bootstrapTableContainer.querySelector(
-        '.fixed-table-pagination div.pagination'
-      );
-      if (paginationContainer) {
-        paginationContainer.classList.remove('pagination');
-        paginationContainer.classList.add('pagination-container');
-      }
-    };
-
-    $(bootstrapTable).one('post-body.bs.table', () => {
-      const [bootstrapTableContainer] = $(bootstrapTable).parents(
-        '.fixed-table-body'
-      );
-      bootstrapTableContainer.classList.add('custom-scroll');
-
-      bootstrapTableContainer.style.overflowX = 'unset';
-      bootstrapTableContainer.style.overflowY = 'unset';
-
-      setTimeout(() => {
-        bootstrapTableContainer.style.cssText = '';
-      }, 200);
-    });
-
-    if (bootstrapTable.dataset.pagination === 'true') {
-      bootstrapTable.dataset.paginationPreText =
-        '<i class="fas fa-chevron-left"></i>';
-      bootstrapTable.dataset.paginationNextText =
-        '<i class="fas fa-chevron-right"></i>';
-
-      const handleTableChange = () => {
-        removePaginationClass(bootstrapTable);
-      };
-
-      $(bootstrapTable).on('post-body.bs.table', handleTableChange);
-    }
-
-    if (bootstrapTable.dataset.clickToSelect === 'true') {
-      const tableHeaderCheck = bootstrapTable.querySelector(
-        'th[data-checkbox="true"]'
-      );
-
-      if (tableHeaderCheck) {
-        tableHeaderCheck.dataset.clickToSelect = 'false';
-      }
-    }
-
-    if (bootstrapTable.dataset.search === 'true') {
-      $(bootstrapTable).one('post-body.bs.table', () => {
-        const [bootstrapTableContainer] = $(bootstrapTable).parents(
-          '.bootstrap-table'
-        );
-
-        const textInputContainer = bootstrapTableContainer.querySelector(
-          '.search.btn-group'
-        );
-        const textInput = bootstrapTableContainer.querySelector(
-          'input.search-input'
-        );
-
-        const formGroup = document.createElement('div');
-        formGroup.classList.add('form-group', 'm-0');
-
-        formGroup.append(textInput);
-        textInputContainer.append(formGroup);
-      });
-    }
-
-    if (bootstrapTable.dataset.showColumns === 'true') {
-      $(bootstrapTable).one('post-body.bs.table', () => {
-        const [bootstrapTableContainer] = $(bootstrapTable).parents(
-          '.bootstrap-table'
-        );
-        const openDropdownButton = bootstrapTableContainer.querySelector(
-          '.fixed-table-toolbar .columns button.btn'
-        );
-        const dropdownMenu = bootstrapTableContainer.querySelector(
-          '.fixed-table-toolbar .columns .dropdown-menu'
-        );
-
-        if (openDropdownButton) {
-          openDropdownButton.classList.add('btn-secondary');
-        }
-
-        if (dropdownMenu) {
-          const dropdownItems = dropdownMenu.querySelectorAll('.dropdown-item');
-
-          dropdownItems.forEach((dropdownItem, index) => {
-            const checkbox = dropdownItem.querySelector(
-              'input[type="checkbox"]'
-            );
-            checkbox.id = `column-checkbox-${tableIndex}-${index}`;
-            checkbox.classList.add('form-check-input');
-
-            const formCheck = document.createElement('div');
-            formCheck.classList.add('form-check');
-
-            const label = document.createElement('label');
-            label.classList.add('form-check-label');
-            label.setAttribute('for', `column-checkbox-${tableIndex}-${index}`);
-
-            formCheck.append(checkbox, label);
-            dropdownItem.append(formCheck);
-
-            const columnLabel = dropdownItem.querySelector('span');
-            dropdownItem.append(columnLabel);
-          });
-        }
-      });
-    }
-
-    $(bootstrapTable).one('post-body.bs.table', () => {
-      const tableHeaders = bootstrapTable.querySelectorAll('thead th');
-
-      const addIcon = (iconElement, icon) => {
-        iconElement.className = iconElement.className.replace(/fa-.*$/, '');
-        iconElement.classList.add(icon);
-      };
-
-      const resetHeaders = clickedElement => {
-        tableHeaders.forEach(tableHeader => {
-          const sortableElement = tableHeader.querySelector('.sortable');
-
-          if (sortableElement && sortableElement !== clickedElement) {
-            sortableElement.sortState = null;
-            const sortIcon = sortableElement.querySelector('i');
-            addIcon(sortIcon, 'fa-sort');
-          }
-        });
-      };
-
-      tableHeaders.forEach(tableHeader => {
-        const sortableElement = tableHeader.querySelector('.sortable');
-
-        if (sortableElement) {
-          const buttonIcon = document.createElement('button');
-          const sortIcon = document.createElement('i');
-          sortIcon.classList.add('fas', 'fa-sort');
-
-          buttonIcon.append(sortIcon);
-          sortableElement.append(buttonIcon);
-
-          sortableElement.addEventListener('click', () => {
-            resetHeaders(sortableElement);
-
-            if (
-              !sortableElement.sortState ||
-              sortableElement.sortState === 'desc'
-            ) {
-              sortableElement.sortState = 'asc';
-              addIcon(sortIcon, 'fa-sort-up');
-            } else if (sortableElement.sortState === 'asc') {
-              sortableElement.sortState = 'desc';
-              addIcon(sortIcon, 'fa-sort-down');
-            }
-          });
-        }
-      });
-    });
-
-    $(bootstrapTable).one('post-body.bs.table', () => {
-      const updateChecks = () => {
-        const tableHeaders = Array.from(
-          bootstrapTable.querySelectorAll('thead th')
-        );
-
-        const headerCheck = tableHeaders.find(tableHeader =>
-          tableHeader.querySelector('input[type="checkbox"]')
-        );
-
-        if (headerCheck) {
-          const checksOnTable = bootstrapTable.querySelectorAll('.bs-checkbox');
-          bootstrapTable.classList.add('table-icon');
-
-          checksOnTable.forEach((checkOnTable, index) => {
-            const checkbox = checkOnTable.querySelector(
-              'input[type="checkbox"]'
-            );
-
-            if (checkbox) {
-              checkbox.id = `checkbox-${tableIndex}-${index}`;
-              checkbox.classList.add('form-check-input');
-              checkbox.parentElement.remove();
-
-              const formCheck = document.createElement('div');
-              formCheck.classList.add('form-check');
-
-              const checkLabel = document.createElement('label');
-              checkLabel.classList.add('form-check-label');
-              checkLabel.setAttribute('for', `checkbox-${tableIndex}-${index}`);
-
-              formCheck.append(checkbox, checkLabel);
-
-              if (checkOnTable.tagName === 'TH') {
-                const thInner = checkOnTable.querySelector('.th-inner');
-
-                thInner.append(formCheck);
-              } else if (checkOnTable.tagName === 'TD') {
-                checkOnTable.append(formCheck);
-              }
-            }
-          });
-        }
-      };
-
-      updateChecks();
-
-      $(bootstrapTable).on('post-body.bs.table', updateChecks);
-    });
-
-    $(bootstrapTable).one('post-body.bs.table', () => {
-      const updateRadios = () => {
-        const tableHeaders = Array.from(
-          bootstrapTable.querySelectorAll('thead th.bs-checkbox')
-        );
-
-        const headerRadio = tableHeaders.find(
-          tableHeader => !tableHeader.querySelector('input[type="checkbox"]')
-        );
-
-        if (headerRadio) {
-          $(bootstrapTable).one('post-body.bs.table', () => {
-            const radiosOnTable = bootstrapTable.querySelectorAll(
-              '.bs-checkbox'
-            );
-
-            radiosOnTable.forEach((radioOnTable, index) => {
-              const radio = radioOnTable.querySelector('input[type="radio"]');
-
-              if (radio) {
-                radio.id = `radio-${tableIndex}-${index}`;
-                radio.classList.add('form-check-input');
-                radio.parentElement.remove();
-
-                const formCheck = document.createElement('div');
-                formCheck.classList.add('form-check');
-
-                const radioLabel = document.createElement('label');
-                radioLabel.classList.add('form-check-label');
-                radioLabel.setAttribute('for', `radio-${tableIndex}-${index}`);
-
-                formCheck.append(radio, radioLabel);
-                radioOnTable.append(formCheck);
-              }
-            });
-          });
-        }
-      };
-
-      updateRadios();
-
-      $(bootstrapTable).on('post-body.bs.table', updateRadios);
-    });
-
-    $(bootstrapTable).one('post-body.bs.table', () => {
-      $(bootstrapTable).on('all.bs.table', () => {
-        if (bootstrapTable.dataset.pagination === 'true') {
-          removePaginationClass(bootstrapTable);
-        }
-
-        window.emitChangePalette();
-      });
-    });
-  });
-
-  const linkFormatter = value =>
-    `<a class="link" href="${value}" target="_blank" rel="noopener noreferrer">${value}</a>`;
-
-  window.linkFormatter = linkFormatter;
-})();
