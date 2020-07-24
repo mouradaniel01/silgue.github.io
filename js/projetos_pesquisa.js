@@ -161,9 +161,15 @@ function limpaSelect(elemento){
 	  }
 }
 
+function inicioModulo(){
+	localStorage.setItem('0001', JSON.stringify(projetoPesquisa1));
+	localStorage.setItem('0002', JSON.stringify(projetoPesquisa2));
+}
+
 function popularTabelaConsulta(idTabela,redirect){
  	var infoProjetos = [];
  	var numProjeto = [];
+
  	projetoPesquisa1 = JSON.parse(localStorage.getItem('0001'));
  	projetoPesquisa2 = JSON.parse(localStorage.getItem('0002'));
 
