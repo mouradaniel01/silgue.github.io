@@ -1,7 +1,17 @@
 
 var numero_projeto = JSON.parse(sessionStorage.getItem('num_projeto'));
 
+var responsavelFunpec = JSON.parse(sessionStorage.getItem('responsavel-funpec'));
+
+var responsavelAnaliseTecnica = JSON.parse(sessionStorage.getItem('responsavel-analise-tecnica'));
+
+var responsavelFiscalizacao = JSON.parse(sessionStorage.getItem('responsavel-fiscalizacao'));
+
+var responsavelInstrumentoJuridico = JSON.parse(sessionStorage.getItem('responsavel-instrumento-juridico'));
+
 var projetosPesquisa = [];
+
+var responsaveis = [];
 
 var projetoPesquisa1 = new ProjetoPesquisa(
 		{
@@ -56,7 +66,10 @@ var projetoPesquisa1 = new ProjetoPesquisa(
 	},
 	{
 	"situacao":"Homologado pela PROPESQ",
-	"responsavel":" "
+	"responsavel_funpec":" ",
+	"responsavel_analise_tecnica":" ",
+	"responsavel_fiscalizacao":" ",
+	"responsavel_instrumento_juridico":" "
 	}	
 );
 
@@ -113,7 +126,10 @@ var projetoPesquisa2 = new ProjetoPesquisa(
 	},
 	{
 	"situacao":"Homologado pela PROPESQ",
-	"responsavel":" "
+	"responsavel_funpec":" ",
+	"responsavel_analise_tecnica":" ",
+	"responsavel_fiscalizacao":" ",
+	"responsavel_instrumento_juridico":" "
 	}	
 );
 
@@ -132,6 +148,13 @@ function passarNumeroProjeto(numero){
      sessionStorage.setItem('num_projeto', numero_projeto );
 }
 
+function passarResponsavelTecnico(campo,resp){
+
+	var responsavel = JSON.stringify(resp);
+
+    sessionStorage.setItem(campo, responsavel );
+}
+
 function limpaSelect(elemento){
 	while (elemento.length > 0) {
 	    elemento.remove(elemento.length-1);
@@ -141,13 +164,28 @@ function limpaSelect(elemento){
 function popularTabelaConsulta(idTabela,redirect){
  	var infoProjetos = [];
  	var numProjeto = [];
- 	projetosPesquisa.forEach(function (projeto){
- 		var infoProjeto = [];
- 		infoProjeto.push(projeto.dados_gerais.numero_projeto,projeto.dados_gerais.titulo,projeto.dados_gerais.coordenador,
- 			projeto.plano_aplicacao.fonte_recurso, projeto.plano_aplicacao.valor_projeto, projeto.tramitacao.situacao, projeto.tramitacao.responsavel,projeto.dados_gerais.ano);
- 		numProjeto.push(projeto.dados_gerais.numero_projeto);
- 		infoProjetos.push(infoProjeto);
- 	});
+ 	projetoPesquisa1 = JSON.parse(localStorage.getItem('0001'));
+ 	projetoPesquisa2 = JSON.parse(localStorage.getItem('0002'));
+
+	var infoProjeto1 = [];
+	infoProjeto1.push(projetoPesquisa1.dados_gerais.numero_projeto,projetoPesquisa1.dados_gerais.titulo,projetoPesquisa1.dados_gerais.coordenador,
+		projetoPesquisa1.plano_aplicacao.fonte_recurso, projetoPesquisa1.plano_aplicacao.valor_projeto, projetoPesquisa1.tramitacao.situacao, 
+		"funpec: " + projetoPesquisa1.tramitacao.responsavel_funpec + " analise técnica: " + projetoPesquisa1.tramitacao.responsavel_analise_tecnica +
+		" fiscalização: " +  projetoPesquisa1.tramitacao.responsavel_fiscalizacao + " instrumento jurídico: " + projetoPesquisa1.tramitacao.responsavel_instrumento_juridico
+		,projetoPesquisa1.dados_gerais.ano);
+	numProjeto.push(projetoPesquisa1.dados_gerais.numero_projeto);
+	infoProjetos.push(infoProjeto1);
+
+	var infoProjeto2 = [];
+	infoProjeto2.push(projetoPesquisa2.dados_gerais.numero_projeto,projetoPesquisa2.dados_gerais.titulo,projetoPesquisa2.dados_gerais.coordenador,
+		projetoPesquisa2.plano_aplicacao.fonte_recurso, projetoPesquisa2.plano_aplicacao.valor_projeto, projetoPesquisa2.tramitacao.situacao, 
+		"funpec: " + projetoPesquisa2.tramitacao.responsavel_funpec + " analise técnica: " + projetoPesquisa2.tramitacao.responsavel_analise_tecnica +
+		" fiscalização: " +  projetoPesquisa2.tramitacao.responsavel_fiscalizacao + " instrumento jurídico: " + projetoPesquisa2.tramitacao.responsavel_instrumento_juridico,
+		projetoPesquisa2.dados_gerais.ano);
+	numProjeto.push(projetoPesquisa2.dados_gerais.numero_projeto);
+	infoProjetos.push(infoProjeto2);
+
+ 		
 
  	popularTabela(idTabela,infoProjetos,[['redirecionar',redirect,'passarNumeroProjeto',idTabela]]);
 
@@ -173,23 +211,69 @@ function popularTabelaConsulta(idTabela,redirect){
 
  }
 
- function carregaResponsavel(idCampo){
- 	projetosPesquisa.forEach(function(projeto) {
- 		if(projeto.dados_gerais.numero_projeto === numero_projeto){
- 			document.getElementById(idCampo).innerHTML = projeto.tramitacao.responsavel;
+ function carregaResponsavel(destino){
+	var responsavel;
+ 	if(numero_projeto === '0001'){
+
+ 		if(destino === 'responsavel-funpec'){
+			responsavel = JSON.parse(localStorage.getItem('0001')).tramitacao.responsavel_funpec;
+ 		}else if(destino === 'responsavel-analise-tecnica'){
+ 			responsavel = JSON.parse(localStorage.getItem('0001')).tramitacao.responsavel_analise_tecnica;
+ 		}else if(destino === 'responsavel-fiscalizacao'){
+ 			responsavel = JSON.parse(localStorage.getItem('0001')).tramitacao.responsavel_fiscalizacao;
+ 		}else{
+ 			responsavel = JSON.parse(localStorage.getItem('0001')).tramitacao.responsavel_instrumento_juridico;
  		}
- 	});
+ 		
+ 	}else{
+ 		if(destino === 'responsavel-funpec'){
+			responsavel = JSON.parse(localStorage.getItem('0002')).tramitacao.responsavel_funpec;
+ 		}else if(destino === 'responsavel-analise-tecnica'){
+ 			responsavel = JSON.parse(localStorage.getItem('0002')).tramitacao.responsavel_analise_tecnica;
+ 		}else if(destino === 'responsavel-fiscalizacao'){
+ 			responsavel = JSON.parse(localStorage.getItem('0002')).tramitacao.responsavel_fiscalizacao;
+ 		}else{
+ 			responsavel = JSON.parse(localStorage.getItem('0002')).tramitacao.responsavel_instrumento_juridico;
+ 		}
+ 	}
+ 	
+ 	document.getElementById(destino).innerHTML = responsavel;
 
  }
 
- function inserirResponsavel(idNome){
- 	var responsavel = document.getElementById('nome-responsavel-tecnico').value;
- 	projetosPesquisa.forEach(function(projeto) {
- 		if(projeto.dados_gerais.numero_projeto === numero_projeto){
- 			projeto.tramitacao.responsavel = responsavel;
+ function inserirResponsavel(origem, destino){
+ 	var responsavel = document.getElementById(origem).value;
+ 	projetoPesquisa1 = JSON.parse(localStorage.getItem('0001'));
+ 	projetoPesquisa2 = JSON.parse(localStorage.getItem('0002'))
+
+ 	if(numero_projeto === '0001'){
+ 		if(origem === 'nome-responsavel-funpec'){
+			projetoPesquisa1.tramitacao.responsavel_funpec = responsavel;
+ 		}else if(origem === 'nome-responsavel-analise-tecnica'){
+ 			projetoPesquisa1.tramitacao.responsavel_analise_tecnica = responsavel;
+ 		}else if(origem === 'nome-responsavel-fiscalizacao'){
+ 			projetoPesquisa1.tramitacao.responsavel_fiscalizacao = responsavel;
+ 		}else{
+ 			projetoPesquisa1.tramitacao.responsavel_instrumento_juridico = responsavel;
  		}
- 	});
- 	document.getElementById('responsavel-tecnico').innerHTML = responsavel;
+ 		
+ 		localStorage.setItem('0001', JSON.stringify(projetoPesquisa1));
+
+ 	}else{
+ 		if(origem === 'nome-responsavel-funpec'){
+			projetoPesquisa2.tramitacao.responsavel_funpec = responsavel;
+ 		}else if(origem === 'nome-responsavel-analise-tecnica'){
+ 			projetoPesquisa2.tramitacao.responsavel_analise_tecnica = responsavel;
+ 		}else if(origem === 'nome-responsavel-fiscalizacao'){
+ 			projetoPesquisa2.tramitacao.responsavel_fiscalizacao = responsavel;
+ 		}else{
+ 			projetoPesquisa2.tramitacao.responsavel_instrumento_juridico = responsavel;
+ 		}
+ 		localStorage.setItem('0002', JSON.stringify(projetoPesquisa2));
+ 	}
+
+ 	carregaResponsavel(destino);
+
  }
 
 function popularTabelaProjetosPesquisaFunpec(){

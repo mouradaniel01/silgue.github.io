@@ -116,11 +116,11 @@
                 <div class="submenu__items">
                   <h5>Pesquisa</h5>
                   <ul>
-                    <li><a tabindex="-1" href="analise_funpec.html"><span>Análise FUNPEC</span></a></li>
-                    <li><a tabindex="-1" href="analise_tecnica.html"><span>Análise Técnica</span></a></li>
-                    <li><a tabindex="-1" href="analise_fiscalizacao.html"><span>Análise Fiscalização</span></a></li>
-                    <li><a tabindex="-1" href="analise_instrumento_juridico.html"><span>Análise Instrumento Jurídico</span></a></li>
-                    <li><a tabindex="-1" href="autorizar_formalizacao.html"><span>Autorizar Formalização</span></a></li>
+                    <li><a tabindex="-1" href="consulta_analise_funpec.html"><span>Análise FUNPEC</span></a></li>
+                    <li><a tabindex="-1" href="consulta_analise_tecnica.html"><span>Análise Técnica</span></a></li>
+                    <li><a tabindex="-1" href="consulta_analise_fiscalizacao.html"><span>Análise Fiscalização</span></a></li>
+                    <li><a tabindex="-1" href="consulta_analise_instrumento_juridico.html"><span>Análise Instrumento Jurídico</span></a></li>
+                    <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Autorizar Formalização</span></a></li>
                     <li><a tabindex="-1" href="menu_proplan.html"><span>Consultar pedidos de formalização</span></a></li>
                   </ul>
                 </div>
@@ -131,14 +131,7 @@
                 </div>
                 <div class="submenu__items">
                   <h5>Lato Sensu</h5>
-                   <ul>
-                    <li><a tabindex="-1" href="consulta_analise_funpec.html"><span>Análise FUNPEC</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_tecnica.html"><span>Análise Técnica</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_fiscalizacao.html"><span>Análise Fiscalização</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_instrumento_juridico.html"><span>Análise Instrumento Jurídico</span></a></li>
-                    <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Autorizar Formalização</span></a></li>
-                    <li><a tabindex="-1" href="menu_proplan.html"><span>Consultar pedidos de formalização</span></a></li>
-                  </ul>
+                   
                 </div>
               </button>
             </div>
@@ -154,7 +147,7 @@
               <li class="breadcrumb-item"><a class="link" href="../../../index.html"><i class="fas fa-home"></i></a></li>
               <li class="breadcrumb-item"><a class="link" href="../../index.html">Submissão</a></li>
               <li class="breadcrumb-item"><a class="link" href="../index.html">Projetos</a></li>
-              <li class="breadcrumb-item"><a class="link" href="consulta_analise_funpec.html">Formalização de Projetos de Pesquisa</a></li>
+              <li class="breadcrumb-item"><a class="link" href="consulta_analise_instrumento_juridico.html">Formalização de Projetos de Pesquisa</a></li>
               <li class="breadcrumb-item active" aria-current="page">
                 <h3>Análise Funpec</h3>
               </li>
@@ -192,9 +185,9 @@
                   </tbody>
                 </table>
                 <div class="form-group position-relative mt-2">
-                  <output class="form-control" id="responsavel-tecnico" type="text" placeholder="responsável técnico que está analisando o projeto."></output>
+                  <output class="form-control" id="responsavel-instrumento-juridico" type="text" placeholder="responsável técnico que está analisando o projeto."></output>
                   <div class="tooltip-group">
-                     <label for="numVagasInternosCursoLato">Responsável Técnico</label>
+                     <label for="responsavel-instrumento-juridico">Responsável Técnico</label>
                      <span class="tooltip-icon">
                         <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O responsável técnico só poderia ser informado pelo líder da equipe. O sistema deve armazenar a informação da data, hora e login de quem informou o responsável.">
                         </i>
@@ -394,14 +387,14 @@
                   </div>
                   <div class="modal-body">
                     <div class="form-group position-relative">
-                          <input class="form-control" id="nome-responsavel-tecnico" type="text" placeholder="Responsável técnico pelo projeto..." />
-                          <label for="nome-responsavel-tecnico">Responsável Técnico</label>
+                          <input class="form-control" id="nome-responsavel-instrumento-juridico" type="text" placeholder="Responsável técnico pelo projeto..." />
+                          <label for="nome-responsavel-instrumento-juridico">Responsável Técnico</label>
                     </div>
                   </div>
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('nome-responsavel-tecnico')">Salvar</button>
+                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('nome-responsavel-instrumento-juridico','responsavel-instrumento-juridico')">Salvar</button>
                 </div>
               </div>
             </div>
@@ -427,7 +420,7 @@
     <script type="text/javascript">
       popularTabelaAnaliseProplan('tabela-analise-instrumento_juridico');
       populaSelect(document.getElementById("select-tipos-documentos"), tiposDocumentos);
-      carregaResponsavel('responsavel-tecnico');
+      carregaResponsavel('responsavel-instrumento-juridico');
 
     </script> 
   </body>

@@ -192,9 +192,9 @@
                   </tbody>
                 </table>
                 <div class="form-group position-relative mt-2">
-                  <output class="form-control" id="responsavel-tecnico" type="text" placeholder="responsável técnico que está analisando o projeto."></output>
+                  <output class="form-control" id="responsavel-funpec" type="text" placeholder="responsável técnico que está analisando o projeto."></output>
                   <div class="tooltip-group">
-                     <label for="numVagasInternosCursoLato">Responsável Técnico</label>
+                     <label for="responsavel-funpec">Responsável Técnico</label>
                      <span class="tooltip-icon">
                         <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O responsável técnico só poderia ser informado pelo líder da equipe. O sistema deve armazenar a informação da data, hora e login de quem informou o responsável.">
                         </i>
@@ -394,14 +394,14 @@
                   </div>
                   <div class="modal-body">
                     <div class="form-group position-relative">
-                          <input class="form-control" id="nome-responsavel-tecnico" type="text" placeholder="Responsável técnico pelo projeto..." />
-                          <label for="nome-responsavel-tecnico">Responsável Técnico</label>
+                          <input class="form-control" id="nome-responsavel-funpec" type="text" placeholder="Responsável técnico pelo projeto..." />
+                          <label for="nome-responsavel-funpec">Responsável Técnico</label>
                     </div>
                   </div>
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('nome-responsavel-tecnico')">Salvar</button>
+                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('nome-responsavel-funpec','responsavel-funpec')">Salvar</button>
                 </div>
               </div>
             </div>
@@ -427,7 +427,7 @@
     <script type="text/javascript">
       popularTabelaAnaliseProplan('tabela-analise-funpec');
       populaSelect(document.getElementById("select-tipos-documentos"), tiposDocumentos);
-      carregaResponsavel('responsavel-tecnico');
+      carregaResponsavel('responsavel-funpec');
 
     </script> 
   </body>
