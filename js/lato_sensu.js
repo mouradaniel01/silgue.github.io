@@ -1,4 +1,3 @@
-
 var numListaComponente = 0;
 var mapaComponente = new Map();
 var docentesCurso = [];
@@ -10,32 +9,20 @@ var docentesComponente = [];
 var listaEntidades = [];
 var entidadesSelecionadas = [];
 var entidadesParticipes = [];
-var tiposDocumentos = ['ATA APROVAÇÃO DEPARTAMENTO', 'AUTORIZAÇÃO PARTICIPAÇÃO EM PESQUISA', 'LIMITE DE CARGA HORÁRIA/REMUNERAÇÃO', 'HOMOLOGAÇÃO PROPESQ', 'HOMOLOGAÇÃO PROPLAN', 'HOMOLOGAÇÃO PPG'];
 var arquivosProjeto = [];
 var recursos = [];
+var responsaveis = [];
 
 var ufrn = new EntidadeParticipe('Contratante','UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE','24.823.767/0001-89','Avenida Salgado Filho,3000','Natal', 'RN');
 var funpec = new EntidadeParticipe('Contratada','Fundação Norte-Rio-Grandense de Pesquisa e Cultura','76.824.797/0001-03','Avenida Salgado Filho,3000','Natal', 'RN');
 
 entidadesParticipes.push(ufrn,funpec);
 
+
 function Recurso(entidade,valor_financiado,responsavel){
 	this.entidade = entidade;
 	this.valor_financiado = valor_financiado;
 	this.responsavel = responsavel;
-}
-
-function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,tramitacao){
-	this.informacoes_preliminares = informacoes_preliminares;
-	this.dados_gerais = dados_gerais;
-	this.dados_projeto = dados_projeto;
-	this.tramitacao = tramitacao;
-}
-
-function ArquivoProjeto(tipo,descricao, arquivo){
-	this.tipo = tipo;
-	this.descricao = descricao;
-	this.arquivo = arquivo;
 }
 
 function EntidadeParticipe(tipo,nome,cnpj, endereco, cidade, uf){
@@ -71,70 +58,6 @@ function Docente(nome, tipo, nacionalidade, cpf_passaporte, matricula, formacao,
 	this.vinculo = vinculo;
 	this.instituicao = instituicao;
 	this.ch = ch;
-}
-
-function gera_random(n){
-var ranNum = Math.round(Math.random()*n);
-return ranNum;
-}
-
-function mod(dividendo,divisor){
-return Math.round(dividendo - (Math.floor(dividendo/divisor)*divisor));
-}
-
-function gerarCnpj(){
- var n = 9;
- var n1 = gera_random(n);
- var n2 = gera_random(n);
- var n3 = gera_random(n);
- var n4 = gera_random(n);
- var n5 = gera_random(n);
- var n6 = gera_random(n);
- var n7 = gera_random(n);
- var n8 = gera_random(n);
- var n9 = 0;//gera_random(n);
- var n10 = 0;//gera_random(n);
- var n11 = 0;//gera_random(n);
- var n12 = 1;//gera_random(n);
- var d1 = n12*2+n11*3+n10*4+n9*5+n8*6+n7*7+n6*8+n5*9+n4*2+n3*3+n2*4+n1*5;
- d1 = 11 - ( mod(d1,11) );
- if (d1>=10) d1 = 0;
- var d2 = d1*2+n12*3+n11*4+n10*5+n9*6+n8*7+n7*8+n6*9+n5*2+n4*3+n3*4+n2*5+n1*6;
- d2 = 11 - ( mod(d2,11) );
- if (d2>=10) d2 = 0;
-var resultado = ''+n1+n2+'.'+n3+n4+n5+'.'+n6+n7+n8+'/'+n9+n10+n11+n12+'-'+d1+d2;
-
-return resultado;
-
-}
-
-function limpaSelect(elemento){
-	while (elemento.length > 0) {
-	    elemento.remove(elemento.length-1);
-	  }
-  }
-
-function populaSelect(elemento, array){
-	array.forEach((opt) => {
-      option = new Option(opt, opt);
-      elemento.options[elemento.options.length] = option;
-    });
-}
-
-function exibirDetalhes(flag,div){
-	 $('input[name=flag]').change(function () {
-             if ($('input[name=flag]:checked').val() === "Sim") {
-                 $('.div').show();
-             } else {
-                 $('.div').hide();
-             }
-         });
-}
-
-function calcular(vlr1,vlr2,resultado) {
-              var n1 = parseInt(document.getElementById('vlr1').value, 10);
-              var n2 = parseInt(document.getElementById('vlr2').value, 10);
-              document.getElementById('resultado').innerHTML = n1 + n2;
 }
 
 function inserirRecurso(){
@@ -204,214 +127,6 @@ function popularTabelaRecurso(){
 	   }
 	});
 
-}
-
-function popularTabelaProjetosPesquisa(){
-
-	var tabela = document.getElementById('tabela-projetos-pesquisa');
-
-	while(tabela.rows.length >2){
-		tabela.deleteRow(length-1);
-	}
-
-	projetosPesquisa.forEach(function(projeto) {
-		
-		// Captura a quantidade de linhas já existentes na tabela
-	   	var numLinhas = tabela.rows.length;
-	   	// Captura a quantidade de colunas da última linha da tabela
-	   	var numColunas = tabela.rows[numLinhas-1].cells.length;
-
-   		var novaLinha = tabela.insertRow(numLinhas);
-   		novaLinha.setAttribute("id",numLinhas+1);
-
-   		for (var j = 0; j < numColunas; j++) {
-	      var a, i;
-	       // Insere uma coluna na nova linha 
-	      novaCelula = novaLinha.insertCell(j);
-	      if(j===0){
-	      	novaCelula.innerHTML = projeto.dados_gerais.numero_projeto;
-	      }else if(j===1){
-	      	novaCelula.innerHTML = projeto.dados_gerais.titulo;
-	      }else if(j===2){
-	      	novaCelula.innerHTML = projeto.tramitacao.situacao;
-	      }else if(j===3){
-	      	novaCelula.innerHTML = projeto.dados_gerais.unidade_execucao;
-	      }else if(j===4){
-	      	novaCelula.innerHTML = projeto.dados_gerais.ano;
-	      }else{
-	      	a = document.createElement("button");
-	        a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'tabela-tipos-documentos')");
-	        a.setAttribute("class", "btn btn-link");
-	        i = document.createElement("i");
-	        i.setAttribute("class", "far fa-trash-alt");
-	        a.appendChild(i);
-	        novaCelula.appendChild(a);
-	    	
-	      }
-	   }
-	});
-
-}
-
-function inserirTipoDocumento(){
-	tiposDocumentos.push(document.getElementById('nome-tipo-documento').value);
-	limpaSelect(document.getElementById('select-tipos-documentos'));
-	populaSelect(document.getElementById('select-tipos-documentos'), tiposDocumentos);
-	populaTiposDocumento();
-}
-
-function populaTiposDocumento(){
-
-	var tabela = document.getElementById('tabela-tipos-documentos');
-
-	while(tabela.rows.length >2){
-		tabela.deleteRow(length-1);
-	}
-
-	tiposDocumentos.forEach(function (tipo) {
-		
-		// Captura a quantidade de linhas já existentes na tabela
-	   	var numLinhas = tabela.rows.length;
-	   	// Captura a quantidade de colunas da última linha da tabela
-	   	var numColunas = tabela.rows[numLinhas-1].cells.length;
-
-   		var novaLinha = tabela.insertRow(numLinhas);
-   		novaLinha.setAttribute("id",numLinhas+1);
-
-   		for (var j = 0; j < numColunas; j++) {
-	      var a, i;
-	       // Insere uma coluna na nova linha 
-	      novaCelula = novaLinha.insertCell(j);
-	      if(j===0){
-	      novaCelula.innerHTML = tipo;
-	      }else{
-	      	if(tipo != 'ATA APROVAÇÃO DEPARTAMENTO' && tipo !=  'AUTORIZAÇÃO PARTICIPAÇÃO EM PESQUISA' && tipo != 'LIMITE DE CARGA HORÁRIA/REMUNERAÇÃO' && tipo != 'HOMOLOGAÇÃO PROPESQ' && tipo != 'HOMOLOGAÇÃO PROPLAN' && tipo != 'HOMOLOGAÇÃO PPG'){
-	      		a = document.createElement("button");
-	        a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'tabela-tipos-documentos')");
-	        a.setAttribute("class", "btn btn-link");
-	        i = document.createElement("i");
-	        i.setAttribute("class", "far fa-trash-alt");
-	        a.appendChild(i);
-	        novaCelula.appendChild(a);
-	    	}
-	      }
-	   }
-	});
-
-}
-
-function inserirArquivo(){
-
-	var tipo = document.getElementById('select-tipos-documentos').value;
-	//var nome = document.getElementById('nome-arquivo').value;
-	var descricao = document.getElementById('descricao-arquivo').value;
-	var arquivo = document.getElementById('arquivo-projeto').value;
-
-	var arquivoProjeto = new ArquivoProjeto(tipo,descricao,arquivo);
-
-	arquivosProjeto.push(arquivoProjeto);
-
-	populaTabelaArquivos();
-
-}
-
-function populaTabelaArquivos(){
-
-	var tabela = document.getElementById('tabela-arquivos');
-
-	while(tabela.rows.length >2){
-		tabela.deleteRow(length-1);
-	}
-
-	arquivosProjeto.forEach(function (arquivo) {
-		
-		// Captura a quantidade de linhas já existentes na tabela
-	   	var numLinhas = tabela.rows.length;
-	   	// Captura a quantidade de colunas da última linha da tabela
-	   	var numColunas = tabela.rows[numLinhas-1].cells.length;
-
-   		var novaLinha = tabela.insertRow(numLinhas);
-   		novaLinha.setAttribute("id",numLinhas+1);
-
-   		for (var j = 0; j < numColunas; j++) {
-	      var a, i;
-	       // Insere uma coluna na nova linha 
-	      novaCelula = novaLinha.insertCell(j);
-	      if(j===0){
-	      	novaCelula.innerHTML = arquivo.tipo;
-	      }else if(j===1){
-	      	novaCelula.innerHTML = arquivo.descricao;
-	      }else if(j===2){
-	      	novaCelula.innerHTML = arquivo.arquivo;
-	      }else{
-	      	a = document.createElement("button");
-	        a.setAttribute("onclick","removerLinhaTabelaArquivo(this.parentNode.parentNode.rowIndex,'tabela-arquivos','"+arquivo.descricao+"')");
-	        a.setAttribute("class", "btn btn-link");
-	        i = document.createElement("i");
-	        i.setAttribute("class", "far fa-trash-alt");
-	        a.appendChild(i);
-	        novaCelula.appendChild(a);
-	      }
-	   }
-	});
-}
-
-function removerLinhaTabelaArquivo(i,idTabela,descricao){
-	arquivosProjeto.forEach(function(arquivo){
-		if(arquivo.descricao === descricao){
-			arquivosProjeto.splice(arquivosProjeto.indexOf(arquivo), 1);
-		}
-	});
-	
-    document.getElementById(idTabela).deleteRow(i);
-}
-
-function inserirLinhaTabela(idTabela) {
-   // Captura a referência da tabela com id “minhaTabela”
-   var tabela = document.getElementById(idTabela);
-   // Captura a quantidade de linhas já existentes na tabela
-   var numLinhas = tabela.rows.length;
-   // Captura a quantidade de colunas da última linha da tabela
-   var numColunas = tabela.rows[numLinhas-1].cells.length;
-   // Insere uma linha no fim da tabela.
-   var novaLinha = tabela.insertRow(numLinhas);
-
-   novaLinha.setAttribute("id",numLinhas+1);
-}
-
-function inserirLinhaTabelaByInput(idTabela,idInput) {
-   // Captura a referência da tabela com id “minhaTabela”
-   var tabela = document.getElementById(idTabela);
-   //Captura o select
-   var input = document.getElementById(idInput);
-   //Captura o valor do select
-   var valor = input.value;
-   // Captura a quantidade de linhas já existentes na tabela
-   var numLinhas = tabela.rows.length;
-   // Captura a quantidade de colunas da última linha da tabela
-   var numColunas = tabela.rows[numLinhas-1].cells.length;
-   // Insere uma linha no fim da tabela.
-   var novaLinha = tabela.insertRow(numLinhas);
-
-   novaLinha.setAttribute("id",numLinhas+1);
-   
-   // Faz um loop para criar as colunas
-   for (var j = 0; j < numColunas; j++) {
-      var a, i;
-       // Insere uma coluna na nova linha 
-      novaCelula = novaLinha.insertCell(j);
-      if(j===0){
-      novaCelula.innerHTML = valor.toUpperCase();
-      }else{
-         a = document.createElement("button");
-         a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
-         a.setAttribute("class", "btn btn-link");
-         i = document.createElement("i");
-         i.setAttribute("class", "far fa-trash-alt");
-         a.appendChild(i);
-         novaCelula.appendChild(a);
-      }
-   }
 }
 
 function buscarEntidade(nome){
@@ -1035,6 +750,42 @@ function inserirLinhaTabelaMembroExterno(idTabela, cpfParticipante,
 	docentesCurso.push(docente);
 }
 
+function inserirLinhaTabelaByInput(idTabela,idInput) {
+   // Captura a referência da tabela com id “minhaTabela”
+   var tabela = document.getElementById(idTabela);
+   //Captura o select
+   var input = document.getElementById(idInput);
+   //Captura o valor do select
+   var valor = input.value;
+   // Captura a quantidade de linhas já existentes na tabela
+   var numLinhas = tabela.rows.length;
+   // Captura a quantidade de colunas da última linha da tabela
+   var numColunas = tabela.rows[numLinhas-1].cells.length;
+   // Insere uma linha no fim da tabela.
+   var novaLinha = tabela.insertRow(numLinhas);
+
+   novaLinha.setAttribute("id",numLinhas+1);
+   
+   // Faz um loop para criar as colunas
+   for (var j = 0; j < numColunas; j++) {
+      var a, i;
+       // Insere uma coluna na nova linha 
+      novaCelula = novaLinha.insertCell(j);
+      if(j===0){
+      novaCelula.innerHTML = valor.toUpperCase();
+      }else{
+         a = document.createElement("button");
+         a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"')");
+         a.setAttribute("class", "btn btn-link");
+         i = document.createElement("i");
+         i.setAttribute("class", "far fa-trash-alt");
+         a.appendChild(i);
+         novaCelula.appendChild(a);
+      }
+   }
+}
+
+
 function inserirLinhaTabelaMembroInterno(idTabela,idNome, ) {
 
 	var docente = new Docente();
@@ -1185,102 +936,51 @@ function removerLinhaTabelaParticipes(i,idTabela,nomeEntidade){
     document.getElementById(idTabela).deleteRow(i);
 }
 
-function autocomplete(inp, arr) {
-  /*the autocomplete function takes two arguments,
-  the text field element and an array of possible autocompleted values:*/
-  var currentFocus;
-  /*execute a function when someone writes in the text field:*/
-  inp.addEventListener("input", function(e) {
-      var a, b, i, val = this.value;
-      /*close any already open lists of autocompleted values*/
-      closeAllLists();
-      if (!val) { return false;}
-      currentFocus = -1;
-      /*create a DIV element that will contain the items (values):*/
-      a = document.createElement("DIV");
-      a.setAttribute("id", this.id + "autocomplete-list");
-      a.setAttribute("class", "autocomplete-items");
-      /*append the DIV element as a child of the autocomplete container:*/
-      this.parentNode.appendChild(a);
-      /*for each item in the array...*/
-      for (i = 0; i < arr.length; i++) {
-        /*check if the item starts with the same letters as the text field value:*/
-        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-          /*create a DIV element for each matching element:*/
-          b = document.createElement("DIV");
-          /*make the matching letters bold:*/
-          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-          b.innerHTML += arr[i].substr(val.length);
-          /*insert a input field that will hold the current array item's value:*/
-          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-          /*execute a function when someone clicks on the item value (DIV element):*/
-              b.addEventListener("click", function(e) {
-              /*insert the value for the autocomplete text field:*/
-              inp.value = this.getElementsByTagName("input")[0].value;
-              /*close the list of autocompleted values,
-              (or any other open lists of autocompleted values:*/
-              closeAllLists();
-          });
-          a.appendChild(b);
-        }
-      }
-  });
+function popularTabelaProjetosPesquisa(){
 
-  /*execute a function presses a key on the keyboard:*/
-  inp.addEventListener("keydown", function(e) {
-      var x = document.getElementById(this.id + "autocomplete-list");
-      if (x) x = x.getElementsByTagName("div");
-      if (e.keyCode == 40) {
-        /*If the arrow DOWN key is pressed,
-        increase the currentFocus variable:*/
-        currentFocus++;
-        /*and and make the current item more visible:*/
-        addActive(x);
-      } else if (e.keyCode == 38) { //up
-        /*If the arrow UP key is pressed,
-        decrease the currentFocus variable:*/
-        currentFocus--;
-        /*and and make the current item more visible:*/
-        addActive(x);
-      } else if (e.keyCode == 13) {
-        /*If the ENTER key is pressed, prevent the form from being submitted,*/
-        e.preventDefault();
-        if (currentFocus > -1) {
-          /*and simulate a click on the "active" item:*/
-          if (x) x[currentFocus].click();
-        }
-      }
-  });
+	var tabela = document.getElementById('tabela-projetos-pesquisa');
 
-  function addActive(x) {
-    /*a function to classify an item as "active":*/
-    if (!x) return false;
-    /*start by removing the "active" class on all items:*/
-    removeActive(x);
-    if (currentFocus >= x.length) currentFocus = 0;
-    if (currentFocus < 0) currentFocus = (x.length - 1);
-    /*add class "autocomplete-active":*/
-    x[currentFocus].classList.add("autocomplete-active");
-  }
-  function removeActive(x) {
-    /*a function to remove the "active" class from all autocomplete items:*/
-    for (var i = 0; i < x.length; i++) {
-      x[i].classList.remove("autocomplete-active");
-    }
-  }
-  function closeAllLists(elmnt) {
-    /*close all autocomplete lists in the document,
-    except the one passed as an argument:*/
-    var x = document.getElementsByClassName("autocomplete-items");
-    for (var i = 0; i < x.length; i++) {
-      if (elmnt != x[i] && elmnt != inp) {
-      x[i].parentNode.removeChild(x[i]);
-    }
-  }
-}
-/*execute a function when someone clicks in the document:*/
-document.addEventListener("click", function (e) {
-    closeAllLists(e.target);
-});
+	while(tabela.rows.length >2){
+		tabela.deleteRow(length-1);
+	}
+
+	projetosPesquisa.forEach(function(projeto) {
+		
+		// Captura a quantidade de linhas já existentes na tabela
+	   	var numLinhas = tabela.rows.length;
+	   	// Captura a quantidade de colunas da última linha da tabela
+	   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+
+   		var novaLinha = tabela.insertRow(numLinhas);
+   		novaLinha.setAttribute("id",numLinhas+1);
+
+   		for (var j = 0; j < numColunas; j++) {
+	      var a, i;
+	       // Insere uma coluna na nova linha 
+	      novaCelula = novaLinha.insertCell(j);
+	      if(j===0){
+	      	novaCelula.innerHTML = projeto.dados_gerais.numero_projeto;
+	      }else if(j===1){
+	      	novaCelula.innerHTML = projeto.dados_gerais.titulo;
+	      }else if(j===2){
+	      	novaCelula.innerHTML = projeto.tramitacao.situacao;
+	      }else if(j===3){
+	      	novaCelula.innerHTML = projeto.dados_gerais.unidade_execucao;
+	      }else if(j===4){
+	      	novaCelula.innerHTML = projeto.dados_gerais.ano;
+	      }else{
+	      	a = document.createElement("button");
+	        a.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'tabela-tipos-documentos')");
+	        a.setAttribute("class", "btn btn-link");
+	        i = document.createElement("i");
+	        i.setAttribute("class", "far fa-trash-alt");
+	        a.appendChild(i);
+	        novaCelula.appendChild(a);
+	    	
+	      }
+	   }
+	});
 
 }
+
+

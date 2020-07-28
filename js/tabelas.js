@@ -28,7 +28,7 @@ function criarLinha(idTabela){
 
 function removerLinhaTabela(i,idTabela,array,parametro){
 	array.forEach(function(item){	
-		if(item[0] === descricao){
+		if(item[0] === parametro){
 			array.splice(array.indexOf(item), 1); 
 		}
 	});
@@ -36,7 +36,7 @@ function removerLinhaTabela(i,idTabela,array,parametro){
     document.getElementById(idTabela).deleteRow(i);
 }
 
-function criarBotaoAcao(acao,parametro){ //nomeAcao,link,onclick_,idTabela, parametro
+function criarBotaoAcao(acao,array,parametro){ //nomeAcao,link,onclick_,idTabela, parametro
 	//botao: id,classe,type,href,onclick,icone
 	var nomeAcao = acao[0];
 	var href = acao[1];
@@ -53,7 +53,7 @@ function criarBotaoAcao(acao,parametro){ //nomeAcao,link,onclick_,idTabela, para
 	var botao;
 	if(nomeAcao === 'remover'){
 		botao = document.createElement("button");
-	    botao.setAttribute("onclick","removerLinhaTabelaArquivo(this.parentNode.parentNode.rowIndex,'"+idTabela+"','"+param+"')");
+	    botao.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"','"+acao[4]+"','"+param+"')");
 	    botao.setAttribute("class", "btn btn-link");
 	    i = document.createElement("i");
 	    i.setAttribute("class", "far fa-trash-alt");
@@ -79,7 +79,7 @@ function criarBotaoAcao(acao,parametro){ //nomeAcao,link,onclick_,idTabela, para
 	    if(nomeAcao === 'modal-cadastro'){
 	    	i.setAttribute("class", "fas fa-user-plus");
 	    }else{
-	    	i.setAttribute("class", "fas fa-info");//<i class="fas fa-info-circle"></i> -- <i class="fas fa-info"></i>
+	    	i.setAttribute("class", "fas fa-file-contract");//<i class="fas fa-file-contract"></i><i class="far fa-file"></i> <i class="fas fa-info-circle"></i> -- <i class="fas fa-info"></i>
 	    }
 	    botao.appendChild(i);
 	}
@@ -126,11 +126,18 @@ function popularTabela(idTabela,array,acoes){
 				novaCelula.innerHTML = resultado[j];
 		      	
 		    }else{
-		      	acoes.forEach( function (acao){
-		      	novaCelula.setAttribute("align","right");
+		    	novaCelula.setAttribute("align","right");
       			novaCelula.setAttribute("class","btn-group");
-		      	novaCelula.appendChild(criarBotaoAcao(acao,resultado[0]));
+      			
+      			if(acoes.length > 0){
+      				acoes.forEach( function (acao){
+		      			acao.push(array);
+		      		novaCelula.appendChild(criarBotaoAcao(acao,array,resultado[0]));
 		      	});
+      			}else{
+      				novaCelula.innerHTML = "Vazio";
+      			}
+		      	
 		    }
 	   }
 	});

@@ -131,14 +131,7 @@
                 </div>
                 <div class="submenu__items">
                   <h5>Lato Sensu</h5>
-                   <ul>
-                    <li><a tabindex="-1" href="consulta_analise_funpec.html"><span>Análise FUNPEC</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_tecnica.html"><span>Análise Técnica</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_fiscalizacao.html"><span>Análise Fiscalização</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_instrumento_juridico.html"><span>Análise Instrumento Jurídico</span></a></li>
-                    <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Autorizar Formalização</span></a></li>
-                    <li><a tabindex="-1" href="menu_proplan.html"><span>Consultar pedidos de formalização</span></a></li>
-                  </ul>
+                   
                 </div>
               </button>
             </div>
@@ -211,6 +204,12 @@
                   <div class="invalid-feedback">Limite de caracteres excedido
                   </div>
                 </div>
+                <div class="form-group position-relative">
+                  <textarea class="form-control" id="parecer-funpec" placeholder="Parecer de aprovação ou recomendação..." data-max-size="4000"></textarea>
+                  <label class="required" for="parecer-funpec">conta e agencia do projeto</label>
+                  <div class="invalid-feedback">Limite de caracteres excedido
+                  </div>
+                </div>
               </div>
               </article>
               <article class="conteudo-principal">
@@ -222,28 +221,28 @@
 
                         </select>
                         <label class="required" for="select-tipos-documentos">Tipo do Documento
-                           <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-tipos-documentos" onclick="populaTiposDocumento()"><i class="fas fa-plus-circle"></i></button>
+                           <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-tipos-documentos" onclick="popularTiposDocumento('tabela-tipos-documentos')"><i class="fas fa-plus-circle"></i></button>
                         </label>
                         <div class="invalid-feedback">Selecione alguma opção</div>
                      </div>
                      <div class="form-group position-relative">
-                        <textarea class="form-control" id="descricao-arquivo" placeholder="Descreva de forma resumida do que se trata o arquivo" data-max-size="100"></textarea>
-                        <label class="required" for="descricao-arquivo">Descrição do Arquivo</label>
+                        <textarea class="form-control" id="descricao-arquivo-funpec" placeholder="Descreva de forma resumida do que se trata o arquivo" data-max-size="100"></textarea>
+                        <label class="required" for="descricao-arquivo-funpec">Descrição do Arquivo</label>
                         <div class="invalid-feedback">Limite de caracteres excedido
                         </div>
                      </div>
                      <div class="form-group position-relative">
                          <div class="custom-file">
-                           <input class="custom-file-input" type="file" id="arquivo-projeto" />
-                           <label class="custom-file-label" for="arquivo-projeto">Escolha seu arquivo</label>
+                           <input class="custom-file-input" type="file" id="arquivo-projeto-funpec" />
+                           <label class="custom-file-label" for="arquivo-projeto-funpec">Escolha seu arquivo</label>
                          </div>
                          <label>Arquivo</label>
                      </div>
                      <div class="form-group position-relative">
-                        <button type="button" class="btn btn-primary" onclick="inserirArquivo()">Inserir</button>
+                        <button type="button" class="btn btn-primary" onclick="inserirArquivo('tabela-arquivos-funpec','select-tipos-documentos','descricao-arquivo-funpec','arquivo-projeto-funpec')">Inserir</button>
                      </div>
                      <div class="form-group position-relative">
-                        <table class="table table-striped" data-toggle="table" id="tabela-arquivos">
+                        <table class="table table-striped" data-toggle="table" id="tabela-arquivos-funpec">
                            <thead>
                               <tr>
                                  <th>Tipo</th>
@@ -353,11 +352,11 @@
                    </div>
                    <div class="modal-body">
                       <div class="form-group position-relative">
-                            <input class="form-control" id="nome-tipo-documento" type="text" placeholder="Responsável técnico pelo projeto" />
+                            <input class="form-control" id="nome-tipo-documento-funpec" type="text" placeholder="Responsável técnico pelo projeto" />
                             <label for="nome-tipo-documento">Nome</label>
                       </div>
                       <div class="form-group position-relative">
-                         <button type="button" class="btn btn-primary" onclick="inserirTipoDocumento()">Inserir</button>
+                         <button type="button" class="btn btn-primary" onclick="inserirTipoDocumento('tabela-tipos-documentos','nome-tipo-documento-funpec','select-tipos-documentos')">Inserir</button>
                       </div>
                       <table class="table table-striped" data-toggle="table" id="tabela-tipos-documentos">
                          <thead>
@@ -401,7 +400,7 @@
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('nome-responsavel-funpec','responsavel-funpec')">Salvar</button>
+                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('nome-responsavel-funpec')">Salvar</button>
                 </div>
               </div>
             </div>
@@ -421,12 +420,13 @@
     <script src="https://static.info.ufrn.br/1.0.6/vendors/popper/popper.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap/bootstrap.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/js/scripts.js"></script>
-    <script src="../../js/projetos_pesquisa.js"></script> 
     <script src="../../js/tabelas.js"></script>
     <script src="../../js/documentos.js"></script> 
+    <script src="../../js/formalizacao_proplan.js"></script> 
+    <script src="../../js/util.js"></script> 
     <script type="text/javascript">
       popularTabelaAnaliseProplan('tabela-analise-funpec');
-      populaSelect(document.getElementById("select-tipos-documentos"), tiposDocumentos);
+      populaSelect(document.getElementById("select-tipos-documentos"),tiposDocumentos);
       carregaResponsavel('responsavel-funpec');
 
     </script> 
