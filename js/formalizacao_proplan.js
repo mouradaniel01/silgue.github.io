@@ -416,6 +416,49 @@ function retornaDadosAnaliseProjetadaProplan(param){
 	return arrayDadosProjeto;
 }
 
+function retornarDadosConsultaGeralProjetadaProplanByIdentificador(identificador){
+
+	var projetoPesquisa = JSON.parse(localStorage.getItem(identificador));
+
+	var dadosProjeto = [projetoPesquisa.dados_gerais.numero_projeto,projetoPesquisa.dados_gerais.titulo,
+						projetoPesquisa.plano_aplicacao.fonte_recurso,projetoPesquisa.tramitacao.situacao,projetoPesquisa.dados_gerais.ano];
+
+	return dadosProjeto;
+
+}
+
+function retornaDadosConsultaGeralProjetadaProplan(param){
+	var dadosProjetos = [];
+
+	if(Array.isArray(param)){
+		param.forEach( function (item){
+			dadosProjetos.push(retornarDadosConsultaGeralProjetadaProplanByIdentificador(item));
+		});
+
+	}else if(param != null){
+		dadosProjetos.push(retornarDadosConsultaGeralProjetadaProplanByIdentificador(param));
+
+	}else{
+		var projetosPesquisaLocalStorage = JSON.parse(localStorage.getItem('projetosPesquisa'));
+
+		projetosPesquisaLocalStorage.forEach(function (projeto){
+		
+			dadosProjetos.push(retornarDadosConsultaGeralProjetadaProplanByIdentificador(projeto.dados_gerais.numero_projeto));
+
+		});
+	}
+
+	return dadosProjetos;
+}
+
+function popularTabelaConsultaGeralProplan(idTabela){
+
+ 	var dadosProjetos = retornaDadosConsultaGeralProjetadaProplan(JSON.parse(sessionStorage.getItem('projetosPesquisa')));
+
+ 	popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela]]);
+
+ }
+
 function popularTabelaConsultaProplan(idTabela,redirect){
 
  	var dadosProjetos = retornaDadosConsultaProjetadaProplan(JSON.parse(sessionStorage.getItem('projetosPesquisa')));
@@ -428,6 +471,13 @@ function popularTabelaConsultaProplan(idTabela,redirect){
  	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(sessionStorage.getItem(numero_projeto)));
 
  	popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela]]);
+
+ }
+
+ function popularTabelaPROPLANSemResponsavel(idTabela){
+ 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(sessionStorage.getItem(numero_projeto)));
+
+ 	popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela]]);
 
  }
 

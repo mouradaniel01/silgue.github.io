@@ -159,14 +159,14 @@
               <li class="breadcrumb-item"><a class="link" href="../index.html">Projetos</a></li>
               <li class="breadcrumb-item"><a class="link" href="consulta_analise_tecnica.html">Formalização de Projetos de Pesquisa</a></li>
               <li class="breadcrumb-item active" aria-current="page">
-                <h3>Análise Técnica</h3>
+                <h3>Solicitar Empenho</h3>
               </li>
             </ol>
           </nav>
           <div class="row m-0">
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">
-                <table id="tabela-analise-instrumento-juridico" class="table table-striped" data-toggle="table">
+                <table id="tabela-analise-tecnica" class="table table-striped" data-toggle="table">
                   <thead>
                     <tr>
                       <th style="width: 85px">Número</th>
@@ -194,23 +194,13 @@
                     <td></td>
                   </tbody>
                 </table>
-                <div class="form-group position-relative mt-2">
-                  <output class="form-control" id="responsavel-instrumento-juridico" type="text" placeholder="responsável técnico que está analisando o projeto."></output>
-                  <div class="tooltip-group">
-                     <label for="responsavel-instrumento-juridico">Responsável Técnico</label>
-                     <span class="tooltip-icon">
-                        <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O responsável técnico só poderia ser informado pelo líder da equipe. O sistema deve armazenar a informação da data, hora e login de quem informou o responsável.">
-                        </i>
-                     </span>
-                  </div>
-                </div>
               </div>
             </article>
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">              
                 <div class="form-group position-relative">
-                  <textarea class="form-control" id="parecer-analise-instrumento-juridico" placeholder="Parecer de aprovação ou recomendação..." data-max-size="4000"></textarea>
-                  <label class="required" for="parecer-analise-instrumento-juridico">Parecer Instrumento Jurídico</label>
+                  <textarea class="form-control" id="solicitacao-dotacao-orcamentaria" placeholder="Solicitação para o DCF informar os dados da dotação orçamentária..." data-max-size="4000"></textarea>
+                  <label class="required" for="solicitacao-dotacao-orcamentaria">Solicitação de Dotação Orçamentária</label>
                   <div class="invalid-feedback">Limite de caracteres excedido
                   </div>
                 </div>
@@ -230,23 +220,23 @@
                         <div class="invalid-feedback">Selecione alguma opção</div>
                      </div>
                      <div class="form-group position-relative">
-                        <textarea class="form-control" id="descricao-arquivo-analise-instrumento-juridico" placeholder="Descreva de forma resumida do que se trata o arquivo" data-max-size="100"></textarea>
-                        <label class="required" for="descricao-arquivo-analise-instrumento-juridico">Descrição do Arquivo</label>
+                        <textarea class="form-control" id="descricao-arquivo-analise-tecnica" placeholder="Descreva de forma resumida do que se trata o arquivo" data-max-size="100"></textarea>
+                        <label class="required" for="descricao-arquivo-analise-tecnica">Descrição do Arquivo</label>
                         <div class="invalid-feedback">Limite de caracteres excedido
                         </div>
                      </div>
                      <div class="form-group position-relative">
                          <div class="custom-file">
-                           <input class="custom-file-input" type="file" id="arquivo-projeto-analise-instrumento-juridico" />
-                           <label class="custom-file-label" for="arquivo-projeto-analise-instrumento-juridico">Escolha seu arquivo</label>
+                           <input class="custom-file-input" type="file" id="arquivo-projeto-analise-tecnica" />
+                           <label class="custom-file-label" for="arquivo-projeto-analise-tecnica">Escolha seu arquivo</label>
                          </div>
                          <label>Arquivo</label>
                      </div>
                      <div class="form-group position-relative">
-                        <button type="button" class="btn btn-primary" onclick="inserirArquivo('tabela-arquivos-analise-instrumento-juridico','select-tipos-documentos','descricao-arquivo-analise-instrumento-juridico','arquivo-projeto-analise-instrumento-juridico')">Inserir</button>
+                        <button type="button" class="btn btn-primary" onclick="inserirArquivo('tabela-arquivos-analise-tecnica','select-tipos-documentos','descricao-arquivo-analise-tecnica','arquivo-projeto-analise-tecnica')">Inserir</button>
                      </div>
                      <div class="form-group position-relative">
-                        <table class="table table-striped" data-toggle="table" id="tabela-arquivos-analise-instrumento-juridico">
+                        <table class="table table-striped" data-toggle="table" id="tabela-arquivos-analise-tecnica">
                            <thead>
                               <tr>
                                  <th>Tipo</th>
@@ -364,11 +354,11 @@
                    </div>
                    <div class="modal-body">
                       <div class="form-group position-relative">
-                            <input class="form-control" id="nome-tipo-documento-analise-instrumento-juridico" type="text" placeholder="Responsável técnico pelo projeto" />
+                            <input class="form-control" id="nome-tipo-documento-analise-tecnica" type="text" placeholder="Responsável técnico pelo projeto" />
                             <label for="nome-tipo-documento">Nome</label>
                       </div>
                       <div class="form-group position-relative">
-                         <button type="button" class="btn btn-primary" onclick="inserirTipoDocumento('tabela-tipos-documentos','nome-tipo-documento-analise-instrumento-juridico','select-tipos-documentos')">Inserir</button>
+                         <button type="button" class="btn btn-primary" onclick="inserirTipoDocumento('tabela-tipos-documentos','nome-tipo-documento-analise-tecnica','select-tipos-documentos')">Inserir</button>
                       </div>
                       <table class="table table-striped" data-toggle="table" id="tabela-tipos-documentos">
                          <thead>
@@ -392,32 +382,6 @@
              </div>
           </div>
           <!-- Fim do modal de cadastro de tipos de documentos-->
-          <!-- Modal de cadastro responsável projeto -->
-          <div class="modal fade" id="modal-cadastrar-responsavel" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                   <div class="modal-header">
-                      <h5 class="modal-title" id="cadastrar-responsavel">Cadastrar Responsável
-                      </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                      <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="form-group position-relative">
-                          <input class="form-control" id="nome-responsavel-instrumento-juridico" type="text" placeholder="Responsável técnico pelo projeto..." />
-                          <label for="nome-responsavel-instrumento-juridico">Responsável Técnico</label>
-                    </div>
-                  </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('INSTRUMENTO')">Salvar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Fim do modal de cadastro responsável projeto-->
         </div>
       </div>
       <footer class="rodape">
@@ -437,9 +401,9 @@
     <script src="../../js/formalizacao_proplan.js"></script> 
     <script src="../../js/util.js"></script> 
     <script type="text/javascript">
-      popularTabelaAnaliseProplan('tabela-analise-instrumento-juridico');
+      popularTabelaParecerDCF('tabela-analise-tecnica');
       populaSelect(document.getElementById("select-tipos-documentos"),tiposDocumentos);
-      carregaResponsavel('INSTRUMENTO');
+      carregaResponsavel('ANALISE');
 
     </script> 
   </body>

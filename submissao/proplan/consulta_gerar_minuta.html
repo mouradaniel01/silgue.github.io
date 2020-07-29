@@ -159,14 +159,14 @@
               <li class="breadcrumb-item"><a class="link" href="../../index.html">Submissão</a></li>
               <li class="breadcrumb-item"><a class="link" href="../index.html">Projetos</a></li>
               <li class="breadcrumb-item active" aria-current="page">
-                <h3>Formalização de Projetos</h3>
+                <h3>Solicitação de Parecer DCF</h3>
               </li>
             </ol>
           </nav>
           <div class="row m-0">
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">
-              <table id="tabela-consulta-analise-fiscalizacao" class="table table-striped" data-toggle="table">
+              <table id="tabela-consulta-gerar-minuta" class="table table-striped" data-toggle="table">
                 <thead>
                   <tr>
                     <th style="width: 60px">Número</th>
@@ -213,7 +213,7 @@
     <script src="../../js/tabelas.js"></script> 
     <script type="text/javascript">
       $(document).ready(function () {
-        $('#tabela-consulta-analise-fiscalizacao').DataTable( {
+        $('#tabela-consulta-gerar-minuta').DataTable( {
           lengthChange: false,
           language: {
             search: "_INPUT_",
@@ -224,10 +224,8 @@
         } );
       });
 
-      popularTabelaConsultaProplan('tabela-consulta-analise-fiscalizacao','analise_fiscalizacao.html');
+      popularTabelaConsultaProplan('tabela-consulta-gerar-minuta','gerar_minuta.html');
 
-      
-      
     </script> 
   </body>
 </html>

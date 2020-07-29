@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-BR" paleta="administrativa">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="descrição do sistema">
+    <meta name="designer" content="Equipe Frontend / SINFO - Superintendência de informática">
+    <link rel="preconnect" href="https://static.info.ufrn.br">
+    <link rel="dns-prefetch" href="https://static.info.ufrn.br">
+    <script src="https://static.info.ufrn.br/1.0.6/vendors/modernizr/modernizr-custom.js"></script>
+    <script src="https://static.info.ufrn.br/1.0.6/js/check_functions.js"></script>
+    <link rel="icon" href="https://static.info.ufrn.br/1.0.6/img/favicon.png">
+    <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/vendors/fontawesome/all.min.css">
+    <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/base.css">
+    <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/administrativo.css">
+    <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/alto_contraste.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css"/>
+    <title>SIGProjetos</title>
+  </head>
+  <body>
+    <div id="barra-brasil">
+      <ul id="menu-barra-temp" style="list-style: none">
+        <li style="display:inline; float:left;padding-right:10px; margin-right:10px; border-right:1px solid #EDEDED"><a href="http://brasil.gov.br" target="_blank" rel="noopener" style="font-family:sans,sans-serif; text-decoration:none; color:white;">Portal do Governo Brasileiro</a></li>
+      </ul>
+    </div>
+    <div class="container-principal">
+      <header class="header">
+        <div class="header__left">
+          <button class="icon" id="toggle-menu"><i class="fas fa-bars"></i></button>
+          <div class="header__logo">
+            <a href="../../../index.html">
+              <svg xmlns="http://www.w3.org/2000/svg" width="147.429" height="32.483" viewBox="0 0 147.429 32.483"><defs><style>.a{fill:#70c7cc;}.b{fill:#848fa0;font-size:21px;font-family:Arial-BoldMT, Arial;font-weight:700;}</style></defs><g transform="translate(-41.068 -28.3)"><g transform="translate(1 -1)"><path class="a" d="M52.3,29.3A12.316,12.316,0,0,0,50,53.7a12.24,12.24,0,0,0,10.6-2.9,2.5,2.5,0,0,0-.1-3.5,2.582,2.582,0,0,0-3.4,0,7.315,7.315,0,1,1-4.7-12.9A2.361,2.361,0,0,0,54.8,32a2.636,2.636,0,0,0-2.5-2.7Z"/><path class="a" d="M56.5,61.4a12.328,12.328,0,0,0,8.5-23,12.5,12.5,0,0,0-11,0,2.517,2.517,0,0,0-.8,3.4,2.609,2.609,0,0,0,3.3.9,7.315,7.315,0,1,1,1.1,13.7,2.556,2.556,0,0,0-3,1.6,3.088,3.088,0,0,0,1.9,3.4Z"/></g><text class="b" transform="translate(77.497 52.792)"><tspan x="0" y="0">SIGProjetos</tspan></text></g></svg>
+            </a>
+          </div>
+          <div class="header__title">
+            <h1>Formalização de Projetos</h1>
+          </div>
+        </div>
+        <div class="header__right">
+          <div class="dropdown" id="ac-container">
+            <button class="icon dropdown-toggle" data-toggle="dropdown" title="Alterar para o modo de alto contraste">
+              <i class="fas fa-adjust"></i>
+            </button>
+            <div class="dropdown-menu ac">
+              <div class="dropdown-menu__triangle"></div>
+              <ul>
+                <li>
+                  <button class="dropdown-item" title="Tema Padrão">&nbsp;</button>
+                </li>
+                <li>
+                  <button class="dropdown-item branco-azul" title="Tema: Fundo Branco, Texto Preto, Destaque Azul"><span>A</span></button>
+                </li>
+                <li>
+                  <button class="dropdown-item azul-amarelo" title="Tema: Fundo Azul, Texto Branco, Destaque Amarelo"><span>A</span></button>
+                </li>
+                <li>
+                  <button class="dropdown-item preto-amarelo" title="Tema: Fundo Preto, Texto Branco, Destaque Amarelo"><span>A</span></button>
+                </li>
+                <li>
+                  <button class="dropdown-item preto-azul" title="Tema: Fundo Preto, Texto Branco, Destaque Azul"><span>A</span></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <button class="icon" id="search-button" title="Pesquisar" data-toggle="modal" data-target="#search-modal">
+            <i class="fas fa-search"></i>
+          </button>
+          <div class="modal fade search-modal" id="search-modal" tabindex="-1" role="dialog" aria-labelledby="search-button" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title">O que você procura?</h2>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Fechar">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form class="form border-0 p-0">
+                    <div class="form-group--input">
+                      <i class="fas fa-search"></i>
+                      <input class="form__text-input" type="text" placeholder="Pesquisar" />
+                    </div>
+                    <button class="btn-primary" type="submit">Buscar</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dropdown" id="user-container">
+            <div class="header__user dropdown-toggle" data-toggle="dropdown">
+              <button class="icon">
+                <img src="https://static.info.ufrn.br/1.0.6/img/img_user.png" alt="Imagem usuário">
+              </button>
+              <div class="header__user__info">
+                <h3 class="header__user__info__title">Nome do usuário<i class="fas fa-caret-down"></i></h3>
+              </div>
+            </div>
+            <div class="dropdown-menu">
+              <div class="dropdown-menu__triangle"></div>
+              <a class="dropdown-item" href="#">Sair</a>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="container-conteudo">
+        <div class="container-conteudo__overlay"></div>
+        <div class="container-conteudo__aside">
+          <aside class="bg-secondary menu-lateral">
+            <div class="menu-lateral__content">
+              <button class="submenu" tabindex="0">
+                
+                <div class="submenu__title">
+                  <h5>Formalização de Projetos de Pesquisa</h5><i class="fas fa-angle-right"></i>
+                </div>
+                <div class="submenu__items">
+                  <h5>Pesquisa</h5>
+                  <ul>
+                    <li><a tabindex="-1" href="consulta_analise_funpec.html"><span>Análise FUNPEC</span></a></li>
+                    <li><a tabindex="-1" href="consulta_analise_tecnica.html"><span>Análise Técnica</span></a></li>
+                    <li><a tabindex="-1" href="consulta_analise_fiscalizacao.html"><span>Análise Fiscalização</span></a></li>
+                    <li><a tabindex="-1" href="consulta_analise_instrumento_juridico.html"><span>Análise Instrumento Jurídico</span></a></li>
+                    <li><a tabindex="-1" href="consulta_solicitar_parecer_dcf.html"><span>Solicitar Parecer DCF</span></a></li>
+                    <li><a tabindex="-1" href="consulta_solicitar_dotacao_orcamentaria.html"><span>Solicitar Dotação Orçamentária</span></a></li>
+                    <li><a tabindex="-1" href="consulta_solicitar_emissao_empenho.html"><span>Solicitar 
+                    Emissão de Empenho</span></a></li>
+                    <li><a tabindex="-1" href="consulta_gerar_minuta.html"><span>Gerar Minuta</span></a></li>
+                    <li><a tabindex="-1" href="consulta_parecer_agir.html"><span>Solicitar Parecer AGIR</span></a></li>
+                    
+                    <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Assinar Parecer Referêncial</span></a></li>
+                    <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Autorizar Formalização</span></a></li>
+                    <li><a tabindex="-1" href="consulta_aparecer_juridico_funpec.html"><span>Parecer Jurídico FUNPEC</span></a></li>
+                    <li><a tabindex="-1" href="menu_proplan.html"><span>Consultar pedido de formalização</span></a></li>
+
+                  </ul>
+                </div>
+              </button>
+              <button class="submenu" tabindex="0">
+                <div class="submenu__title">
+                  <h5>Formalização de Projetos de Ensino</h5><i class="fas fa-angle-right"></i>
+                </div>
+                <div class="submenu__items">
+                  <h5>Lato Sensu</h5>
+                   
+                </div>
+              </button>
+            </div>
+            <div class="menu-lateral__content--right">
+              <button tabindex="-1"><i class="fas fa-angle-left"></i> Voltar ao menu</button>
+              <div class="menu-lateral__content--right__dynamic"></div>
+            </div>
+          </aside>
+        </div>
+        <div class="container-conteudo__content w-100">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a class="link" href="../../../index.html"><i class="fas fa-home"></i></a></li>
+              <li class="breadcrumb-item"><a class="link" href="../../index.html">Submissão</a></li>
+              <li class="breadcrumb-item"><a class="link" href="../index.html">Projetos</a></li>
+              <li class="breadcrumb-item"><a class="link" href="consulta_gerar_minuta.html">Consulta de Projetos</a></li>
+              <li class="breadcrumb-item active" aria-current="page">
+                <h3>Gerar Minuta</h3>
+              </li>
+            </ol>
+          </nav>
+          <div class="row m-0">
+            <article class="conteudo-principal">
+              <div class="conteudo-principal__content parse-markdown my-4">
+                <table id="tabela-gerar-minuta" class="table table-striped" data-toggle="table">
+                  <thead>
+                    <tr>
+                      <th style="width: 85px">Número</th>
+                      <th style="width: 140px">Título</th>
+                      <th style="width: 125px">Coordenador</th>
+                      <th style="width: 60px">Ano</th>
+                      <th style="width: 85px">Duração</th>
+                      <th style="width: 55px">Tipo</th>
+                      <th style="width: 100px">Valor do Projeto</th>
+                      <th style="width: 100px">Plano de Aplicação</th>
+                      <th style="width: 90px">DOAP</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tbody>
+                </table>
+                
+              </div>
+            </article>
+            <article class="conteudo-principal">
+              <div class="conteudo-principal__content parse-markdown my-4">  
+                <div class="form-group position-relative">
+                  <div class="form-group position-relative">
+                     <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-gerar-minuta">Gerar Minuta</button>
+                 </div>
+                </div>
+               </div>
+              </article>
+              <article class="conteudo-principal">
+                <div class="conteudo-principal__content parse-markdown my-4"> 
+                  <div class="form-group position-relative">
+                     <div class="form-group position-relative">
+                        <select class="custom-select" id="select-tipos-documentos" required="required" name="tipo-documentos">
+                           <option value="hide">Selecione</option>
+
+                        </select>
+                        <label class="required" for="select-tipos-documentos">Tipo do Documento
+                           <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#modal-tipos-documentos" onclick="popularTiposDocumento('tabela-tipos-documentos')"><i class="fas fa-plus-circle"></i></button>
+                        </label>
+                        <div class="invalid-feedback">Selecione alguma opção</div>
+                     </div>
+                     <div class="form-group position-relative">
+                        <textarea class="form-control" id="descricao-arquivo-funpec" placeholder="Descreva de forma resumida do que se trata o arquivo" data-max-size="100"></textarea>
+                        <label class="required" for="descricao-arquivo-funpec">Descrição do Arquivo</label>
+                        <div class="invalid-feedback">Limite de caracteres excedido
+                        </div>
+                     </div>
+                     <div class="form-group position-relative">
+                         <div class="custom-file">
+                           <input class="custom-file-input" type="file" id="arquivo-projeto-funpec" />
+                           <label class="custom-file-label" for="arquivo-projeto-funpec">Escolha seu arquivo</label>
+                         </div>
+                         <label>Arquivo</label>
+                     </div>
+                     <div class="form-group position-relative">
+                        <button type="button" class="btn btn-primary" onclick="inserirArquivoFunpec('tabela-arquivos-funpec','select-tipos-documentos','descricao-arquivo-funpec','arquivo-projeto-funpec')">Inserir</button>
+                     </div>
+                     <div class="form-group position-relative">
+                        <table class="table table-striped" data-toggle="table" id="tabela-arquivos-funpec">
+                           <thead>
+                              <tr>
+                                 <th>Tipo</th>
+                                 <th>Descrição</th>
+                                 <th>Arquivo</th>
+                                 <th>Ações</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                                 <td></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          <!-- Modal de dados do projeto -->
+            <div class="modal fade" id="modal-visualizar-projeto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <ul class="nav nav-tabs" id="tabExample" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="dados-gerais-tab" data-toggle="tab" href="#dados-gerais" role="tab" aria-controls="dados-gerais" aria-selected="true">
+                          Dados Gerais
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="participes-tab" data-toggle="tab" href="#participes" role="tab" aria-controls="participes" aria-selected="false">
+                          Partícipes
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="metas-resultados-tab" data-toggle="tab" href="#metas-resultados" role="tab" aria-controls="metas-resultados" aria-selected="false">
+                          Metas e Resultados
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="recursos-tab" data-toggle="tab" href="#recursos" role="tab" aria-controls="recursos" aria-selected="false">
+                          Recursos
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="plano-aplicacao-tab" data-toggle="tab" href="#plano-aplicacao" role="tab" aria-controls="plano-aplicacao" aria-selected="false">
+                          Plano de Aplicação
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="cronograma-tab" data-toggle="tab" href="#cronograma" role="tab" aria-controls="cronograma" aria-selected="false">
+                          Cronograma de Desembolso
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="documentos-tab" data-toggle="tab" href="#documentos" role="tab" aria-controls="documentos" aria-selected="false">
+                          Documentos
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="historico-tab" data-toggle="tab" href="#historico" role="tab" aria-controls="historico" aria-selected="false">
+                          Histórico
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="tabContent">
+                      <div class="tab-pane fade show active" id="dados-gerais" role="tabpanel" aria-labelledby="dados-gerais-tab">
+                        <p>Informações sobre os dados gerais</p>
+                      </div>
+                      <div class="tab-pane fade" id="participes" role="tabpanel" aria-labelledby="participes-tab">
+                        <p>Informações dos partícipes</p>
+                      </div>
+                      <div class="tab-pane fade" id="metas-resultados" role="tabpanel" aria-labelledby="metas-resultados-tab">
+                        <p>Informações das metas e resultados</p>
+                      </div>
+                      <div class="tab-pane fade" id="recursos" role="tabpanel" aria-labelledby="recursos-tab">
+                        <p>Informações dos Recursos</p>
+                      </div>
+                      <div class="tab-pane fade" id="plano-aplicacao" role="tabpanel" aria-labelledby="plano-aplicacao-tab">
+                        <p>Informações do Plano de Aplicação</p>
+                      </div>
+                      <div class="tab-pane fade" id="cronograma" role="tabpanel" aria-labelledby="cronograma-tab">
+                        <p>Informações do Cronograma</p>
+                      </div>
+                      <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="documentos-tab">
+                        <p>Documentos</p>
+                      </div>
+                      <div class="tab-pane fade" id="historico" role="tabpanel" aria-labelledby="historico-tab">
+                        <p>Histórico</p>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                   </div>
+                </div>
+              </div>
+            </div>
+            <!-- fim do modal dados do projeto -->
+          <!-- Início Modal cadastro de tipos de documentos -->
+          <div class="modal fade" id="modal-tipos-documentos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Tipos de Documentos
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                   </div>
+                   <div class="modal-body">
+                      <div class="form-group position-relative">
+                            <input class="form-control" id="nome-tipo-documento-funpec" type="text" placeholder="Responsável técnico pelo projeto" />
+                            <label for="nome-tipo-documento">Nome</label>
+                      </div>
+                      <div class="form-group position-relative">
+                         <button type="button" class="btn btn-primary" onclick="inserirTipoDocumento('tabela-tipos-documentos','nome-tipo-documento-funpec','select-tipos-documentos')">Inserir</button>
+                      </div>
+                      <table class="table table-striped" data-toggle="table" id="tabela-tipos-documentos">
+                         <thead>
+                            <tr>                                             
+                               <th>Nome</th>
+                               <th class="w-10 text-center">Ações</th>
+                            </tr>
+                         </thead>
+                         <tbody>
+                            <tr>                                             
+                               <td></td>
+                               <td></td>
+                            </tr>                                       
+                         </tbody>
+                      </table>
+                   </div>
+                   <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <!-- Fim do modal de cadastro de tipos de documentos-->
+          <!-- Modal de visualizar minuta -->
+          <div class="modal fade" id="modal-gerar-minuta" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
+             <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title" id="cadastrar-responsavel">minuta do Contrato
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    
+                      <div class="form-inline position-relative float-right">
+                      <h2><strong>Contrato Nº NUMERO_CONTRATO </strong></h2><h2 id="numero-contrato"><strong></strong></h2><h2><strong>- UFRN </strong></h2>
+                      </div><br><br>
+                      
+                      <div id="div-numero-processo" class="form-inline position-relative float-left">
+                        <h2><strong>Processo Nº NUMERO_PROCESSO &nbsp </strong></h2> <h2 class="numero-processo"><strong></strong></h2> <h2><strong> &nbsp Tipo  &nbspTIPO_PROJETO  &nbsp</strong></h2> <h2 id="tipo"><strong></strong></h2> 
+                      </div><br><br>
+                      <div class="form-group float-right text-justify" style="width: 50%; height: 50%;">
+                        <p>Contrato que entre si celebram a UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE e a FUNDAÇÃO NORTERIOGRANDENSE DE PESQUISA E CULTURA - FUNPEC, para o fim que se especifica.</p>
+                      </div><br><br><br><br><br>
+
+                      <div class="form-group">
+                        <p class="text-justify">A UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE, Autarquia de regime especial vinculada ao Ministério da Educação, situada na Av. Senador Salgado Filho, 3000, Campus Universitário, bairro de Lagoa Nova, em Natal/RN, inscrita no CNPJ sob o nº 24.365.710/0001-83, doravante denominada CONTRATANTE, neste ato representada por seu(a) Magnífico(a) Reitor(a), o (a) Profº(ª). NOME_DO_REITOR, portador do Registro Geral nº RG_DO_REITOR e do CPF nº CPF_DO_REITOR, residente e domiciliada nesta Capital e a FUNDAÇÃO NORTE RIOGRANDENSE DE PESQUISA E CULTURA - FUNPEC, com sede no “Campus” Universitário, s/n - Lagoa Nova - Natal/RN, inscrita no CNPJ/MF sob o n 08.469.280/0001-93, neste ato, representada por seu(a) Superintendente, Professor(a) SUPERINTENDENTE_FUNPEC, brasileiro(a), portador(a) da cédula de identidade nº RG_SUPERINTENDENTE_FUNPEC, inscrito no CPF/MF sob o nº CPF_SUPERINTENDENTE_FUNPEC, doravante denominada CONTRATADA, resolvem de comum acordo celebrar o presente Contrato Acadêmico, abaixo especificado, Processo Administrativo nº. NUMERO_PROCESSO, com fundamento no Art. 24, Inciso XIII, da Lei 8.666/93, de 21 de junho de 1993, e suas alterações, bem como às normas da Lei nº 8.958/94, de 20 de dezembro de 1994, no Decreto nº 7.423 de 31 de dezembro de 2010, Decreto nº 8.241/2014, no Decreto 94.664, de 23 de julho de 1987, na Lei Federal n.º 4.320, de 17 de março de 1964, Lei 12.772/12, no Decreto Federal n.º 93.872, de 23 de dezembro de 1986, na Resolução nº 250-CONSEPE, de 29 de dezembro de 2009, na Portaria nº 823/11 – R, de 06/07/2011, Resolução nº 028/2011-CONSAD, de 14 de julho de 2011, Resolução nº 157/2014-CONSEPE, Resolução nº 197/2013-CONSEPE, de 10/12/2013, Resolução nº 53/2008-CONSEPE, de 15/04/2008, Acórdão do Tribunal de Contas da União nº 2731/2008, demais disposições legais e demais disposições legais, mediante as seguintes cláusulas e condições: </p>
+                      </div>
+
+                      <div class="form-group">
+                        <h2>CLÁUSULA PRIMEIRA - DO OBJETO</h2>
+                        <ul>
+                          <li>1.1.  Constitui objeto do presente CONTRATO, obter o apoio na execução das atividades e na gestão administrativa e financeira da CONTRATADA ao Projeto Acadêmico intitulado: TITULO_DO_PROJETO , que consiste em OBJETO_DO_PROJETO</li>
+                          <li>1.2. O Projeto Acadêmico cumpre a todos os requisitos necessários à formalização do presente CONTRATO, de acordo com o item 9.2.2 do Acórdão do TCU nº 2731/08.</li>
+                        </ul>
+                      </div>
+                      <div class="form-group">
+                        <h2>CLÁUSULA SEGUNDA - DA APROVAÇÃO DO PROJETO </h2>
+                        <ul>
+                          <li>
+                            2.1   O Projeto Acadêmico foi aprovado pela autoridade competente, Processo Administrativo nº NUMERO_PROCESSO, de acordo com as determinações do artigo 3º da Instrução Normativa nº 2/2008 do Ministério do Planejamento, Orçamento e Gestão e o art. 55, inciso I, da Lei 8.666/1993 c/c item 9.2.1.1 e 9.2.5 do Acórdão do TCU nº 2731/08. 
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="form-group">
+                        <h2>CLÁUSULA TERCEIRA – DA PLANILHA DE CUSTOS</h2>
+                        <ul>
+                          <li>
+                            3.1 A Planilha de Custos atende ao Projeto Acadêmico, parte integrante do presente Instrumento.
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="form-group">
+                        <h2>CLÁUSULA QUARTA – DO DETALHAMENTO DO OBJETO</h2>
+                        <ul>
+                          <li id="lista_objetivos_especificos">
+                              A execução do objeto deste Contrato visa: 
+                              <li id="lista_objetivos_especificos_exemplo">
+                                LISTA_OBJETIVOS_ESPECIFICOS
+                              </li>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="form-group">
+                        <h2>CLÁUSULA QUINTA – DA SEGREGAÇÃO DE FUNÇÕES</h2>
+                        <ul>
+                          <li>
+                            5.1. Através do presente Instrumento veda-se a concentração de funções e responsabilidades no Coordenador do Projeto Acadêmico, devendo haver segregação no tocante a sua propositura, homologação, assinatura, coordenação e fiscalização. (item 9.2.7 do Acórdão do TCU nº 2731/08).
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="form-group">
+                        <h2>CLÁUSULA SEXTA – DA COORDENAÇÃO</h2>
+                        <ul>
+                          <li>
+                             6.1. Caberá à CONTRATANTE, através de Coordenador(a) designado(A) no Projeto Acadêmico, a coordenação técnica e operacional das atividades de NATUREZA_DO_PROJETO assumindo a CONTRATADA a responsabilidade pelo apoio à execução do objeto deste CONTRATO. (item 9.2.7 do Acórdão do TCU nº 2731/08)
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="form-group">
+                        <h2>CLÁUSULA SÉTIMA – DA SUBCONTRATAÇÃO</h2>
+                        <ul>
+                          <li>
+                            7.1. No presente CONTRATO é vedado à CONTRATADA a subcontratação da integralidade ou das parcelas mais relevantes do objeto do presente CONTRATO, bem como a subcontratação de outras Fundações de Apoio como executoras da totalidade ou mesmo de partes do projeto. (item 9.2.11 c/c item 9.2.13. do Acórdão do TCU nº 2731/08).
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="form-group">
+                        <h2>CLÁUSULA OITAVA – DOS RESULTADOS ACADÊMICOS ESPERADOS NA EXECUÇÃO DO CONTRATO</h2>
+                        <ul>
+                          <li id="lista_resultados_esperados">
+                            A execução do objeto do presente Contrato possibilitará especificamente:
+                            <li>LISTA_DOS_RESULTADOS_ESPERADOS</li>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="form-group">
+                        <h2>CLÁUSULA NONA – DAS OBRIGAÇÕES </h2>
+                        <ul>
+                          <li>
+                            9.1. Compete à CONTRATANTE:
+                          
+                          <li>
+                            9.1.1. Organizar, acompanhar, supervisionar e coordenar as atividades técnicas e operacionais na execução deste CONTRATO, observada às segregações de funções prevista no item 9.2.7 do Acórdão nº 2731/08 do TCU e cláusula sexta deste Instrumento;
+                          </li>
+                          <li>
+                            9.1.2. Disponibilizar os recursos humanos necessários à eficiente execução do objeto deste CONTRATO, condicionado a que disponham de carga horária e que não acarretem prejuízos ao desenvolvimento de suas atividades funcionais no âmbito da CONTRATANTE; 
+                          </li>
+                          <li>
+                            9.1.3. Prestar todas as informações necessárias para que a CONTRATADA possa executar as atividades dentro das especificações exigidas;
+                          </li>
+                          <li>
+                            9.1.4. Comunicar à CONTRATADA, tão logo constate casos de irregularidades, defeitos, vícios ou incorreções na execução do CONTRATO para que a mesma adote as medidas saneadoras;
+                          </li>
+                          <li>
+                            9.1.5. Efetuar o repasse dos recursos financeiros à CONTRATADA, de acordo com a apresentação de relatórios técnicos de atividades elaborados pelo Coordenador ou equipe técnica designada conforme cláusula sexta;
+                          </li>
+                          <li>
+                            9.1.6. Examinar e aprovar a prestação de contas referente à aplicação dos recursos financeiros, sem prejuízo de realização de auditorias internas e externas; (item 9.2.20 do Acórdão do TCU nº 2731/08)
+                          </li>
+                          <li>
+                            9.1.7. Examinar e aprovar as ações relacionadas ao objeto deste CONTRATO;
+                          </li>
+                          <li>
+                            9.1.8. Efetuar controle finalístico e de gestão das aquisições de compras e serviços realizados pela CONTRATADA para a contratação de bens e serviços, o que se dará por avaliador; (item 9.2.14 do Acórdão do TCU nº 2731/08)
+                          </li>
+                          <li>
+                            9.1.9. Efetuar, através de fiscalizador designado pela CONTRATANTE, conforme Projeto Acadêmico, o controle dos processos de contratação de pessoal não integrante da CONTRATANTE apoiada, conforme permissibilidade do Artigo 6º, § 11 do Decreto nº 7.423/2010, art. 13, IV, da Resolução nº 028/2011-CONSAD, (item 9.2.14 do Acórdão do TCU nº 2.731/08) 
+                          </li>
+                        </li>
+                        <li>
+                          9.2 Compete à CONTRATADA:
+                          <li>
+                            9.2.1. Desenvolver ações de apoio ao desenvolvimento do Projeto intitulado TITULO_DO_PROJETO, com vistas a alcançar os resultados esperados;
+                          </li>
+                          <li>
+                            9.2.2. Manter e movimentar os recursos recebidos em Conta bancária individualizada para este CONTRATO; (item 9.2.15 do Acórdão do TCU nº 2731/08)
+                          </li>
+                          <li>
+                            9.2.3. Prestar o apoio e entregar os produtos descritos no objeto do presente CONTRATO, dentro dos prazos estabelecidos;
+                          </li>
+                          <li>
+                            9.2.4. Fornecer todas as informações, sob sua competência, relacionadas à execução do objeto deste CONTRATO, quando solicitadas pela CONTRATANTE;
+                          </li>
+                          <li>
+                            9.2.5. Utilizar o presente CONTRATO somente à arrecadação de receitas ou à execução de despesas oriundas da execução do objeto específico nele pactuado, de acordo com a Planilha Físico-financeira; (item 9.2.41 do Acórdão do TCU nº 2731/08)
+                          </li>
+                          <li>
+                            9.2.6. Apresentar relatório de execução físico-financeira;
+                          </li>
+                          <li>
+                            9.2.7. Cumprir integralmente as condições pactuadas neste instrumento de contrato e no Projeto intitulado TITULO_DO_PROJETO, respondendo pela sua inexecução total ou parcial;
+                          </li>
+                          <li>
+                            9.2.8. Responsabilizar-se pelas obrigações individuais, trabalhistas e previdenciárias com os recursos humanos contratados e/ou disponibilizados, para a execução das atividades, objeto do presente CONTRATO;
+                          </li>
+                          <li>
+                            9.2.9. A existência da fiscalização por parte da CONTRATANTE, de modo algum, diminui ou altera a responsabilidade da CONTRATADA, na prestação dos serviços ora assumidos; (item 9.2.14 do Acórdão do TCU nº 2731/08)
+                          </li>
+                          <li>
+                            9.2.10. Não utilizar Fundos de Apoio Institucional ou quaisquer instrumentos similares. (item 9.2.39 do Acórdão do TCU nº 2731/08)
+                          </li>
+                          <li>
+                            9.2.11. Adotar o regulamento específico de aquisições de compras e serviços, conforme previsto no Art. 3º da Lei 8.958/1994, regulamentado pelo Decreto nº 8.241/2014, objetivando a definição dos contratados para execução do objeto do presente CONTRATO.
+                          </li>
+                          <li>
+                            9.2.12. Estabeleça nos instrumentos convocatórios sobre a aquisição de bens e a contratação de serviços previstos no Art. 1º, § 2º, do Decreto nº 8.241/2014, a vedação para que parentes até o 3º grau em linha reta, colateral ou por afinidade, de agente público que exerça cargo em comissão ou função de confiança de direção, chefia ou assessoramento na UFRN, venham a ser contratados para a prestação de serviços objeto do certame realizado, conforme Artigo 1º da Portaria nº 823/11-R de 06 de julho de 2011, Súmula Vinculante nº 13, e Art. 13, II, da Resolução nº 028/2011- CONSAD
+                          </li>
+
+                        </li>
+                        </ul>
+                      </div>
+
+                      <div class="form-group">
+                        <h2>
+                          CLÁUSULA  DÉCIMA - DOS DIREITOS DA CONTRATANTE
+                        </h2>
+                        <ul>
+                          <li>
+                            10.1. A CONTRATANTE se reserva o direito de acompanhar e fiscalizar o objeto deste CONTRATO através do Fiscalizador do projeto, a quem caberá registrar em livro ou documento próprio todas as ocorrências relacionadas com a execução deste CONTRATO, determinando o que for necessário à regularização das faltas, senões ou defeitos observados. 
+                          </li>
+                          <li>
+                            10.2. As decisões e providências que ultrapassem a competência do Coordenador e/ou Fiscalizador deverão ser solicitadas à CONTRATANTE, em tempo hábil, para a adoção de medidas convenientes.
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="form-group">
+                        <h2>CLÁUSULA DÉCIMA PRIMEIRA – DO PAGAMENTO DE BOLSAS</h2>
+                        <ul>
+                          <li>
+                            11.1. Os alunos de graduação e pós-graduação ficam autorizados a perceberem bolsas pela participação em atividades no âmbito do Projeto Acadêmico, desde que se enquadrem nas hipóteses estabelecidas pela Lei nº 8.958/94 e suas alterações posteriores.
+                          </li>
+                          <li>
+                            11.2. A participação de estudantes em projetos acadêmicos efetivar-se-á mediante a celebração de termo de compromisso, da contratação de seguro contra acidentes pessoais e a observância das normas de segurança estabelecidas na Resolução nº 162/2010-CONSEPE (art 39 da Resolução nº 28/2011-CONSAD).
+                          </li>
+                          <li>
+                            11.3. Neste CONTRATO a modalidade de bolsa concedida será vinculada à vertente de ----------------------------------------, expressamente prevista pelo Artigo 7º do Decreto nº 7.423/2010, art. 28, § 3º, 29 e 31 da Resolução nº 028/2011-CONSAD e reconhecida pelo item 9.2.24 do Acórdão do TCU nº 2731/08. 
+                          </li>
+                          <li>
+                            11.4. Através deste CONTRATO não serão pagas quaisquer bolsas a servidores que tenham como finalidade o pagamento de valores a título de funções comissionadas sem previsão de pagamento regular. (item 9.2.25 do Acórdão do TCU nº 2731/08)
+                          </li>
+                          <li>
+                            11.5. No presente CONTRATO não haverá concessão de bolsas em benefícios de cônjuges e parentes dos participantes do projeto acadêmico, não integrantes do quadro da CONTRATANTE. (item 9.2.10 do Acórdão do TCU nº 2731/08)
+                          </li>
+                          <li>
+                            11.6. Ficam os docentes servidores autorizados a perceberem bolsas pela participação nas atividades do presente Projeto Acadêmico, na forma regulamentada pelo Decreto nº 7.423/2010, Capítulo VIII da Resolução nº 028/2011-CONSAD, reconhecida na Orientação do Acórdão do TCU nº 2731/08 (item 9.2.24. c/c o item 9.2.25 do Acórdão)
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="form-group">
+                        <h2>CLÁUSULA DÉCIMA SEGUNDA – DO VALOR TOTAL DO PROJETO E DO RESSARCIMENTO A CONTRATADA</h2>
+                        <ul>
+                          <li>
+                            12.1. O valor total do projeto importam em R$ VALOR_DO_PROJETO (VALOR_DO_PROJETO_POR_EXTENSO) provenientes do -------------------------------------, composto pelos valores dos Itens 12.1.1 e 12.1.2. 
+                          
+                          <li>
+                            12.1.1.  O valor total do Contrato importa em R$ VALOR_DO_CONTRATO (VALOR_DO_CONTRATO_POR_EXTENSO), composto pelos valores dos Itens 12.1.1.1 e 12.1.1.2.
+                            <li>
+                              12.1.1.1 Valor de R$ VALOR_PLANO_APLICACAO (VALOR_PLANO_APLICACAO_POR_EXTENSO) para cobertura das despesas relativas à execução do projeto acadêmico, conforme expresso no Plano de Aplicação, parte integrante do presente contrato.
+                            </li>
+                            <li>
+                              12.1.1.2. Valor de R$ VALOR_DOAP (VALOR_DOAP_POR_EXTENSO) para o pagamento das despesas operacionais da CONTRATADA, conforme proposta de preço apresentada segundo a complexidade de gestão do projeto.
+                            </li>
+                          </li>
+                          <li>
+                            12.1.2. O valor de R$ VALOR_RETRIBUICAO_UFRN (VALOR_RETRIBUICAO_UFRN_POR_EXTENSO) para o ressarcimento da UFRN pelo uso de sua estrutura, será retido na Conta Única e destinado às unidades envolvidas, conforme descrito no Projeto.
+                          </li>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="form-group">
+                        <h2>CLÁUSULA DÉCIMA TERCEIRA – DAS CONDIÇÕES DE REPASSE E PAGAMENTO </h2>
+                      </div>
+
+
+<div class="form-group">
+A forma de repasse e pagamento dos recursos do Contrato à CONTRATADA será feita de acordo com a seguinte rotina:
+
+13.1. Os recursos indicados no item 12.1.1.1, Cláusula Décima Segunda, serão repassados à CONTRATADA após a publicação do extrato do presente Instrumento no Diário Oficial da União e ficam condicionados ao repasse dos recursos pelo CONCEDENTE à CONTRATANTE.
+
+13.2. O repasse e pagamento serão efetuados por meio de Ordem Bancária emitida pela CONTRATANTE, e obedecerá ao Cronograma de desembolso abaixo descrito:
+
+13.3. O repasse dos recursos indicados no item 12.1.1.1, Cláusula Décima Segunda, será feito em --parcela(s) -------, no valor de R$ ---------------- (--------------------------), na Conta Corrente nº -----------, Agência nº --------------------, do Banco do -----------------, mediante apresentação, pela CONTRATADA, de Ofício/Recibo ao Setor competente da CONTRATANTE;
+
+13.4. O pagamento à CONTRADA, referido no item 12.1.1.2, da Cláusula Décima Segunda, será efetuado em -----(------------) parcelas, sendo ---- (------), cada uma no valor de R$ ------- ----------------) e ---- (------) parcela no valor de R$ ------ (----------------------------------), na Conta Corrente nº -------, Agência nº --------, do Banco do ---------, ocorrendo o primeiro pagamento após 30 (trinta) dias da assinatura do presente Instrumento e, os subsequentes mediante o serviço realizado comprovado em Nota Fiscal/Fatura.  
+ 
+13.5. Os recursos financeiros previstos no Cronograma de Desembolso a ser repassado serão empenhados à CONTRATADA a conta dos créditos orçamentários do respectivo exercício.
+
+13.6. A CONTRATADA somente poderá movimentar os recursos financeiros correspondentes à parcela para cobertura das despesas de custeio das atividades programadas, pagamento de pró-labore, bolsas, equipamentos, materiais permanentes nacionais e importados, obras e instalações, mediante a expressa solicitação do coordenador ou vice-coordenador do projeto acadêmico (Inciso II do Art. Nº 21 da Resolução nº 28/2011-CONSAD.
+
+
+CLÁUSULA DÉCIMA QUARTA – DA PRESTAÇÃO DE CONTAS
+
+14.1. A CONTRATADA deverá apresentar prestação de contas parcial semestralmente, em caso de solicitação de aditivo de prorrogação de prazo a prestação de contas parcial deverá ser apresentada em 60 (sessenta) dias antes do término da vigência, bem como deverá apresentar prestação de contas final à CONTRANTE dos recursos financeiros repassados por esta, conforme Plano de Aplicação constante no Projeto Acadêmico, restituindo os saldos eventualmente existentes na data de encerramento ou rescisão deste CONTRATO, inclusive os provenientes das receitas obtidas em aplicações financeiras realizadas, que são legalmente devidos à UFRN, juntando à respectiva prestação de contas uma cópia do comprovante de recolhimento à Conta Única, com a indicação do número deste CONTRATO, em atendimento ao que estabelece o art. 164, § 3º da Constituição Federal, arts. 56, 57 e 60 a 63 da Lei 4.320/64 e art. 2º do Decreto nº 93.872/86; (itens 9.2.20, 9.2.43 e 9.2.44 do Acórdão do TCU nº 2731/08).
+
+14.2. A Contratada deverá manter à disposição da CONTRATANTE e dos órgãos de Controle Interno e Externo, pelo prazo de 20 (vinte) anos após o encerramento da vigência do presente Instrumento, as notas fiscais relativas a despesas feitas pela CONTRATADA, identificadas com o número do Instrumento Jurídico e  título Projeto,  conforme Art. 21, III, da Resolução nº 028/2011-CONSAD.
+
+14.3. A CONTRATADA deverá manter registros contábeis específicos da execução do objeto deste CONTRATO, para acompanhamento e controle do fluxo dos recursos e das aplicações. (item 9.2.15 do Acórdão do TCU nº 2731/08). 
+
+14.4. Deverá haver por parte da CONTRATADA a guarda discriminada de documentação e os registros em meio informatizado com acesso aberto, quando necessário e legalmente cabível, à CONTRATANTE, seu setor de Auditoria interna e aos órgãos de controle interno e externo da Administração Pública; (item 9.2.15 do Acórdão do TCU nº 2731/08). 
+
+14.5. Fica a CONTRATADA responsável perante a CONTRATANTE a apresentar prestação de contas final do total dos recursos recebidos que será constituída de relatório técnico de cumprimento do objeto, acompanhada de (item 9.2.18 do Acórdão do TCU nº 2731/08):
+
+a)Cópia da Planilha de Custos que faz parte do Projeto Acadêmico ou planilha orçamentária;
+b)Cópia do termo de Contrato com seus aditivos seguidos de extrato de indicação da data de sua publicação na imprensa oficial.  
+c)Relatório de Execução Físico-Financeira.
+d)  Demonstrativo de Execução da Receita e Despesas, evidenciando os recursos recebidos em transferências, os rendimentos auferidos da aplicação dos recursos no mercado financeiro e saldos, se houver.
+e)  Relação de Pagamentos, identificando o nome do beneficiário e seu CNPJ ou CPF, número do documento fiscal com a data da emissão e bem adquirido ou serviço prestado;
+f)  Relação de bolsistas e de empregados pagos pelo Projeto com as respectivas cargas horárias; 
+g)  Relação de Bens adquiridos, produzidos ou construídos com recursos públicos;
+
+h)  Extrato da conta bancária específica do período do recebimento dos recursos e a conciliação bancária;
+i)  Guias de recolhimentos de saldos à conta única da CONTRATANTE de valores com essa destinação legal e normativa;
+j)  Cópia do despacho da homologação e da adjudicação das licitações realizadas ou justificadas para sua dispensa ou inexigibilidade, com respectivo embasamento na legislação aplicável e nos procedimentos.
+k)  Atas de licitação, quando existentes.
+
+14.6. A CONTRATADA deverá apresentar prestação de contas final em até 30 dias após o prazo da execução físico-financeira do objeto deste CONTRATO.
+
+14.7. A prestação de contas deverá ser analisada no âmbito da CONTRATANTE, havendo a produção de um laudo de avaliação do projeto, cujo teor ateste a regularidade de todas as despesas arroladas, em conformidade com a legislação aplicável.
+
+14.8. Deve a prestação de contas conferir o alcance de todas as metas quantitativas e qualitativas constantes no Projeto Acadêmico, bem como deve ser assegurado o tombamento tempestivo dos bens adquiridos no Projeto, além de delimitada e personalizada a responsabilidade na liquidação, conforme art. 58 da Lei 4.320/1964. (art. 3º, II, da Lei nº 8.958/1994 c/c item 9.2.1.4 do Acórdão do TCU nº 2731/08).
+
+
+CLÁUSULA DÉCIMA QUINTA – CREDENCIAMENTO DA CONTRATADA
+
+15.1. A CONTRATADA atende a todas as exigências relativas aos critérios de credenciamento ou recredenciamento constantes no Art. 2º, III, da Lei 8.958/94, Capítulo I do Decreto 7.423/2010, na Portaria Interministerial MEC/MCT nº 3.185, de 07/10/2004, com as modificações introduzidas pela Portaria Interministerial MEC/MCT nº 475, de 14/04/2008. (item 9.2.4 do Acórdão do TCU nº 2731/08)
+
+
+CLÁUSULA DÉCIMA SEXTA - DA VIGÊNCIA
+
+16.1. O presente CONTRATO terá início a partir da data de sua assinatura e vigorará por ---- (---------) meses.
+
+16.2. No tocante à prestação de serviços a serem executados de forma contínua, poderão ter a sua duração prorrogada por iguais e sucessivos períodos com vistas à obtenção de preços e condições mais vantajosas para a administração, limitada a sessenta meses. (Artigo 57, II da Lei 8.666/93) 
+
+16.3. Em caráter excepcional, devidamente justificado e mediante autorização da autoridade superior competente, o prazo de que trata o item 16.2. desta Cláusula poderá ser prorrogado por até doze meses. (Artigo 57, §4º da Lei 8.666/93) 
+
+16.4. Através do presente CONTRATO, o Projeto Acadêmico não será sequencial no tempo, sem a devida justificativa técnica ou acadêmica. (item 9.2.8 do Acórdão do TCU nº 2731/08)
+
+16.5. A justificativa técnica ou acadêmica será elaborada pelo Coordenador do Projeto e ratificada pela Pró-Reitoria correspondente à área do Projeto Acadêmico, devendo haver homologação pela Magnífica Reitora para que haja prorrogação.
+
+16.6. O pedido de alteração do prazo de execução do Projeto Acadêmico deverá ocorrer de acordo com a exigência do para Art. 21, III, da Resolução CONSAD 028/2011.
+
+16.7. O presente CONTRATO poderá ser alterado (exceto quanto ao seu objeto), ou prorrogada a sua vigência desde que haja consentimento das partes, mediante celebração de Termo Aditivo, ficando este condicionado à prestação de contas nos termos da Cláusula Décima Quarta.  
+
+
+CLÁUSULA DÉCIMA SÉTIMA – DA DOTAÇÃO ORÇAMENTÁRIA
+
+17.1. As despesas oriundas do presente Contrato correm à conta de recursos oriundos do orçamento  da UFRN, Programa de Trabalho Resumido --------------, Fonte de Recursos – ---------------------, Natureza da Despesa -------------------- – Outros Serviços de Terceiros – Pessoa Jurídica, Notas de Empenhos nº  ---------------------- e nº ----------------------------.
+
+
+CLÁUSULA DÉCIMA OITAVA - DA RESCISÃO
+
+18.1. O inadimplemento das cláusulas e condições estabelecidas neste CONTRATO, por parte da CONTRATADA, assegurará à CONTRATANTE o direito de dá-lo por rescindido, unilateralmente, ante a faculdade inerente à Administração Pública, sem pagamento de qualquer natureza à CONTRATADA, mediante notificação através de documento entregue diretamente à CONTRATADA, ou por via postal com prova de recebimento, com antecedência mínima de 05 (cinco) dias úteis, nos casos enumerados nas alíneas do item 18.2, desta cláusula. Fica a critério da CONTRATANTE declarar rescindido o CONTRATO, nos termos desta cláusula ou aplicar a multa prevista neste Contrato;
+
+18.2. Ficará o presente CONTRATO rescindido de pleno direito, pela CONTRATANTE, independentemente de interpelação judicial ou extrajudicial, conforme artigos 77 e 78 da Lei nº 8.666, de 21 de junho de 1993, em caso de transgressão a algum dos itens previstos:
+
+a)Não cumprimento de cláusula contratual, especificação ou prazo;
+b)Cumprimento irregular de cláusula contratual, especificação ou prazo;
+c)Lentidão na execução das atividades, fora dos prazos estipulados;
+d)Paralisação das atividades sem justa causa e/ou prévia comunicação à CONTRATANTE;
+e)Subcontratação total ou parcial do seu objeto;
+f)Desatendimento das determinações regulares da fiscalização da CONTRATANTE;
+g)Cometimento reiterado de falhas anotadas em registro próprio pela CONTRATANTE;
+h)Decretação de falência ou instalação de insolvência civil;
+i)Alteração social ou modificação da finalidade ou estrutura da fundação que venha a prejudicar a execução do Contrato;
+j)Razões de interesse público, devidamente justificadas, nos termos da lei;
+k)Ocorrência de caso fortuito ou de força maior, regularmente comprovada;
+l)Incapacidade, desaparelhamento, inidoneidade ou má-fé da CONTRATADA.  
+
+18.3. O presente CONTRATO poderá ser rescindido, amigavelmente, por acordo entre as partes, ou o caso da alínea “k” do item 18.2, desta cláusula.
+
+18.4. O presente CONTRATO poderá, finalmente, ser rescindido judicialmente, nos termos da legislação processual vigente.
+
+
+CLÁUSULA DÉCIMA NONA  - DAS PENALIDADES
+
+19.1. Pela inexecução parcial ou total deste CONTRATO, a CONTRATANTE poderá, garantida a prévia defesa, aplicar à CONTRATADA as seguintes sanções:
+
+a.Advertência;
+b.Multa de 2% (dois por cento) sobre o valor do Contrato, após 24 (vinte e quatro) horas de inadimplência, a juízo da Administração da CONTRATANTE;
+c.Suspensão temporária de participação em licitação e impedimento de contratar com a Universidade Federal do Rio Grande do Norte, por prazo não superior a 02 (dois) anos;
+d.Declaração de inidoneidade para licitar ou contratar com a Administração Pública, enquanto perdurarem os motivos determinantes da punição ou até que seja promovida a reabilitação perante a própria autoridade que aplicou a penalidade.
+
+19.2. Do ato que aplicar penalidade caberá pedido de reconsideração, no prazo de 05 (cinco) dias úteis, a contar da respectiva ciência;
+
+19.3. Se o valor da multa não for pago ou depositado, será automaticamente descontado da primeira parcela do preço que a CONTRATADA vier a fazer jus.
+
+
+CLÁUSULA VIGÉSIMA – DA INEXECUÇÃO
+
+20.1. Quando da inexecução total ou parcial do CONTRATO, ficarão preservados todos os direitos da CONTRATANTE, inclusive nos casos de rescisão administrativa do CONTRATO, obrigando-se a CONTRATADA a devolver o valor, devidamente corrigido, previsto no item nº 12.1.1.1. do presente Instrumento, caso não seja executado o objeto em estrito cumprimento à Orientação Normativa nº 37, de 13/12/2011, da Advocacia Geral da União. 
+
+
+CLÁUSULA VIGÉSIMA PRIMEIRA– DA VINCULAÇÃO AOS TERMOS DA DISPENSA DE LICITAÇÃO
+
+21.1. Ficam vinculados ao Termo de Dispensa constante no Processo Administrativo nº 23077.-----------------------------------, todos os documentos e o presente Instrumento de CONTRATO, dele não podendo se afastar durante a sua vigência.
+
+
+CLÁUSULA VIGÉSIMA SEGUNDA – DA COMPATIBILIDADE COM AS OBRIGAÇÕES ASSUMIDAS
+
+22.1. Fica a CONTRATADA obrigada a manter durante a execução do CONTRATO compatibilidade com as obrigações assumidas, todas as condições de habilitação e qualificação exigidas na Dispensa de Licitação constante no Processo Administrativo nº 23077.---------------------, conforme artigo nº 55, XIII, da Lei nº 8.666/93.
+
+
+CLÁUSULA VIGÉSIMA TERCEIRA – DA LEGISLAÇÃO APLICÁVEL
+
+23.1. As partes contratantes submetem-se às condições ora acordadas e aos ditames da Lei nº 8.666, de 20 de junho de 1993, alterada pelas Leis nº 8.883, de 08 de junho de 1994 e nº 9.648, de 27 de maio de 1998, da Lei nº 10.192, de 17 de fevereiro de 2001, da Lei nº 8.958, de 20 de novembro de 1994, do Decreto nº 7.423, de 31 de dezembro de 2010 e Acórdão nº 2731/08 do Tribunal de Contas da União.
+
+CLÁUSULA VIGÉSIMA QUARTA - DA PUBLICAÇÃO
+
+24.1. Incumbirão à CONTRATANTE as providências, às suas expensas, quanto à publicação resumida deste CONTRATO e seus aditamentos, em extrato no Diário Oficial da União, de acordo com o parágrafo único do Art. 61, da Lei nº 8.666/93.
+
+
+CLÁUSULA VIGÉSIMA QUINTA – DISPOSIÇÕES GERAIS
+
+25.1. No Projeto Acadêmico apoiado pela CONTRATADA através do presente Instrumento não haverá a participação, nas equipes de trabalho, de cônjuges e parentes de servidores da CONTRATANTE e da CONTRATADA, não integrantes do quadro de pessoal, assim como, também, a contratação de empresas pela CONTRATADA, nas quais estes cônjuges e parentes participem de alguma forma. (item 9.2.10 do Acórdão do TCU nº 2731/08), Súmula Vinculante nº 13, e Art. 13, II, da Resolução nº 028/2011-CONSAD. 
+
+25.2. A assinatura do presente Instrumento pela autoridade competente da CONTRATANTE, ratifica a autorização da Pró-Reitoria responsável e do Chefe do Departamento ao qual são lotados os participantes do Projeto Acadêmico à execução do objeto deste CONTRATO.
+
+CLÁUSULA VIGÉSIMA SEXTA – DA APLICAÇÃO NO MERCADO FINANCEIRO
+26.1. Os recursos financeiros, enquanto não utilizados, serão obrigatoriamente aplicados em fundo de aplicação financeira de curto prazo, por instituição financeira oficial.
+26.2. Na hipótese de descumprimento do item 26.1. desta cláusula, obriga-se a CONTRATADA a recolher aos cofres da CONTRATANTE o valor correspondente aos rendimentos das aplicações referente ao período compreendido entre a liberação dos recursos e a não utilização destes, ainda que não tenha efetuado a devida aplicação.
+
+
+CLÁUSULA VIGÉSIMA SÉTIMA - DOS CASOS OMISSOS
+27.1. Os casos omissos serão apreciados e solucionados mediante entendimento entre as partes, através dos meios julgados necessários, ressalvados os casos previstos na legislação que regulamenta o presente Instrumento.
+
+
+CLÁUSULA OITAVA – DO FORO
+
+ 28.1. Fica eleito o foro da Justiça Federal da Seção Judiciária do Estado do Rio Grande do Norte, para nele dirimirem-se dúvidas e solucionarem-se questões que não encontrem forma de resolução por acordo entre as partes, sendo esse foro irrenunciável pela CONTRATANTE, diante do que dispõe o Art. 109, inciso I, da Constituição Federal.
+
+</div><!--fim-->
+
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('FUNPEC')">Salvar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar minuta-->
+        </div>
+      </div>
+      <footer class="rodape">
+        <div class="rodape__logo"><a href="https://info.ufrn.br/" rel="noopener noreferrer" target="_blank" title="Ir para a página da SINFO"><svg xmlns="http://www.w3.org/2000/svg" width="144.978" height="30.019" viewBox="0 0 144.978 30.019"><desc>Logo UFRN/SINFO</desc><g id="Grupo_1126" data-name="Grupo 1126" transform="translate(0.029 0.028)"> <g id="Grupo_1125" data-name="Grupo 1125" transform="translate(-0.029 4.245)"> <path id="Caminho_585" data-name="Caminho 585" d="M20.865,38.341c-.328,2.831-1.252,4.924-2.749,6.258C16.31,46.2,13.478,47,9.6,47c-3.919,0-6.607-.718-8.043-2.175q-2-2-1.477-6.463L1.27,28.041H7.179L5.989,38.362a5.116,5.116,0,0,0,.739,3.755,3.546,3.546,0,0,0,3.037,1.354,4.892,4.892,0,0,0,3.3-1.17,5.907,5.907,0,0,0,1.888-3.96l1.19-10.321h6.032L20.865,38.341ZM79.341,28.021,77.186,46.528H69.164L62.208,33.991,60.751,46.528H48.933l.164-5.335a2.559,2.559,0,0,0-.349-1.005,3.016,3.016,0,0,0-.841-.739.292.292,0,0,0-.123-.041q-.893,0-2.893-.062-2.093-.062-2.216-.062l-.841,7.222H35.986L38.284,28H50.328a7.853,7.853,0,0,1,4.329,1.17,3.718,3.718,0,0,1,1.908,3.755,4.378,4.378,0,0,1-1.518,2.811,7.317,7.317,0,0,1-3.057,1.559l-.021.226a5.522,5.522,0,0,1,1.4.328c1.436.533,1.765,1.436,1.908,2.975l.041,5.253,2.093-18.056h8.412L72.426,40.27l1.416-12.249h5.5ZM49.487,32.083a3.289,3.289,0,0,0-1.99-.636h-3.96l-.513,4.493h4a3.9,3.9,0,0,0,2.216-.616A2.317,2.317,0,0,0,50.267,33.6,1.571,1.571,0,0,0,49.487,32.083Z" transform="translate(0.029 -26.523)" fill="#a4b2c8" fill-rule="evenodd"/> <path id="Caminho_586" data-name="Caminho 586" d="M102.4,33.644l-.821,7.161H95.769L95.4,43.821h16.066L114.3,20.8H98.231l-.185,1.5h16.066l-.472,3.714H103.3l-.451,3.878h9.274l-.431,3.755Z" transform="translate(-75.82 -20.8)" fill="#a4b2c8" fill-rule="evenodd"/> </g> <path id="Caminho_747" data-name="Caminho 747" d="M10.047-3.172A2.85,2.85,0,0,1,8.848-.7a6.036,6.036,0,0,1-3.52.855,6.258,6.258,0,0,1-3.32-.75A3.441,3.441,0,0,1,.461-2.867l2.227-.367a1.981,1.981,0,0,0,.883,1.27,3.537,3.537,0,0,0,1.82.395Q7.8-1.57,7.8-3.039a1.1,1.1,0,0,0-.277-.773,2.1,2.1,0,0,0-.781-.508,13.013,13.013,0,0,0-1.934-.492,17.525,17.525,0,0,1-1.719-.465,4.858,4.858,0,0,1-.875-.414,2.578,2.578,0,0,1-.664-.574,2.5,2.5,0,0,1-.426-.789A3.256,3.256,0,0,1,.977-8.094,2.627,2.627,0,0,1,2.1-10.379a5.621,5.621,0,0,1,3.262-.793,5.9,5.9,0,0,1,3.074.641A3.056,3.056,0,0,1,9.758-8.414l-2.234.3a1.727,1.727,0,0,0-.7-1.07,2.674,2.674,0,0,0-1.512-.359q-2.094,0-2.094,1.313a1.078,1.078,0,0,0,.223.7,1.722,1.722,0,0,0,.66.465,11.31,11.31,0,0,0,1.773.48,14.141,14.141,0,0,1,2.27.621,3.527,3.527,0,0,1,1.082.664,2.531,2.531,0,0,1,.609.906A3.253,3.253,0,0,1,10.047-3.172ZM11.742,0V-11.008h2.3V0ZM22.891,0l-4.8-8.477a18.389,18.389,0,0,1,.141,1.984V0H16.188V-11.008H18.82l4.867,8.547a18.284,18.284,0,0,1-.141-2.148v-6.4h2.047V0Zm7.156-9.227V-5.82H35.68v1.781H30.047V0h-2.3V-11.008h8.117v1.781ZM48.219-5.555a6.452,6.452,0,0,1-.68,3.023,4.688,4.688,0,0,1-1.945,2,6.064,6.064,0,0,1-2.953.691,5.384,5.384,0,0,1-4.066-1.527A5.775,5.775,0,0,1,37.1-5.555,5.621,5.621,0,0,1,38.57-9.687a5.489,5.489,0,0,1,4.086-1.484,5.47,5.47,0,0,1,4.09,1.5A5.623,5.623,0,0,1,48.219-5.555Zm-2.352,0a4.232,4.232,0,0,0-.844-2.793,2.912,2.912,0,0,0-2.367-1.012,2.95,2.95,0,0,0-2.391,1,4.226,4.226,0,0,0-.844,2.8A4.346,4.346,0,0,0,40.285-2.7a2.9,2.9,0,0,0,2.355,1.043,2.922,2.922,0,0,0,2.387-1.016A4.408,4.408,0,0,0,45.867-5.555Z" transform="translate(96.73 20.246)" fill="#a4b2c8"/> <rect id="Retângulo_498" data-name="Retângulo 498" width="30.12" height="0.616" transform="translate(86.708 29.927) rotate(-84.001)" fill="#a4b2c8"/> </g> </svg></a></div>
+        <div class="rodape__content">
+          <p>Superintendência de Informática | Copyright © 2006-2020 <a class="link-normal" href="https://www.ufrn.br/" rel="noopener noreferrer" target="_blank" title="Ir para o portal da UFRN">UFRN</a></p>
+        </div>
+      </footer>
+    </div>
+    <script src="https://static.info.ufrn.br/1.0.6/vendors/jquery/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://static.info.ufrn.br/1.0.6/vendors/popper/popper.min.js"></script>
+    <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="https://static.info.ufrn.br/1.0.6/js/scripts.js"></script>
+    <script src="../../js/tabelas.js"></script>
+    <script src="../../js/documentos.js"></script>
+     <script src="../../js/bancos.js"></script>
+    <script src="../../js/formalizacao_proplan.js"></script> 
+    <script src="../../js/util.js"></script> 
+    <script type="text/javascript">
+      popularTabelaPROPLANSemResponsavel('tabela-gerar-minuta');
+      populaSelect(document.getElementById("select-tipos-documentos"),tiposDocumentos);
+
+    </script> 
+  </body>
+</html>

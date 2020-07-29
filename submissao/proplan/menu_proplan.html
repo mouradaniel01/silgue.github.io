@@ -119,8 +119,18 @@
                     <li><a tabindex="-1" href="consulta_analise_tecnica.html"><span>Análise Técnica</span></a></li>
                     <li><a tabindex="-1" href="consulta_analise_fiscalizacao.html"><span>Análise Fiscalização</span></a></li>
                     <li><a tabindex="-1" href="consulta_analise_instrumento_juridico.html"><span>Análise Instrumento Jurídico</span></a></li>
+                    <li><a tabindex="-1" href="consulta_solicitar_parecer_dcf.html"><span>Solicitar Parecer DCF</span></a></li>
+                    <li><a tabindex="-1" href="consulta_solicitar_dotacao_orcamentaria.html"><span>Solicitar Dotação Orçamentária</span></a></li>
+                    <li><a tabindex="-1" href="consulta_solicitar_emissao_empenho.html"><span>Solicitar 
+                    Emissão de Empenho</span></a></li>
+                    <li><a tabindex="-1" href="consulta_gerar_minuta.html"><span>Gerar Minuta</span></a></li>
+                    <li><a tabindex="-1" href="consulta_parecer_agir.html"><span>Solicitar Parecer AGIR</span></a></li>
+                    
+                    <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Assinar Parecer Referêncial</span></a></li>
                     <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Autorizar Formalização</span></a></li>
+                    <li><a tabindex="-1" href="consulta_aparecer_juridico_funpec.html"><span>Parecer Jurídico FUNPEC</span></a></li>
                     <li><a tabindex="-1" href="menu_proplan.html"><span>Consultar pedido de formalização</span></a></li>
+
                   </ul>
                 </div>
               </button>
@@ -195,14 +205,13 @@
                 <h1>Projetos Submetidos (3)</h1>
               </div>
               <div class="conteudo-principal__content m-0 my-3 px-4">
-                <table class="table table-striped" data-toggle="table">
+                <table class="table table-striped" data-toggle="table" id="tabela-consulta-geral-proplan">
                  <thead>
                     <tr>
-                       <th class="w-10" data-checkbox="true"></th>
                        <th>Número</th>
                        <th>TÍtulo</th>
-                       <th>Classificação</th>
-                       <th>Unidade Executora</th>
+                       <th>Tipo</th>
+                       <th>Situacao</th>
                        <th>Ano</th>
                        <th class="w-10 text-center">Ações</th>
                     </tr>
@@ -210,34 +219,98 @@
                  <tbody>
                     <tr>
                        <td></td>
-                       <td>00001</td>
-                       <td>Desenvolvimento do novo sistema de Projetos Acadêmicos</td>
-                       <td>Com inovação tecnológica</td>
-                       <td>1135 - SINFO</td>
-                       <td>2019</td>
-                       <td>
-                          <a class="link-normal" href="#">
-                          <i class="fas fa-search"></i>
-                          </a>
-                       </td>
-                    </tr>
-                    <tr>
                        <td></td>
-                       <td>00002</td>
-                       <td>Desenvolvimento de Plataforma de Integração entre sistemas estruturantes</td>
-                       <td>Com inovação tecnológica</td>
-                       <td>1135 - SINFO</td>
-                       <td>2020</td>
-                       <td>
-                          <a class="link-normal" href="#">
-                          <i class="fas fa-search"></i>
-                          </a>
-                       </td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
                     </tr>
                  </tbody>
               </table>
               </div>
             </article>
+            <!-- Modal de dados do projeto -->
+            <div class="modal fade" id="modal-visualizar-projeto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <ul class="nav nav-tabs" id="tabExample" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="dados-gerais-tab" data-toggle="tab" href="#dados-gerais" role="tab" aria-controls="dados-gerais" aria-selected="true">
+                          Dados Gerais
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="participes-tab" data-toggle="tab" href="#participes" role="tab" aria-controls="participes" aria-selected="false">
+                          Partícipes
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="metas-resultados-tab" data-toggle="tab" href="#metas-resultados" role="tab" aria-controls="metas-resultados" aria-selected="false">
+                          Metas e Resultados
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="recursos-tab" data-toggle="tab" href="#recursos" role="tab" aria-controls="recursos" aria-selected="false">
+                          Recursos
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="plano-aplicacao-tab" data-toggle="tab" href="#plano-aplicacao" role="tab" aria-controls="plano-aplicacao" aria-selected="false">
+                          Plano de Aplicação
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="cronograma-tab" data-toggle="tab" href="#cronograma" role="tab" aria-controls="cronograma" aria-selected="false">
+                          Cronograma de Desembolso
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="documentos-tab" data-toggle="tab" href="#documentos" role="tab" aria-controls="documentos" aria-selected="false">
+                          Documentos
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="historico-tab" data-toggle="tab" href="#historico" role="tab" aria-controls="historico" aria-selected="false">
+                          Histórico
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="tabContent">
+                      <div class="tab-pane fade show active" id="dados-gerais" role="tabpanel" aria-labelledby="dados-gerais-tab">
+                        <p>Informações sobre os dados gerais</p>
+                      </div>
+                      <div class="tab-pane fade" id="participes" role="tabpanel" aria-labelledby="participes-tab">
+                        <p>Informações dos partícipes</p>
+                      </div>
+                      <div class="tab-pane fade" id="metas-resultados" role="tabpanel" aria-labelledby="metas-resultados-tab">
+                        <p>Informações das metas e resultados</p>
+                      </div>
+                      <div class="tab-pane fade" id="recursos" role="tabpanel" aria-labelledby="recursos-tab">
+                        <p>Informações dos Recursos</p>
+                      </div>
+                      <div class="tab-pane fade" id="plano-aplicacao" role="tabpanel" aria-labelledby="plano-aplicacao-tab">
+                        <p>Informações do Plano de Aplicação</p>
+                      </div>
+                      <div class="tab-pane fade" id="cronograma" role="tabpanel" aria-labelledby="cronograma-tab">
+                        <p>Informações do Cronograma</p>
+                      </div>
+                      <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="documentos-tab">
+                        <p>Documentos</p>
+                      </div>
+                      <div class="tab-pane fade" id="historico" role="tabpanel" aria-labelledby="historico-tab">
+                        <p>Histórico</p>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                   </div>
+                </div>
+              </div>
+            </div>
+            <!-- fim do modal dados do projeto -->
           </div>
         </div>
       </div>
@@ -254,8 +327,12 @@
     <script src="https://static.info.ufrn.br/1.0.6/js/scripts.js"></script>
     <script src="../../js/unidades.js"></script>
     <script src="../../js/util.js"></script>
+    <script src="../../js/tabelas.js"></script>
+    <script src="../../js/formalizacao_proplan.js"></script>
      <script>
         autocomplete(document.getElementById("unidade"), unidadesAcademicas);
+
+        popularTabelaConsultaGeralProplan('tabela-consulta-geral-proplan');
       </script>
   </body>
 </html>

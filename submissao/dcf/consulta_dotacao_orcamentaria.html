@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html class="no-js" lang="pt-BR" paleta="administrativa">
   <head>
@@ -35,7 +34,7 @@
             </a>
           </div>
           <div class="header__title">
-            <h1>Formalização de Projetos</h1>
+            <h1>Formalização de Projetos - Solicitações Orçamentárias</h1>
           </div>
         </div>
         <div class="header__right">
@@ -112,37 +111,15 @@
               <button class="submenu" tabindex="0">
                 
                 <div class="submenu__title">
-                  <h5>Formalização de Projetos de Pesquisa</h5><i class="fas fa-angle-right"></i>
+                  <h5>Formalização de Projetos Acadêmicos</h5><i class="fas fa-angle-right"></i>
                 </div>
                 <div class="submenu__items">
-                  <h5>Pesquisa</h5>
+                  <h5>Solicitações Orçamentárias</h5>
                   <ul>
-                    <li><a tabindex="-1" href="consulta_analise_funpec.html"><span>Análise FUNPEC</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_tecnica.html"><span>Análise Técnica</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_fiscalizacao.html"><span>Análise Fiscalização</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_instrumento_juridico.html"><span>Análise Instrumento Jurídico</span></a></li>
-                    <li><a tabindex="-1" href="consulta_solicitar_parecer_dcf.html"><span>Solicitar Parecer DCF</span></a></li>
-                    <li><a tabindex="-1" href="consulta_solicitar_dotacao_orcamentaria.html"><span>Solicitar Dotação Orçamentária</span></a></li>
-                    <li><a tabindex="-1" href="consulta_solicitar_emissao_empenho.html"><span>Solicitar 
-                    Emissão de Empenho</span></a></li>
-                    <li><a tabindex="-1" href="consulta_gerar_minuta.html"><span>Gerar Minuta</span></a></li>
-                    <li><a tabindex="-1" href="consulta_parecer_agir.html"><span>Solicitar Parecer AGIR</span></a></li>
+                    <li><a tabindex="-1" href="consulta_dotacao_orcamentaria.html"><span>Dotações Orçamentárias</span></a></li>
+                    <li><a tabindex="-1" href="consulta_emissao_empenho.html"><span>Emissão de Empenho</span></a></li>
                     
-                    <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Assinar Parecer Referêncial</span></a></li>
-                    <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Autorizar Formalização</span></a></li>
-                    <li><a tabindex="-1" href="consulta_aparecer_juridico_funpec.html"><span>Parecer Jurídico FUNPEC</span></a></li>
-                    <li><a tabindex="-1" href="menu_proplan.html"><span>Consultar pedido de formalização</span></a></li>
-
                   </ul>
-                </div>
-              </button>
-              <button class="submenu" tabindex="0">
-                <div class="submenu__title">
-                  <h5>Formalização de Projetos de Ensino</h5><i class="fas fa-angle-right"></i>
-                </div>
-                <div class="submenu__items">
-                  <h5>Lato Sensu</h5>
-                   
                 </div>
               </button>
             </div>
@@ -155,18 +132,17 @@
         <div class="container-conteudo__content w-100">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a class="link" href="../../../index.html"><i class="fas fa-home"></i></a></li>
-              <li class="breadcrumb-item"><a class="link" href="../../index.html">Submissão</a></li>
-              <li class="breadcrumb-item"><a class="link" href="../index.html">Projetos</a></li>
+              <li class="breadcrumb-item"><a class="link" href="../../index.html"><i class="fas fa-home"></i></a></li>
+              <li class="breadcrumb-item"><a class="link" href="../index.html">Submissão</a></li>
               <li class="breadcrumb-item active" aria-current="page">
-                <h3>Formalização de Projetos</h3>
+                <h3>Formalização de Projetos - Solicitações Orçamentárias</h3>
               </li>
             </ol>
           </nav>
           <div class="row m-0">
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">
-              <table id="tabela-consulta-analise-fiscalizacao" class="table table-striped" data-toggle="table">
+              <table id="tabela-projetos-pesquisa" class="table table-striped" data-toggle="table">
                 <thead>
                   <tr>
                     <th style="width: 60px">Número</th>
@@ -213,7 +189,7 @@
     <script src="../../js/tabelas.js"></script> 
     <script type="text/javascript">
       $(document).ready(function () {
-        $('#tabela-consulta-analise-fiscalizacao').DataTable( {
+        $('#tabela-projetos-pesquisa').DataTable( {
           lengthChange: false,
           language: {
             search: "_INPUT_",
@@ -224,9 +200,7 @@
         } );
       });
 
-      popularTabelaConsultaProplan('tabela-consulta-analise-fiscalizacao','analise_fiscalizacao.html');
-
-      
+      popularTabelaConsultaProplan('tabela-projetos-pesquisa','analise_funpec.html');     
       
     </script> 
   </body>
