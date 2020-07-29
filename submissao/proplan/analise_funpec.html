@@ -251,7 +251,7 @@
                          <label>Arquivo</label>
                      </div>
                      <div class="form-group position-relative">
-                        <button type="button" class="btn btn-primary" onclick="inserirArquivo('tabela-arquivos-funpec','select-tipos-documentos','descricao-arquivo-funpec','arquivo-projeto-funpec')">Inserir</button>
+                        <button type="button" class="btn btn-primary" onclick="inserirArquivoFunpec('tabela-arquivos-funpec','select-tipos-documentos','descricao-arquivo-funpec','arquivo-projeto-funpec')">Inserir</button>
                      </div>
                      <div class="form-group position-relative">
                         <table class="table table-striped" data-toggle="table" id="tabela-arquivos-funpec">
@@ -318,6 +318,11 @@
                           Documentos
                         </a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="historico-tab" data-toggle="tab" href="#historico" role="tab" aria-controls="historico" aria-selected="false">
+                          Histórico
+                        </a>
+                      </li>
                     </ul>
                     <div class="tab-content" id="tabContent">
                       <div class="tab-pane fade show active" id="dados-gerais" role="tabpanel" aria-labelledby="dados-gerais-tab">
@@ -340,6 +345,9 @@
                       </div>
                       <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="documentos-tab">
                         <p>Documentos</p>
+                      </div>
+                      <div class="tab-pane fade" id="historico" role="tabpanel" aria-labelledby="historico-tab">
+                        <p>Histórico</p>
                       </div>
                     </div>
                     
@@ -412,7 +420,7 @@
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('nome-responsavel-funpec')">Salvar</button>
+                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('FUNPEC')">Salvar</button>
                 </div>
               </div>
             </div>
@@ -441,7 +449,7 @@
       popularTabelaAnaliseProplan('tabela-analise-funpec');
       populaSelect(document.getElementById("select-tipos-documentos"),tiposDocumentos);
       populaSelect(document.getElementById("select-banco-conta-projeto"),bancos);
-      carregaResponsavel('responsavel-funpec');
+      carregaResponsavel('FUNPEC');
 
     </script> 
   </body>

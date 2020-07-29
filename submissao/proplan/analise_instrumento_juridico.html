@@ -185,9 +185,9 @@
                   </tbody>
                 </table>
                 <div class="form-group position-relative mt-2">
-                  <output class="form-control" id="responsavel-analise-instrumento-juridico" type="text" placeholder="responsável técnico que está analisando o projeto."></output>
+                  <output class="form-control" id="responsavel-instrumento-juridico" type="text" placeholder="responsável técnico que está analisando o projeto."></output>
                   <div class="tooltip-group">
-                     <label for="responsavel-analise-instrumento-juridico">Responsável Técnico</label>
+                     <label for="responsavel-instrumento-juridico">Responsável Técnico</label>
                      <span class="tooltip-icon">
                         <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O responsável técnico só poderia ser informado pelo líder da equipe. O sistema deve armazenar a informação da data, hora e login de quem informou o responsável.">
                         </i>
@@ -300,6 +300,11 @@
                           Documentos
                         </a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="historico-tab" data-toggle="tab" href="#historico" role="tab" aria-controls="historico" aria-selected="false">
+                          Histórico
+                        </a>
+                      </li>
                     </ul>
                     <div class="tab-content" id="tabContent">
                       <div class="tab-pane fade show active" id="dados-gerais" role="tabpanel" aria-labelledby="dados-gerais-tab">
@@ -322,6 +327,9 @@
                       </div>
                       <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="documentos-tab">
                         <p>Documentos</p>
+                      </div>
+                      <div class="tab-pane fade" id="historico" role="tabpanel" aria-labelledby="historico-tab">
+                        <p>Histórico</p>
                       </div>
                     </div>
                     
@@ -387,14 +395,14 @@
                   </div>
                   <div class="modal-body">
                     <div class="form-group position-relative">
-                          <input class="form-control" id="nome-responsavel-analise-instrumento-juridico" type="text" placeholder="Responsável técnico pelo projeto..." />
-                          <label for="nome-responsavel-analise-instrumento-juridico">Responsável Técnico</label>
+                          <input class="form-control" id="nome-responsavel-instrumento-juridico" type="text" placeholder="Responsável técnico pelo projeto..." />
+                          <label for="nome-responsavel-instrumento-juridico">Responsável Técnico</label>
                     </div>
                   </div>
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('nome-responsavel-analise-instrumento-juridico')">Salvar</button>
+                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('INSTRUMENTO')">Salvar</button>
                 </div>
               </div>
             </div>
@@ -421,7 +429,7 @@
     <script type="text/javascript">
       popularTabelaAnaliseProplan('tabela-analise-instrumento-juridico');
       populaSelect(document.getElementById("select-tipos-documentos"),tiposDocumentos);
-      carregaResponsavel('responsavel-analise-instrumento-juridico');
+      carregaResponsavel('INSTRUMENTO');
 
     </script> 
   </body>

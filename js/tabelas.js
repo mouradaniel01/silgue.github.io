@@ -79,7 +79,7 @@ function criarBotaoAcao(acao,array,parametro){ //nomeAcao,link,onclick_,idTabela
 	    if(nomeAcao === 'modal-cadastro'){
 	    	i.setAttribute("class", "fas fa-user-plus");
 	    }else{
-	    	i.setAttribute("class", "fas fa-file-contract");//<i class="fas fa-file-contract"></i><i class="far fa-file"></i> <i class="fas fa-info-circle"></i> -- <i class="fas fa-info"></i>
+	    	i.setAttribute("class", "fas fa-file-alt");//<i class="fas fa-file-contract"></i><i class="far fa-file"></i> <i class="fas fa-info-circle"></i> -- <i class="fas fa-info"></i>
 	    }
 	    botao.appendChild(i);
 	}

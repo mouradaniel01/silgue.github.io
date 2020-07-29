@@ -28,6 +28,7 @@ var responsavelFiscalizacao;
 var responsavelInstrumentoJuridico;
 var projetosPesquisa = [];
 var responsaveis = [];
+var analises = [];
 
 var numero_projeto = JSON.parse(sessionStorage.getItem('num_projeto'));
 
@@ -41,11 +42,11 @@ var projetoPesquisa1 = new ProjetoPesquisa(
 			"informacoes_sigilosas": "sim",
 			"hipotese_legal": "",
 			"propriedeade_intelectual":"sim",
-			"classificacao_pesquisa":"com_inovacao_tecnologica"
+			"classificacao_pesquisa":"Com Inovacao Tecnologica"
 		},
 		{
 			"numero_projeto": "0001",
-			"titulo":"Desenvolvimento do novo sistema de projetos acadêmicos",
+			"titulo":"Desenvolvimento de tecnologia para mensuração de custo de entrega utilizando aprendizado de máquina.",
 			"coordenador":"Alysson Rodrigues",
 			"unidade_lotacao": "Superintendência de Informática",
 			"unidade_execucao": "Superintendência de Informática",
@@ -61,7 +62,7 @@ var projetoPesquisa1 = new ProjetoPesquisa(
 		"subarea":"",
 		"especialidade":"",
 		"grupo_de_pesquisa":"",
-		"resumo": "Desenvolvimento de um novo sistema de gestão de projetos acadêmicos",
+		"resumo": "Desenvolvimento de uma tecnologia para mensurar o custo de entrega de um determinado artefato utilizando padrões identificados a partir de série histórica.",
 		"Introducao": "Introdução do projeto",
 		"Objetivos": "Os objetivos são: 1 - isso, 2 - aquilo",
 		"objetivos_especificos":{
@@ -88,11 +89,20 @@ var projetoPesquisa1 = new ProjetoPesquisa(
 		"fonte_recurso":"B"
 	},
 	{
-	"situacao":"Homologado pela PROPESQ",
+	"situacao":"Submetido - Doc. Ok",
 	"responsavel_funpec":" ",
+	"parecer_funpec": " ",
 	"responsavel_analise_tecnica":" ",
+	"parecer_analise_tecnica": " ",
 	"responsavel_fiscalizacao":" ",
-	"responsavel_instrumento_juridico":" "
+	"parecer_fiscalizacao": " ",
+	"responsavel_instrumento_juridico":" ",
+	"parecer_instrumento_juridico": " "
+	},
+	{
+		"banco":" ",
+		"agencia": " ",
+		"conta": " "
 	}	
 );
 
@@ -101,7 +111,7 @@ var projetoPesquisa2 = new ProjetoPesquisa(
 			"informacoes_sigilosas": "sim",
 			"hipotese_legal": "",
 			"propriedeade_intelectual":"sim",
-			"classificacao_pesquisa":"sem_inovacao_tecnologica"
+			"classificacao_pesquisa":"Com Inovacao Tecnologica"
 		},
 		{
 			"numero_projeto": "0002",
@@ -111,7 +121,7 @@ var projetoPesquisa2 = new ProjetoPesquisa(
 			"unidade_execucao": "Superintendência de Informática",
 			"palavras_chaves":"sigprojetos",
 			"email":["alysson@gmail.com","alysson@hotmail.com"],
-			"ano":"2019",
+			"ano":"2020",
 			"vigencia_inicio":"01/08/2020",
 			"vigencia_fim": "01/08/2021"
 		},
@@ -148,22 +158,109 @@ var projetoPesquisa2 = new ProjetoPesquisa(
 		"fonte_recurso":"B"
 	},
 	{
-	"situacao":"Homologado pela PROPESQ",
+	"situacao":"Submetido - Doc. Pendentes",
 	"responsavel_funpec":" ",
+	"parecer_funpec": " ",
 	"responsavel_analise_tecnica":" ",
+	"parecer_analise_tecnica": " ",
 	"responsavel_fiscalizacao":" ",
-	"responsavel_instrumento_juridico":" "
+	"parecer_fiscalizacao": " ",
+	"responsavel_instrumento_juridico":" ",
+	"parecer_instrumento_juridico": " "
+	},
+	{
+		"banco":" ",
+		"agencia": " ",
+		"conta": " "
 	}	
 );
 
-projetosPesquisa.push(projetoPesquisa1, projetoPesquisa2);
+var projetoPesquisa3 = new ProjetoPesquisa(
+		{
+			"informacoes_sigilosas": "sim",
+			"hipotese_legal": "",
+			"propriedeade_intelectual":"sim",
+			"classificacao_pesquisa":"Com Inovacao Tecnologica"
+		},
+		{
+			"numero_projeto": "0003",
+			"titulo":"Desenvolvimento de novo sistema para gestão de projetos acadêmicos",
+			"coordenador":"Josué Victor",
+			"unidade_lotacao": "DEPARTAMENTO DE ADMINISTRAÇÃO",
+			"unidade_execucao": "Superintendência de Informática",
+			"palavras_chaves":"sigprojetos",
+			"email":["josue@gmail.com","josue@hotmail.com"],
+			"ano":"2019",
+			"vigencia_inicio":"01/09/2019",
+			"vigencia_fim": "31/12/2021"
+		},
+		{
+		"grande_area": "Ciências Exatas e da Terra",
+		"area":"Ciências da Computação",
+		"subarea":"",
+		"especialidade":"",
+		"grupo_de_pesquisa":"",
+		"resumo": "Desenvolvimento de uma plataforma que permita a submissão, execução e monitoramentos dos projetos acadêmicos",
+		"Introducao": "Introdução do projeto",
+		"Objetivos": "Os objetivos são: 1 - isso, 2 - aquilo",
+		"objetivos_especificos":{
+			"nome":"Objetivo específico 1",
+			"metas":[{
+				"numero":"1",
+				"descricao": "descrição meta 1",
+				"indicador":"funcionalidades",
+				"qtd":"5"
+			}],
+			"resultados":[{
+				"numero":"1",
+				"descricao": "descrição resultado 1",
+				"indicador":"funcionalidades",
+				"qtd":"10"
+			}],
+		}
+	},
+	{
+		"valor_plano_aplicacao":"200.000,00",
+		"doap":"10.000,00",
+		"tempo_execucao":"24",
+		"valor_projeto":"210.000,00",
+		"fonte_recurso":"B"
+	},
+	{
+	"situacao":"Aguardando Parecer DCF",
+	"responsavel_funpec":" ",
+	"parecer_funpec": " ",
+	"responsavel_analise_tecnica":" ",
+	"parecer_analise_tecnica": " ",
+	"responsavel_fiscalizacao":" ",
+	"parecer_fiscalizacao": " ",
+	"responsavel_instrumento_juridico":" ",
+	"parecer_instrumento_juridico": " "
+	},
+	{
+		"banco":" ",
+		"agencia": " ",
+		"conta": " "
+	}	
+);
 
-function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,plano_aplicacao,tramitacao){
+projetosPesquisa.push(projetoPesquisa1, projetoPesquisa2, projetoPesquisa3);
+
+function Analise(numero_projeto,tipo,responsavel,parecer,dados_bancarios,documentos){
+	this.numero_projeto = numero_projeto;
+	this.tipo = tipo;
+	this.responsavel = responsavel;
+	this.parecer = parecer;
+	this.documentos = documentos;
+}
+
+function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,plano_aplicacao,tramitacao,dados_bancarios){
 	this.informacoes_preliminares = informacoes_preliminares;
 	this.dados_gerais = dados_gerais;
 	this.dados_projeto = dados_projeto;
 	this.plano_aplicacao = plano_aplicacao;
 	this.tramitacao = tramitacao;
+	this.dados_bancarios = dados_bancarios;
 }
 
 function Recurso(entidade,valor_financiado,responsavel){
@@ -221,8 +318,6 @@ function passarResponsavelTecnico(campo,resp){
     sessionStorage.setItem(campo, responsavel );
 }
 
-
-
 function inicioModuloPROPLAN(){
 
 	projetosPesquisa.forEach( function (projeto){
@@ -232,6 +327,12 @@ function inicioModuloPROPLAN(){
 	localStorage.setItem('projetosPesquisa',JSON.stringify(projetosPesquisa));
 
 	localStorage.setItem('tiposDocumentos',JSON.stringify(tiposDocumentosBase));
+
+	var analiseDefault = new Analise('0000','nenhum','ninguem','',''); 
+
+	analises.push(analiseDefault);
+
+	localStorage.setItem('analises',JSON.stringify(analises));
 	
 }
 
@@ -239,11 +340,37 @@ function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 
 	var projetoPesquisa = JSON.parse(localStorage.getItem(identificador));
 
+	var responsavelFunpec = " ";
+	var responsavelAnalise = " ";
+	var responsavelFiscalizacao = " ";
+	var responsavelInstrumento = " ";
+
+	if(localStorage.getItem('analises') != null){
+		JSON.parse(localStorage.getItem('analises')).forEach( function (item){
+		analises.push(item);
+	});
+
+	analises.forEach( function (analise){
+		if(analise.numero_projeto === identificador && analise.tipo === 'FUNPEC'){
+			responsavelFunpec = analise.responsavel;
+		}
+		if(analise.numero_projeto === identificador && analise.tipo === 'ANALISE'){
+			responsavelAnalise = analise.responsavel;
+		}
+		if(analise.numero_projeto === identificador && analise.tipo === 'FISCALIZACAO'){
+			responsavelFiscalizacao = analise.responsavel;
+		}
+		if(analise.numero_projeto === identificador && analise.tipo === 'INSTRUMENTO'){
+			responsavelInstrumento = analise.responsavel;
+		}
+	});
+	}
+
 	var dadosProjeto = [projetoPesquisa.dados_gerais.numero_projeto,projetoPesquisa.dados_gerais.titulo,
 						projetoPesquisa.dados_gerais.coordenador, projetoPesquisa.plano_aplicacao.fonte_recurso, 
 						projetoPesquisa.plano_aplicacao.valor_projeto, projetoPesquisa.tramitacao.situacao, 
-		"funpec: " + projetoPesquisa.tramitacao.responsavel_funpec + " analise técnica: " + projetoPesquisa.tramitacao.responsavel_analise_tecnica +
-		" fiscalização: " +  projetoPesquisa.tramitacao.responsavel_fiscalizacao + " instrumento jurídico: " + projetoPesquisa.tramitacao.responsavel_instrumento_juridico
+		"Funpec: " + responsavelFunpec + " Analise técnica: " + responsavelAnalise +
+		" Fiscalização: " + responsavelFiscalizacao + " Instrumento Jurídico: " + responsavelInstrumento
 		,projetoPesquisa.dados_gerais.ano];
 
 	return dadosProjeto;
@@ -314,51 +441,69 @@ function popularTabelaProjetosPesquisa(idTabela){
 }
 
 
- function carregaResponsavel(responsavel){
+ function carregaResponsavel(tipo){
 
- 	if(responsavel === 'nome-responsavel-funpec' || responsavel === 'responsavel-funpec'){
- 		responsavelFunpec = JSON.parse(localStorage.getItem(numero_projeto)).tramitacao.responsavel_funpec;
-		document.getElementById('responsavel-funpec').innerHTML = responsavelFunpec;
+ 	var idCampoDestino;
 
-	}else if(responsavel === 'nome-responsavel-analise-tecnica' || responsavel === 'responsavel-analise-tecnica'){
-		responsavelAnaliseTecnica = JSON.parse(localStorage.getItem(numero_projeto)).tramitacao.responsavel_analise_tecnica;
- 		document.getElementById('responsavel-analise-tecnica').innerHTML = responsavelAnaliseTecnica;
+ 	if(tipo === 'FUNPEC'){
+ 		idCampoDestino = 'responsavel-funpec';
+ 	}else if(tipo === 'ANALISE'){
+ 		idCampoDestino = 'responsavel-analise-tecnica';
+ 	}else if(tipo === 'FISCALIZACAO'){
+ 		idCampoDestino = 'responsavel-fiscalizacao';
+ 	}else if(tipo === 'INSTRUMENTO'){
+ 		idCampoDestino = 'responsavel-instrumento-juridico';
+ 	}
 
-	}else if(responsavel === 'nome-responsavel-fiscalizacao' || responsavel === 'responsavel-fiscalizacao'){
-		responsavelFiscalizacao = JSON.parse(localStorage.getItem(numero_projeto)).tramitacao.responsavel_fiscalizacao;
- 		document.getElementById('responsavel-fiscalizacao').innerHTML = responsavelFiscalizacao;
+ 	var analises = JSON.parse(localStorage.getItem('analises'));
 
-	}else if(responsavel === 'nome-responsavel_instrumento_juridico' || responsavel === 'responsavel_instrumento_juridico'){
-		responsavelInstrumentoJuridico = JSON.parse(localStorage.getItem(numero_projeto)).tramitacao.responsavel_instrumento_juridico;
-	 	document.getElementById('responsavel-instrumento-juridico').innerHTML = responsavelInstrumentoJuridico;
-
-	}
- 	
+ 	if(analises != null && Array.isArray(analises)){
+ 		analises.forEach( function (analise){
+	 		if(analise.numero_projeto === numero_projeto && analise.tipo === tipo){
+	 			document.getElementById(idCampoDestino).innerHTML = analise.responsavel;
+	 		}
+		});
+ 	}
 }
 
- function inserirResponsavel(responsavel){
+ function inserirResponsavel(tipo){
+ 	
+ 	var idCampoOrigem, idCampoDestino;
 
- 	projetosPesquisa = JSON.parse(localStorage.getItem('projetosPesquisa'));
+ 	if(tipo === 'FUNPEC'){
+ 		idCampoOrigem = 'nome-responsavel-funpec';
+ 	}else if(tipo === 'ANALISE'){
+ 		idCampoOrigem = 'nome-responsavel-analise-tecnica';
+ 	}else if(tipo === 'FISCALIZACAO'){
+ 		idCampoOrigem = 'nome-responsavel-fiscalizacao';
+ 	}else if(tipo === 'INSTRUMENTO'){
+ 		idCampoOrigem = 'nome-responsavel-instrumento-juridico';
+ 	}
 
- 	projetosPesquisa.forEach( function (projeto){
- 		if(projeto.dados_gerais.numero_projeto === numero_projeto){
- 			if(responsavel === 'nome-responsavel-funpec'){
- 				projeto.tramitacao.responsavel_funpec = document.getElementById('nome-responsavel-funpec').value;
- 			}else if(responsavel === 'nome-responsavel-analise-tecnica'){
- 				projeto.tramitacao.responsavel_analise_tecnica = document.getElementById('nome-responsavel-analise-tecnica').value;
- 			}else if(responsavel === 'nome-responsavel-fiscalizacao'){
- 				projeto.tramitacao.responsavel_fiscalizacao = document.getElementById('nome-responsavel-fiscalizacao').value;
- 			}else if(responsavel === 'nome-responsavel-instrumento-juridico'){
- 				projeto.tramitacao.responsavel_instrumento_juridico = document.getElementById('nome-responsavel-instrumento-juridico').value;	
- 			}
+ 	var responsavel = document.getElementById(idCampoOrigem).value; 
 
-	 		localStorage.setItem(projeto.dados_gerais.numero_projeto,JSON.stringify(projeto));
- 		}	
- 	});
+ 	analises = JSON.parse(localStorage.getItem('analises'));
 
- 	localStorage.setItem('projetosPesquisa', JSON.stringify(projetosPesquisa));
+ 	if(analises == null || !Array.isArray(analises)){
+ 		var analise = new Analise(numero_projeto,tipo,'','','');
+ 		analises = [];
+ 		analises.push(analise);
+ 	}else{
+ 		if(analises.indexOf(numero_projeto) != -1){
+	 		analises.forEach( function (analise){
+	 			if(analise.numero_projeto === numero_projeto){
+	 			analise.responsavel = responsavel;
+	 			}
+	 		});
+	 	}else{
+	 		var analise = new Analise(numero_projeto,tipo,responsavel,'','');
+	 		analises.push(analise);
+	 	}
+ 	}
 
- 	carregaResponsavel(responsavel);
+ 	localStorage.setItem('analises', JSON.stringify(analises));
+
+ 	carregaResponsavel(tipo);
 
  }
 
@@ -430,6 +575,11 @@ function popularTabelaRecurso(){
 	   }
 	});
 
+}
+
+function inserirArquivoFunpec(idSelect,idDescricao,idArquivo){
+
+	inserirArquivo(idSelect,idDescricao,idArquivo);
 }
 
 function inserirLinhaTabelaByInput(idTabela,idInput) {

@@ -300,6 +300,11 @@
                           Documentos
                         </a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="historico-tab" data-toggle="tab" href="#historico" role="tab" aria-controls="historico" aria-selected="false">
+                          Histórico
+                        </a>
+                      </li>
                     </ul>
                     <div class="tab-content" id="tabContent">
                       <div class="tab-pane fade show active" id="dados-gerais" role="tabpanel" aria-labelledby="dados-gerais-tab">
@@ -322,6 +327,9 @@
                       </div>
                       <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="documentos-tab">
                         <p>Documentos</p>
+                      </div>
+                      <div class="tab-pane fade" id="historico" role="tabpanel" aria-labelledby="historico-tab">
+                        <p>Histórico</p>
                       </div>
                     </div>
                     
@@ -394,7 +402,7 @@
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('nome-responsavel-fiscalizacao')">Salvar</button>
+                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('FISCALIZACAO')">Salvar</button>
                 </div>
               </div>
             </div>
@@ -421,7 +429,7 @@
     <script type="text/javascript">
       popularTabelaAnaliseProplan('tabela-analise-fiscalizacao');
       populaSelect(document.getElementById("select-tipos-documentos"),tiposDocumentos);
-      carregaResponsavel('responsavel-fiscalizacao');
+      carregaResponsavel('FISCALIZACAO');
 
     </script> 
   </body>
