@@ -471,6 +471,16 @@ function popularTabelaConsultaProplan(idTabela,redirect){
  	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(sessionStorage.getItem(numero_projeto)));
 
  	popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela]]);
+ 	//popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela]]);
+
+ }
+
+ function popularTabelaAnaliseIJU(idTabela){
+ 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(sessionStorage.getItem(numero_projeto)));
+ 	
+ 	popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela],
+ 		['modal-gerar-minuta','#modal-gerar-minuta','',idTabela],['modal-parecer-referencial','#modal-parecer-referencial','',idTabela],
+ 		['modal-solicitar-dotacao','#modal-solicitar-dotacao','',idTabela],['modal-solicitar-empenho','#modal-solicitar-empenho','',idTabela]]);
 
  }
 
