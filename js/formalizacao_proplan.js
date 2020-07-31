@@ -21,7 +21,6 @@ var entidadesParticipes = [];
 var tiposDocumentos = ['ATA APROVAÇÃO DEPARTAMENTO', 'AUTORIZAÇÃO PARTICIPAÇÃO EM PESQUISA', 'LIMITE DE CARGA HORÁRIA/REMUNERAÇÃO', 'HOMOLOGAÇÃO PROPESQ', 'HOMOLOGAÇÃO PROPLAN', 'HOMOLOGAÇÃO PPG'];
 var arquivosProjeto = [];
 var recursos = [];
-var numero_projeto = JSON.parse(sessionStorage.getItem('num_projeto'));
 var responsavelFunpec;
 var responsavelAnaliseTecnica;
 var responsavelFiscalizacao;
@@ -468,7 +467,7 @@ function popularTabelaConsultaProplan(idTabela,redirect){
  }
 
  function popularTabelaAnaliseProplan(idTabela){
- 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(sessionStorage.getItem(numero_projeto)));
+ 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(localStorage.getItem(numero_projeto)));
 
  	popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela]]);
  	//popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela]]);
@@ -476,7 +475,7 @@ function popularTabelaConsultaProplan(idTabela,redirect){
  }
 
  function popularTabelaAnaliseIJU(idTabela){
- 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(sessionStorage.getItem(numero_projeto)));
+ 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(localStorage.getItem(numero_projeto)));
  	
  	popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela],
  		['modal-gerar-minuta','#modal-gerar-minuta','',idTabela],['modal-parecer-referencial','#modal-parecer-referencial','',idTabela],
@@ -485,7 +484,7 @@ function popularTabelaConsultaProplan(idTabela,redirect){
  }
 
  function popularTabelaPROPLANSemResponsavel(idTabela){
- 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(sessionStorage.getItem(numero_projeto)));
+ 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(localStorage.getItem(numero_projeto)));
 
  	popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela]]);
 
