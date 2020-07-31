@@ -259,8 +259,8 @@ function popularTabela(idTabela,array,acoes){
 	    i.setAttribute("class", "fas fa-external-link-alt");
 	    botao.appendChild(i);
 	}else if(nomeAcao === 'modal-exibicao' || nomeAcao === 'modal-cadastro' || 
-		nomeAcao === 'modal-gerar-minuta' || nomeAcao === 'modal-solicitacao-dotacao' || 
-		nomeAcao === 'modal-solicitacao-empenho' || nomeAcao === 'modal-parecer-referencial'){
+		nomeAcao === 'modal-gerar-minuta' || nomeAcao === 'modal-solicitar-dotacao' || 
+		nomeAcao === 'modal-solicitar-empenho' || nomeAcao === 'modal-parecer-referencial'){
 		botao = document.createElement("button");
 	    botao.setAttribute("type", "button");
 	    botao.setAttribute("class", "btn btn-link");
@@ -274,9 +274,9 @@ function popularTabela(idTabela,array,acoes){
 	    	i.setAttribute("class", "fas fa-file-alt");//<i class="fas fa-file-contract"></i><i class="far fa-file"></i> <i class="fas fa-info-circle"></i> -- <i class="fas fa-info"></i>
 	    }else if(nomeAcao === 'modal-gerar-minuta'){
 	    	i.setAttribute("class", "fas fa-file-signature")
-	    }else if(nomeAcao === 'modal-solicitacao-dotacao'){
+	    }else if(nomeAcao === 'modal-solicitar-dotacao'){
 	    	i.setAttribute("class", "fas fa-money-check-alt");
-	    }else if(nomeAcao === 'modal-solicitacao-empenho'){
+	    }else if(nomeAcao === 'modal-solicitar-empenho'){
 	    	i.setAttribute("class", "far fa-money-bill-alt");
 	    }else if(nomeAcao === 'modal-parecer-referencial'){
 	    	i.setAttribute("class", "fas fa-balance-scale-right");
