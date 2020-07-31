@@ -568,11 +568,18 @@ function popularTabelaProjetosPesquisa(idTabela){
  }
 
  function inserirSolicitacao(tipo, idTabela,idCampo,idDestino,modal){
- 	var textoSolicitacao = document.getElementById(idCampo).value;
+
+ 	var textoSolicitacao;
 
  	var idTabela = idTabela;
 
- 	document.getElementById(idDestino).innerHTML = textoSolicitacao;
+ 	if(idCampo === '' && idDestino === ''){
+
+ 	}else{
+ 		textoSolicitacao = document.getElementById(idCampo).value;
+
+ 		document.getElementById(idDestino).innerHTML = textoSolicitacao;
+ 	}
 
  	var solicitacao = [];
 
