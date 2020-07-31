@@ -28,6 +28,7 @@ var responsavelInstrumentoJuridico;
 var projetosPesquisa = [];
 var responsaveis = [];
 var analises = [];
+var solicitacoes = [];
 
 var numero_projeto = JSON.parse(sessionStorage.getItem('num_projeto'));
 
@@ -478,8 +479,8 @@ function popularTabelaConsultaProplan(idTabela,redirect){
  	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(localStorage.getItem(numero_projeto)));
  	
  	popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela],
- 		['modal-gerar-minuta','#modal-gerar-minuta','',idTabela],['modal-parecer-referencial','#modal-parecer-referencial','',idTabela],
- 		['modal-solicitar-dotacao','#modal-solicitar-dotacao','',idTabela],['modal-solicitar-empenho','#modal-solicitar-empenho','',idTabela]]);
+ 		['modal-parecer-dcf','#modal-parecer-dcf','',idTabela],['modal-gerar-minuta','#modal-gerar-minuta','',idTabela],['modal-parecer-referencial','#modal-parecer-referencial','',idTabela],
+ 		['modal-solicitar-dotacao','#modal-solicitar-dotacao','',idTabela],['modal-solicitar-empenho','#modal-solicitar-empenho','',idTabela],['modal-parecer-agir','#modal-parecer-agir','',idTabela]]);
 
  }
 
@@ -563,6 +564,42 @@ function popularTabelaProjetosPesquisa(idTabela){
  	localStorage.setItem('analises', JSON.stringify(analises));
 
  	carregaResponsavel(tipo);
+
+ }
+
+ function inserirSolicitacao(tipo, idTabela,idCampo,idDestino,modal){
+ 	var textoSolicitacao = document.getElementById(idCampo).value;
+
+ 	var idTabela = idTabela;
+
+ 	document.getElementById(idDestino).innerHTML = textoSolicitacao;
+
+ 	var solicitacao = [];
+
+ 	var data = new Date();
+
+ 	/*if(localStorage.getItem('solicitacoes') != null){
+ 		solicitacoes = JSON.parse(localStorage.getItem('solicitacoes'));
+ 	}*/
+
+ 	solicitacao.push([tipo, data.getDate() + "/"+ (data.getMonth()+1) + "/" + data.getYear() + " " + data.getHours() + ":" + data.getMinutes(),'login']);
+
+ 	//localStorage.setItem('solicitacoes',JSON.stringify(solicitacoes));
+
+
+ 	popularTabela(idTabela,solicitacao,[['modal-exibicao','#'+modal,'',idTabela]]);
+
+ }
+
+ function inserirSolicitacaoDotacao(idCampo){
+
+ }
+
+ function inserirSolicitacaoEmpenho(idCampo){
+
+ }
+
+ function inserirParecerAGIR(idCampo){
 
  }
 

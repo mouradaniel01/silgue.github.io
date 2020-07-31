@@ -209,6 +209,26 @@
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">
                 <div class="form-group position-relative">
+                  <table class="table table-striped" data-toggle="table" id="tabela-historico-instrumento-juridico">
+                     <thead>
+                        <tr>
+                           <th>Evento</th>
+                           <th>Data</th>
+                           <th>Solicitante</th>
+                           <th>Ações</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+                <div class="form-group position-relative">
                   <textarea class="form-control" id="parecer-analise-instrumento-juridico" placeholder="Parecer de aprovação ou recomendação..." data-max-size="4000"></textarea>
                   <label class="required" for="parecer-analise-instrumento-juridico">Análise Instrumento Jurídico</label>
                   <div class="invalid-feedback">Limite de caracteres excedido
@@ -392,6 +412,102 @@
              </div>
           </div>
           <!-- Fim do modal de cadastro de tipos de documentos-->
+          <!-- Modal de visualizar solicitação parecer dcf -->
+          <div class="modal fade" id="modal-visualizar-solicitacao-parecer-dcf" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Solicitação para Parecer da DCF
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <p id="exibir-solicitacao-parecer-dcf"></p>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar solicitação de parecer DCF-->
+          <!-- Modal de visualizar solicitação de Dotação Orçamentária -->
+          <div class="modal fade" id="modal-visualizar-solicitacao-dotacao-orcamentaria" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Solicitação para Dotação Orçamentária
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <p id="exibir-solicitacao-dotacao"></p>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar solicitação Dotação Orçamentária-->
+          <!-- Modal de visualizar solicitação de Emissão de Empenho -->
+          <div class="modal fade" id="modal-visualizar-solicitacao-emissao-empenho" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Solicitação para Emissão de Empenho
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <p id="exibir-solicitacao-empenho"></p>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar solicitação de Emissão de Empenho ->
+            <!-- Modal de visualizar solicitação de Parecer da AGIR -->
+          <div class="modal fade" id="modal-visualizar-solicitacao-parecer-agir" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Solicitação para Parecer da AGIR
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <p id="exibir-solicitacao-parecer-agir"></p>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar solicitação de Emissão de Empenho ->
           <!-- Modal de cadastro responsável projeto -->
           <div class="modal fade" id="modal-cadastrar-responsavel" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
              <div class="modal-dialog" role="document">
@@ -411,19 +527,46 @@
                   </div>
                 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('INSTRUMENTO')">Salvar</button>
+                    
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="inserirResponsavel('INSTRUMENTO')">Enviar</button>
                 </div>
               </div>
             </div>
           </div>
           <!-- Fim do modal de cadastro responsável projeto-->
-          <!-- Modal de cadastro responsável projeto -->
+          <!-- Modal de Solicitar parecer DCF -->
+          <div class="modal fade" id="modal-parecer-dcf" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Solicitar Parecer DCF
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                      <textarea class="form-control" id="solicitacao-parecer-dcf" placeholder="Parecer de aprovação ou recomendação..." data-max-size="2000"></textarea>
+                      <label class="required" for="solicitacao-parecer-dcf">Solicitação para Parecer DCF</label>
+                      <div class="invalid-feedback">Limite de caracteres excedido
+                      </div>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="inserirSolicitacao('SOLICITAÇÃO DE PARECER DA DCF','tabela-historico-instrumento-juridico','solicitacao-parecer-dcf','exibir-solicitacao-parecer-dcf','modal-visualizar-solicitacao-parecer-dcf')">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de Solicitar dotação-->
+          <!-- Modal de Solicitar dotação -->
           <div class="modal fade" id="modal-solicitar-dotacao" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                 <div class="modal-content">
                    <div class="modal-header">
-                      <h5 class="modal-title" id="cadastrar-responsavel">Solicitar Dotação Orçamentária
+                      <h5 class="modal-title">Solicitar Dotação Orçamentária
                       </h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                       <span aria-hidden="true">&times;</span>
@@ -439,14 +582,40 @@
                   </div>
                 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('INSTRUMENTO')">Salvar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="inserirSolicitacao('SOLICITAÇÃO DE DOTAÇÃO ORÇAMENTÁRIA','tabela-historico-instrumento-juridico','solicitacao-dotacao','exibir-solicitacao-dotacao','modal-visualizar-solicitacao-dotacao-orcamentaria')">Enviar</button>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Fim do modal de cadastro responsável projeto-->
-          <!-- Modal de cadastro responsável projeto -->
+          <!-- Fim do modal de Solicitar dotação-->
+          <!-- Modal de Solicitar parecer DA AGIR -->
+          <div class="modal fade" id="modal-parecer-agir" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Solicitar Parecer AGIR
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                      <textarea class="form-control" id="solicitacao-parecer-agir" placeholder="Parecer de aprovação ou recomendação..." data-max-size="2000"></textarea>
+                      <label class="required" for="solicitacao-parecer-agir">Solicitação Parecer da AGIR</label>
+                      <div class="invalid-feedback">Limite de caracteres excedido
+                      </div>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="inserirSolicitacao('SOLICITAÇÃO DE PARECER DA AGIR','tabela-historico-instrumento-juridico','solicitacao-parecer-agir','exibir-solicitacao-parecer-agir','modal-visualizar-solicitacao-parecer-agir')">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de Solicitar dotação-->
+          <!-- Modal de Solicitar empenho -->
           <div class="modal fade" id="modal-solicitar-empenho" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
              <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -467,13 +636,12 @@
                   </div>
                 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="inserirResponsavel('INSTRUMENTO')">Salvar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="inserirSolicitacao('SOLICITAÇÃO DE EMISSÃO DE EMPENHO','tabela-historico-instrumento-juridico','solicitacao-empenho','exibir-solicitacao-empenho','modal-visualizar-solicitacao-emissao-empenho')">Enviar</button>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Fim do modal de cadastro responsável projeto-->
+          <!-- Fim do modal de Solicitar empenho-->
           <!-- Modal de visualizar minuta -->
           <div class="modal fade" id="modal-gerar-minuta" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
              <div class="modal-dialog modal-lg" role="document">

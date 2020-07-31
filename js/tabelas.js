@@ -96,7 +96,9 @@ function popularTabela(idTabela,array,acoes){
 
  	var parametroBotao = "";
 
-	limpaTabela(tabela);
+ 	if(idTabela != 'tabela-historico-instrumento-juridico'){
+		limpaTabela(tabela);
+ 	}
 
 	array.forEach(function(item){
 
@@ -260,7 +262,8 @@ function popularTabela(idTabela,array,acoes){
 	    botao.appendChild(i);
 	}else if(nomeAcao === 'modal-exibicao' || nomeAcao === 'modal-cadastro' || 
 		nomeAcao === 'modal-gerar-minuta' || nomeAcao === 'modal-solicitar-dotacao' || 
-		nomeAcao === 'modal-solicitar-empenho' || nomeAcao === 'modal-parecer-referencial'){
+		nomeAcao === 'modal-solicitar-empenho' || nomeAcao === 'modal-parecer-referencial' ||
+		nomeAcao === 'modal-parecer-dcf' || nomeAcao === 'modal-parecer-agir'){
 		botao = document.createElement("button");
 	    botao.setAttribute("type", "button");
 	    botao.setAttribute("class", "btn btn-link");
@@ -272,6 +275,8 @@ function popularTabela(idTabela,array,acoes){
 	    	i.setAttribute("class", "fas fa-user-plus");
 	    }else if(nomeAcao === 'modal-exibicao'){
 	    	i.setAttribute("class", "fas fa-file-alt");//<i class="fas fa-file-contract"></i><i class="far fa-file"></i> <i class="fas fa-info-circle"></i> -- <i class="fas fa-info"></i>
+	    }else if(nomeAcao === 'modal-parecer-dcf'){
+	    	i.setAttribute("class", "fas fa-funnel-dollar");
 	    }else if(nomeAcao === 'modal-gerar-minuta'){
 	    	i.setAttribute("class", "fas fa-file-signature")
 	    }else if(nomeAcao === 'modal-solicitar-dotacao'){
@@ -280,6 +285,8 @@ function popularTabela(idTabela,array,acoes){
 	    	i.setAttribute("class", "far fa-money-bill-alt");
 	    }else if(nomeAcao === 'modal-parecer-referencial'){
 	    	i.setAttribute("class", "fas fa-balance-scale-right");
+	    }else if(nomeAcao === 'modal-parecer-agir'){
+	    	i.setAttribute("class", "fas fa-asterisk");
 	    }
 	    botao.appendChild(i);
 	}
@@ -288,5 +295,7 @@ function popularTabela(idTabela,array,acoes){
 	//<i class="fas fa-balance-scale-right"></i>
 	//<i class="fas fa-money-check-alt"></i>
 	//<i class="far fa-money-bill-alt"></i>
+	//<i class="fas fa-funnel-dollar"></i>
+	//<i class="fas fa-asterisk"></i>
 }
 
