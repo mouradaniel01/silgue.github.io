@@ -268,24 +268,33 @@ function popularTabela(idTabela,array,acoes){
 	    botao.setAttribute("type", "button");
 	    botao.setAttribute("class", "btn btn-link");
 	    botao.setAttribute("data-toggle","modal");
+	    botao.setAttribute("data-tt","tooltip")
 	    botao.setAttribute("data-target", href);
 	    botao.setAttribute("onclick",onclick);
 	    i = document.createElement("i");
 	    if(nomeAcao === 'modal-cadastro'){
+	    	botao.setAttribute("title","Informar Técnico Responsável");
 	    	i.setAttribute("class", "fas fa-user-plus");
 	    }else if(nomeAcao === 'modal-exibicao'){
+	    	botao.setAttribute("title","Visualizar informações do projeto");
 	    	i.setAttribute("class", "fas fa-file-alt");//<i class="fas fa-file-contract"></i><i class="far fa-file"></i> <i class="fas fa-info-circle"></i> -- <i class="fas fa-info"></i>
 	    }else if(nomeAcao === 'modal-parecer-dcf'){
+	    	botao.setAttribute("title","Solicitar Parecer DCF");
 	    	i.setAttribute("class", "fas fa-funnel-dollar");
 	    }else if(nomeAcao === 'modal-gerar-minuta'){
+	    	botao.setAttribute("title","Gerar Minuta");
 	    	i.setAttribute("class", "fas fa-file-signature")
 	    }else if(nomeAcao === 'modal-solicitar-dotacao'){
+	    	botao.setAttribute("title","Solicitar Dotação Orçamentária");
 	    	i.setAttribute("class", "fas fa-money-check-alt");
 	    }else if(nomeAcao === 'modal-solicitar-empenho'){
+	    	botao.setAttribute("title","Solicitar Empenho");
 	    	i.setAttribute("class", "far fa-money-bill-alt");
 	    }else if(nomeAcao === 'modal-parecer-referencial'){
+	    	botao.setAttribute("title","Enviar Despacho Parecer Referêncial para assinatura");
 	    	i.setAttribute("class", "fas fa-balance-scale-right");
 	    }else if(nomeAcao === 'modal-parecer-agir'){
+	    	botao.setAttribute("title","Solicitar Parecer da AGIR");
 	    	i.setAttribute("class", "fas fa-asterisk");
 	    }
 	    botao.appendChild(i);
