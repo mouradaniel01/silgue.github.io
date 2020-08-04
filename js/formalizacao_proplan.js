@@ -38,210 +38,575 @@ var funpec = new EntidadeParticipe('Contratada','Fundação Norte-Rio-Grandense 
 entidadesParticipes.push(ufrn,funpec);
 
 var projetoPesquisa1 = new ProjetoPesquisa(
-		{
-			"informacoes_sigilosas": "sim",
-			"hipotese_legal": "",
-			"propriedeade_intelectual":"sim",
-			"classificacao_pesquisa":"Com Inovacao Tecnologica"
-		},
-		{
-			"numero_projeto": "0001",
-			"titulo":"Desenvolvimento de tecnologia para mensuração de custo de entrega utilizando aprendizado de máquina.",
-			"coordenador":"Alysson Rodrigues",
-			"unidade_lotacao": "Superintendência de Informática",
-			"unidade_execucao": "Superintendência de Informática",
-			"palavras_chaves":"sigprojetos",
-			"email":["alysson@gmail.com","alysson@hotmail.com"],
-			"ano":"2020",
-			"vigencia_inicio":"01/08/2020",
-			"vigencia_fim": "01/08/2021"
-		},
-		{
-		"grande_area": "Ciências Exatas e da Terra",
-		"area":"Ciências da Computação",
-		"subarea":"",
-		"especialidade":"",
-		"grupo_de_pesquisa":"",
-		"resumo": "Desenvolvimento de uma tecnologia para mensurar o custo de entrega de um determinado artefato utilizando padrões identificados a partir de série histórica.",
+	{
+		"informacoes_sigilosas": "sim",
+		"hipotese_legal": "",
+		"propriedeade_intelectual":"sim",
+		"classificacao_pesquisa":"Com Inovacao Tecnologica"
+	},
+	{
+		"numero_projeto": "14917",
+		"numero_do_processo": "23077.043794/2017-64",
+		"titulo":"Desenvolvimento de um modelo de governança para aquisições no contexto de universidades públicas",
+		"coordenador":"ANDRE MORAIS GURGEL",
+		"unidade_lotacao": "DEPARTAMENTO DE CIÊNCIAS ADMINISTRATIVAS",
+		"unidade_execucao": "DEPARTAMENTO DE CIÊNCIAS ADMINISTRATIVAS",
+		"palavras_chaves":["governança","gestao de risco","modelo de aquisições","gestão pública nas Universidades Federais"],
+		"email":["desenv@si.ufrn.br"],
+		"ano":"2020",
+		"vigencia_inicio":"01/08/2020",
+		"vigencia_fim": "01/08/2021"
+	},
+	{	
+		"aplica_ao_projeto": "NÃO",
+		"objeto_da_pesquisa": "Pesquisa envolvendo seres humanos",
+		"classificacao_do_objeto":['Outros tipos de pesquisa envolvendo seres humanos'],
+		"documentos":{
+			"descricao": '',
+			"protocolo": '',
+			"arquivo": ''}
+	},
+	{
+		"grande_area": "Ciências Sociais Aplicadas",
+		"area":"Administração",
+		"subarea":"Administração Pública",
+		"especialidade":"Organizações Públicas",
+		"grupo_de_pesquisa":"Gestão de Riscos",
+		"resumo": "A área de governança vem crescendo tanto no contexto acadêmico quanto empresarial. Esta crescente se demonstra pelo desenvolvimento recente de sete modelos referência que tratam sobre este tema. Contudo, estes modelos são adequados a uma realidade empresarial voltada principalmente para a questão financeira.No contexto universitário a área de aquisições é crítica sendo uma área ampla envolvendo desde os processos de planejamento das contratações (identificação das demandas e elaboração do edital), seleção do fornecedor (realização da licitação) e gestão de contratos (fiscalização e pagamento). Além disto, as especificidade técnicas das universidades por possuírem três processos finalísticos básicos, tais como ensino, pesquisa e extensão provoca uma maior complexidade, já que envolve necessidade de exportações, serviços e materiais bem específicos que necessitam de trabalho e priorização diferenciadas. Por isto, neste projeto de pesquisa busca-se desenvolver um modelo de governança para aquisições adequado a realidade do contexto universitário público brasileiro. Para isto, desenvolveu-se uma pesquisa descritiva, envolvendo os processos de aquisição de uma universidade pública. Para isto será empregado o estudo de caso na Universidade Federal do Rio Grande do Norte. Será adotada a estratégia de pesquisa Pesquisa-Ação, que possui um caráter participativo e permite um processo de mudança planejada (THIOLLENT, 2011; MACKE, 2006). Este método evidencia a realidade dos problemas observados bem como o conjunto de ações de intervenção envolvidas na condução da pesquisa, alcançando dinamicidade no estudo dos problemas, decisões, ações, negociações, conflitos e reflexões que acontecem entre as partes envolvidas no processo de resolução do problema (THIOLLENT, 2009). Com isto, busca-se responder a problemática de se entender os mecanismos de governança empregados pelas universidades públicas no contexto de aquisições e como poderiam ser aperfeiçoados estes mecanismos a partir da integração de contextos já trabalhados em outros setores possibilitando assim o desenvolvimento de um modelo específico para este setor.",
 		"Introducao": "Introdução do projeto",
-		"Objetivos": "Os objetivos são: 1 - isso, 2 - aquilo",
-		"objetivos_especificos":{
-			"nome":"Objetivo específico 1",
-			"metas":[{
-				"numero":"1",
-				"descricao": "descrição meta 1",
-				"indicador":"funcionalidades",
-				"qtd":"5"
-			}],
-			"resultados":[{
-				"numero":"1",
-				"descricao": "descrição resultado 1",
-				"indicador":"funcionalidades",
-				"qtd":"10"
-			}],
+		"metodos": "",
+		"referência":"CBOK, BPM. Guia para o Gerenciamento de Processos de Negócio Corpo Comum de Conhecimento. Association of Business Process Management Professionals. ABPMP BPM CBOK, v. 3, 2013. DEMING, W. Edwards. Qualidade: a revolução da administração. In: Qualidade: a revolução da administração. Marques Saraiva, 1990. HAMMER, Michael; HERSHMAN, Lsa W. Mais rápido barato e melhor. Rio de Janeiro: editora, 2011. HARMON, Paul. Business process change: A guide for business managers and BPM and Six Sigma professionals. Morgan Kaufmann, 2010. JESUS, Leandro; MOREIRA, André. Repensando a Gestão por Meio de Processos: Como BPM pode transformar negócios e gerar crescimento e lucro. EloGroup, 2015. LEAL. M. J.; CAMURI, W. C. A governança corporativa e os modelos mundialmente praticados. Revista de Ciências Gerenciais, v. 12, n. 15, p. 59-74, 2008. LIKER, Jeffrey K. O modelo Toyota: 14 princípios de gestão do maior fabricante do mundo. Bookman Editora, 2016. MACKE, J. A pesquisa-ação como estratégia de pesquisa qualitativa. In: GODOI, C. K.; BANDEIRA-DE-MELLO, R.; SILVA, A. B.. Pesquisa qualitativa em estudos organizacionais: paradigmas, estratégias e métodos. São Paulo: Saraiva, 2006. PAIM, Rafael et al. Gestão de processos: pensar, agir e aprender. Bookman Editora, 2009. SMITH, Howard; FINGAR, Peter. Business process management (BPM): The third wave. 2006. SOUSA NETO, Manoel Veras; JÚNIOR, MEDEIROS; AFINAL, J. V. o que é Business Process Management (BPM)? Um novo conceito para um novo contexto. Revista Eletrônica de Sistemas de Informação, v. 7, n. 2, 2008. THIOLLENT, Michel. Pesquisa-ação nas organizações. São Paulo: Atlas, 2009. VOM BROCKE, Jan; ROSEMANN, Michael. Manual de BPM: gestão de processos de negócio. Bookman Editora, 2013.",
+		"Objetivo Geral": "Os objetivos geral do projeto é proporcionar tal coisa...",
+		"objetivos_especificos":[
+		{
+			"descricao":"Entender os processos formais de trabalho envolvidos no processo de aquisições no contexto universitário"
+		},
+		{
+			"descricao":"Compreender como se dá a integração do setor de aquisições ao planejamento estratégico das universidades"
+		},
+		{
+			"descricao":"Entender o contexto de terceirização nas universidades"
+		},
+		{
+			"descricao":"Desenvolver um modelo de gestão de riscos para aquisições adequado a realidade universitária"
 		}
+		]
 	},
 	{
-		"valor_plano_aplicacao":"360.000,00",
-		"doap":"18.000,00",
-		"tempo_execucao":"24",
-		"valor_projeto":"378.000,00",
-		"fonte_recurso":"B"
+		"agenda_2030": '16'
+	},
+	
+	[
+		{
+			"numero":"1",
+			"tipo":"meta",
+			"descricao":"",
+			"indicador": "Artigo completo submetido ou publicado em anais de eventos",
+			"quantidade":"2"
+		},
+		{
+			"numero":"1",
+			"tipo": "Resultados Esperados",
+			"descricao": "desenvolvimento de um framework de gestão de riscos em aquisições alinhados a realidade universitária brasileira.",
+			"indicador":"produto",
+			"quantidade":"1"
+		}
+	],
+	
+	{
+		"tipo_impacto":"Tecnológico",
+		"difusao":[
+			{
+				"difusao": "artigos científicos",
+				"publico":"gestores de universidades publicas",
+				"forma_divulgacao":"revistas científicas"
+			}
+		]
+	},
+	[
+		{
+			"tipo_da_infraestrutura":"",
+			"nome_infraestrutura":""
+		}
+	],
+	[
+		{
+			"categoria":"DOCENTE",
+			"classificacao_participante_externo":"",
+			"membro":"ANDRE MORAIS GURGEL",
+			"cpf_passaporte_membro": "123.456.789-10",
+			"instituicao":"UFRN",
+			"funcao":"COORDENADOR(A)",
+			"formacao":"DOUTORADO",
+			"vinculo":"DOCENTE",
+			"ch_projeto":"1",
+			"tipo_remuneracao":"BOLSA DE PESQUISA",
+			"dados_bancarios":{
+								"tipo":"CONTA CORRENTE",
+								"banco":"001 – Banco do Brasil S.A.",
+								"agencia":"1234-5",
+								"conta":"12345-6"
+							}
+
+		}
+	],
+	[
+		{
+			"categoria":"SERVIDOR",
+			"classificacao_participante_externo":"",
+			"membro":"BRUNO JOSE PEREIRA SILVA",
+			"cpf_passaporte_membro": "123.456.789-11",
+			"instituicao":"UFRN",
+			"funcao":"COLABORADOR(A)",
+			"formacao":"ESPECIALIZAÇÃO",
+			"vinculo":"ESTUDANTE MESTRADO",
+			"ch_projeto":"4",
+			"tipo_remuneracao":"SEM REMUNERAÇÃO",
+			"dados_bancarios":{
+								"tipo":"",
+								"banco":"",
+								"agencia":"",
+								"conta":""
+							}
+
+		}
+	],
+	[
+		{
+			"categoria":"DOCENTE",
+			"classificacao_participante_externo":"",
+			"membro":"JOSUÉ VITOR DE MEDEIROS JÚNIOR",
+			"cpf_passaporte_membro": "123.456.789-12",
+			"instituicao":"UFRN",
+			"funcao":"COLABORADOR(A)",
+			"formacao":"DOUTORADO",
+			"vinculo":"DOCENTE",
+			"ch_projeto":"1",
+			"tipo_remuneracao":"BOLSA DE PESQUISA",
+			"dados_bancarios":{
+								"tipo":"CONTA CORRENTE",
+								"banco":"001 – Banco do Brasil S.A.",
+								"agencia":"1234-6",
+								"conta":"12345-7"
+							}
+
+		}
+	],
+	[
+		{
+			"categoria":"",
+			"ambito": "",
+			"nome_parceira" : "",
+			"cnpj_parceira":""
+		}
+	],
+	{
+		"etapa":"",
+		"mes_inicio":"",
+		"mes_fim":"",
+		"atividades":[
+						{
+							"tipo":"",
+							"descricao":"",
+							"membros":[
+											{
+												"nome_membro":"",
+												"ch_atividade":"",
+												"plano_atividade":{
+													"descricao": "",
+													"justificativa":""
+												}
+											}
+										]
+							
+						}
+					]
+		
 	},
 	{
-	"situacao":"Submetido - Doc. Ok",
-	"responsavel_funpec":" ",
-	"parecer_funpec": " ",
-	"responsavel_analise_tecnica":" ",
-	"parecer_analise_tecnica": " ",
-	"responsavel_fiscalizacao":" ",
-	"parecer_fiscalizacao": " ",
-	"responsavel_instrumento_juridico":" ",
-	"parecer_instrumento_juridico": " "
+		"tipo_documento": "",
+		"descricao":"",
+		"arquivo":""
 	},
 	{
-		"banco":" ",
-		"agencia": " ",
-		"conta": " "
-	}	
+		"pendencias": ""
+	}
 );
 
 var projetoPesquisa2 = new ProjetoPesquisa(
+	{
+		"informacoes_sigilosas": "sim",
+		"hipotese_legal": "",
+		"propriedeade_intelectual":"sim",
+		"classificacao_pesquisa":"Com Inovacao Tecnologica"
+	},
+	{
+		"numero_projeto": "14917",
+		"numero_do_processo": "23077.043770/2020-52",
+		"titulo":"ADOÇÃO DO MODELO LCC ÁGIL NA APRENDIZAGEM BASEADA EM PROJETOS",
+		"coordenador":"JOSUÉ VITOR DE MEDEIROS JÚNIOR ",
+		"unidade_lotacao": "DEPARTAMENTO DE CIÊNCIAS ADMINISTRATIVAS",
+		"unidade_execucao": "DEPARTAMENTO DE CIÊNCIAS ADMINISTRATIVAS",
+		"palavras_chaves":["gestão de projetos","LCC","gestão visual"],
+		"email":["desenv@si.ufrn.br"],
+		"ano":"2020",
+		"vigencia_inicio":"01/10/2020",
+		"vigencia_fim": "31/12/2021"
+	},
+	{	
+		"aplica_ao_projeto": "NÃO",
+		"objeto_da_pesquisa": "Pesquisa envolvendo seres humanos",
+		"classificacao_do_objeto":['Outros tipos de pesquisa envolvendo seres humanos'],
+		"documentos":{
+			"descricao": '',
+			"protocolo": '',
+			"arquivo": ''}
+	},
+	{
+		"grande_area": "Ciências Sociais Aplicadas",
+		"area":"Administração",
+		"subarea":"Administração Pública",
+		"especialidade":"Organizações Públicas",
+		"grupo_de_pesquisa":"Gestão de Riscos",
+		"resumo": "Em geral, as práticas de ensino ainda estão ancoradas numa abordagem centralizada no professor e focadas no conteúdo, tornando o processo de ensino-aprendizagem pouco efetivo. A Aprendizagem Baseada em Projetos (ABPj) se propõe lidar com esta questão ao possibilitar um processo focado no aprendiz, através da execução de projetos que possibilitem aos alunos exercitar e refletir sobre conceitos relevantes com autonomia necessária.",
+		"introducao": "Introdução do projeto",
+		"metodos": "",
+		"referência":"CICLO DE VIDA DE PROJETOS MATOS, Sandra; LOPES, Eurico. Prince2 or PMBOK–a question of choice. Procedia Technology, v. 9, p. 787-794, 2013. MEDEIROS, Bruno Campelo et al. Planejando projetos com o Life Cycle Canvas (LCC): um estudo sobre um projeto de infraestrutura pública estadual. Exacta – EP, São Paulo, v. 15, n. 1, p. 155-170, 2016. MEDEIROS, Bruno Campelo et al. Life Cycle Canvas (LCC): Um modelo visual para a gestão do ciclo de vida do projeto. Revista de Gestão e Projetos-GeP, v. 9, n. 1, p. 87-101, 2018. PMI. Um guia do conhecimento em gerenciamento de projetos.",
+		"objetivo Geral": "Os objetivos geral do projeto é proporcionar tal coisa...",
+		"objetivos_especificos":[
+			{
+				descricao:"Aumento no engajamento dos discentes na escrita do artigo como projeto de aprendizagem e na construção e execução de projetos de inovação"
+			},
+			{
+				descricao:"Aprimorar a aquisição de conhecimento referente ao conteúdo das disciplinas de gestão de projetos e gestão da inovação"
+			},
+			{
+				descricao:"Auxiliar no desenvolvimento de competências necessárias ao desenvolvimento do projeto de aprendizagem estabelecido para as disciplinas envolvidas"
+			}
+		]
+	},
+	{
+		"agenda_2030": '16'
+	},
+	[
 		{
-			"informacoes_sigilosas": "sim",
-			"hipotese_legal": "",
-			"propriedeade_intelectual":"sim",
-			"classificacao_pesquisa":"Com Inovacao Tecnologica"
+			"numero":"1",
+			"tipo":"meta",
+			"descricao":"",
+			"indicador": "Artigo completo submetido ou publicado em anais de eventos",
+			"quantidade":"2"
 		},
 		{
-			"numero_projeto": "0002",
-			"titulo":"Integração com Plataforma CNPq",
-			"coordenador":"Alysson Rodrigues",
-			"unidade_lotacao": "Superintendência de Informática",
-			"unidade_execucao": "Superintendência de Informática",
-			"palavras_chaves":"sigprojetos",
-			"email":["alysson@gmail.com","alysson@hotmail.com"],
-			"ano":"2020",
-			"vigencia_inicio":"01/08/2020",
-			"vigencia_fim": "01/08/2021"
-		},
-		{
-		"grande_area": "Ciências Exatas e da Terra",
-		"area":"Ciências da Computação",
-		"subarea":"",
-		"especialidade":"",
-		"grupo_de_pesquisa":"",
-		"resumo": "Desenvolvimento de uma plataforma de integração com o CNPq",
-		"Introducao": "Introdução do projeto",
-		"Objetivos": "Os objetivos são: 1 - isso, 2 - aquilo",
-		"objetivos_especificos":{
-			"nome":"Objetivo específico 1",
-			"metas":[{
-				"numero":"1",
-				"descricao": "descrição meta 1",
-				"indicador":"funcionalidades",
-				"qtd":"5"
-			}],
-			"resultados":[{
-				"numero":"1",
-				"descricao": "descrição resultado 1",
-				"indicador":"funcionalidades",
-				"qtd":"10"
-			}],
+			"numero":"1",
+			"tipo": "Resultados Esperados",
+			"descricao": "desenvolvimento de um framework de gestão de riscos em aquisições alinhados a realidade universitária brasileira.",
+			"indicador":"produto",
+			"quantidade":"1"
 		}
+	],
+	{
+		"tipo_impacto":"Tecnológico",
+		"difusao": [
+			{
+				"difusao": "artigos científicos",
+				"publico":"gestores de universidades publicas",
+				"forma_divulgacao":"revistas científicas"
+			}
+		]
+	},
+	[
+		{
+			"tipo_da_infraestrutura":"",
+			"nome_infraestrutura":""
+		}
+	],
+	[
+		{
+			"categoria":"DOCENTE",
+			"classificacao_participante_externo":"",
+			"membro":"ANDRE MORAIS GURGEL",
+			"cpf_passaporte_membro": "123.456.789-10",
+			"instituicao":"UFRN",
+			"funcao":"COORDENADOR(A)",
+			"formacao":"DOUTORADO",
+			"vinculo":"DOCENTE",
+			"ch_projeto":"1",
+			"tipo_remuneracao":"BOLSA DE PESQUISA",
+			"dados_bancarios":{
+								"tipo":"CONTA CORRENTE",
+								"banco":"001 – Banco do Brasil S.A.",
+								"agencia":"1234-5",
+								"conta":"12345-6"
+							}
+
+		}
+	],
+	[
+		{
+			"categoria":"SERVIDOR",
+			"classificacao_participante_externo":"",
+			"membro":"BRUNO JOSE PEREIRA SILVA",
+			"cpf_passaporte_membro": "123.456.789-11",
+			"instituicao":"UFRN",
+			"funcao":"COLABORADOR(A)",
+			"formacao":"ESPECIALIZAÇÃO",
+			"vinculo":"ESTUDANTE MESTRADO",
+			"ch_projeto":"4",
+			"tipo_remuneracao":"SEM REMUNERAÇÃO",
+			"dados_bancarios":{
+								"tipo":"",
+								"banco":"",
+								"agencia":"",
+								"conta":""
+							}
+
+		}
+	],
+	[
+		{
+			"categoria":"DOCENTE",
+			"classificacao_participante_externo":"",
+			"membro":"JOSUÉ VITOR DE MEDEIROS JÚNIOR",
+			"cpf_passaporte_membro": "123.456.789-12",
+			"instituicao":"UFRN",
+			"funcao":"COLABORADOR(A)",
+			"formacao":"DOUTORADO",
+			"vinculo":"DOCENTE",
+			"ch_projeto":"1",
+			"tipo_remuneracao":"BOLSA DE PESQUISA",
+			"dados_bancarios":{
+								"tipo":"CONTA CORRENTE",
+								"banco":"001 – Banco do Brasil S.A.",
+								"agencia":"1234-6",
+								"conta":"12345-7"
+							}
+
+		}
+	],
+	[
+		{
+			"categoria":"",
+			"ambito": "",
+			"nome_parceira" : "",
+			"cnpj_parceira":""
+		}
+	],
+	{
+		"etapa":"",
+		"mes_inicio":"",
+		"mes_fim":"",
+		"atividades":[
+						{
+							"tipo":"",
+							"descricao":"",
+							"membros":  [
+											{
+												"nome_membro":"",
+												"ch_atividade":"",
+												"plano_atividade":{
+													"descricao": "",
+													"justificativa":""
+												}
+											}
+										]
+						}						
+			]
 	},
 	{
-		"valor_plano_aplicacao":"200.000,00",
-		"doap":"10.000,00",
-		"tempo_execucao":"24",
-		"valor_projeto":"210.000,00",
-		"fonte_recurso":"B"
+		"tipo_documento": "",
+		"descricao":"",
+		"arquivo":""
 	},
 	{
-	"situacao":"Submetido - Doc. Pendentes",
-	"responsavel_funpec":" ",
-	"parecer_funpec": " ",
-	"responsavel_analise_tecnica":" ",
-	"parecer_analise_tecnica": " ",
-	"responsavel_fiscalizacao":" ",
-	"parecer_fiscalizacao": " ",
-	"responsavel_instrumento_juridico":" ",
-	"parecer_instrumento_juridico": " "
-	},
-	{
-		"banco":" ",
-		"agencia": " ",
-		"conta": " "
-	}	
+		"pendencias": ""
+	}
 );
 
 var projetoPesquisa3 = new ProjetoPesquisa(
-		{
-			"informacoes_sigilosas": "sim",
-			"hipotese_legal": "",
-			"propriedeade_intelectual":"sim",
-			"classificacao_pesquisa":"Com Inovacao Tecnologica"
-		},
-		{
-			"numero_projeto": "0003",
-			"titulo":"Desenvolvimento de novo sistema para gestão de projetos acadêmicos",
-			"coordenador":"Josué Victor",
-			"unidade_lotacao": "DEPARTAMENTO DE ADMINISTRAÇÃO",
-			"unidade_execucao": "Superintendência de Informática",
-			"palavras_chaves":"sigprojetos",
-			"email":["josue@gmail.com","josue@hotmail.com"],
-			"ano":"2019",
-			"vigencia_inicio":"01/09/2019",
-			"vigencia_fim": "31/12/2021"
-		},
-		{
-		"grande_area": "Ciências Exatas e da Terra",
-		"area":"Ciências da Computação",
-		"subarea":"",
-		"especialidade":"",
-		"grupo_de_pesquisa":"",
-		"resumo": "Desenvolvimento de uma plataforma que permita a submissão, execução e monitoramentos dos projetos acadêmicos",
+	{
+		"informacoes_sigilosas": "sim",
+		"hipotese_legal": "",
+		"propriedeade_intelectual":"sim",
+		"classificacao_pesquisa":"Com Inovacao Tecnologica"
+	},
+	{
+		"numero_projeto": "23972",
+		"numero_do_processo": "23077.043704/2020-32",
+		"titulo":"Compreendendo o processo de formação de oportunidades em empresas nascentes de internet (startups)",
+		"coordenador":"JOSUÉ VITOR DE MEDEIROS JÚNIOR",
+		"unidade_lotacao": "DEPARTAMENTO DE CIÊNCIAS ADMINISTRATIVAS",
+		"unidade_execucao": "DEPARTAMENTO DE CIÊNCIAS ADMINISTRATIVAS",
+		"palavras_chaves":["governança","gestao de risco","modelo de aquisições","gestão pública nas Universidades Federais"],
+		"email":["desenv@si.ufrn.br"],
+		"ano":"2019",
+		"vigencia_inicio":"01/08/2019",
+		"vigencia_fim": "01/08/2021"
+	},
+	{	
+		"aplica_ao_projeto": "NÃO",
+		"objeto_da_pesquisa": "Pesquisa envolvendo seres humanos",
+		"classificacao_do_objeto":['Outros tipos de pesquisa envolvendo seres humanos'],
+		"documentos":{
+			"descricao": '',
+			"protocolo": '',
+			"arquivo": ''}
+	},
+	{
+		"grande_area": "Ciências Sociais Aplicadas",
+		"area":"Administração",
+		"subarea":"Administração Pública",
+		"especialidade":"Organizações Públicas",
+		"grupo_de_pesquisa":"Gestão de Riscos",
+		"resumo": "O presente projeto tem como objetivo compreender o processo de de formação de oportunidades empreendedoras para novos negócios de tecnologia de internet baseado na abordagem do empreendedorismo orientado por hipóteses, mais alinhada ao aprendizado, rapidez e foco necessários durante a formação de empresas desta natureza. Para cumprir com o objetivo, será desenvolvido um modelo, a ser validado a partir do processo de formação de oportunidades com empreendedores com empresas recém incubadas no Núcleo de Aplicação de Tecnologias Avançadas (NATA) da UFRN, bem como com alunos de disciplinas de empreendedorismo dos cursos de Ciência e Tecnologia e Administração da UFRN. Dados serão capturados durante o processo, relacionados à ação empreendedora, interação social destes e ideias em desenvolvimento, e comparados com o desempenho dos participantes, de maneira que o modelo possa facilitar a compreensão de como as ideias relacionados a oportunidades são concebidas, validadas, refinadas e descartadas, bem como a relação entre padrões de desenvolvimento e o desempenho das equipes/empresas nascentes ao final do processo. Pretende-se que o modelo proposto possa apoiar o ensino de empreendedorismo e propicie maior maturidade na oportunidade identificada por empresas de tecnologia.",
 		"Introducao": "Introdução do projeto",
-		"Objetivos": "Os objetivos são: 1 - isso, 2 - aquilo",
-		"objetivos_especificos":{
-			"nome":"Objetivo específico 1",
-			"metas":[{
+		"metodos": "",
+		"referência":"ALDRICH, H. E. & MARTINEZ, M. A. (2001) Many are Called, but Few are Chosen: Na Evolutionary Perspective for the Study of Entrepreneurship. Entrepreneurship: Theory & Practice, v. 25, n.4, pp. 41-56",
+		"Objetivo Geral": "Os objetivos geral do projeto é proporcionar tal coisa...",
+		"objetivos_especificos":[
+			{
+				"descricao":"Entender os processos..."
+			},
+			{
+				"descricao":"Compreender como se dá a integração..."
+			}
+		]
+	},
+	{
+		"agenda_2030": '16'
+	},
+	[
+			{
 				"numero":"1",
-				"descricao": "descrição meta 1",
-				"indicador":"funcionalidades",
-				"qtd":"5"
-			}],
-			"resultados":[{
+				"tipo":"meta",
+				"descricao":"",
+				"indicador": "Artigo completo submetido ou publicado em anais de eventos",
+				"quantidade":"2"
+			},
+			{
 				"numero":"1",
-				"descricao": "descrição resultado 1",
-				"indicador":"funcionalidades",
-				"qtd":"10"
-			}],
+				"tipo": "Resultados Esperados",
+				"descricao": "desenvolvimento de um framework de gestão de riscos em aquisições alinhados a realidade universitária brasileira.",
+				"indicador":"produto",
+				"quantidade":"1"
+			}
+	],
+	{
+		"tipo_impacto":"Tecnológico",
+		"difusao":[
+			{
+				"difusao": "artigos científicos",
+				"publico":"gestores de universidades publicas",
+				"forma_divulgacao":"revistas científicas"
+			}
+		]
+	},
+	[
+		{
+			"tipo_da_infraestrutura":"",
+			"nome_infraestrutura":""
 		}
+	],
+	[
+		{
+			"categoria":"DOCENTE",
+			"classificacao_participante_externo":"",
+			"membro":"ANDRE MORAIS GURGEL",
+			"cpf_passaporte_membro": "123.456.789-10",
+			"instituicao":"UFRN",
+			"funcao":"COORDENADOR(A)",
+			"formacao":"DOUTORADO",
+			"vinculo":"DOCENTE",
+			"ch_projeto":"1",
+			"tipo_remuneracao":"BOLSA DE PESQUISA",
+			"dados_bancarios":{
+								"tipo":"CONTA CORRENTE",
+								"banco":"001 – Banco do Brasil S.A.",
+								"agencia":"1234-5",
+								"conta":"12345-6"
+							}
+
+		}
+	],
+	[
+		{
+			"categoria":"SERVIDOR",
+			"classificacao_participante_externo":"",
+			"membro":"BRUNO JOSE PEREIRA SILVA",
+			"cpf_passaporte_membro": "123.456.789-11",
+			"instituicao":"UFRN",
+			"funcao":"COLABORADOR(A)",
+			"formacao":"ESPECIALIZAÇÃO",
+			"vinculo":"ESTUDANTE MESTRADO",
+			"ch_projeto":"4",
+			"tipo_remuneracao":"SEM REMUNERAÇÃO",
+			"dados_bancarios":{
+								"tipo":"",
+								"banco":"",
+								"agencia":"",
+								"conta":""
+							}
+
+		}
+	],
+	[
+		{
+			"categoria":"DOCENTE",
+			"classificacao_participante_externo":"",
+			"membro":"JOSUÉ VITOR DE MEDEIROS JÚNIOR",
+			"cpf_passaporte_membro": "123.456.789-12",
+			"instituicao":"UFRN",
+			"funcao":"COLABORADOR(A)",
+			"formacao":"DOUTORADO",
+			"vinculo":"DOCENTE",
+			"ch_projeto":"1",
+			"tipo_remuneracao":"BOLSA DE PESQUISA",
+			"dados_bancarios":{
+								"tipo":"CONTA CORRENTE",
+								"banco":"001 – Banco do Brasil S.A.",
+								"agencia":"1234-6",
+								"conta":"12345-7"
+							}
+
+		}
+	],
+	[
+		{
+			"categoria":"",
+			"ambito": "",
+			"nome_parceira" : "",
+			"cnpj_parceira":""
+		}
+	],
+	{
+		"etapa":"",
+		"mes_inicio":"",
+		"mes_fim":"",
+		"atividades":[
+					{
+						"tipo":"",
+						"descricao":"",
+						"membros":[
+									{
+										"nome_membro":"",
+										"ch_atividade":"",
+										"plano_atividade":{
+											"descricao": "",
+											"justificativa":""
+										}
+									}
+								]
+						
+					}
+				]
 	},
 	{
-		"valor_plano_aplicacao":"200.000,00",
-		"doap":"10.000,00",
-		"tempo_execucao":"24",
-		"valor_projeto":"210.000,00",
-		"fonte_recurso":"B"
+		"tipo_documento": "",
+		"descricao":"",
+		"arquivo":""
 	},
 	{
-	"situacao":"Aguardando Parecer DCF",
-	"responsavel_funpec":" ",
-	"parecer_funpec": " ",
-	"responsavel_analise_tecnica":" ",
-	"parecer_analise_tecnica": " ",
-	"responsavel_fiscalizacao":" ",
-	"parecer_fiscalizacao": " ",
-	"responsavel_instrumento_juridico":" ",
-	"parecer_instrumento_juridico": " "
-	},
-	{
-		"banco":" ",
-		"agencia": " ",
-		"conta": " "
-	}	
+		"pendencias": ""
+	}
 );
 
 projetosPesquisa.push(projetoPesquisa1, projetoPesquisa2, projetoPesquisa3);
@@ -254,13 +619,43 @@ function Analise(numero_projeto,tipo,responsavel,parecer,dados_bancarios,documen
 	this.documentos = documentos;
 }
 
-function ProjetoPesquisa(informacoes_preliminares,dados_gerais,dados_projeto,plano_aplicacao,tramitacao,dados_bancarios){
+function Historico(numero_projeto,tipo,data,login,situacao,fluxo){
+	this.numero_projeto = numero_projeto;
+	this.tipo = tipo;
+	this.data = data;
+	this.login = login;
+	this.situacao = situacao;
+	this.fluxo = fluxo;
+}
+
+function ProjetoPesquisa(informacoes_preliminares,dados_gerais,boas_praticas_cientificas,dados_projeto,agenda_2030,
+						metas_resultados,impactos_previstos,infraestrutura_recursos, membros_do_projeto, parcerias, cronograma_execucao, documentos, pendencias){
 	this.informacoes_preliminares = informacoes_preliminares;
 	this.dados_gerais = dados_gerais;
+	this.boas_praticas_cientificas = boas_praticas_cientificas;
 	this.dados_projeto = dados_projeto;
+	this.agenda_2030 = agenda_2030;
+	this.metas_resultados = metas_resultados;
+	this.impactos_previstos = impactos_previstos;
+	this.infraestrutura_recursos = infraestrutura_recursos;
+	this.membros_do_projeto = membros_do_projeto;
+	this.parcerias = parcerias;
+	this.cronograma_execucao = cronograma_execucao;
+	this.documentos = documentos;
+	this.pendencias = pendencias;
+}
+
+function FormalizacaoProjetoPesquisa(numero_projeto_pesquisa,dados_gerais,participes,metas_resultados,recursos,
+			plano_aplicacao, cronograma_desembolso, documentos, pendencias){
+	this.numero_projeto_pesquisa = numero_projeto_pesquisa;
+	this.dados_gerais = dados_gerais;
+	this.participes = participes;
+	this.metas_resultados = metas_resultados;
+	this.recursos = recursos;
 	this.plano_aplicacao = plano_aplicacao;
-	this.tramitacao = tramitacao;
-	this.dados_bancarios = dados_bancarios;
+	this.cronograma_desembolso = cronograma_desembolso;
+	this.documentos = documentos;
+	this.pendencias = pendencias;
 }
 
 function Recurso(entidade,valor_financiado,responsavel){
@@ -369,8 +764,8 @@ function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 	var dadosProjeto = [projetoPesquisa.dados_gerais.numero_projeto,projetoPesquisa.dados_gerais.titulo,
 						projetoPesquisa.dados_gerais.coordenador, projetoPesquisa.plano_aplicacao.fonte_recurso, 
 						projetoPesquisa.plano_aplicacao.valor_projeto, projetoPesquisa.tramitacao.situacao, 
-		"Funpec: " + responsavelFunpec + " Analise técnica: " + responsavelAnalise +
-		" Fiscalização: " + responsavelFiscalizacao + " Instrumento Jurídico: " + responsavelInstrumento
+		"Funpec: ".bold() + responsavelFunpec + " Analise técnica: ".bold() + responsavelAnalise +
+		" Fiscalização: ".bold() + responsavelFiscalizacao + " Instrumento Jurídico: ".bold() + responsavelInstrumento
 		,projetoPesquisa.dados_gerais.ano];
 
 	return dadosProjeto;
