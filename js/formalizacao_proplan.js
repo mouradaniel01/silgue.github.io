@@ -984,7 +984,7 @@ function popularTabelaProjetosPesquisa(idTabela){
  		solicitacoes = JSON.parse(localStorage.getItem('solicitacoes'));
  	}*/
 
- 	solicitacao.push([tipo, data.getDate() + "/"+ (data.getMonth()+1) + "/" + data.getYear() + " " + data.getHours() + ":" + data.getMinutes(),'login']);
+ 	solicitacao.push([tipo, data.getDate() + "/"+ (data.getMonth()+1) + "/" + data.getFullYear() + " " + data.getHours() + ":" + data.getMinutes(),'login']);
 
  	//localStorage.setItem('solicitacoes',JSON.stringify(solicitacoes));
 
