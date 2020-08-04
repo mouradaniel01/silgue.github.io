@@ -45,7 +45,7 @@ var projetoPesquisa1 = new ProjetoPesquisa(
 		"classificacao_pesquisa":"Com Inovacao Tecnologica"
 	},
 	{
-		"numero_projeto": "14917",
+		"numero_projeto": "14901",
 		"numero_do_processo": "23077.043794/2017-64",
 		"titulo":"Desenvolvimento de um modelo de governança para aquisições no contexto de universidades públicas",
 		"coordenador":"ANDRE MORAIS GURGEL",
@@ -227,6 +227,14 @@ var projetoPesquisa1 = new ProjetoPesquisa(
 		"tipo_documento": "",
 		"descricao":"",
 		"arquivo":""
+	},
+	{
+		"valor_plano_aplicacao":"249.392,00",
+		"valor_remuneracao_ufrn":"0",
+		"doap":"20.552,00",
+		"tempo_execucao":"24",
+		"valor_projeto":"249.392,00",
+		"fonte_recurso":"B"
 	},
 	{
 		"pendencias": ""
@@ -418,6 +426,14 @@ var projetoPesquisa2 = new ProjetoPesquisa(
 		"arquivo":""
 	},
 	{
+		"valor_plano_aplicacao":"249.392,00",
+		"valor_remuneracao_ufrn":"0",
+		"doap":"20.552,00",
+		"tempo_execucao":"24",
+		"valor_projeto":"249.392,00",
+		"fonte_recurso":"B"
+	},
+	{
 		"pendencias": ""
 	}
 );
@@ -605,11 +621,26 @@ var projetoPesquisa3 = new ProjetoPesquisa(
 		"arquivo":""
 	},
 	{
+		"valor_plano_aplicacao":"249.392,00",
+		"valor_remuneracao_ufrn":"0",
+		"doap":"20.552,00",
+		"tempo_execucao":"24",
+		"valor_projeto":"249.392,00",
+		"fonte_recurso":"B"
+	},
+	{
 		"pendencias": ""
 	}
 );
 
 projetosPesquisa.push(projetoPesquisa1, projetoPesquisa2, projetoPesquisa3);
+
+var historicoProjeto1 = new Historico('14901','SOLICITAÇÃO DE FORMALIZAÇÃO','28/07/2020 9:15','josuevitor','SUBMETIDO COM SUCESSO','EM ANÁLISE PELA PROPLAN');
+var historicoProjeto2 = new Historico('14917','SOLICITAÇÃO DE FORMALIZAÇÃO','31/07/2020 15:32','josuevitor','SUBMETIDO COM SUCESSO','EM ANÁLISE PELA PROPLAN');
+var historicoProjeto3 = new Historico('23972','SOLICITAÇÃO DE FORMALIZAÇÃO','04/08/2020 09:10','josuevitor','SUBMETIDO COM SUCESSO','EM ANÁLISE PELA PROPLAN');
+
+var historicos = [];
+
 
 function Analise(numero_projeto,tipo,responsavel,parecer,dados_bancarios,documentos){
 	this.numero_projeto = numero_projeto;
@@ -619,9 +650,9 @@ function Analise(numero_projeto,tipo,responsavel,parecer,dados_bancarios,documen
 	this.documentos = documentos;
 }
 
-function Historico(numero_projeto,tipo,data,login,situacao,fluxo){
+function Historico(numero_projeto,solicitacao,data,login,situacao,fluxo){
 	this.numero_projeto = numero_projeto;
-	this.tipo = tipo;
+	this.solicitacao = solicitacao;
 	this.data = data;
 	this.login = login;
 	this.situacao = situacao;
@@ -629,7 +660,7 @@ function Historico(numero_projeto,tipo,data,login,situacao,fluxo){
 }
 
 function ProjetoPesquisa(informacoes_preliminares,dados_gerais,boas_praticas_cientificas,dados_projeto,agenda_2030,
-						metas_resultados,impactos_previstos,infraestrutura_recursos, membros_do_projeto, parcerias, cronograma_execucao, documentos, pendencias){
+						metas_resultados,impactos_previstos,infraestrutura_recursos, membros_do_projeto, parcerias, cronograma_execucao, documentos, plano_aplicacao, pendencias){
 	this.informacoes_preliminares = informacoes_preliminares;
 	this.dados_gerais = dados_gerais;
 	this.boas_praticas_cientificas = boas_praticas_cientificas;
@@ -642,6 +673,7 @@ function ProjetoPesquisa(informacoes_preliminares,dados_gerais,boas_praticas_cie
 	this.parcerias = parcerias;
 	this.cronograma_execucao = cronograma_execucao;
 	this.documentos = documentos;
+	this.plano_aplicacao = plano_aplicacao;
 	this.pendencias = pendencias;
 }
 
@@ -728,6 +760,10 @@ function inicioModuloPROPLAN(){
 	analises.push(analiseDefault);
 
 	localStorage.setItem('analises',JSON.stringify(analises));
+
+	historicos.push(historicoProjeto1,historicoProjeto2,historicoProjeto3);
+
+	localStorage.setItem('historicos',JSON.stringify(historicos));
 	
 }
 
@@ -739,6 +775,7 @@ function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 	var responsavelAnalise = " ";
 	var responsavelFiscalizacao = " ";
 	var responsavelInstrumento = " ";
+	var fluxo = " ";
 
 	if(localStorage.getItem('analises') != null){
 		JSON.parse(localStorage.getItem('analises')).forEach( function (item){
@@ -747,7 +784,7 @@ function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 
 	analises.forEach( function (analise){
 		if(analise.numero_projeto === identificador && analise.tipo === 'FUNPEC'){
-			responsavelFunpec = analise.responsavel;
+			fluxo = analise.responsavel;
 		}
 		if(analise.numero_projeto === identificador && analise.tipo === 'ANALISE'){
 			responsavelAnalise = analise.responsavel;
@@ -761,12 +798,23 @@ function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 	});
 	}
 
+	if(localStorage.getItem('historicos') != null){
+		JSON.parse(localStorage.getItem('historicos')).forEach( function (historico){
+		historicos.push(item);
+	});
+
+	historicos.forEach( function (historico){
+		if(historico.numero_projeto === identificador){
+			fluxo = historico.fluxo;
+		}
+	});
+	}
+
 	var dadosProjeto = [projetoPesquisa.dados_gerais.numero_projeto,projetoPesquisa.dados_gerais.titulo,
 						projetoPesquisa.dados_gerais.coordenador, projetoPesquisa.plano_aplicacao.fonte_recurso, 
-						projetoPesquisa.plano_aplicacao.valor_projeto, projetoPesquisa.tramitacao.situacao, 
-		"Funpec: ".bold() + responsavelFunpec + " Analise técnica: ".bold() + responsavelAnalise +
-		" Fiscalização: ".bold() + responsavelFiscalizacao + " Instrumento Jurídico: ".bold() + responsavelInstrumento
-		,projetoPesquisa.dados_gerais.ano];
+						projetoPesquisa.plano_aplicacao.valor_projeto, fluxo, "Funpec: ".bold() + responsavelFunpec + 
+						" Analise técnica: ".bold() + responsavelAnalise + " Fiscalização: ".bold() + responsavelFiscalizacao + 
+						" Instrumento Jurídico: ".bold() + responsavelInstrumento,projetoPesquisa.dados_gerais.ano];
 
 	return dadosProjeto;
 }
@@ -815,8 +863,22 @@ function retornarDadosConsultaGeralProjetadaProplanByIdentificador(identificador
 
 	var projetoPesquisa = JSON.parse(localStorage.getItem(identificador));
 
+	var fluxo = " ";
+
+	if(localStorage.getItem('historicos') != null){
+		JSON.parse(localStorage.getItem('historicos')).forEach( function (historico){
+		historicos.push(item);
+		});
+
+		historicos.forEach( function (historico){
+			if(historico.numero_projeto === identificador){
+				fluxo = historico.fluxo;
+			}
+		});
+	}
+
 	var dadosProjeto = [projetoPesquisa.dados_gerais.numero_projeto,projetoPesquisa.dados_gerais.titulo,
-						projetoPesquisa.plano_aplicacao.fonte_recurso,projetoPesquisa.tramitacao.situacao,projetoPesquisa.dados_gerais.ano];
+						projetoPesquisa.plano_aplicacao.fonte_recurso,fluxo,projetoPesquisa.dados_gerais.ano];
 
 	return dadosProjeto;
 
