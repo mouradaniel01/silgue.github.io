@@ -29,6 +29,8 @@ var projetosPesquisa = [];
 var responsaveis = [];
 var analises = [];
 var solicitacoes = [];
+var membros = [];
+var formalizacoes = [];
 
 var numero_projeto = JSON.parse(sessionStorage.getItem('num_projeto'));
 
@@ -129,69 +131,7 @@ var projetoPesquisa1 = new ProjetoPesquisa(
 			"nome_infraestrutura":""
 		}
 	],
-	[
-		{
-			"categoria":"DOCENTE",
-			"classificacao_participante_externo":"",
-			"membro":"ANDRE MORAIS GURGEL",
-			"cpf_passaporte_membro": "123.456.789-10",
-			"instituicao":"UFRN",
-			"funcao":"COORDENADOR(A)",
-			"formacao":"DOUTORADO",
-			"vinculo":"DOCENTE",
-			"ch_projeto":"1",
-			"tipo_remuneracao":"BOLSA DE PESQUISA",
-			"dados_bancarios":{
-								"tipo":"CONTA CORRENTE",
-								"banco":"001 – Banco do Brasil S.A.",
-								"agencia":"1234-5",
-								"conta":"12345-6"
-							}
-
-		}
-	],
-	[
-		{
-			"categoria":"SERVIDOR",
-			"classificacao_participante_externo":"",
-			"membro":"BRUNO JOSE PEREIRA SILVA",
-			"cpf_passaporte_membro": "123.456.789-11",
-			"instituicao":"UFRN",
-			"funcao":"COLABORADOR(A)",
-			"formacao":"ESPECIALIZAÇÃO",
-			"vinculo":"ESTUDANTE MESTRADO",
-			"ch_projeto":"4",
-			"tipo_remuneracao":"SEM REMUNERAÇÃO",
-			"dados_bancarios":{
-								"tipo":"",
-								"banco":"",
-								"agencia":"",
-								"conta":""
-							}
-
-		}
-	],
-	[
-		{
-			"categoria":"DOCENTE",
-			"classificacao_participante_externo":"",
-			"membro":"JOSUÉ VITOR DE MEDEIROS JÚNIOR",
-			"cpf_passaporte_membro": "123.456.789-12",
-			"instituicao":"UFRN",
-			"funcao":"COLABORADOR(A)",
-			"formacao":"DOUTORADO",
-			"vinculo":"DOCENTE",
-			"ch_projeto":"1",
-			"tipo_remuneracao":"BOLSA DE PESQUISA",
-			"dados_bancarios":{
-								"tipo":"CONTA CORRENTE",
-								"banco":"001 – Banco do Brasil S.A.",
-								"agencia":"1234-6",
-								"conta":"12345-7"
-							}
-
-		}
-	],
+	[membros],
 	[
 		{
 			"categoria":"",
@@ -328,69 +268,7 @@ var projetoPesquisa2 = new ProjetoPesquisa(
 			"nome_infraestrutura":""
 		}
 	],
-	[
-		{
-			"categoria":"DOCENTE",
-			"classificacao_participante_externo":"",
-			"membro":"ANDRE MORAIS GURGEL",
-			"cpf_passaporte_membro": "123.456.789-10",
-			"instituicao":"UFRN",
-			"funcao":"COORDENADOR(A)",
-			"formacao":"DOUTORADO",
-			"vinculo":"DOCENTE",
-			"ch_projeto":"1",
-			"tipo_remuneracao":"BOLSA DE PESQUISA",
-			"dados_bancarios":{
-								"tipo":"CONTA CORRENTE",
-								"banco":"001 – Banco do Brasil S.A.",
-								"agencia":"1234-5",
-								"conta":"12345-6"
-							}
-
-		}
-	],
-	[
-		{
-			"categoria":"SERVIDOR",
-			"classificacao_participante_externo":"",
-			"membro":"BRUNO JOSE PEREIRA SILVA",
-			"cpf_passaporte_membro": "123.456.789-11",
-			"instituicao":"UFRN",
-			"funcao":"COLABORADOR(A)",
-			"formacao":"ESPECIALIZAÇÃO",
-			"vinculo":"ESTUDANTE MESTRADO",
-			"ch_projeto":"4",
-			"tipo_remuneracao":"SEM REMUNERAÇÃO",
-			"dados_bancarios":{
-								"tipo":"",
-								"banco":"",
-								"agencia":"",
-								"conta":""
-							}
-
-		}
-	],
-	[
-		{
-			"categoria":"DOCENTE",
-			"classificacao_participante_externo":"",
-			"membro":"JOSUÉ VITOR DE MEDEIROS JÚNIOR",
-			"cpf_passaporte_membro": "123.456.789-12",
-			"instituicao":"UFRN",
-			"funcao":"COLABORADOR(A)",
-			"formacao":"DOUTORADO",
-			"vinculo":"DOCENTE",
-			"ch_projeto":"1",
-			"tipo_remuneracao":"BOLSA DE PESQUISA",
-			"dados_bancarios":{
-								"tipo":"CONTA CORRENTE",
-								"banco":"001 – Banco do Brasil S.A.",
-								"agencia":"1234-6",
-								"conta":"12345-7"
-							}
-
-		}
-	],
+	[membros],
 	[
 		{
 			"categoria":"",
@@ -522,69 +400,7 @@ var projetoPesquisa3 = new ProjetoPesquisa(
 			"nome_infraestrutura":""
 		}
 	],
-	[
-		{
-			"categoria":"DOCENTE",
-			"classificacao_participante_externo":"",
-			"membro":"ANDRE MORAIS GURGEL",
-			"cpf_passaporte_membro": "123.456.789-10",
-			"instituicao":"UFRN",
-			"funcao":"COORDENADOR(A)",
-			"formacao":"DOUTORADO",
-			"vinculo":"DOCENTE",
-			"ch_projeto":"1",
-			"tipo_remuneracao":"BOLSA DE PESQUISA",
-			"dados_bancarios":{
-								"tipo":"CONTA CORRENTE",
-								"banco":"001 – Banco do Brasil S.A.",
-								"agencia":"1234-5",
-								"conta":"12345-6"
-							}
-
-		}
-	],
-	[
-		{
-			"categoria":"SERVIDOR",
-			"classificacao_participante_externo":"",
-			"membro":"BRUNO JOSE PEREIRA SILVA",
-			"cpf_passaporte_membro": "123.456.789-11",
-			"instituicao":"UFRN",
-			"funcao":"COLABORADOR(A)",
-			"formacao":"ESPECIALIZAÇÃO",
-			"vinculo":"ESTUDANTE MESTRADO",
-			"ch_projeto":"4",
-			"tipo_remuneracao":"SEM REMUNERAÇÃO",
-			"dados_bancarios":{
-								"tipo":"",
-								"banco":"",
-								"agencia":"",
-								"conta":""
-							}
-
-		}
-	],
-	[
-		{
-			"categoria":"DOCENTE",
-			"classificacao_participante_externo":"",
-			"membro":"JOSUÉ VITOR DE MEDEIROS JÚNIOR",
-			"cpf_passaporte_membro": "123.456.789-12",
-			"instituicao":"UFRN",
-			"funcao":"COLABORADOR(A)",
-			"formacao":"DOUTORADO",
-			"vinculo":"DOCENTE",
-			"ch_projeto":"1",
-			"tipo_remuneracao":"BOLSA DE PESQUISA",
-			"dados_bancarios":{
-								"tipo":"CONTA CORRENTE",
-								"banco":"001 – Banco do Brasil S.A.",
-								"agencia":"1234-6",
-								"conta":"12345-7"
-							}
-
-		}
-	],
+	[membros],
 	[
 		{
 			"categoria":"",
@@ -621,14 +437,6 @@ var projetoPesquisa3 = new ProjetoPesquisa(
 		"arquivo":""
 	},
 	{
-		"valor_plano_aplicacao":"249.392,00",
-		"valor_remuneracao_ufrn":"0",
-		"doap":"20.552,00",
-		"tempo_execucao":"24",
-		"valor_projeto":"249.392,00",
-		"fonte_recurso":"B"
-	},
-	{
 		"pendencias": ""
 	}
 );
@@ -641,6 +449,365 @@ var historicoProjeto3 = new Historico('23972','SOLICITAÇÃO DE FORMALIZAÇÃO',
 
 var historicos = [];
 
+var formalizacaoProjetoPesquisa1 = new FormalizacaoProjetoPesquisa(
+	'14901',
+	{
+		"fonte_recurso": "B",
+		"tempo_execucao": "24",
+		"partilha_resultados": "Em Parceria",
+		"criacoes_resultantes":"Desenvolvimento de produto"
+	},
+	[
+	{ufrn},{funpec}
+	],
+	[
+		{
+			"numero":"1",
+			"tipo":"meta",
+			"descricao":"",
+			"indicador": "Artigo completo submetido ou publicado em anais de eventos",
+			"quantidade":"2",
+			"mes_inicio": "01/10/2020",
+			"mes_fim": "31/12/2020",
+			"membros":[
+						{
+							"nome_membro":"JOSUÉ VITOR",
+							"ch_atividade":"4",
+							"plano_atividade":{
+								"descricao": "Descrição do plano de atividade",
+								"justificativa":"justificativa do plano de atividade"
+								}
+						}
+						]
+		},
+		{
+			"numero":"1",
+			"tipo": "Resultados Esperados",
+			"descricao": "desenvolvimento de um framework de gestão de riscos em aquisições alinhados a realidade universitária brasileira.",
+			"indicador":"produto",
+			"quantidade":"1",
+			"mes_inicio":"3",
+			"mes_fim":"6",
+			"membros":[
+						{
+							"nome_membro":"JOSUÉ VITOR",
+							"ch_atividade":"4",
+							"plano_atividade":{
+								"descricao": "Descrição do plano de atividade",
+								"justificativa":"justificativa do plano de atividade"
+								}
+						},
+						{
+							"nome_membro":"BRUNO JOSE PEREIRA SILVA",
+							"ch_atividade":"8",
+							"plano_atividade":{
+								"descricao": "Descrição do plano de atividade",
+								"justificativa":"justificativa do plano de atividade"
+								}
+						}
+						]
+		}
+	],
+	{
+		"orgao_entidade": "UFRN",
+		"valor_financiado": "R$300.000,00",
+		"responsavel_execucao_financeira": "FUNPEC"
+	},
+	{
+		"valor_projeto":"249.392,00",
+		"valor_plano_aplicacao":"249.392,00",
+		"valor_remuneracao_ufrn":"0",
+		"doap":"20.552,00",
+		"rubricas":[
+			{
+			"rubrica":"14 - Diárias",
+			"valor": "R$15.000,00"
+		},
+		{
+			"rubrica":"18 - Auxílio Financeiro ao Estudante",
+			"valor": "R$12.000,00"
+		},
+		{
+			"rubrica":"20 - Auxilio Financeiro ao Pesquisador",
+			"valor": "R$60.000,00"
+		},
+		{
+			"rubrica":"36 - Serviço Pessoa Física",
+			"valor": "R$10.000,00"
+		},
+		{
+			"rubrica":"48 - Auxílio a Pessoa Física",
+			"valor": "R$40.000,00"
+		}
+		]
+	},
+	"",
+	{
+		"tipo_documento": "",
+		"descricao":"",
+		"arquivo":""
+	},
+	{
+		"pendencias": ""
+	}
+	);
+
+var formalizacaoProjetoPesquisa2 = new FormalizacaoProjetoPesquisa(
+	'23972',
+	{
+		"fonte_recurso": "B",
+		"tempo_execucao": "24",
+		"partilha_resultados": "Mútua Colaboração",
+		"criacoes_resultantes":"Desenvolvimento de produto"
+	},
+	[
+	{ufrn},{funpec}
+	],
+	[
+		{
+			"numero":"1",
+			"tipo":"meta",
+			"descricao":"",
+			"indicador": "Artigo completo submetido ou publicado em anais de eventos",
+			"quantidade":"2",
+			"mes_inicio": "01/10/2020",
+			"mes_fim": "31/12/2020",
+			"membros":[
+						{
+							"nome_membro":"JOSUÉ VITOR",
+							"ch_atividade":"4",
+							"plano_atividade":{
+								"descricao": "Descrição do plano de atividade",
+								"justificativa":"justificativa do plano de atividade"
+								}
+						}
+						]
+		},
+		{
+			"numero":"1",
+			"tipo": "Resultados Esperados",
+			"descricao": "desenvolvimento de um framework de gestão de riscos em aquisições alinhados a realidade universitária brasileira.",
+			"indicador":"produto",
+			"quantidade":"1",
+			"mes_inicio":"1",
+			"mes_fim":"3",
+			"membros":[
+						{
+							"nome_membro":"JOSUÉ VITOR",
+							"ch_atividade":"4",
+							"plano_atividade":{
+								"descricao": "Descrição do plano de atividade",
+								"justificativa":"justificativa do plano de atividade"
+								}
+						},
+						{
+							"nome_membro":"BRUNO JOSE PEREIRA SILVA",
+							"ch_atividade":"8",
+							"plano_atividade":{
+								"descricao": "Descrição do plano de atividade",
+								"justificativa":"justificativa do plano de atividade"
+								}
+						}
+						]
+		}
+	],
+	{
+		"orgao_entidade": "UFRN",
+		"valor_financiado": "R$250.000,00",
+		"responsavel_execucao_financeira": "FUNPEC"
+	},
+	{
+		"valor_projeto":"250.000,00",
+		"valor_plano_aplicacao":"250.000,00",
+		"valor_remuneracao_ufrn":"0",
+		"doap":"12,500,00",
+		"rubricas":[
+					{
+			"rubrica":"14 - Diárias",
+			"valor": "R$15.000,00"
+		},
+		{
+			"rubrica":"18 - Auxílio Financeiro ao Estudante",
+			"valor": "R$12.000,00"
+		},
+		{
+			"rubrica":"20 - Auxilio Financeiro ao Pesquisador",
+			"valor": "R$60.000,00"
+		},
+		{
+			"rubrica":"36 - Serviço Pessoa Física",
+			"valor": "R$10.000,00"
+		},
+		{
+			"rubrica":"48 - Auxílio a Pessoa Física",
+			"valor": "R$40.000,00"
+		}
+					]
+		
+	},"",
+	{
+		"tipo_documento": "",
+		"descricao":"",
+		"arquivo":""
+	},
+	{
+		"pendencias": ""
+	}
+	);
+
+var formalizacaoProjetoPesquisa3 = new FormalizacaoProjetoPesquisa(
+	'14917',
+	{
+		"fonte_recurso": "B",
+		"tempo_execucao": "24",
+		"partilha_resultados": "Em Parceria",
+		"criacoes_resultantes":"Desenvolvimento de produto"
+	},
+	[
+	{ufrn},{funpec}
+	],
+	[
+		{
+			"numero":"1",
+			"tipo":"meta",
+			"descricao":"",
+			"indicador": "Artigo completo submetido ou publicado em anais de eventos",
+			"quantidade":"2",
+			"mes_inicio": "01/10/2020",
+			"mes_fim": "31/12/2020",
+			"membros":[
+						{
+							"nome_membro":"JOSUÉ VITOR",
+							"ch_atividade":"4",
+							"plano_atividade":{
+								"descricao": "Descrição do plano de atividade",
+								"justificativa":"justificativa do plano de atividade"
+								}
+						}
+						]
+		},
+		{
+			"numero":"1",
+			"tipo": "Resultados Esperados",
+			"descricao": "desenvolvimento de um framework de gestão de riscos em aquisições alinhados a realidade universitária brasileira.",
+			"indicador":"produto",
+			"quantidade":"1",
+			"mes_inicio":"1",
+			"mes_fim":"3",
+			"membros":[
+						{
+							"nome_membro":"JOSUÉ VITOR",
+							"ch_atividade":"4",
+							"plano_atividade":{
+								"descricao": "Descrição do plano de atividade",
+								"justificativa":"justificativa do plano de atividade"
+								}
+						},
+						{
+							"nome_membro":"BRUNO JOSE PEREIRA SILVA",
+							"ch_atividade":"8",
+							"plano_atividade":{
+								"descricao": "Descrição do plano de atividade",
+								"justificativa":"justificativa do plano de atividade"
+								}
+						}
+						]
+		}
+	],
+	{
+		"orgao_entidade": "UFRN",
+		"valor_financiado": "R$300.000,00",
+		"responsavel_execucao_financeira": "FUNPEC"
+	},
+	{
+		"valor_projeto":"300.000,00",
+		"valor_remuneracao_ufrn":"0",
+		"doap":"15,000,00",
+		"rubricas":[
+					{
+			"rubrica":"14 - Diárias",
+			"valor": "R$15.000,00"
+		},
+		{
+			"rubrica":"18 - Auxílio Financeiro ao Estudante",
+			"valor": "R$12.000,00"
+		},
+		{
+			"rubrica":"20 - Auxilio Financeiro ao Pesquisador",
+			"valor": "R$60.000,00"
+		},
+		{
+			"rubrica":"36 - Serviço Pessoa Física",
+			"valor": "R$10.000,00"
+		},
+		{
+			"rubrica":"48 - Auxílio a Pessoa Física",
+			"valor": "R$40.000,00"
+		}
+					]
+		
+	},"",
+	{
+		"tipo_documento": "",
+		"descricao":"",
+		"arquivo":""
+	},
+	{
+		"pendencias": ""
+	}
+	);
+
+var fomalizacoes = [];
+
+var membro_1 = new Membro(
+	"SERVIDOR",
+	"",
+	"BRUNO JOSE PEREIRA SILVA",
+	"123.456.789-10",
+	"UFRN",
+	"COLABORADOR(A)",
+	"ESPECIALIZAÇÃO",
+	"ESTUDANTE MESTRADO",
+	"4",
+	"RETRIBUIÇÃO PECUNIÁRIA",
+	{"tipo":"conta corrente","banco":"001 - Banco do Brasil","agencia":"1234-5","conta":"12345-6"}
+	);
+var membro_2 = new Membro("DOCENTE",
+	"",
+	"JOSUE VITOR",
+	"101.613.789-11",
+	"UFRN",
+	"COORDENADOR(A)",
+	"DOUTORADO",
+	"ESTUDANTE MESTRADO",
+	"4",
+	"BOLSA DE PESQUISA",
+	{"tipo":"conta corrente","banco":"001 - Banco do Brasil","agencia":"1234-6","conta":"12345-7"});
+var membro_3 = new Membro("DOCENTE",
+	"",
+	"ANDRE MORAIS GURGEL",
+	"021.814.968-12",
+	"UFRN",
+	"COLABORADOR",
+	"DOUTORADO",
+	"ESTUDANTE MESTRADO",
+	"4",
+	"BOLSA DE PESQUISA",
+	{"tipo":"conta corrente","banco":"001 - Banco do Brasil","agencia":"1234-6","conta":"12345-7"});
+
+function Membro(categoria,participante_externo,nome,cpf_passaporte,instituicao,
+				funcao,vinculo,ch_projeto,tipo_remuneracao,dados_bancarios){
+	this.categoria = categoria;
+	this.participante_externo = participante_externo;
+	this.nome = nome;
+	this.cpf_passaporte = cpf_passaporte;
+	this.instituicao = instituicao;
+	this.funcao = funcao;
+	this.vinculo = vinculo;
+	this.ch_projeto = ch_projeto;
+	this.tipo_remuneracao = tipo_remuneracao;
+	this.dados_bancarios = dados_bancarios;
+}
 
 function Analise(numero_projeto,tipo,responsavel,parecer,dados_bancarios,documentos){
 	this.numero_projeto = numero_projeto;
@@ -659,8 +826,21 @@ function Historico(numero_projeto,solicitacao,data,login,situacao,fluxo){
 	this.fluxo = fluxo;
 }
 
+function FormalizacaoProjetoPesquisa(numero_projeto,dados_gerais,participes,metas_resultados,recursos,
+									plano_aplicacao,cronograma_desembolso,documentos,pendencias){
+	this.numero_projeto = numero_projeto;
+	this.dados_gerais = dados_gerais;
+	this.participes = participes;
+	this.metas_resultados = metas_resultados;
+	this.recursos = recursos;
+	this.plano_aplicacao = plano_aplicacao;
+	this.cronograma_desembolso = cronograma_desembolso;
+	this.documentos = documentos;
+	this.pendencias = pendencias;
+}
+
 function ProjetoPesquisa(informacoes_preliminares,dados_gerais,boas_praticas_cientificas,dados_projeto,agenda_2030,
-						metas_resultados,impactos_previstos,infraestrutura_recursos, membros_do_projeto, parcerias, cronograma_execucao, documentos, plano_aplicacao, pendencias){
+						metas_resultados,impactos_previstos,infraestrutura_recursos, membros_do_projeto, parcerias, cronograma_execucao, documentos, pendencias){
 	this.informacoes_preliminares = informacoes_preliminares;
 	this.dados_gerais = dados_gerais;
 	this.boas_praticas_cientificas = boas_praticas_cientificas;
@@ -673,13 +853,12 @@ function ProjetoPesquisa(informacoes_preliminares,dados_gerais,boas_praticas_cie
 	this.parcerias = parcerias;
 	this.cronograma_execucao = cronograma_execucao;
 	this.documentos = documentos;
-	this.plano_aplicacao = plano_aplicacao;
 	this.pendencias = pendencias;
 }
 
-function FormalizacaoProjetoPesquisa(numero_projeto_pesquisa,dados_gerais,participes,metas_resultados,recursos,
+function FormalizacaoProjetoPesquisa(numero_projeto,dados_gerais,participes,metas_resultados,recursos,
 			plano_aplicacao, cronograma_desembolso, documentos, pendencias){
-	this.numero_projeto_pesquisa = numero_projeto_pesquisa;
+	this.numero_projeto = numero_projeto;
 	this.dados_gerais = dados_gerais;
 	this.participes = participes;
 	this.metas_resultados = metas_resultados;
@@ -764,6 +943,14 @@ function inicioModuloPROPLAN(){
 	historicos.push(historicoProjeto1,historicoProjeto2,historicoProjeto3);
 
 	localStorage.setItem('historicos',JSON.stringify(historicos));
+
+	formalizacoes.push(formalizacaoProjetoPesquisa1,formalizacaoProjetoPesquisa2,formalizacaoProjetoPesquisa3);
+
+	localStorage.setItem('formalizacoes', JSON.stringify(formalizacoes));
+
+	membros.push(membro_1,membro_2,membro_3);
+
+	localStorage.setItem('membros',JSON.stringify(membros));
 	
 }
 
@@ -776,9 +963,18 @@ function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 	var responsavelFiscalizacao = " ";
 	var responsavelInstrumento = " ";
 	var fluxo = " ";
+	var valor_projeto = "";
+	var fonte_recurso = "";
+
 
 	if(localStorage.getItem('analises') != null){
 		JSON.parse(localStorage.getItem('analises')).forEach( function (item){
+			analises.forEach( function(analise){
+				if(item.numero_projeto === analise.numero_projeto){
+					analises.splice(analises.indexOf(analise), 1);
+				}
+			});	
+		
 		analises.push(item);
 	});
 
@@ -799,7 +995,12 @@ function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 	}
 
 	if(localStorage.getItem('historicos') != null){
-		JSON.parse(localStorage.getItem('historicos')).forEach( function (historico){
+		JSON.parse(localStorage.getItem('historicos')).forEach( function (item){
+			historicos.forEach( function(historico){
+				if(item.numero_projeto === historico.numero_projeto){
+					historicos.splice(historicos.indexOf(historico), 1);
+				}
+			});	
 		historicos.push(item);
 	});
 
@@ -810,9 +1011,27 @@ function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 	});
 	}
 
-	var dadosProjeto = [projetoPesquisa.dados_gerais.numero_projeto,projetoPesquisa.dados_gerais.titulo,
-						projetoPesquisa.dados_gerais.coordenador, projetoPesquisa.plano_aplicacao.fonte_recurso, 
-						projetoPesquisa.plano_aplicacao.valor_projeto, fluxo, "Funpec: ".bold() + responsavelFunpec + 
+	if(localStorage.getItem('formalizacoes') != null){
+		JSON.parse(localStorage.getItem('formalizacoes')).forEach( function (item){
+			formalizacoes.forEach( function(formalizacao){
+				if(item.numero_projeto === formalizacao.numero_projeto){
+					formalizacoes.splice(formalizacoes.indexOf(formalizacao), 1);
+				}
+			});	
+		formalizacoes.push(item);
+	});
+
+	formalizacoes.forEach( function (formalizacao){
+		if(formalizacao.numero_projeto === identificador){
+			valor_projeto = formalizacao.plano_aplicacao.valor_projeto;
+			fonte_recurso = formalizacao.dados_gerais.fonte_recurso;
+		}
+	});
+	}
+
+	var dadosProjeto = [projetoPesquisa.dados_gerais.numero_projeto,projetoPesquisa.dados_gerais.titulo,projetoPesquisa.informacoes_preliminares.classificacao_pesquisa,
+						projetoPesquisa.dados_gerais.coordenador, fonte_recurso, 
+						valor_projeto, fluxo, "Funpec: ".bold() + responsavelFunpec + 
 						" Analise técnica: ".bold() + responsavelAnalise + " Fiscalização: ".bold() + responsavelFiscalizacao + 
 						" Instrumento Jurídico: ".bold() + responsavelInstrumento,projetoPesquisa.dados_gerais.ano];
 
@@ -849,10 +1068,31 @@ function retornaDadosAnaliseProjetadaProplan(param){
 	var projetoPesquisa = param;
 
 	var arrayDadosProjeto = [];
+	var valor_projeto = "";
+	var fonte_recurso = "";
+	var doap = "";
+	var tempo_execucao = "";
+	var valor_plano_aplicacao = "";
+
+	if(localStorage.getItem('formalizacoes') != null){
+		JSON.parse(localStorage.getItem('formalizacoes')).forEach( function (formalizacao){
+		formalizacoes.push(formalizacao);
+	});
+
+	formalizacoes.forEach( function (formalizacao){
+		if(formalizacao.numero_projeto === projetoPesquisa.dados_gerais.numero_projeto){
+			valor_projeto = formalizacao.plano_aplicacao.valor_projeto;
+			fonte_recurso = formalizacao.dados_gerais.fonte_recurso;
+			doap = formalizacao.plano_aplicacao.doap;
+			tempo_execucao = formalizacao.dados_gerais.tempo_execucao;
+			valor_plano_aplicacao = formalizacao.plano_aplicacao.valor_plano_aplicacao;
+		}
+	});
+	}
 
 	var dadosProjeto = [projetoPesquisa.dados_gerais.numero_projeto,projetoPesquisa.dados_gerais.titulo,projetoPesquisa.dados_gerais.coordenador,
- 			projetoPesquisa.dados_gerais.ano, projetoPesquisa.plano_aplicacao.tempo_execucao, projetoPesquisa.plano_aplicacao.fonte_recurso, 
- 			projetoPesquisa.plano_aplicacao.valor_projeto, projetoPesquisa.plano_aplicacao.valor_plano_aplicacao,projetoPesquisa.plano_aplicacao.doap];
+ 			projetoPesquisa.dados_gerais.ano, tempo_execucao,fonte_recurso, 
+ 			valor_projeto,valor_plano_aplicacao,doap];
 
 	arrayDadosProjeto.push(dadosProjeto)
 
@@ -864,10 +1104,12 @@ function retornarDadosConsultaGeralProjetadaProplanByIdentificador(identificador
 	var projetoPesquisa = JSON.parse(localStorage.getItem(identificador));
 
 	var fluxo = " ";
+	var fonte_recurso = "";
+
 
 	if(localStorage.getItem('historicos') != null){
 		JSON.parse(localStorage.getItem('historicos')).forEach( function (historico){
-		historicos.push(item);
+		historicos.push(historico);
 		});
 
 		historicos.forEach( function (historico){
@@ -877,8 +1119,20 @@ function retornarDadosConsultaGeralProjetadaProplanByIdentificador(identificador
 		});
 	}
 
+	if(localStorage.getItem('formalizacoes') != null){
+		JSON.parse(localStorage.getItem('formalizacoes')).forEach( function (formalizacao){
+		formalizacoes.push(formalizacao);
+	});
+
+	formalizacoes.forEach( function (formalizacao){
+		if(formalizacao.numero_projeto === identificador){
+			fonte_recurso = formalizacao.dados_gerais.fonte_recurso;
+		}
+	});
+	}
+
 	var dadosProjeto = [projetoPesquisa.dados_gerais.numero_projeto,projetoPesquisa.dados_gerais.titulo,
-						projetoPesquisa.plano_aplicacao.fonte_recurso,fluxo,projetoPesquisa.dados_gerais.ano];
+						fonte_recurso,fluxo,projetoPesquisa.dados_gerais.ano];
 
 	return dadosProjeto;
 

@@ -60,7 +60,8 @@ function criarBotaoAcao(acao,array,parametro){ //nomeAcao,link,onclick_,idTabela
 	    i = document.createElement("i");
 	    i.setAttribute("class", "far fa-trash-alt");
 	    botao.appendChild(i);
-	}else if(nomeAcao === 'redirecionar'){
+	}
+	/*else if(nomeAcao === 'redirecionar'){
 		botao = document.createElement("a");
 	    botao.setAttribute("href",href);
 	    botao.setAttribute("class", "link-normal");
@@ -70,7 +71,8 @@ function criarBotaoAcao(acao,array,parametro){ //nomeAcao,link,onclick_,idTabela
 	    i = document.createElement("i");
 	    i.setAttribute("class", "fas fa-external-link-alt");
 	    botao.appendChild(i);
-	}else if(nomeAcao === 'modal-exibicao' || nomeAcao === 'modal-cadastro'){
+	}*/
+	else if(nomeAcao === 'modal-exibicao' || nomeAcao === 'modal-cadastro'){
 		botao = document.createElement("button");
 	    botao.setAttribute("type", "button");
 	    botao.setAttribute("class", "btn btn-link");
@@ -96,9 +98,19 @@ function popularTabela(idTabela,array,acoes){
 
  	var parametroBotao = "";
 
+ 	var redirecionar = "";
+
+ 	var botao;
+
  	if(idTabela != 'tabela-historico-instrumento-juridico'){
 		limpaTabela(tabela);
  	}
+
+ 	acoes.forEach( function (acao){
+ 		if(acao[0] === 'redirecionar'){
+ 			redirecionar = acao[1];
+ 		}
+ 	});
 
 	array.forEach(function(item){
 
@@ -126,9 +138,17 @@ function popularTabela(idTabela,array,acoes){
 	    	i = numColunas-1;
 
 	    	if (resultado.hasOwnProperty(j)) {
-
-				novaCelula.innerHTML = resultado[j];
-		      	
+	    		if(j===0){
+	    			botao = document.createElement("a");
+				    botao.setAttribute("href",redirecionar);
+				    botao.setAttribute("class", "link-normal");
+				    botao.setAttribute("onclick","passarNumeroProjeto("+resultado[0]+")");
+				    botao.innerHTML = resultado[j];
+				    novaCelula.appendChild(botao);
+	    		}else{
+					novaCelula.innerHTML = resultado[j];
+	    		}
+   	
 		    }else{
 		    	novaCelula.setAttribute("align","right");
       			novaCelula.setAttribute("class","btn-group");
