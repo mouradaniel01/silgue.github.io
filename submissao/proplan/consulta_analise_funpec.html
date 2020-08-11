@@ -145,6 +145,7 @@
           </aside>
         </div>
         <div class="container-conteudo__content w-100">
+                      
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a class="link" href="../../../index.html"><i class="fas fa-home"></i></a></li>
@@ -158,18 +159,18 @@
           <div class="row m-0">
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">
-              <table id="tabela-projetos-pesquisa" class="table table-striped" data-toggle="table">
+              <table id="tabela-consulta-funpec" class="table table-striped" data-toggle="table">
                 <thead>
                   <tr>
-                    <th style="width: 60px">Número</th>
+                    <th style="width: 70px">Número</th>
                     <th style="width: 120px">Título</th>
                     <th style="width: 100px">Classificação</th>
                     <th style="width: 120px">Coordenador</th>
                     <th style="width: 60px">Tipo</th>
-                    <th style="width: 80px">Valor do Projeto</th>
-                    <th style="width: 100px">Situação</th>
+                    <th style="width: 85px">Valor do Projeto</th>
+                    <th style="width: 90px">Situação</th>
                     <th style="width: 120px">Responsáveis</th>
-                    <th style="width: 40px">Ano</th>
+                    <th style="width: 50px">Ano</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -205,7 +206,7 @@
     <script src="../../js/tabelas.js"></script> 
     <script type="text/javascript">
       $(document).ready(function () {
-        $('#tabela-projetos-pesquisa').DataTable( {
+        $('#tabela-consulta-funpec').DataTable( {
           lengthChange: false,
           language: {
             search: "_INPUT_",
@@ -213,10 +214,11 @@
           }
 
 
-        } );
+        });
+
       });
 
-      popularTabelaConsultaProplan('tabela-projetos-pesquisa','analise_funpec.html');     
+      popularTabelaConsultaFunpec('tabela-consulta-funpec','analise_funpec.html');  
       
     </script> 
   </body>

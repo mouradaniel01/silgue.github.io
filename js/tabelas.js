@@ -44,6 +44,7 @@ function criarBotaoAcao(acao,array,parametro){ //nomeAcao,link,onclick_,idTabela
 	var onclickFunction = acao[2];
 	var idTabela = acao[3];
 	var param = parametro;
+	var botao;
 	
 
 	if(onclickFunction !='' && onclickFunction.indexOf("()") != -1){
@@ -60,6 +61,14 @@ function criarBotaoAcao(acao,array,parametro){ //nomeAcao,link,onclick_,idTabela
 	    i = document.createElement("i");
 	    i.setAttribute("class", "far fa-trash-alt");
 	    botao.appendChild(i);
+	}else if(nomeAcao === 'remover_arquivo'){
+		botao = document.createElement("button");
+	    botao.setAttribute("onclick","removerLinhaTabelaArquivo(this.parentNode.parentNode.rowIndex,'"+idTabela+"','"+acao[4]+"','"+param+"')");
+	    botao.setAttribute("class", "btn btn-link");
+	    i = document.createElement("i");
+	    i.setAttribute("class", "far fa-trash-alt");
+	    botao.appendChild(i);
+
 	}
 	/*else if(nomeAcao === 'redirecionar'){
 		botao = document.createElement("a");
@@ -90,7 +99,7 @@ function criarBotaoAcao(acao,array,parametro){ //nomeAcao,link,onclick_,idTabela
 	return botao;
 }
 
-function popularTabela(idTabela,array,acoes){
+function popularTabela(idTabela,array,acoes,limpaTela,linkNoRegistro){
 
 	//acoes: array com as informações de cada ação do botão. Precisa das seguintes informações: nomeAcao,acao,idTabela, parametro 
 
@@ -102,15 +111,17 @@ function popularTabela(idTabela,array,acoes){
 
  	var botao;
 
- 	if(idTabela != 'tabela-historico-instrumento-juridico'){
+ 	if(limpaTela === 'sim'){
 		limpaTabela(tabela);
  	}
 
- 	acoes.forEach( function (acao){
+ 	if(Array.isArray(acoes) && acoes != null){
+ 		acoes.forEach( function (acao){
  		if(acao[0] === 'redirecionar'){
  			redirecionar = acao[1];
  		}
  	});
+ 	}
 
 	array.forEach(function(item){
 
@@ -123,6 +134,8 @@ function popularTabela(idTabela,array,acoes){
    		var novaLinha = tabela.insertRow(numLinhas);
    		
    		novaLinha.setAttribute("id",numLinhas+1);
+
+   		var botao;
 
    		for (var i in item) {
 		    if (item.hasOwnProperty(i)) {
@@ -139,12 +152,17 @@ function popularTabela(idTabela,array,acoes){
 
 	    	if (resultado.hasOwnProperty(j)) {
 	    		if(j===0){
-	    			botao = document.createElement("a");
-				    botao.setAttribute("href",redirecionar);
-				    botao.setAttribute("class", "link-normal");
-				    botao.setAttribute("onclick","passarNumeroProjeto("+resultado[0]+")");
-				    botao.innerHTML = resultado[j];
-				    novaCelula.appendChild(botao);
+	    			if(linkNoRegistro === 'sim'){
+	    				botao = document.createElement("a");
+					    botao.setAttribute("href",redirecionar);
+					    botao.setAttribute("class", "link-normal");
+					    botao.setAttribute("onclick","passarNumeroProjeto("+resultado[0]+")");
+					    botao.innerHTML = resultado[j];
+					    novaCelula.appendChild(botao);
+					}else{
+						novaCelula.innerHTML = resultado[j];
+				}
+	    			
 	    		}else{
 					novaCelula.innerHTML = resultado[j];
 	    		}
@@ -159,7 +177,7 @@ function popularTabela(idTabela,array,acoes){
 		      		novaCelula.appendChild(criarBotaoAcao(acao,array,resultado[0]));
 		      	});
       			}else{
-      				novaCelula.innerHTML = "Vazio";
+      				novaCelula.innerHTML = " ";
       			}
 		      	
 		    }
@@ -283,7 +301,8 @@ function popularTabela(idTabela,array,acoes){
 	}else if(nomeAcao === 'modal-exibicao' || nomeAcao === 'modal-cadastro' || 
 		nomeAcao === 'modal-gerar-minuta' || nomeAcao === 'modal-solicitar-dotacao' || 
 		nomeAcao === 'modal-solicitar-empenho' || nomeAcao === 'modal-parecer-referencial' ||
-		nomeAcao === 'modal-parecer-dcf' || nomeAcao === 'modal-parecer-agir'){
+		nomeAcao === 'modal-parecer-funpec' || nomeAcao === 'modal-dados-bancarios-funpec' || 
+		nomeAcao === 'modal-parecer-agir' || nomeAcao === 'modal-analise-tecnica'){
 		botao = document.createElement("button");
 	    botao.setAttribute("type", "button");
 	    botao.setAttribute("class", "btn btn-link");
@@ -298,9 +317,15 @@ function popularTabela(idTabela,array,acoes){
 	    }else if(nomeAcao === 'modal-exibicao'){
 	    	botao.setAttribute("title","Visualizar informações do projeto");
 	    	i.setAttribute("class", "fas fa-file-alt");//<i class="fas fa-file-contract"></i><i class="far fa-file"></i> <i class="fas fa-info-circle"></i> -- <i class="fas fa-info"></i>
-	    }else if(nomeAcao === 'modal-parecer-dcf'){
-	    	botao.setAttribute("title","Solicitar Parecer DCF");
+	    }else if(nomeAcao === 'modal-parecer-funpec'){
+	    	botao.setAttribute("title","Emitir Parecer Funpec");
 	    	i.setAttribute("class", "fas fa-funnel-dollar");
+	    }else if(nomeAcao === 'modal-analise-tecnica'){
+	    	botao.setAttribute("title","Emitir Análise Técnica");//<i class="fas fa-drafting-compass"></i>
+	    	i.setAttribute("class", "fas fa-drafting-compass");
+	    }else if(nomeAcao === 'modal-dados-bancarios-funpec'){
+	    	botao.setAttribute("title","Informar dados bancários do projeto");//<i class="fas fa-piggy-bank"></i>
+	    	i.setAttribute("class", "fas fa-piggy-bank");
 	    }else if(nomeAcao === 'modal-gerar-minuta'){
 	    	botao.setAttribute("title","Gerar Minuta");
 	    	i.setAttribute("class", "fas fa-file-signature")

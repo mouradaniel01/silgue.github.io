@@ -19,7 +19,8 @@ var tiposDocumentoOrigemRecurso =[];
 
 tiposDocumentoOrigemRecurso.push(['CONTRATO'], ['TERMO DE COOPERACAO'], ['TED'], ['ACORDO DE COOPERACAO'], ['PROTOCOLO DE INTENÇÕES'], ['MEMORANDO DE ENTENDIMENTOS'], ['TERMO DE COMPROMISSO'], ['TERMO DE COMODOTADO'], ['TERMO DE REFERÊNCIA'], ['TERMO DE PARCERIA']);
 
-function ArquivoProjeto(tipo,descricao, arquivo){
+function ArquivoProjeto(numero_projeto,tipo,descricao, arquivo){
+	this.numero_projeto = numero_projeto;
 	this.tipo = tipo;
 	this.descricao = descricao;
 	this.arquivo = arquivo;
@@ -107,17 +108,33 @@ function inserirArquivo(idTabela,idSelect,idDescricao,idArquivo){
 	var descricao = document.getElementById(idDescricao).value;
 	var arquivo = document.getElementById(idArquivo).value;
 
-	var arquivoProjeto = new ArquivoProjeto(tipo,descricao,arquivo);
+	var arquivoProjeto = new ArquivoProjeto(numero_projeto,tipo,descricao,arquivo);
+
+	if(JSON.parse(localStorage.getItem('arquivosProjetos')) != null && arquivosProjeto.length === 0){
+		JSON.parse(localStorage.getItem('arquivosProjetos')).forEach( function (arquivo){
+			arquivosProjeto.push(arquivo);
+		});	
+	}
 
 	arquivosProjeto.push(arquivoProjeto);
 
+	localStorage.setItem('arquivosProjetos', JSON.stringify(arquivosProjeto));
+
 	populaTabelaArquivos(idTabela);
 	//nomeAcao,link,onclick_,idTabela, parametro
+
+	return arquivoProjeto;
 
 }
 
 function populaTabelaArquivos(idTabela){
 
-	popularTabela(idTabela,arquivosProjeto,[['remover','','',idTabela,'']]);
+	if(JSON.parse(localStorage.getItem('arquivosProjetos')) != null && arquivosProjeto.length === 0){
+		JSON.parse(localStorage.getItem('arquivosProjetos')).forEach( function (arquivo){
+			arquivosProjeto.push(arquivo);
+		});	
+	}
+
+	popularTabela(idTabela,arquivosProjeto,[['remover_arquivo','','#removerLinhaTabelaArquivo',idTabela,'']],'sim','nao');
 	
 }

@@ -200,13 +200,33 @@
               </div>
             </article>
             <article class="conteudo-principal">
-              <div class="conteudo-principal__content parse-markdown my-4">              
-                <div class="form-group position-relative">
+              <div class="conteudo-principal__content parse-markdown my-4"> 
+              <div class="form-group position-relative">
+                  <table class="table table-striped" data-toggle="table" id="tabela-historico-analise-tecnica">
+                     <thead>
+                        <tr>
+                           <th style="width: 120px">Evento</th>
+                           <th style="width: 100px">Data</th>
+                           <th style="width: 85px">Solicitante</th>
+                           <th style="width: 60px">Ações</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>              
+                <!--<div class="form-group position-relative">
                   <textarea class="form-control" id="parecer-analise-tecnica" placeholder="Parecer de aprovação ou recomendação..." data-max-size="4000"></textarea>
                   <label class="required" for="parecer-analise-tecnica">Análise Técnica</label>
                   <div class="invalid-feedback">Limite de caracteres excedido
                   </div>
-                </div>
+                </div>-->
               </div>
               </article>
               <article class="conteudo-principal">
@@ -410,6 +430,117 @@
             </div>
           </div>
           <!-- Fim do modal de cadastro responsável projeto-->
+          <!-- Modal de Emitir análise técnica -->
+          <div class="modal fade" id="modal-analise-tecnica" tabindex="-1" role="dialog" aria-labelledby="modal-analise-tecnica" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Emitir Análise Técnica
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                      <textarea class="form-control" id="analise-tecnica" placeholder="Parecer de aprovação ou recomendação..." data-max-size="2000"></textarea>
+                      <label class="required" for="analise-tecnica">Análise Técnica</label>
+                      <div class="invalid-feedback">Limite de caracteres excedido
+                      </div>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="inserirAnaliseTecnica()">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de emitir análise técnica-->
+          <!-- Modal de visualizar Análise Técnica -->
+          <div class="modal fade" id="modal-visualizar-analise-tecnica" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-analise-tecnica" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Análise Técnica
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <p id="exibir-analise-tecnica"></p>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar Análise Técnica-->
+          <!-- Modal de visualizar solicitação parecer funpec -->
+          <div class="modal fade" id="modal-visualizar-parecer-funpec" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-parecer-funpec" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Parecer da FUNPEC
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <p id="exibir-parecer-funpec"></p>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar solicitação de parecer funpec-->
+          <!-- Modal de visualizar dados Bancários -->
+          <div class="modal fade" id="modal-visualizar-dados-bancarios" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-parecer-funpec" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Dados Bancários
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <output class="form-group" id="exibir-banco-projeto" value='Banco'>
+                          </output>
+                          <label for="exibir-banco-projeto">Banco</label>
+                    </div>
+                    <div class="form-group position-relative">
+                          <output class="form-group" id="exibir-agencia-projeto" value='Banco'>
+                          </output>
+                          <label for="exibir-agencia-projeto">Agência</label>
+                    </div>
+                    <div class="form-group position-relative">
+                          <output class="form-group" id="exibir-conta-projeto" value='Banco'>
+                          </output>
+                          <label for="exibir-conta-projeto">Conta Corrente</label>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar dados bancários do projeto-->
         </div>
       </div>
       <footer class="rodape">
@@ -429,7 +560,7 @@
     <script src="../../js/formalizacao_proplan.js"></script> 
     <script src="../../js/util.js"></script> 
     <script type="text/javascript">
-      popularTabelaAnaliseProplan('tabela-analise-tecnica');
+      popularTabelaAnaliseTecnica('tabela-analise-tecnica','tabela-historico-analise-tecnica','tabela-arquivos-analise-tecnica');
       populaSelect(document.getElementById("select-tipos-documentos"),tiposDocumentos);
       carregaResponsavel('ANALISE');
 

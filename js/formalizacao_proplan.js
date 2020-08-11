@@ -443,9 +443,9 @@ var projetoPesquisa3 = new ProjetoPesquisa(
 
 projetosPesquisa.push(projetoPesquisa1, projetoPesquisa2, projetoPesquisa3);
 
-var historicoProjeto1 = new Historico('14901','SOLICITAÇÃO DE FORMALIZAÇÃO','28/07/2020 9:15','josuevitor','SUBMETIDO COM SUCESSO','EM ANÁLISE PELA PROPLAN');
-var historicoProjeto2 = new Historico('14917','SOLICITAÇÃO DE FORMALIZAÇÃO','31/07/2020 15:32','josuevitor','SUBMETIDO COM SUCESSO','EM ANÁLISE PELA PROPLAN');
-var historicoProjeto3 = new Historico('23972','SOLICITAÇÃO DE FORMALIZAÇÃO','04/08/2020 09:10','josuevitor','SUBMETIDO COM SUCESSO','EM ANÁLISE PELA PROPLAN');
+var historicoProjeto1 = new Historico('14901','SOLICITAÇÃO DE FORMALIZAÇÃO','28/07/2020 9:15','josuevitor','SUBMETIDO COM SUCESSO','EM ANÁLISE PELA PROPLAN','');
+var historicoProjeto2 = new Historico('14917','SOLICITAÇÃO DE FORMALIZAÇÃO','31/07/2020 15:32','josuevitor','SUBMETIDO COM SUCESSO','EM ANÁLISE PELA PROPLAN','');
+var historicoProjeto3 = new Historico('23972','SOLICITAÇÃO DE FORMALIZAÇÃO','04/08/2020 09:10','josuevitor','SUBMETIDO COM SUCESSO','EM ANÁLISE PELA PROPLAN','');
 
 var historicos = [];
 
@@ -542,11 +542,7 @@ var formalizacaoProjetoPesquisa1 = new FormalizacaoProjetoPesquisa(
 		]
 	},
 	"",
-	{
-		"tipo_documento": "",
-		"descricao":"",
-		"arquivo":""
-	},
+	[""],
 	{
 		"pendencias": ""
 	}
@@ -645,11 +641,7 @@ var formalizacaoProjetoPesquisa2 = new FormalizacaoProjetoPesquisa(
 					]
 		
 	},"",
-	{
-		"tipo_documento": "",
-		"descricao":"",
-		"arquivo":""
-	},
+	[""],
 	{
 		"pendencias": ""
 	}
@@ -747,11 +739,7 @@ var formalizacaoProjetoPesquisa3 = new FormalizacaoProjetoPesquisa(
 					]
 		
 	},"",
-	{
-		"tipo_documento": "",
-		"descricao":"",
-		"arquivo":""
-	},
+	[""],
 	{
 		"pendencias": ""
 	}
@@ -814,16 +802,18 @@ function Analise(numero_projeto,tipo,responsavel,parecer,dados_bancarios,documen
 	this.tipo = tipo;
 	this.responsavel = responsavel;
 	this.parecer = parecer;
+	this.dados_bancarios = dados_bancarios;
 	this.documentos = documentos;
 }
 
-function Historico(numero_projeto,solicitacao,data,login,situacao,fluxo){
+function Historico(numero_projeto,tipo,data,login,situacao,fluxo,modal){
 	this.numero_projeto = numero_projeto;
-	this.solicitacao = solicitacao;
+	this.tipo = tipo;
 	this.data = data;
 	this.login = login;
 	this.situacao = situacao;
 	this.fluxo = fluxo;
+	this.modal = modal;
 }
 
 function FormalizacaoProjetoPesquisa(numero_projeto,dados_gerais,participes,metas_resultados,recursos,
@@ -934,7 +924,7 @@ function inicioModuloPROPLAN(){
 
 	localStorage.setItem('tiposDocumentos',JSON.stringify(tiposDocumentosBase));
 
-	var analiseDefault = new Analise('0000','nenhum','ninguem','',''); 
+	var analiseDefault = new Analise('0000','nenhum','ninguem','','',''); 
 
 	analises.push(analiseDefault);
 
@@ -1063,6 +1053,53 @@ function retornaDadosConsultaProjetadaProplan(param){
 	return dadosProjetos;
 }
 
+function retornaDadosConsultaProjetadaProplanBySituacao(param,tipo,situacao){
+
+	var dadosProjetos = [];
+
+	var historicosLocalStorage;
+
+	if(historicos.length === 0){
+		historicosLocal = JSON.parse(localStorage.getItem('historicos'));
+	}else{
+		historicosLocal = historicos;
+	}
+
+	if(Array.isArray(param)){
+		param.forEach( function (item){
+			historicosLocal.forEach( function (historico){
+				if(historico.numero_projeto === item.dados_gerais.numero_projeto || historico.numero_projeto.toString() === item.dados_gerais.numero_projeto.toString()){
+					if(historico.tipo === tipo && historico.situacao === situacao || historico.tipo.toString() === tipo.toString() && historico.situacao.toString() === situacao.toString()){
+						param.splice(param.indexOf(item),1);
+					}else{
+						dadosProjetos.push(retornarDadosConsultaProjetadaProplanByIdentificador(item));
+					}
+				}
+			});
+			
+		});
+
+	}else{
+		var projetosPesquisaLocalStorage = JSON.parse(localStorage.getItem('projetosPesquisa'));
+
+		projetosPesquisaLocalStorage.forEach(function (projeto){
+			historicosLocal.forEach( function (historico){
+				if(historico.numero_projeto === projeto.dados_gerais.numero_projeto || historico.numero_projeto.toString() === projeto.dados_gerais.numero_projeto.toString()){
+					if(historico.tipo === tipo && historico.situacao === situacao || historico.tipo.toString() === tipo.toString() && historico.situacao.toString() === situacao.toString()){
+						projetosPesquisaLocalStorage.splice(projetosPesquisaLocalStorage.indexOf(projeto),1);
+					}
+				}
+			});
+		});
+
+		projetosPesquisaLocalStorage.forEach( function (projeto){
+			dadosProjetos.push(retornarDadosConsultaProjetadaProplanByIdentificador(projeto.dados_gerais.numero_projeto));
+		});
+	}
+
+	return dadosProjetos;
+}
+
 function retornaDadosAnaliseProjetadaProplan(param){
 
 	var projetoPesquisa = param;
@@ -1119,7 +1156,7 @@ function retornarDadosConsultaGeralProjetadaProplanByIdentificador(identificador
 		});
 	}
 
-	if(localStorage.getItem('formalizacoes') != null){
+	if(localStorage.getItem('formalizacoes') != null && formalizacoes === null){
 		JSON.parse(localStorage.getItem('formalizacoes')).forEach( function (formalizacao){
 		formalizacoes.push(formalizacao);
 	});
@@ -1183,7 +1220,27 @@ function popularTabelaConsultaProplan(idTabela,redirect){
 
  	//popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela]]);
  	popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela],
- 		['modal-parecer-dcf','#modal-parecer-dcf','',idTabela]]);
+ 		['modal-parecer-funpec','#modal-parecer-funpec','',idTabela],['modal-dados-bancarios-funpec','#modal-dados-bancarios-funpec','',idTabela]]);
+
+
+ }
+
+ function popularTabelaProjetoAnaliseFunpec(idTabela){
+ 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(localStorage.getItem(numero_projeto)));
+
+ 	//popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela]]);
+ 	popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela],
+ 		['modal-parecer-funpec','#modal-parecer-funpec','',idTabela],['modal-dados-bancarios-funpec','#modal-dados-bancarios-funpec','',idTabela]]);
+
+
+ }
+
+ function popularTabelaProjetoAnaliseTecnica(idTabela){
+ 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(localStorage.getItem(numero_projeto)));
+
+ 	//popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela]]);
+ 	popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela],
+ 		['modal-analise-tecnica','#modal-analise-tecnica','',idTabela]]);
 
 
  }
@@ -1258,7 +1315,7 @@ function popularTabelaProjetosPesquisa(idTabela){
  	analises = JSON.parse(localStorage.getItem('analises'));
 
  	if(analises == null || !Array.isArray(analises)){
- 		var analise = new Analise(numero_projeto,tipo,'','','');
+ 		var analise = new Analise(numero_projeto,tipo,'','','','');
  		analises = [];
  		analises.push(analise);
  	}else{
@@ -1269,7 +1326,7 @@ function popularTabelaProjetosPesquisa(idTabela){
 	 			}
 	 		});
 	 	}else{
-	 		var analise = new Analise(numero_projeto,tipo,responsavel,'','');
+	 		var analise = new Analise(numero_projeto,tipo,responsavel,'','','');
 	 		analises.push(analise);
 	 	}
  	}
@@ -1302,12 +1359,14 @@ function popularTabelaProjetosPesquisa(idTabela){
  		solicitacoes = JSON.parse(localStorage.getItem('solicitacoes'));
  	}*/
 
- 	solicitacao.push([tipo, data.getDate() + "/"+ (data.getMonth()+1) + "/" + data.getFullYear() + " " + data.getHours() + ":" + data.getMinutes(),'login']);
+ 	solicitacao.push([tipo, data.getDate() + "/"+ (data.getMonth()+1) + "/" + data.getFullYear() + " " + data.getHours() + ":" + ('0'+ data.getMinutes()).slice(-2),'login']);
 
  	//localStorage.setItem('solicitacoes',JSON.stringify(solicitacoes));
 
 
  	popularTabela(idTabela,solicitacao,[['modal-exibicao','#'+modal,'',idTabela]]);
+
+ 	return solicitacao;
 
  }
 
@@ -1321,6 +1380,246 @@ function popularTabelaProjetosPesquisa(idTabela){
 
  function inserirParecerAGIR(idCampo){
 
+ }
+
+ function popularTabelaConsultaFunpec(idTabelaProjetos,redirect){
+
+ 	var dadosProjetos = retornaDadosConsultaProjetadaProplanBySituacao(JSON.parse(sessionStorage.getItem('projetosPesquisa')),'ANALISE FUNPEC','ANALISE FINALIZADA');
+
+ 	popularTabela(idTabelaProjetos,dadosProjetos,[['redirecionar',redirect,'passarNumeroProjeto',idTabelaProjetos]],'sim','sim');
+
+ }
+
+ function popularTabelaConsultaAnaliseTecnica(idTabelaProjetos,redirect){
+
+ 	var dadosProjetos = retornaDadosConsultaProjetadaProplanBySituacao(JSON.parse(sessionStorage.getItem('projetosPesquisa')),'ANALISE TECNICA','ANALISE TECNICA FINALIZADA');
+
+ 	popularTabela(idTabelaProjetos,dadosProjetos,[['redirecionar',redirect,'passarNumeroProjeto',idTabelaProjetos]],'sim','sim');
+
+ }
+
+ function inserirParecerFunpec(){
+
+ 	limpaTabela(document.getElementById('tabela-historico-funpec'));
+
+ 	var idTabelaProjeto = 'tabela-analise-funpec';
+
+ 	var idTabelaHistorico = 'tabela-historico-funpec';
+ 	
+ 	inserirParecer('PARECER FUNPEC','PARECER EMITIDO','EM ANALISE PROPLAN','parecer-funpec',idTabelaProjeto, idTabelaHistorico,'exibir-parecer-funpec', [['modal-exibicao','#modal-visualizar-parecer-funpec','exibirParecerFunpec()',idTabelaHistorico]]);
+
+ 	popularTabelaAnaliseFunpec(idTabelaProjeto,idTabelaHistorico);
+ }
+
+ function inserirAnaliseTecnica(){
+
+ 	var idTabelaProjeto = 'tabela-analise-tecnica';
+
+ 	var idTabelaHistorico = 'tabela-historico-analise-tecnica';
+
+ 	limpaTabela(document.getElementById(idTabelaHistorico));
+ 	
+ 	inserirParecer('ANALISE TECNICA','ANALISE TECNICA EMITIDA','EM ANALISE PROPLAN','analise-tecnica',idTabelaProjeto, idTabelaHistorico,'exibir-analise-tecnica', [['modal-exibicao','#modal-visualizar-analise-tecnica','exibirAnaliseTecnica()',idTabelaHistorico]]);
+
+ 	popularTabelaAnaliseTecnica(idTabelaProjeto,idTabelaHistorico);
+ }
+
+ function inserirParecer(tipo,situacao,fluxo,idParecer,idTabelaProjeto,idTabelaHistorico,idCampoDestino,modal){
+
+ 	var parecer = document.getElementById(idParecer).value;
+
+ 	var data = new Date();
+
+ 	//tipo, idTabela,idCampo,idDestino,modal
+
+ 	var historico = new Historico(numero_projeto,tipo,data.getDate() + "/"+ (data.getMonth()+1) + "/" + data.getFullYear() + " " + data.getHours() + ":" + ('0'+ data.getMinutes()).slice(-2),
+ 								'login',situacao,fluxo,modal);
+ 	historicos.push(historico);
+//objeto analise: numero_projeto,tipo,responsavel,parecer,dados_bancarios,documentos
+
+ 	if(analises.length > 0){
+ 		analises.forEach(function (analise){
+ 		if(analise.numero_projeto === numero_projeto){
+ 			analise.parecer = parecer;
+ 		}
+ 	});
+ 	}else{
+ 		analises = JSON.parse(localStorage.getItem('analises'));
+ 		analises.forEach(function (analise){
+ 		if(analise.numero_projeto === numero_projeto){
+ 			analise.parecer = parecer;
+ 		}
+ 	});
+ 	}
+
+ 	localStorage.setItem('analises', JSON.stringify(analises));
+
+ 	localStorage.setItem('historicos', JSON.stringify(historicos));
+
+ }
+
+ function exibirParecerFunpec(){
+ 	if(analises.length === 0){
+ 		JSON.parse(localStorage.getItem('analises')).forEach( function (analise){
+ 			analises.push(analise);
+ 		});
+ 	}
+ 	analises.forEach( function (analise){
+ 		if(analise.numero_projeto === numero_projeto && analise.tipo === 'FUNPEC'){
+ 			document.getElementById('exibir-parecer-funpec').innerHTML = analise.parecer;
+ 		}
+ 	});
+ }
+
+ function exibirAnaliseTecnica(){
+ 	if(analises.length === 0){
+ 		JSON.parse(localStorage.getItem('analises')).forEach( function (analise){
+ 			analises.push(analise);
+ 		});
+ 	}
+ 	analises.forEach( function (analise){
+ 		if(analise.numero_projeto === numero_projeto && analise.tipo === 'ANALISE'){
+ 			document.getElementById('exibir-analise-tecnica').innerHTML = analise.parecer;
+ 		}
+ 	});
+ }
+
+ function inserirDadosBancariosFunpec(){
+
+ 	var idTabelaProjeto = 'tabela-analise-funpec';
+
+ 	var idTabelaHistorico = 'tabela-historico-funpec';
+
+ 	limpaTabela(document.getElementById(idTabelaHistorico));
+
+ 	InserirDadosBancarios('DADOS BANCARIOS DO PROJETO','DADOS BANCARIOS INFORMADOS','EM ANALISE PROPLAN','select-banco-conta-projeto','agencia-projeto','conta-projeto',idTabelaProjeto,idTabelaHistorico,[['modal-exibicao','#modal-visualizar-dados-bancarios','exibirDadosBancariosFunpec()',idTabelaHistorico]]);
+
+ 	popularTabelaAnaliseFunpec(idTabelaProjeto,idTabelaHistorico);
+
+ }
+
+
+ function InserirDadosBancarios(tipo,situacao,fluxo,idBanco,idAgencia,idConta,idTabelaProjeto,idTabelaHistorico,modal){
+
+ 	var banco = document.getElementById(idBanco).value;
+ 	var conta = document.getElementById(idAgencia).value;
+ 	var agencia = document.getElementById(idConta).value;
+ 	var dados_bancarios = [];
+
+ 	var data = new Date();
+
+ 	var historico = new Historico(numero_projeto,tipo,data.getDate() + "/"+ (data.getMonth()+1) + "/" + data.getFullYear() + " " + data.getHours() + ":" + ('0'+ data.getMinutes()).slice(-2),
+ 								'login',situacao,fluxo,modal);
+ 	historicos.push(historico);
+
+ 	dados_bancarios.push(banco,conta,agencia);
+
+ 	analises.forEach(function (analise){
+ 		if(analise.numero_projeto === numero_projeto){
+ 			analise.dados_bancarios = dados_bancarios;
+ 		}
+ 	});
+
+ 	localStorage.setItem('analises', JSON.stringify(analises));
+
+ 	localStorage.setItem('historicos', JSON.stringify(historicos));
+
+ }
+
+ function exibirDadosBancariosFunpec(){
+ 	if(analises.length === 0){
+ 		JSON.parse(localStorage.getItem('analises')).forEach( function (analise){
+ 			analises.push(analise);
+ 		});
+ 	}
+ 	analises.forEach( function (analise){
+ 		if(analise.numero_projeto === numero_projeto){
+ 			document.getElementById('exibir-banco-projeto').innerHTML = analise.dados_bancarios[0];
+ 			document.getElementById('exibir-agencia-projeto').innerHTML = analise.dados_bancarios[1];
+ 			document.getElementById('exibir-conta-projeto').innerHTML = analise.dados_bancarios[2];
+ 		}
+ 	});
+
+ }
+
+ function finalizarAnaliseFunpec(){
+
+ 	var data = new Date();
+
+ 	var historico = new Historico(numero_projeto,'ANALISE FUNPEC',data.getDate() + "/"+ (data.getMonth()+1) + "/" + data.getFullYear() + " " + data.getHours() + ":" + ('0'+ data.getMinutes()).slice(-2),
+ 								'login','ANALISE FINALIZADA','EM ANALISE PROPLAN','');
+ 	historicos.push(historico);
+
+ 	localStorage.setItem('historicos', JSON.stringify(historicos));
+
+ 	//InserirAnaliseFunpec(idTabelaProjeto, idTabelaHistorico, idTabelaArquivo, parecer_funpec, idBanco,idAgencia,idConta);
+
+ }
+
+ function populaTabelaArquivosFunpec(idTabela){
+ 	populaTabelaArquivos(idTabela);
+ }
+
+ function populaTabelaArquivosAnaliseTecnica(idTabela){
+ 	populaTabelaArquivos(idTabela);
+ }
+
+ function popularTabelaAnaliseFunpec(idTabelaProjetos,idTabelaHistorico,idTabelaArquivo){
+
+ 	popularTabelaProjetoAnaliseFunpec(idTabelaProjetos);
+
+ 	if(historicos.length > 0){
+ 		historicos.forEach( function (historico){
+ 			if(historico.numero_projeto === numero_projeto.toString() || historico.numero_projeto === numero_projeto){
+				var dadosEvento = [];
+	 			dadosEvento.push([historico.tipo,historico.data,historico.login]);
+	 			popularTabela(idTabelaHistorico,dadosEvento,historico.modal,'nao','nao');
+			}
+			
+ 	});
+ 	}else{
+ 		historicos = JSON.parse(localStorage.getItem('historicos'));
+		historicos.forEach( function (historico){
+			if(historico.numero_projeto === numero_projeto.toString() || historico.numero_projeto === numero_projeto){
+				var dadosEvento = [];
+	 			dadosEvento.push([historico.tipo,historico.data,historico.login]);
+	 			popularTabela(idTabelaHistorico,dadosEvento,historico.modal,'nao','nao');
+			}
+			
+ 	});
+ 	}
+
+ 	populaTabelaArquivosFunpec(idTabelaArquivo);
+ 	
+ }
+
+ function popularTabelaAnaliseTecnica(idTabelaProjetos,idTabelaHistorico,idTabelaArquivo){
+
+ 	popularTabelaProjetoAnaliseTecnica(idTabelaProjetos);
+
+ 	if(historicos.length > 0){
+ 		historicos.forEach( function (historico){
+ 			if(historico.numero_projeto === numero_projeto.toString() || historico.numero_projeto === numero_projeto){
+				var dadosEvento = [];
+	 			dadosEvento.push([historico.tipo,historico.data,historico.login]);
+	 			popularTabela(idTabelaHistorico,dadosEvento,historico.modal,'nao','nao');
+			}
+			
+ 	});
+ 	}else{
+ 		historicos = JSON.parse(localStorage.getItem('historicos'));
+		historicos.forEach( function (historico){
+			if(historico.numero_projeto === numero_projeto.toString() || historico.numero_projeto === numero_projeto){
+				var dadosEvento = [];
+	 			dadosEvento.push([historico.tipo,historico.data,historico.login]);
+	 			popularTabela(idTabelaHistorico,dadosEvento,historico.modal,'nao','nao');
+			}
+			
+ 	});
+ 	}
+
+ 	populaTabelaArquivosAnaliseTecnica(idTabelaArquivo);
+ 	
  }
 
 
@@ -1393,9 +1692,13 @@ function popularTabelaRecurso(){
 
 }
 
-function inserirArquivoFunpec(idSelect,idDescricao,idArquivo){
+function inserirArquivoFunpec(){
 
-	inserirArquivo(idSelect,idDescricao,idArquivo);
+	inserirArquivo('tabela-arquivos-funpec','select-tipos-documentos','descricao-arquivo-funpec','arquivo-projeto-funpec');
+
+	//localStorage.setItem('formalizacoes',JSON.stringify(formalizacoes));
+
+	//populaTabelaArquivos('tabela-arquivos-funpec');
 }
 
 function inserirLinhaTabelaByInput(idTabela,idInput) {

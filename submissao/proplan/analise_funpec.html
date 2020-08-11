@@ -105,7 +105,7 @@
       </header>
       <div class="container-conteudo">
         <div class="container-conteudo__overlay"></div>
-        <div class="container-conteudo__aside">
+        <div class="container-conteudo__aside"> 
           <aside class="bg-secondary menu-lateral">
             <div class="menu-lateral__content">
               <button class="submenu" tabindex="0">
@@ -145,6 +145,31 @@
           </aside>
         </div>
         <div class="container-conteudo__content w-100">
+          <!-- Alerta de sucesso com botão para fechar -->
+            <div id="msg-sucesso-finalizada" class="alert alert-success alert-dismissible d-flex" role="alert">
+              <div class="alert-icone d-flex justify-content-center align-items-center">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="alert-information">
+                <p class="alert-heading"><strong>Sucesso</strong></p>
+                <p>Análise finalizada com sucesso!</p>
+              </div>
+              <button class="close d-flex" data-dismiss="alert" aria-label="fechar" href="consulta_analise_funpec.html">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div id="msg-sucesso-salvamento" class="alert alert-success alert-dismissible d-flex" role="alert">
+              <div class="alert-icone d-flex justify-content-center align-items-center">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="alert-information">
+                <p class="alert-heading"><strong>Sucesso</strong></p>
+                <p>Informações foram armazenadas com sucesso!</p>
+              </div>
+              <button class="close d-flex" data-dismiss="alert" aria-label="fechar" href="consulta_analise_funpec.html">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a class="link" href="../../../index.html"><i class="fas fa-home"></i></a></li>
@@ -192,7 +217,7 @@
                   <div class="tooltip-group">
                      <label for="responsavel-funpec">Responsável Técnico</label>
                      <span class="tooltip-icon">
-                        <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O responsável técnico só poderia ser informado pelo líder da equipe. O sistema deve armazenar a informação da data, hora e login de quem informou o responsável.">
+                        <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O responsável técnico só poderia ser informado pelo líder da equipe. O sistema deve armazenar a informação da data, hora e login de quem informou o responsável. O sistema não deve permitir inserir as informações do parecer ou dos dados bancários caso não tenha sido informado o repsonsável.">
                         </i>
                      </span>
                   </div>
@@ -200,34 +225,34 @@
               </div>
             </article>
             <article class="conteudo-principal">
-              <div class="conteudo-principal__content parse-markdown my-4">  
-               <div class="conteudo-principal_header">
-                  <h5>Com a finalidade de obter o apoio na execução das atividades e na gestão administrativa e financeira da FUNPEC a este Projeto Acadêmico, solicitamos manifestar-se quanto à possibilidade da celebração de um contrato acadêmico através de uma proposta de preço a ser apresentada por essa Fundação de Apoio</h5>
-                </div>            
-                <div class="form-group position-relative">
+              <div class="conteudo-principal__content parse-markdown my-4"> 
+              <div class="form-group position-relative">
+                  <table class="table table-striped" data-toggle="table" id="tabela-historico-funpec">
+                     <thead>
+                        <tr>
+                           <th style="width: 120px">Evento</th>
+                           <th style="width: 100px">Data</th>
+                           <th style="width: 85px">Solicitante</th>
+                           <th style="width: 60px">Ações</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>       
+                <!--<div class="form-group position-relative">
                   <textarea class="form-control" id="parecer-funpec" placeholder="Parecer de aprovação ou recomendação..." data-max-size="4000"></textarea>
                   <label class="required" for="parecer-funpec">Parecer Funpec</label>
                   <div class="invalid-feedback">Limite de caracteres excedido
                   </div>
-                </div>
-                <div class="form-group position-relative">
-                  <select class="custom-select" id="select-banco-conta-projeto" required="required" name="banco-conta-projeto">
-                     <option value="hide">Selecione</option>    
-                  </select>
-                     <label class="required" for="select-banco-conta-projeto">Banco
-                     </label>                  
-                  <div class="invalid-feedback">Selecione alguma opção</div>
-               </div>
-                <div class="form-group position-relative" >
-                  <input class="form-control" id="agencia-projeto" type="text" placeholder="Número da agência da conta do projeto, com o dígito..." />
-                     <label id="labelNomeCursoLatoSensu" class="required" for="agencia-projeto">Agência
-                     </label>
-               </div>
-                <div class="form-group position-relative" >
-                  <input class="form-control" id="conta-projeto" type="text" placeholder="Número da conta corrente do projeto, com o dígito..." />
-                     <label id="labelNomeCursoLatoSensu" class="required" for="conta-projeto">C/C
-                     </label>
-               </div>
+                </div>-->
+                
               </div>
               </article>
               <article class="conteudo-principal">
@@ -278,6 +303,10 @@
                               </tr>
                            </tbody>
                         </table>
+                     </div>
+                     <div class="btn-group">
+                        <button id="salvar-analise" type="button" class="btn btn-primary">Salvar</button>
+                        <a id="finalizar-analise" class="btn btn-secondary" onclick="finalizarAnaliseFunpec()" href="consulta_analise_funpec.html">Finalizar Análise</a>
                      </div>
                   </div>
                 </div>
@@ -431,6 +460,159 @@
             </div>
           </div>
           <!-- Fim do modal de cadastro responsável projeto-->
+          <!-- Modal de Emitir parecer FUNPEC -->
+          <div class="modal fade" id="modal-parecer-funpec" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Emitir Parecer FUNPEC
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="conteudo-principal_header">
+                      <h5>Com a finalidade de obter o apoio na execução das atividades e na gestão administrativa e financeira da FUNPEC a este Projeto Acadêmico, solicitamos manifestar-se quanto à possibilidade da celebração de um contrato acadêmico através de uma proposta de preço a ser apresentada por essa Fundação de Apoio</h5>
+                    </div> 
+                    <div class="form-group position-relative">
+                      <textarea class="form-control" id="parecer-funpec" placeholder="Parecer de aprovação ou recomendação..." data-max-size="2000"></textarea>
+                      <label class="required" for="parecer-funpec">Parecer FUNPEC</label>
+                      <div class="invalid-feedback">Limite de caracteres excedido
+                      </div>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="inserirParecerFunpec()">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de emitir parecer funpec-->
+          <!-- Modal de visualizar solicitação parecer funpec -->
+          <div class="modal fade" id="modal-visualizar-parecer-funpec" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-parecer-funpec" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Parecer da FUNPEC
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <p id="exibir-parecer-funpec"></p>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar solicitação de parecer funpec-->
+          <!-- Modal de informar dados bancários do projeto FUNPEC -->
+          <div class="modal fade" id="modal-dados-bancarios-funpec" tabindex="-1" role="dialog" aria-labelledby="modal-dados-bancarios-funpec" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Dados Bancários do Projeto
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                   <div class="form-group position-relative">
+                      <select class="custom-select" id="select-banco-conta-projeto" required="required" name="banco-conta-projeto">
+                         <option value="hide">Selecione</option>    
+                      </select>
+                         <label class="required" for="select-banco-conta-projeto">Banco
+                         </label>                  
+                      <div class="invalid-feedback">Selecione alguma opção</div>
+                   </div>
+                    <div class="form-group position-relative" >
+                      <input class="form-control" id="agencia-projeto" type="text" placeholder="Número da agência da conta do projeto, com o dígito..." />
+                         <label id="labelNomeCursoLatoSensu" class="required" for="agencia-projeto">Agência
+                         </label>
+                   </div>
+                    <div class="form-group position-relative" >
+                      <input class="form-control" id="conta-projeto" type="text" placeholder="Número da conta corrente do projeto, com o dígito..." />
+                         <label id="labelNomeCursoLatoSensu" class="required" for="conta-projeto">C/C
+                         </label>
+                   </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="inserirDadosBancariosFunpec()">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do Modal de informar dados bancários do projeto FUNPEC-->
+          <!-- Modal de visualizar dados Bancários -->
+          <div class="modal fade" id="modal-visualizar-dados-bancarios" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-parecer-funpec" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Dados Bancários
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <output class="form-group" id="exibir-banco-projeto" value='Banco'>
+                          </output>
+                          <label for="exibir-banco-projeto">Banco</label>
+                    </div>
+                    <div class="form-group position-relative">
+                          <output class="form-group" id="exibir-agencia-projeto" value='Banco'>
+                          </output>
+                          <label for="exibir-agencia-projeto">Agência</label>
+                    </div>
+                    <div class="form-group position-relative">
+                          <output class="form-group" id="exibir-conta-projeto" value='Banco'>
+                          </output>
+                          <label for="exibir-conta-projeto">Conta Corrente</label>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar dados bancários do projeto-->
+          <!-- Modal de visualizar Análise Técnica -->
+          <div class="modal fade" id="modal-visualizar-analise-tecnica" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-analise-tecnica" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Análise Técnica
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <p id="exibir-analise-tecnica"></p>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar Análise Técnica-->
         </div>
       </div>
       <footer class="rodape">
@@ -451,12 +633,14 @@
     <script src="../../js/formalizacao_proplan.js"></script> 
     <script src="../../js/util.js"></script> 
     <script type="text/javascript">
-      popularTabelaAnaliseProplan('tabela-analise-funpec');
+      popularTabelaAnaliseFunpec('tabela-analise-funpec','tabela-historico-funpec','tabela-arquivos-funpec');
+
       populaSelect(document.getElementById("select-tipos-documentos"),tiposDocumentos);
       populaSelect(document.getElementById("select-banco-conta-projeto"),bancos);
       carregaResponsavel('FUNPEC');
 
       $("[data-tt=tooltip]").tooltip();
+
     </script> 
   </body>
 </html>
