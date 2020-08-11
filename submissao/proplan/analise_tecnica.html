@@ -159,6 +159,12 @@
           <div class="row m-0">
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">
+                <h5>Regras de Negócio
+                <span class="tooltip-icon">
+                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O usuário poderá salvar as informações inseridas, sem finalizar a análise. As informações salvas devem ser visíveis para as demais funcionalidades, pois eles utilizam essas informações entre si, em suas análises. Ao finalizar a análise, então o projeto será removido da listagem de projeto pendente de análise técnica, na tela anterior.">
+                  </i>
+               </span>
+               </h5>
                 <table id="tabela-analise-tecnica" class="table table-striped" data-toggle="table">
                   <thead>
                     <tr>
@@ -201,6 +207,12 @@
             </article>
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4"> 
+                <h5>Regras de Negócio
+                <span class="tooltip-icon">
+                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Os eventos são as ações realizadas no projeto. Aqui deverão ser listados todos os eventos do projeto(Ex.: parecer funpec, analise técnica, parecer instrumento jurídico e demais). O analista da central de serviço, responsável pela análise técnica deve poder visualizar o parecer da funpec, do instrumento jurídico e todas as demais ações, assim como a funpec e a divisão de instrumento jurídico também poderão ver todos. O sistema deve permitir não apenas visualizar um histórico de qual evento e quando, mas visualizar a informação que foi inserida. Para verificar o comportamento, pode-se adicionar um parecer funpec e visualizar na funcionalidade de analise técnica, como vice-versa. Para que seja possível registrar o parecer funpec, é necessário que o responsável técnico tenha sido informado.">
+                  </i>
+               </span>
+               </h5>
               <div class="form-group position-relative">
                   <table class="table table-striped" data-toggle="table" id="tabela-historico-analise-tecnica">
                      <thead>
@@ -230,7 +242,13 @@
               </div>
               </article>
               <article class="conteudo-principal">
-                <div class="conteudo-principal__content parse-markdown my-4"> 
+                <div class="conteudo-principal__content parse-markdown my-4">
+                <h5>Regras de Negócio
+                <span class="tooltip-icon">
+                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Todos os arquivos inseridos no projeto deverão ser listados nessa tabela, mas apenas deverá ser permitido remover os arquivos que foram inseridos na funcionalidade, ou seja, a análise técnica não pode excluir arquivos inseridos pelo coordenador, assim como não pode excluir arquivos inseridos pelo analista da funpec, mas apenas os que foram inseridos pela central de serviços, independente do usuário que inseriu.">
+                  </i>
+               </span>
+               </h5> 
                   <div class="form-group position-relative">
                      <div class="form-group position-relative">
                         <select class="custom-select" id="select-tipos-documentos" required="required" name="tipo-documentos">
@@ -277,6 +295,10 @@
                               </tr>
                            </tbody>
                         </table>
+                     </div>
+                     <div class="btn-group">
+                        <button id="salvar-analise" type="button" class="btn btn-primary">Salvar</button>
+                        <a id="finalizar-analise" class="btn btn-secondary" onclick="finalizarAnaliseTecnica()" href="consulta_analise_tecnica.html">Finalizar Análise</a>
                      </div>
                   </div>
                 </div>

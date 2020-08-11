@@ -1556,6 +1556,20 @@ function popularTabelaProjetosPesquisa(idTabela){
 
  }
 
+ function finalizarAnaliseTécnica(){
+
+ 	var data = new Date();
+
+ 	var historico = new Historico(numero_projeto,'ANALISE TECNICA',data.getDate() + "/"+ (data.getMonth()+1) + "/" + data.getFullYear() + " " + data.getHours() + ":" + ('0'+ data.getMinutes()).slice(-2),
+ 								'login','ANALISE TECNICA FINALIZADA','EM ANALISE PROPLAN','');
+ 	historicos.push(historico);
+
+ 	localStorage.setItem('historicos', JSON.stringify(historicos));
+
+ 	//InserirAnaliseFunpec(idTabelaProjeto, idTabelaHistorico, idTabelaArquivo, parecer_funpec, idBanco,idAgencia,idConta);
+
+ }
+
  function populaTabelaArquivosFunpec(idTabela){
  	populaTabelaArquivos(idTabela);
  }
