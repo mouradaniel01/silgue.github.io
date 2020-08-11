@@ -960,7 +960,7 @@ function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 	if(localStorage.getItem('analises') != null){
 		JSON.parse(localStorage.getItem('analises')).forEach( function (item){
 			analises.forEach( function(analise){
-				if(item.numero_projeto === analise.numero_projeto){
+				if(item.numero_projeto === analise.numero_projeto && item.tipo === analise.tipo){
 					analises.splice(analises.indexOf(analise), 1);
 				}
 			});	
@@ -969,16 +969,16 @@ function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 	});
 
 	analises.forEach( function (analise){
-		if(analise.numero_projeto === identificador && analise.tipo === 'FUNPEC'){
-			fluxo = analise.responsavel;
+		if((analise.numero_projeto === identificador || analise.numero_projeto.toString() === identificador) && analise.tipo === 'FUNPEC'){
+			responsavelFunpec = analise.responsavel;
 		}
-		if(analise.numero_projeto === identificador && analise.tipo === 'ANALISE'){
+		if((analise.numero_projeto === identificador || analise.numero_projeto.toString() === identificador) && analise.tipo === 'ANALISE'){
 			responsavelAnalise = analise.responsavel;
 		}
-		if(analise.numero_projeto === identificador && analise.tipo === 'FISCALIZACAO'){
+		if((analise.numero_projeto === identificador || analise.numero_projeto.toString() === identificador) && analise.tipo === 'FISCALIZACAO'){
 			responsavelFiscalizacao = analise.responsavel;
 		}
-		if(analise.numero_projeto === identificador && analise.tipo === 'INSTRUMENTO'){
+		if((analise.numero_projeto === identificador || analise.numero_projeto.toString() === identificador) && analise.tipo === 'INSTRUMENTO'){
 			responsavelInstrumento = analise.responsavel;
 		}
 	});
