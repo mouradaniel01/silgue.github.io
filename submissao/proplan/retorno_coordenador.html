@@ -113,13 +113,13 @@
                 <div class="submenu__title">
                   <h5>Formalização de Projetos de Pesquisa</h5><i class="fas fa-angle-right"></i>
                 </div>
-                <div class="submenu__items">
+               <div class="submenu__items">
                   <h5>Pesquisa</h5>
                   <ul>
                     <li><a tabindex="-1" href="consulta_analise_funpec.html"><span>Análise FUNPEC</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_tecnica.html"><span>Análise Técnica</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_fiscalizacao.html"><span>Análise Fiscalização</span></a></li>
+                    <li><a tabindex="-1" href="consulta_analise_tecnica.html"><span>Análise Técnica</span></a></li>               
                     <li><a tabindex="-1" href="consulta_analise_instrumento_juridico.html"><span>Análise Instrumento Jurídico</span></a></li>
+                    <li><a tabindex="-1" href="consulta_retorno_coordenador.html"><span>Retornar Projeto para Coordenador</span></a></li>
                     <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Assinar Parecer Referêncial</span></a></li>
                     <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Autorizar Formalização</span></a></li>
                     <li><a tabindex="-1" href="consulta_aparecer_juridico_funpec.html"><span>Parecer Jurídico FUNPEC</span></a></li>
@@ -152,14 +152,14 @@
               <li class="breadcrumb-item"><a class="link" href="../index.html">Projetos</a></li>
               <li class="breadcrumb-item"><a class="link" href="consulta_analise_fiscalizacao.html">Formalização de Projetos de Pesquisa</a></li>
               <li class="breadcrumb-item active" aria-current="page">
-                <h3>Análise Fiscalização</h3>
+                <h3>Retornar Projeto ao Coordenador</h3>
               </li>
             </ol>
           </nav>
           <div class="row m-0">
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">
-                <table id="tabela-analise-fiscalizacao" class="table table-striped" data-toggle="table">
+                <table id="tabela-retorno-coordenador" class="table table-striped" data-toggle="table">
                   <thead>
                     <tr>
                       <th style="width: 85px">Número</th>
@@ -187,23 +187,33 @@
                     <td></td>
                   </tbody>
                 </table>
-                <div class="form-group position-relative mt-2">
-                  <output class="form-control" id="responsavel-fiscalizacao" type="text" placeholder="responsável técnico que está analisando o projeto."></output>
-                  <div class="tooltip-group">
-                     <label for="responsavel-fiscalizacao">Responsável Técnico</label>
-                     <span class="tooltip-icon">
-                        <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O responsável técnico só poderia ser informado pelo líder da equipe. O sistema deve armazenar a informação da data, hora e login de quem informou o responsável.">
-                        </i>
-                     </span>
-                  </div>
-                </div>
               </div>
             </article>
             <article class="conteudo-principal">
-              <div class="conteudo-principal__content parse-markdown my-4">              
+              <div class="conteudo-principal__content parse-markdown my-4"> 
+              <div class="form-group position-relative">
+                  <table class="table table-striped" data-toggle="table" id="tabela-historico-retorno-coordenador">
+                     <thead>
+                        <tr>
+                           <th style="width: 120px">Evento</th>
+                           <th style="width: 100px">Data</th>
+                           <th style="width: 85px">Solicitante</th>
+                           <th style="width: 60px">Ações</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>              
                 <div class="form-group position-relative">
-                  <textarea class="form-control" id="parecer-fiscalizacao" placeholder="Parecer de aprovação ou recomendação..." data-max-size="4000"></textarea>
-                  <label class="required" for="parecer-fiscalizacao">Parecer Fiscalização</label>
+                  <textarea class="form-control" id="justificativa-retorno-coordenador" placeholder="Parecer de aprovação ou recomendação..." data-max-size="4000"></textarea>
+                  <label class="required" for="justificativa-retorno-coordenador">Justificativa</label>
                   <div class="invalid-feedback">Limite de caracteres excedido
                   </div>
                 </div>
@@ -223,23 +233,23 @@
                         <div class="invalid-feedback">Selecione alguma opção</div>
                      </div>
                      <div class="form-group position-relative">
-                        <textarea class="form-control" id="descricao-arquivo-fiscalizacao" placeholder="Descreva de forma resumida do que se trata o arquivo" data-max-size="100"></textarea>
-                        <label class="required" for="descricao-arquivo-fiscalizacao">Descrição do Arquivo</label>
+                        <textarea class="form-control" id="descricao-arquivo-retorno-coordenador" placeholder="Descreva de forma resumida do que se trata o arquivo" data-max-size="100"></textarea>
+                        <label class="required" for="descricao-arquivo-retorno-coordenador">Descrição do Arquivo</label>
                         <div class="invalid-feedback">Limite de caracteres excedido
                         </div>
                      </div>
                      <div class="form-group position-relative">
                          <div class="custom-file">
-                           <input class="custom-file-input" type="file" id="arquivo-projeto-fiscalizacao" />
-                           <label class="custom-file-label" for="arquivo-projeto-fiscalizacao">Escolha seu arquivo</label>
+                           <input class="custom-file-input" type="file" id="arquivo-projeto-retorno-coordenador" />
+                           <label class="custom-file-label" for="arquivo-projeto-retorno-coordenador">Escolha seu arquivo</label>
                          </div>
                          <label>Arquivo</label>
                      </div>
                      <div class="form-group position-relative">
-                        <button type="button" class="btn btn-primary" onclick="inserirArquivo('tabela-arquivos-fiscalizacao','select-tipos-documentos','descricao-arquivo-fiscalizacao','arquivo-projeto-fiscalizacao')">Inserir</button>
+                        <button type="button" class="btn btn-primary" onclick="inserirArquivoRetornoCoordenador()">Inserir</button>
                      </div>
                      <div class="form-group position-relative">
-                        <table class="table table-striped" data-toggle="table" id="tabela-arquivos-fiscalizacao">
+                        <table class="table table-striped" data-toggle="table" id="tabela-arquivos-retorno-coordenador">
                            <thead>
                               <tr>
                                  <th>Tipo</th>
@@ -257,6 +267,10 @@
                               </tr>
                            </tbody>
                         </table>
+                     </div>
+                     <div class="btn-group">
+                        <button id="salvar-analise" type="button" class="btn btn-primary">Salvar</button>
+                        <a id="retornar-formalizacao" class="btn btn-secondary" onclick="retornarFormalizacaoCoordenador()" href="consulta_retorno_coordenador.html">Finalizar Análise</a>
                      </div>
                   </div>
                 </div>
@@ -385,12 +399,12 @@
              </div>
           </div>
           <!-- Fim do modal de cadastro de tipos de documentos-->
-          <!-- Modal de cadastro responsável projeto -->
-          <div class="modal fade" id="modal-cadastrar-responsavel" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
+          <!-- Modal de visualizar Análise Técnica -->
+          <div class="modal fade" id="modal-visualizar-analise-tecnica" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-analise-tecnica" aria-hidden="true">
              <div class="modal-dialog" role="document">
                 <div class="modal-content">
                    <div class="modal-header">
-                      <h5 class="modal-title" id="cadastrar-responsavel">Cadastrar Responsável
+                      <h5 class="modal-title">Análise Técnica
                       </h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                       <span aria-hidden="true">&times;</span>
@@ -398,18 +412,77 @@
                   </div>
                   <div class="modal-body">
                     <div class="form-group position-relative">
-                          <input class="form-control" id="nome-responsavel-fiscalizacao" type="text" placeholder="Responsável técnico pelo projeto..." />
-                          <label for="nome-responsavel-fiscalizacao">Responsável Técnico</label>
+                          <p id="exibir-analise-tecnica"></p>
                     </div>
                   </div>
                 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary"  data-dismiss="modal" onclick="inserirResponsavel('FISCALIZACAO')">Salvar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Fim do modal de cadastro responsável projeto-->
+          <!-- Fim do modal de visualizar Análise Técnica-->
+          <!-- Modal de visualizar solicitação parecer funpec -->
+          <div class="modal fade" id="modal-visualizar-parecer-funpec" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-parecer-funpec" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Parecer da FUNPEC
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <p id="exibir-parecer-funpec"></p>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar solicitação de parecer funpec-->
+          <!-- Modal de visualizar dados Bancários -->
+          <div class="modal fade" id="modal-visualizar-dados-bancarios" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-parecer-funpec" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Dados Bancários
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <output class="form-group" id="exibir-banco-projeto" value='Banco'>
+                          </output>
+                          <label for="exibir-banco-projeto">Banco</label>
+                    </div>
+                    <div class="form-group position-relative">
+                          <output class="form-group" id="exibir-agencia-projeto" value='Banco'>
+                          </output>
+                          <label for="exibir-agencia-projeto">Agência</label>
+                    </div>
+                    <div class="form-group position-relative">
+                          <output class="form-group" id="exibir-conta-projeto" value='Banco'>
+                          </output>
+                          <label for="exibir-conta-projeto">Conta Corrente</label>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar dados bancários do projeto-->
         </div>
       </div>
       <footer class="rodape">
@@ -429,10 +502,10 @@
     <script src="../../js/formalizacao_proplan.js"></script> 
     <script src="../../js/util.js"></script> 
     <script type="text/javascript">
-      popularTabelaAnaliseProplan('tabela-analise-fiscalizacao');
+      popularTabelaRetornoCoordenador('tabela-retorno-coordenador','tabela-historico-retorno-coordenador','tabela-arquivos-retorno-coordenador');
       populaSelect(document.getElementById("select-tipos-documentos"),tiposDocumentos);
-      carregaResponsavel('FISCALIZACAO');
-      $("[data-tt=tooltip]").tooltip();
+      //carregaResponsavel('FISCALIZACAO');
+      //$("[data-tt=tooltip]").tooltip();
     </script> 
   </body>
 </html>

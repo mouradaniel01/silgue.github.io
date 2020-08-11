@@ -117,9 +117,9 @@
                   <h5>Pesquisa</h5>
                   <ul>
                     <li><a tabindex="-1" href="consulta_analise_funpec.html"><span>Análise FUNPEC</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_tecnica.html"><span>Análise Técnica</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_fiscalizacao.html"><span>Análise Fiscalização</span></a></li>
+                    <li><a tabindex="-1" href="consulta_analise_tecnica.html"><span>Análise Técnica</span></a></li>               
                     <li><a tabindex="-1" href="consulta_analise_instrumento_juridico.html"><span>Análise Instrumento Jurídico</span></a></li>
+                    <li><a tabindex="-1" href="consulta_retorno_coordenador.html"><span>Retornar Projeto para Coordenador</span></a></li>
                     <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Assinar Parecer Referêncial</span></a></li>
                     <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Autorizar Formalização</span></a></li>
                     <li><a tabindex="-1" href="consulta_aparecer_juridico_funpec.html"><span>Parecer Jurídico FUNPEC</span></a></li>
@@ -184,6 +184,12 @@
           <div class="row m-0">
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">
+                <h5>Regras de Negócio
+                <span class="tooltip-icon">
+                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O usuário poderá salvar as informações inseridas, sem finalizar a análise. As informações salvas devem ser visíveis para as demais funcionalidades, pois eles utilizam essas informações entre si, em suas análises. Ao finalizar a análise, então o projeto será removido da listagem de projeto pendente de análise FUNPEC, na tela anterior.">
+                  </i>
+               </span>
+               </h5> 
                 <table id="tabela-analise-funpec" class="table table-striped" data-toggle="table">
                   <thead>
                     <tr>
@@ -294,7 +300,7 @@
                          <label>Arquivo</label>
                      </div>
                      <div class="form-group position-relative">
-                        <button type="button" class="btn btn-primary" onclick="inserirArquivoFunpec('tabela-arquivos-funpec','select-tipos-documentos','descricao-arquivo-funpec','arquivo-projeto-funpec')">Inserir</button>
+                        <button type="button" class="btn btn-primary" onclick="inserirArquivoFunpec()">Inserir</button>
                      </div>
                      <div class="form-group position-relative">
                         <table class="table table-striped" data-toggle="table" id="tabela-arquivos-funpec">

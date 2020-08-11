@@ -129,12 +129,15 @@ function inserirArquivo(idTabela,idSelect,idDescricao,idArquivo){
 
 function populaTabelaArquivos(idTabela){
 
+	var dadosArquivos = [];
+
 	if(JSON.parse(localStorage.getItem('arquivosProjetos')) != null && arquivosProjeto.length === 0){
 		JSON.parse(localStorage.getItem('arquivosProjetos')).forEach( function (arquivo){
 			arquivosProjeto.push(arquivo);
+			dadosArquivos.push([arquivo.tipo, arquivo.descricao, arquivo.arquivo]);
 		});	
 	}
 
-	popularTabela(idTabela,arquivosProjeto,[['remover_arquivo','','#removerLinhaTabelaArquivo',idTabela,'']],'sim','nao');
+	popularTabela(idTabela,dadosArquivos,[['remover_arquivo','','#removerLinhaTabelaArquivo',idTabela,'']],'sim','nao');
 	
 }

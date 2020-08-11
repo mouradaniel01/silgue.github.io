@@ -1069,7 +1069,7 @@ function retornaDadosConsultaProjetadaProplanBySituacao(param,tipo,situacao){
 		param.forEach( function (item){
 			historicosLocal.forEach( function (historico){
 				if(historico.numero_projeto === item.dados_gerais.numero_projeto || historico.numero_projeto.toString() === item.dados_gerais.numero_projeto.toString()){
-					if(historico.tipo === tipo && historico.situacao === situacao || historico.tipo.toString() === tipo.toString() && historico.situacao.toString() === situacao.toString()){
+					if((historico.tipo === tipo && historico.situacao === situacao && historico.fluxo === 'EM ANALISE PROPLAN') || (historico.tipo.toString() === tipo.toString() && historico.situacao.toString() === situacao.toString() && historico.fluxo.toString() === 'EM ANALISE PROPLAN')){
 						param.splice(param.indexOf(item),1);
 					}else{
 						dadosProjetos.push(retornarDadosConsultaProjetadaProplanByIdentificador(item));
@@ -1211,7 +1211,7 @@ function popularTabelaConsultaProplan(idTabela,redirect){
 
  	var dadosProjetos = retornaDadosConsultaProjetadaProplan(JSON.parse(sessionStorage.getItem('projetosPesquisa')));
 
- 	popularTabela(idTabela,dadosProjetos,[['redirecionar',redirect,'passarNumeroProjeto',idTabela]]);
+ 	popularTabela(idTabela,dadosProjetos,[['redirecionar',redirect,'passarNumeroProjeto',idTabela]],'sim','sim');
 
  }
 
@@ -1223,6 +1223,35 @@ function popularTabelaConsultaProplan(idTabela,redirect){
  		['modal-parecer-funpec','#modal-parecer-funpec','',idTabela],['modal-dados-bancarios-funpec','#modal-dados-bancarios-funpec','',idTabela]]);
 
 
+ }
+
+ function popularTabelaRetornoCoordenador(idTabelaProjetos,idTabelaHistorico,idTabelaArquivo){
+
+ 	popularTabelaProjetoRetornoCoordenador(idTabelaProjetos);
+
+ 	if(historicos.length > 0){
+ 		historicos.forEach( function (historico){
+ 			if(historico.numero_projeto === numero_projeto.toString() || historico.numero_projeto === numero_projeto){
+				var dadosEvento = [];
+	 			dadosEvento.push([historico.tipo,historico.data,historico.login]);
+	 			popularTabela(idTabelaHistorico,dadosEvento,historico.modal,'nao','nao');
+			}
+			
+ 	});
+ 	}else{
+ 		historicos = JSON.parse(localStorage.getItem('historicos'));
+		historicos.forEach( function (historico){
+			if(historico.numero_projeto === numero_projeto.toString() || historico.numero_projeto === numero_projeto){
+				var dadosEvento = [];
+	 			dadosEvento.push([historico.tipo,historico.data,historico.login]);
+	 			popularTabela(idTabelaHistorico,dadosEvento,historico.modal,'nao','nao');
+			}
+			
+ 	});
+ 	}
+
+ 	populaTabelaArquivosFunpec(idTabelaArquivo);
+ 	
  }
 
  function popularTabelaProjetoAnaliseFunpec(idTabela){
@@ -1241,6 +1270,15 @@ function popularTabelaConsultaProplan(idTabela,redirect){
  	//popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela]]);
  	popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela],
  		['modal-analise-tecnica','#modal-analise-tecnica','',idTabela]]);
+
+
+ }
+
+ function popularTabelaProjetoRetornoCoordenador(idTabela){
+
+ 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(localStorage.getItem(numero_projeto)));
+
+ 	popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela]],'sim','nao');
 
 
  }
@@ -1570,11 +1608,29 @@ function popularTabelaProjetosPesquisa(idTabela){
 
  }
 
+ function retornarFormalizacaoCoordenador(){
+
+ 	var data = new Date();
+
+ 	var historico = new Historico(numero_projeto,'RETORNAR AO COORDENADOR',data.getDate() + "/"+ (data.getMonth()+1) + "/" + data.getFullYear() + " " + data.getHours() + ":" + ('0'+ data.getMinutes()).slice(-2),
+ 								'login','RETORNADO AO COORDENADOR','PENDENTE DE AJUSTES','');
+ 	historicos.push(historico);
+
+ 	localStorage.setItem('historicos', JSON.stringify(historicos));
+
+ 	//InserirAnaliseFunpec(idTabelaProjeto, idTabelaHistorico, idTabelaArquivo, parecer_funpec, idBanco,idAgencia,idConta);
+
+ }
+
  function populaTabelaArquivosFunpec(idTabela){
  	populaTabelaArquivos(idTabela);
  }
 
  function populaTabelaArquivosAnaliseTecnica(idTabela){
+ 	populaTabelaArquivos(idTabela);
+ }
+
+  function populaTabelaArquivosRetornoCoordenador(idTabela){
  	populaTabelaArquivos(idTabela);
  }
 
@@ -1713,6 +1769,19 @@ function inserirArquivoFunpec(){
 	//localStorage.setItem('formalizacoes',JSON.stringify(formalizacoes));
 
 	//populaTabelaArquivos('tabela-arquivos-funpec');
+}
+
+function inserirArquivoAnaliseTecnica(){
+
+	inserirArquivo('tabela-arquivos-funpec','select-tipos-documentos','descricao-arquivo-funpec','arquivo-projeto-funpec');
+
+	//localStorage.setItem('formalizacoes',JSON.stringify(formalizacoes));
+
+	//populaTabelaArquivos('tabela-arquivos-funpec');
+}
+
+function inserirArquivoRetornoCoordenador(){
+	inserirArquivo('tabela-arquivos-retorno-coordenador','select-tipos-documentos-retorno-coordenador','descricao-arquivo-retorno-coordenador','arquivo-projeto-retorno-coordenador');
 }
 
 function inserirLinhaTabelaByInput(idTabela,idInput) {
