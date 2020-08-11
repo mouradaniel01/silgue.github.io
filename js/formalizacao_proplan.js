@@ -955,7 +955,14 @@ function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 	var fluxo = " ";
 	var valor_projeto = "";
 	var fonte_recurso = "";
+	var dadosProjeto = [];
 
+	historicos.forEach( function (historico){
+		if((historico.numero_projeto === identificador && historico.fluxo === 'PENDENTE DE AJUSTES') || (historico.numero_projeto.toString() === identificador && historico.fluxo.toString() === 'PENDENTE DE AJUSTES')){
+			var dadosProjetoVazio = [];
+			return dadosProjetoVazio;
+		}
+	});
 
 	if(localStorage.getItem('analises') != null){
 		JSON.parse(localStorage.getItem('analises')).forEach( function (item){
@@ -1026,7 +1033,9 @@ function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 						" Instrumento Jurídico: ".bold() + responsavelInstrumento,projetoPesquisa.dados_gerais.ano];
 
 	return dadosProjeto;
+
 }
+
 
 function retornaDadosConsultaProjetadaProplan(param){
 
@@ -1069,7 +1078,9 @@ function retornaDadosConsultaProjetadaProplanBySituacao(param,tipo,situacao){
 		param.forEach( function (item){
 			historicosLocal.forEach( function (historico){
 				if(historico.numero_projeto === item.dados_gerais.numero_projeto || historico.numero_projeto.toString() === item.dados_gerais.numero_projeto.toString()){
-					if((historico.tipo === tipo && historico.situacao === situacao && historico.fluxo === 'EM ANALISE PROPLAN') || (historico.tipo.toString() === tipo.toString() && historico.situacao.toString() === situacao.toString() && historico.fluxo.toString() === 'EM ANALISE PROPLAN')){
+					if(historico.situacao === "RETORNADO AO COORDENADOR"){
+						param.splice(param.indexOf(item),1);
+					}else if((historico.tipo === tipo && historico.situacao === situacao) || (historico.tipo.toString() === tipo.toString() && historico.situacao.toString() === situacao.toString())){
 						param.splice(param.indexOf(item),1);
 					}else{
 						dadosProjetos.push(retornarDadosConsultaProjetadaProplanByIdentificador(item));
@@ -1085,7 +1096,9 @@ function retornaDadosConsultaProjetadaProplanBySituacao(param,tipo,situacao){
 		projetosPesquisaLocalStorage.forEach(function (projeto){
 			historicosLocal.forEach( function (historico){
 				if(historico.numero_projeto === projeto.dados_gerais.numero_projeto || historico.numero_projeto.toString() === projeto.dados_gerais.numero_projeto.toString()){
-					if(historico.tipo === tipo && historico.situacao === situacao || historico.tipo.toString() === tipo.toString() && historico.situacao.toString() === situacao.toString()){
+					if(historico.situacao === "RETORNADO AO COORDENADOR"){
+						projetosPesquisaLocalStorage.splice(projetosPesquisaLocalStorage.indexOf(projeto),1);
+					}else if(historico.tipo === tipo && historico.situacao === situacao || historico.tipo.toString() === tipo.toString() && historico.situacao.toString() === situacao.toString()){
 						projetosPesquisaLocalStorage.splice(projetosPesquisaLocalStorage.indexOf(projeto),1);
 					}
 				}
@@ -1215,6 +1228,14 @@ function popularTabelaConsultaProplan(idTabela,redirect){
 
  }
 
+ function popularTabelaConsultaProplan1(idTabela,redirect){
+
+ 	var dadosProjetos = retornaDadosConsultaProjetadaProplanBySituacao(JSON.parse(sessionStorage.getItem('projetosPesquisa')),'RETORNAR AO COORDENADOR','RETORNADO AO COORDENADOR');
+
+ 	popularTabela(idTabela,dadosProjetos,[['redirecionar',redirect,'passarNumeroProjeto',idTabela]],'sim','sim');
+
+ }
+
  function popularTabelaAnaliseProplan(idTabela){
  	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(localStorage.getItem(numero_projeto)));
 
@@ -1278,7 +1299,9 @@ function popularTabelaConsultaProplan(idTabela,redirect){
 
  	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(localStorage.getItem(numero_projeto)));
 
- 	popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela]],'sim','nao');
+ 	//popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela]],'sim','nao');
+ 	popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],
+ 		['modal-justificativa-retorno','#modal-justificativa-retorno','',idTabela]]);
 
 
  }
@@ -1462,6 +1485,19 @@ function popularTabelaProjetosPesquisa(idTabela){
  	popularTabelaAnaliseTecnica(idTabelaProjeto,idTabelaHistorico);
  }
 
+ function inserirJustificativaRetorno(){
+
+ 	var idTabelaProjeto = 'tabela-retorno-coordenador';
+
+ 	var idTabelaHistorico = 'tabela-historico-retorno-coordenador';
+
+ 	limpaTabela(document.getElementById(idTabelaHistorico));
+ 	
+ 	inserirParecer('RETORNO COORDENADOR','JUSTIFICATIVA RETORNO','PENDENTE DE AJUSTES','justificativa-retorno',idTabelaProjeto, idTabelaHistorico,'exibir-justificativa-retorno', [['modal-exibicao','#modal-visualizar-justificativa-retorno','exibirJustificativaRetorno()',idTabelaHistorico]]);
+
+ 	popularTabelaAnaliseFunpec(idTabelaProjeto,idTabelaHistorico);
+ }
+
  function inserirParecer(tipo,situacao,fluxo,idParecer,idTabelaProjeto,idTabelaHistorico,idCampoDestino,modal){
 
  	var parecer = document.getElementById(idParecer).value;
@@ -1477,15 +1513,21 @@ function popularTabelaProjetosPesquisa(idTabela){
 
  	if(analises.length > 0){
  		analises.forEach(function (analise){
- 		if(analise.numero_projeto === numero_projeto){
+ 		if(analise.numero_projeto === numero_projeto && analise.tipo === tipo){
  			analise.parecer = parecer;
+ 		}else if(tipo === "RETORNO COORDENADOR"){
+ 			var retorno = new Analise(numero_projeto,tipo,'',parecer,'','');
+ 			analises.push(retorno);
  		}
  	});
  	}else{
  		analises = JSON.parse(localStorage.getItem('analises'));
  		analises.forEach(function (analise){
- 		if(analise.numero_projeto === numero_projeto){
+ 		if(analise.numero_projeto === numero_projeto && analise.tipo === tipo){
  			analise.parecer = parecer;
+ 		}else if(tipo === "RETORNO COORDENADOR"){
+ 			var retorno = new Analise(numero_projeto,tipo,'',parecer,'','');
+ 			analises.push(retorno);
  		}
  	});
  	}
@@ -1518,6 +1560,19 @@ function popularTabelaProjetosPesquisa(idTabela){
  	analises.forEach( function (analise){
  		if(analise.numero_projeto === numero_projeto && analise.tipo === 'ANALISE'){
  			document.getElementById('exibir-analise-tecnica').innerHTML = analise.parecer;
+ 		}
+ 	});
+ }
+
+ function exibirJustificativaRetorno(){
+ 	if(analises.length === 0){
+ 		JSON.parse(localStorage.getItem('analises')).forEach( function (analise){
+ 			analises.push(analise);
+ 		});
+ 	}
+ 	analises.forEach( function (analise){
+ 		if(analise.numero_projeto === numero_projeto && analise.tipo === "RETORNO COORDENADOR"){
+ 			document.getElementById('exibir-justificativa-retorno').innerHTML = analise.parecer;
  		}
  	});
  }
@@ -1642,7 +1697,7 @@ function popularTabelaProjetosPesquisa(idTabela){
  		historicos.forEach( function (historico){
  			if(historico.numero_projeto === numero_projeto.toString() || historico.numero_projeto === numero_projeto){
 				var dadosEvento = [];
-	 			dadosEvento.push([historico.tipo,historico.data,historico.login]);
+	 			dadosEvento.push([historico.situacao,historico.data,historico.login]);
 	 			popularTabela(idTabelaHistorico,dadosEvento,historico.modal,'nao','nao');
 			}
 			
@@ -1652,7 +1707,7 @@ function popularTabelaProjetosPesquisa(idTabela){
 		historicos.forEach( function (historico){
 			if(historico.numero_projeto === numero_projeto.toString() || historico.numero_projeto === numero_projeto){
 				var dadosEvento = [];
-	 			dadosEvento.push([historico.tipo,historico.data,historico.login]);
+	 			dadosEvento.push([historico.situacao,historico.data,historico.login]);
 	 			popularTabela(idTabelaHistorico,dadosEvento,historico.modal,'nao','nao');
 			}
 			
@@ -1671,7 +1726,7 @@ function popularTabelaProjetosPesquisa(idTabela){
  		historicos.forEach( function (historico){
  			if(historico.numero_projeto === numero_projeto.toString() || historico.numero_projeto === numero_projeto){
 				var dadosEvento = [];
-	 			dadosEvento.push([historico.tipo,historico.data,historico.login]);
+	 			dadosEvento.push([historico.situacao,historico.data,historico.login]);
 	 			popularTabela(idTabelaHistorico,dadosEvento,historico.modal,'nao','nao');
 			}
 			
@@ -1681,7 +1736,7 @@ function popularTabelaProjetosPesquisa(idTabela){
 		historicos.forEach( function (historico){
 			if(historico.numero_projeto === numero_projeto.toString() || historico.numero_projeto === numero_projeto){
 				var dadosEvento = [];
-	 			dadosEvento.push([historico.tipo,historico.data,historico.login]);
+	 			dadosEvento.push([historico.situacao,historico.data,historico.login]);
 	 			popularTabela(idTabelaHistorico,dadosEvento,historico.modal,'nao','nao');
 			}
 			

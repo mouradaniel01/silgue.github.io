@@ -302,7 +302,7 @@ function popularTabela(idTabela,array,acoes,limpaTela,linkNoRegistro){
 		nomeAcao === 'modal-gerar-minuta' || nomeAcao === 'modal-solicitar-dotacao' || 
 		nomeAcao === 'modal-solicitar-empenho' || nomeAcao === 'modal-parecer-referencial' ||
 		nomeAcao === 'modal-parecer-funpec' || nomeAcao === 'modal-dados-bancarios-funpec' || 
-		nomeAcao === 'modal-parecer-agir' || nomeAcao === 'modal-analise-tecnica'){
+		nomeAcao === 'modal-parecer-agir' || nomeAcao === 'modal-analise-tecnica' || nomeAcao === 'modal-justificativa-retorno'){
 		botao = document.createElement("button");
 	    botao.setAttribute("type", "button");
 	    botao.setAttribute("class", "btn btn-link");
@@ -320,6 +320,9 @@ function popularTabela(idTabela,array,acoes,limpaTela,linkNoRegistro){
 	    }else if(nomeAcao === 'modal-parecer-funpec'){
 	    	botao.setAttribute("title","Emitir Parecer Funpec");
 	    	i.setAttribute("class", "fas fa-funnel-dollar");
+	    }else if(nomeAcao === 'modal-justificativa-retorno'){
+	    	botao.setAttribute("title","Informar Justificativa para Retorno do Projeto");
+	    	i.setAttribute("class", "fas fa-undo-alt");//<i class="fas fa-undo-alt"></i>
 	    }else if(nomeAcao === 'modal-analise-tecnica'){
 	    	botao.setAttribute("title","Emitir Análise Técnica");//<i class="fas fa-drafting-compass"></i>
 	    	i.setAttribute("class", "fas fa-drafting-compass");

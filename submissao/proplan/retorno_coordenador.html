@@ -150,7 +150,7 @@
               <li class="breadcrumb-item"><a class="link" href="../../../index.html"><i class="fas fa-home"></i></a></li>
               <li class="breadcrumb-item"><a class="link" href="../../index.html">Submissão</a></li>
               <li class="breadcrumb-item"><a class="link" href="../index.html">Projetos</a></li>
-              <li class="breadcrumb-item"><a class="link" href="consulta_analise_fiscalizacao.html">Formalização de Projetos de Pesquisa</a></li>
+              <li class="breadcrumb-item"><a class="link" href="consulta_retorno_coordenador.html">Formalização de Projetos de Pesquisa</a></li>
               <li class="breadcrumb-item active" aria-current="page">
                 <h3>Retornar Projeto ao Coordenador</h3>
               </li>
@@ -159,6 +159,12 @@
           <div class="row m-0">
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">
+                <h5>Regras de Negócio
+                <span class="tooltip-icon">
+                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Após o retorno do projeto ao coordenador, ele não poderá ser analisado mais pela funpec, análise técnica ou análise da divisão de instrumento jurídico, pois ele não estará mais na proplan.">
+                  </i>
+               </span>
+               </h5>
                 <table id="tabela-retorno-coordenador" class="table table-striped" data-toggle="table">
                   <thead>
                     <tr>
@@ -190,7 +196,13 @@
               </div>
             </article>
             <article class="conteudo-principal">
-              <div class="conteudo-principal__content parse-markdown my-4"> 
+              <div class="conteudo-principal__content parse-markdown my-4">
+              <h5>Regras de Negócio
+                <span class="tooltip-icon">
+                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Os eventos são as ações realizadas no projeto. Aqui deverão ser listados todos os eventos do projeto(Ex.: parecer funpec, analise técnica, parecer instrumento jurídico e demais). O analista da central de serviço, responsável pela análise técnica deve poder visualizar o parecer da funpec, do instrumento jurídico e todas as demais ações, assim como a funpec e a divisão de instrumento jurídico também poderão ver todos. O sistema deve permitir não apenas visualizar um histórico de qual evento e quando, mas visualizar a informação que foi inserida. Para verificar o comportamento, pode-se adicionar um parecer funpec e visualizar na funcionalidade de analise técnica, como vice-versa. Para que seja possível registrar o parecer funpec, é necessário que o responsável técnico tenha sido informado.">
+                  </i>
+               </span>
+               </h5> 
               <div class="form-group position-relative">
                   <table class="table table-striped" data-toggle="table" id="tabela-historico-retorno-coordenador">
                      <thead>
@@ -211,16 +223,16 @@
                      </tbody>
                   </table>
                </div>              
-                <div class="form-group position-relative">
-                  <textarea class="form-control" id="justificativa-retorno-coordenador" placeholder="Parecer de aprovação ou recomendação..." data-max-size="4000"></textarea>
-                  <label class="required" for="justificativa-retorno-coordenador">Justificativa</label>
-                  <div class="invalid-feedback">Limite de caracteres excedido
-                  </div>
-                </div>
               </div>
               </article>
               <article class="conteudo-principal">
-                <div class="conteudo-principal__content parse-markdown my-4"> 
+                <div class="conteudo-principal__content parse-markdown my-4">
+                <h5>Regras de Negócio
+                <span class="tooltip-icon">
+                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Todos os arquivos inseridos no projeto deverão ser listados nessa tabela, mas apenas deverá ser permitido remover os arquivos que foram inseridos na funcionalidade de retornar o projeto ao coordenador.">
+                  </i>
+               </span>
+               </h5> 
                   <div class="form-group position-relative">
                      <div class="form-group position-relative">
                         <select class="custom-select" id="select-tipos-documentos" required="required" name="tipo-documentos">
@@ -399,6 +411,57 @@
              </div>
           </div>
           <!-- Fim do modal de cadastro de tipos de documentos-->
+          <!-- Modal de justificativa retorno -->
+          <div class="modal fade" id="modal-justificativa-retorno" tabindex="-1" role="dialog" aria-labelledby="modal-justificativa-retorno" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Retornar Projeto ao Coordenador
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                      <textarea class="form-control" id="justificativa-retorno" placeholder="Justificativa para retornar o projeto para o coordenador" data-max-size="2000"></textarea>
+                      <label class="required" for="justificativa-retorno">Justificativa do Retorno</label>
+                      <div class="invalid-feedback">Limite de caracteres excedido
+                      </div>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="inserirJustificativaRetorno()">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal justificativa retorno-->
+          <!-- Modal de visualizar justificativa retorno -->
+          <div class="modal fade" id="modal-visualizar-justificativa-retorno" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-justificativa-retorno" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Justificativa do Retorno do Projeto
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <p id="exibir-justificativa-retorno"></p>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar justificativa retorno-->
           <!-- Modal de visualizar Análise Técnica -->
           <div class="modal fade" id="modal-visualizar-analise-tecnica" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-analise-tecnica" aria-hidden="true">
              <div class="modal-dialog" role="document">
