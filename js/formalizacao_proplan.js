@@ -944,6 +944,112 @@ function inicioModuloPROPLAN(){
 	
 }
 
+function popularTabelaConsultaFormalizacaoRetornada(idTabela,redirect){
+
+	var dadosVazios = true;
+
+ 	var dadosProjetos = retornaDadosConsultaFormalizacaoRetornada(JSON.parse(localStorage.getItem('projetosPesquisa')));
+ 	dadosProjetos.forEach(function (dadosProjeto){
+ 		if(dadosProjeto != null){
+ 			dadosVazios = false;
+ 		}
+ 	});
+ 	if(!dadosVazios){
+ 		popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['redirecionar',redirect,'passarNumeroProjeto',idTabela]]);
+ 	}
+
+ 	//var dadosProjetos = retornaDadosConsultaProjetadaProplanBySituacao(JSON.parse(sessionStorage.getItem('projetosPesquisa')),'RETORNAR AO COORDENADOR','RETORNADO AO COORDENADOR');
+
+ 	//popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['redirecionar',redirect,'passarNumeroProjeto',idTabela]],'sim','sim');
+ 	
+
+ }
+
+ function retornaDadosConsultaFormalizacaoRetornada(param){
+
+	var dadosProjetos = [];
+	var dadosProjeto;
+
+	if(Array.isArray(param)){
+		param.forEach( function (item){
+			dadosProjeto = retornaDadosConsultaFormalizacaoRetornadaByIdentificador(item.dados_gerais.numero_projeto);
+			if(dadosProjeto != ''){
+				dadosProjetos.push(dadosProjeto);
+			}
+			
+		});
+
+	}else if(param != null){
+		dadosProjeto = retornaDadosConsultaFormalizacaoRetornadaByIdentificador(param);
+		if(dadosProjeto != ''){
+			dadosProjetos.push(dadosProjeto);
+		}
+	}else{
+		var projetosPesquisaLocalStorage = JSON.parse(localStorage.getItem('projetosPesquisa'));
+
+		projetosPesquisaLocalStorage.forEach(function (projeto){
+
+			dadosProjeto = retornaDadosConsultaFormalizacaoRetornadaByIdentificador(projeto.dados_gerais.numero_projeto);
+			
+			if(dadosProjeto != ''){
+				dadosProjetos.push(dadosProjeto);
+			}
+		});
+	}
+
+	return dadosProjetos;
+}
+
+function retornaDadosConsultaFormalizacaoRetornadaByIdentificador(identificador){
+
+	var projetoPesquisa = JSON.parse(localStorage.getItem(identificador));
+
+	var fluxo = " ";
+	var valor_projeto = "";
+	var fonte_recurso = "";
+	var dadosProjeto = [];
+
+	if(historicos.length === 0){
+		historicos = JSON.parse(localStorage.getItem('historicos'));
+	}
+
+	if(formalizacoes.length === 0){
+		formalizacoes = JSON.parse(localStorage.getItem('formalizacoes'));
+	}
+
+	historicos.forEach( function (historico){
+		/*if(historico.numero_projeto === 14901){
+			historico.fluxo = 'PENDENTE DE AJUSTES';
+		}*/
+		if((historico.numero_projeto === identificador && historico.fluxo === 'PENDENTE DE AJUSTES') 
+			|| (historico.numero_projeto.toString() === identificador 
+				&& historico.fluxo.toString() === 'PENDENTE DE AJUSTES')){
+
+			historicos.forEach( function (historico){
+				if(historico.numero_projeto === identificador){
+					fluxo = historico.fluxo;
+				}
+			});
+
+			formalizacoes.forEach( function (formalizacao){
+				if(formalizacao.numero_projeto === identificador){
+					valor_projeto = formalizacao.plano_aplicacao.valor_projeto;
+					fonte_recurso = formalizacao.dados_gerais.fonte_recurso;
+				}
+			});
+
+			dadosProjeto = [projetoPesquisa.dados_gerais.numero_projeto,projetoPesquisa.dados_gerais.titulo,projetoPesquisa.informacoes_preliminares.classificacao_pesquisa,
+						projetoPesquisa.dados_gerais.unidade_execucao, fonte_recurso,
+						valor_projeto, fluxo, projetoPesquisa.dados_gerais.ano];
+		}
+
+	});
+
+	return dadosProjeto;
+		
+}
+
+
 function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 
 	var projetoPesquisa = JSON.parse(localStorage.getItem(identificador));
@@ -956,6 +1062,10 @@ function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 	var valor_projeto = "";
 	var fonte_recurso = "";
 	var dadosProjeto = [];
+
+	if(historicos.length === 0){
+		historicos = JSON.parse(localStorage.getItem('historicos'));
+	}
 
 	historicos.forEach( function (historico){
 		if((historico.numero_projeto === identificador && historico.fluxo === 'PENDENTE DE AJUSTES') || (historico.numero_projeto.toString() === identificador && historico.fluxo.toString() === 'PENDENTE DE AJUSTES')){
@@ -1034,6 +1144,31 @@ function retornarDadosConsultaProjetadaProplanByIdentificador(identificador){
 
 	return dadosProjeto;
 
+}
+
+function retornaDadosConsultaCoordenador(param){
+
+	var dadosProjetos = [];
+
+	if(Array.isArray(param)){
+		param.forEach( function (item){
+			dadosProjetos.push(retornarDadosConsultaCoordenadorByIdentificador(item));
+		});
+
+	}else if(param != null){
+		dadosProjetos.push(retornarDadosConsultaCoordenadorByIdentificador(param));
+
+	}else{
+		var projetosPesquisaLocalStorage = JSON.parse(localStorage.getItem('projetosPesquisa'));
+
+		projetosPesquisaLocalStorage.forEach(function (projeto){
+		
+			dadosProjetos.push(retornarDadosConsultaCoordenadorByIdentificador(projeto.dados_gerais.numero_projeto));
+
+		});
+	}
+
+	return dadosProjetos;
 }
 
 
@@ -1222,19 +1357,175 @@ function popularTabelaConsultaGeralProplan(idTabela){
 
 function popularTabelaConsultaProplan(idTabela,redirect){
 
- 	var dadosProjetos = retornaDadosConsultaProjetadaProplan(JSON.parse(sessionStorage.getItem('projetosPesquisa')));
-
- 	popularTabela(idTabela,dadosProjetos,[['redirecionar',redirect,'passarNumeroProjeto',idTabela]],'sim','sim');
-
- }
-
- function popularTabelaConsultaProplan1(idTabela,redirect){
+ 	//var dadosProjetos = retornaDadosConsultaProjetadaProplan(JSON.parse(sessionStorage.getItem('projetosPesquisa')));
 
  	var dadosProjetos = retornaDadosConsultaProjetadaProplanBySituacao(JSON.parse(sessionStorage.getItem('projetosPesquisa')),'RETORNAR AO COORDENADOR','RETORNADO AO COORDENADOR');
 
- 	popularTabela(idTabela,dadosProjetos,[['redirecionar',redirect,'passarNumeroProjeto',idTabela]],'sim','sim');
+ 	
+ 		popularTabela(idTabela,dadosProjetos,[['redirecionar',redirect,'passarNumeroProjeto',idTabela]],'sim','sim');
+
 
  }
+
+ function popularTabelaConsultaProjetosCoordenador(idTabela,redirect){
+
+ 	//var dadosProjetos = retornaDadosConsultaProjetadaProplan(JSON.parse(sessionStorage.getItem('projetosPesquisa')));
+
+ 	var dadosProjetos = retornaDadosConsultaProjetosCoordenadorBySituacao(JSON.parse(localStorage.getItem('projetosPesquisa')),'SOLICITAÇÃO DE FORMALIZAÇÃO','SUBMETIDO COM SUCESSO');//var historicoProjeto1 = new Historico('14901','SOLICITAÇÃO DE FORMALIZAÇÃO','28/07/2020 9:15','josuevitor','SUBMETIDO COM SUCESSO','EM ANÁLISE PELA PROPLAN','');
+
+ 	popularTabela(idTabela,dadosProjetos,[['dados_do_projeto','#modal-visualizar-projeto','passarNumeroProjeto',idTabela]],'sim','sim');	
+
+ }
+
+ function retornaDadosConsultaProjetosCoordenadorBySituacao(param,tipo,situacao){
+
+	var dadosProjetos = [];
+
+	var historicosLocalStorage;
+
+	if(historicos.length === 0){
+		historicosLocal = JSON.parse(localStorage.getItem('historicos'));
+	}else{
+		historicosLocal = historicos;
+	}
+
+	if(Array.isArray(param)){
+		param.forEach( function (item){
+			historicosLocal.forEach( function (historico){
+				if(historico.numero_projeto === item.dados_gerais.numero_projeto || historico.numero_projeto.toString() === item.dados_gerais.numero_projeto.toString()){
+					if((historico.tipo === tipo && historico.situacao === situacao) || (historico.tipo.toString() === tipo.toString() && historico.situacao.toString() === situacao.toString())){
+						dadosProjetos.push(retornaDadosConsultaProjetosCoordenadorBySituacaoIdentificador(item.dados_gerais.numero_projeto));
+					}
+				}
+			});
+			
+		});
+
+	}else{
+		var projetosPesquisaLocalStorage = JSON.parse(localStorage.getItem('projetosPesquisa'));
+
+		projetosPesquisaLocalStorage.forEach(function (projeto){
+			historicosLocal.forEach( function (historico){
+				if(historico.numero_projeto === projeto.dados_gerais.numero_projeto || historico.numero_projeto.toString() === projeto.dados_gerais.numero_projeto.toString()){
+					if((historico.tipo === tipo && historico.situacao === situacao) || (historico.tipo.toString() === tipo.toString() && historico.situacao.toString() === situacao.toString())){
+						dadosProjetos.push(retornaDadosConsultaProjetosCoordenadorBySituacaoIdentificador(projeto.dados_gerais.numero_projeto));
+					}
+				}
+			});
+		});
+
+		projetosPesquisaLocalStorage.forEach( function (projeto){
+			dadosProjetos.push(retornaDadosConsultaProjetosCoordenadorBySituacaoIdentificador(projeto.dados_gerais.numero_projeto));
+		});
+	}
+
+	return dadosProjetos;
+}
+
+function consultaProjetosRetornados(){
+
+	var dadosProjetos = retornaDadosConsultaProjetosCoordenadorBySituacao(JSON.parse(localStorage.getItem('projetosPesquisa')),'SOLICITAÇÃO DE FORMALIZAÇÃO','SUBMETIDO COM SUCESSO');
+	populaTabelaProjetosRetornados(dadosProjetos);
+}
+
+function populaTabelaProjetosRetornados(result) 
+{
+    var dataSet = [];
+    $.each(result, function(index, data)
+    {
+       dataSet.push([
+              data[0],
+              data[1],
+              data[2],
+              data[3],
+              data[4],
+              data[5],
+              data[6],
+       ]);
+    });
+    var table = $("#tabela-formalizacao-coordenador").DataTable({
+    	lengthChange: false,
+        language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Pesquisar",
+          },
+          data: dataSet,
+          columns: [
+                 { title: 'Número' },
+                 { title: 'Título' },
+                 { title: 'Classificação' },
+                 { title: 'Unid. Execução' },
+                 { title: 'Tipo' },
+                 { title: 'Valor do Projeto' },
+                 { title: 'Situação' },
+          ]
+    });
+}
+
+function retornaDadosConsultaProjetosCoordenadorBySituacaoIdentificador(identificador){
+
+	var projetoPesquisa = JSON.parse(localStorage.getItem(identificador));
+
+	var fluxo = " ";
+	var valor_projeto = "";
+	var fonte_recurso = "";
+	var dadosProjeto = [];
+
+	if(historicos.length === 0){
+		historicosLocal = JSON.parse(localStorage.getItem('historicos'));
+	}else{
+		historicosLocal = historicos;
+	}
+
+	historicosLocal.forEach( function (historico){
+		if((historico.numero_projeto === identificador) || (historico.numero_projeto.toString() === identificador)){
+			if(localStorage.getItem('historicos') != null){
+		JSON.parse(localStorage.getItem('historicos')).forEach( function (item){
+			historicosLocal.forEach( function(historico){
+				if(item.numero_projeto === historico.numero_projeto){
+					historicosLocal.splice(historicosLocal.indexOf(historico), 1);
+				}
+			});	
+		historicosLocal.push(item);
+	});
+
+	historicosLocal.forEach( function (historico){
+		if(historico.numero_projeto === identificador){
+			fluxo = historico.fluxo;
+		}
+	});
+	}
+
+	if(localStorage.getItem('formalizacoes') != null){
+		JSON.parse(localStorage.getItem('formalizacoes')).forEach( function (item){
+			formalizacoes.forEach( function(formalizacao){
+				if(item.numero_projeto === formalizacao.numero_projeto){
+					formalizacoes.splice(formalizacoes.indexOf(formalizacao), 1);
+				}
+			});	
+		formalizacoes.push(item);
+	});
+
+	formalizacoes.forEach( function (formalizacao){
+		if(formalizacao.numero_projeto === identificador){
+			valor_projeto = formalizacao.plano_aplicacao.valor_projeto;
+			fonte_recurso = formalizacao.dados_gerais.fonte_recurso;
+		}
+	});
+	}
+
+	
+		}
+	});
+
+	var dadosProjeto = [projetoPesquisa.dados_gerais.numero_projeto,projetoPesquisa.dados_gerais.titulo,projetoPesquisa.informacoes_preliminares.classificacao_pesquisa,
+						projetoPesquisa.dados_gerais.unidade_execucao, fonte_recurso,
+						valor_projeto, fluxo, projetoPesquisa.dados_gerais.ano];
+
+	return dadosProjeto;
+}
+
+
 
  function popularTabelaAnaliseProplan(idTabela){
  	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(JSON.parse(localStorage.getItem(numero_projeto)));

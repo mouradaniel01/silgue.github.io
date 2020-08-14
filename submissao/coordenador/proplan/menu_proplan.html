@@ -119,19 +119,9 @@
                   <ul>
                     <li><a tabindex="-1" href="formalizar_projeto_pesquisa.html"><span>Solicitar Formalização</span></a></li>
                     <li><a tabindex="-1" href="menu_proplan.html"><span>Consultar pedidos de formalização</span></a></li>
+                    <li><a tabindex="-1" href="consulta_formalizacao_retornada.html"><span>Solicitações Retornadas para Ajustes</span></a></li>
                   </ul>
-                </div>
-              </button>
-              <button class="submenu" tabindex="0">
-                <div class="submenu__title">
-                  <h5>Formalização de Projetos de Ensino</h5><i class="fas fa-angle-right"></i>
-                </div>
-                <div class="submenu__items">
-                  <h5>Lato Sensu</h5>
-                  <ul>
-                    <li><a tabindex="-1" href="formalizar_projeto_lato_sensu.html"><span>Solicitar Formalização</span></a></li>
-                    <li><a tabindex="-1" href="#"><span>Consultar pedidos de formalização</span></a></li>
-                  </ul>
+
                 </div>
               </button>
             </div>
@@ -153,22 +143,20 @@
             </ol>
           </nav>
           <div class="row m-0">
-              <table id="tabela-projetos-pesquisa" class="table table-striped" data-toggle="table">
+              <table id="tabela-formalizacao-coordenador" class="table table-striped" data-toggle="table">
                 <thead>
                   <tr>
                     <th style="width: 60px">Número</th>
                     <th style="width: 120px">Título</th>
-                    <th style="width: 120px">Coordenador</th>
+                    <th style="width: 120px">Classificação</th>
+                    <th style="width: 120px">Unid. Execução</th>
                     <th style="width: 60px">Tipo</th>
                     <th style="width: 80px">Valor do Projeto</th>
                     <th style="width: 100px">Situação</th>
-                    <th style="width: 120px">Responsáveis</th>
                     <th style="width: 40px">Ano</th>
-                    <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -274,7 +262,7 @@
     <script src="../../../js/formalizacao_proplan.js"></script> 
     <script type="text/javascript">
       $(document).ready(function () {
-        $('#tabela-projetos-pesquisa').DataTable( {
+        $('#tabela-formalizacao-coordenador').DataTable( {
           lengthChange: false,
           language: {
             search: "_INPUT_",
@@ -285,7 +273,9 @@
         } );
       });
 
-      popularTabelaProjetosPesquisa('tabela-projetos-pesquisa');
+      popularTabelaConsultaProjetosCoordenador('tabela-formalizacao-coordenador','');
+
+     $("[data-tt=tooltip]").tooltip();
       
     </script> 
   </body>

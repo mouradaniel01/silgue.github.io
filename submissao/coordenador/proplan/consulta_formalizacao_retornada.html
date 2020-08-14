@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html class="no-js" lang="pt-BR" paleta="administrativa">
   <head>
@@ -16,6 +15,7 @@
     <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/base.css">
     <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/administrativo.css">
     <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/css/alto_contraste.css">
+    <link rel="stylesheet" href="https://static.info.ufrn.br/1.0.6/vendors/bootstrap-table/bootstrap-table.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css"/>
     <title>SIGProjetos</title>
   </head>
@@ -117,16 +117,11 @@
                 <div class="submenu__items">
                   <h5>Pesquisa</h5>
                   <ul>
-                    <li><a tabindex="-1" href="consulta_analise_funpec.html"><span>Análise FUNPEC</span></a></li>
-                    <li><a tabindex="-1" href="consulta_analise_tecnica.html"><span>Análise Técnica</span></a></li>               
-                    <li><a tabindex="-1" href="consulta_analise_instrumento_juridico.html"><span>Análise Instrumento Jurídico</span></a></li>
-                    <li><a tabindex="-1" href="consulta_retorno_coordenador.html"><span>Retornar Projeto para Coordenador</span></a></li>
-                    <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Assinar Parecer Referêncial</span></a></li>
-                    <li><a tabindex="-1" href="consulta_autorizar_formalizacao.html"><span>Autorizar Formalização</span></a></li>
-                    <li><a tabindex="-1" href="consulta_aparecer_juridico_funpec.html"><span>Parecer Jurídico FUNPEC</span></a></li>
-                    <li><a tabindex="-1" href="menu_proplan.html"><span>Consultar pedido de formalização</span></a></li>
-
+                    <li><a tabindex="-1" href="formalizar_projeto_pesquisa.html"><span>Solicitar Formalização</span></a></li>
+                    <li><a tabindex="-1" href="menu_proplan.html"><span>Consultar pedidos de formalização</span></a></li>
+                    <li><a tabindex="-1" href="consulta_formalizacao_retornada.html"><span>Solicitações Retornadas para Ajustes</span></a></li>
                   </ul>
+
                 </div>
               </button>
             </div>
@@ -148,20 +143,18 @@
             </ol>
           </nav>
           <div class="row m-0">
-            <article class="conteudo-principal">
-              <div class="conteudo-principal__content parse-markdown my-4">
-              <table id="tabela-consulta-retorno-coordenador" class="table table-striped" data-toggle="table">
+              <table id="tabela-formalizacao-coordenador" class="table table-striped" data-toggle="table">
                 <thead>
                   <tr>
                     <th style="width: 60px">Número</th>
                     <th style="width: 120px">Título</th>
-                    <th style="width: 100px">Classificação</th>
-                    <th style="width: 120px">Coordenador</th>
+                    <th style="width: 120px">Classificação</th>
+                    <th style="width: 120px">Unid. Execução</th>
                     <th style="width: 60px">Tipo</th>
                     <th style="width: 80px">Valor do Projeto</th>
                     <th style="width: 100px">Situação</th>
-                    <th style="width: 120px">Responsáveis</th>
                     <th style="width: 40px">Ano</th>
+                    <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -176,9 +169,81 @@
                   <td></td>
                 </tbody>
               </table>
-            </div>
-          </article>
           </div>
+          <!-- Modal de dados do projeto -->
+            <div class="modal fade" id="modal-visualizar-projeto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <ul class="nav nav-tabs" id="tabExample" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="dados-gerais-tab" data-toggle="tab" href="#dados-gerais" role="tab" aria-controls="dados-gerais" aria-selected="true">
+                          Dados Gerais
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="participes-tab" data-toggle="tab" href="#participes" role="tab" aria-controls="participes" aria-selected="false">
+                          Partícipes
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="metas-resultados-tab" data-toggle="tab" href="#metas-resultados" role="tab" aria-controls="metas-resultados" aria-selected="false">
+                          Metas e Resultados
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="recursos-tab" data-toggle="tab" href="#recursos" role="tab" aria-controls="recursos" aria-selected="false">
+                          Recursos
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="plano-aplicacao-tab" data-toggle="tab" href="#plano-aplicacao" role="tab" aria-controls="plano-aplicacao" aria-selected="false">
+                          Plano de Aplicação
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="cronograma-tab" data-toggle="tab" href="#cronograma" role="tab" aria-controls="cronograma" aria-selected="false">
+                          Cronograma de Desembolso
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="documentos-tab" data-toggle="tab" href="#documentos" role="tab" aria-controls="documentos" aria-selected="false">
+                          Documentos
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="tabContent">
+                      <div class="tab-pane fade show active" id="dados-gerais" role="tabpanel" aria-labelledby="dados-gerais-tab">
+                        <p>Informações sobre os dados gerais</p>
+                      </div>
+                      <div class="tab-pane fade" id="participes" role="tabpanel" aria-labelledby="participes-tab">
+                        <p>Informações dos partícipes</p>
+                      </div>
+                      <div class="tab-pane fade" id="metas-resultados" role="tabpanel" aria-labelledby="metas-resultados-tab">
+                        <p>Informações das metas e resultados</p>
+                      </div>
+                      <div class="tab-pane fade" id="recursos" role="tabpanel" aria-labelledby="recursos-tab">
+                        <p>Informações dos Recursos</p>
+                      </div>
+                      <div class="tab-pane fade" id="plano-aplicacao" role="tabpanel" aria-labelledby="plano-aplicacao-tab">
+                        <p>Informações do Plano de Aplicação</p>
+                      </div>
+                      <div class="tab-pane fade" id="cronograma" role="tabpanel" aria-labelledby="cronograma-tab">
+                        <p>Informações do Cronograma</p>
+                      </div>
+                      <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="documentos-tab">
+                        <p>Documentos</p>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                   </div>
+                </div>
+              </div>
+            </div>
+            <!-- fim do modal dados do projeto -->
         </div>
       </div>
       <footer class="rodape">
@@ -189,28 +254,33 @@
       </footer>
     </div>
     <script src="https://static.info.ufrn.br/1.0.6/vendors/jquery/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/vendors/popper/popper.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap/bootstrap.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/js/scripts.js"></script>
-    <script src="../../js/formalizacao_proplan.js"></script> 
-    <script src="../../js/tabelas.js"></script> 
+    <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap-table/bootstrap-table-pt-BR.min.js"></script>
+    <script src="../../../js/tabelas.js"></script>
+    <script src="../../../js/formalizacao_proplan.js"></script> 
     <script type="text/javascript">
-      $(document).ready(function () {
-        $('#tabela-consulta-retorno-coordenador').DataTable( {
+    $(document).ready(function () {
+        $('#tabela-formalizacao-coordenador').DataTable( {
           lengthChange: false,
+          paging:   false,
           language: {
             search: "_INPUT_",
             searchPlaceholder: "Pesquisar",
+
           }
-
-
         } );
+
       });
 
-      popularTabelaConsultaProplan('tabela-consulta-retorno-coordenador','retorno_coordenador.html');
+      popularTabelaConsultaFormalizacaoRetornada('tabela-formalizacao-coordenador','formalizar_projeto_pesquisa.html');
 
-      
+      //consultaProjetosRetornados();
+
+     $("[data-tt=tooltip]").tooltip();
       
     </script> 
   </body>

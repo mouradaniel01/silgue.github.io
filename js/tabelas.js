@@ -111,6 +111,10 @@ function popularTabela(idTabela,array,acoes,limpaTela,linkNoRegistro){
 
  	var botao;
 
+ 	var visualizarNoPrimeroDadoDaTabela = false;
+
+ 	var href = '';
+
  	if(limpaTela === 'sim'){
 		limpaTabela(tabela);
  	}
@@ -119,6 +123,9 @@ function popularTabela(idTabela,array,acoes,limpaTela,linkNoRegistro){
  		acoes.forEach( function (acao){
  		if(acao[0] === 'redirecionar'){
  			redirecionar = acao[1];
+ 		}else if(acao[0] === 'dados_do_projeto'){
+ 			visualizarNoPrimeroDadoDaTabela = true;
+ 			 href = acao[1];
  		}
  	});
  	}
@@ -134,8 +141,7 @@ function popularTabela(idTabela,array,acoes,limpaTela,linkNoRegistro){
    		var novaLinha = tabela.insertRow(numLinhas);
    		
    		novaLinha.setAttribute("id",numLinhas+1);
-
-   		var botao;
+   		
 
    		for (var i in item) {
 		    if (item.hasOwnProperty(i)) {
@@ -152,15 +158,24 @@ function popularTabela(idTabela,array,acoes,limpaTela,linkNoRegistro){
 
 	    	if (resultado.hasOwnProperty(j)) {
 	    		if(j===0){
-	    			if(linkNoRegistro === 'sim'){
+	    			if(linkNoRegistro === 'sim' && !visualizarNoPrimeroDadoDaTabela){
 	    				botao = document.createElement("a");
 					    botao.setAttribute("href",redirecionar);
 					    botao.setAttribute("class", "link-normal");
 					    botao.setAttribute("onclick","passarNumeroProjeto("+resultado[0]+")");
 					    botao.innerHTML = resultado[j];
 					    novaCelula.appendChild(botao);
-					}else{
-						novaCelula.innerHTML = resultado[j];
+					}else if(linkNoRegistro === 'sim' && visualizarNoPrimeroDadoDaTabela){
+						botao = document.createElement("button");
+					    botao.setAttribute("type", "button");
+					    botao.setAttribute("class", "btn btn-link");
+					    botao.setAttribute("data-toggle","modal");
+					    botao.setAttribute("data-target", href);
+					    botao.setAttribute("onclick",onclick);
+					    botao.innerHTML = resultado[j];
+					    novaCelula.appendChild(botao);
+				}else{
+					novaCelula.innerHTML = resultado[j];
 				}
 	    			
 	    		}else{
@@ -174,7 +189,13 @@ function popularTabela(idTabela,array,acoes,limpaTela,linkNoRegistro){
       			if(acoes.length > 0){
       				acoes.forEach( function (acao){
 		      			acao.push(array);
-		      		novaCelula.appendChild(criarBotaoAcao(acao,array,resultado[0]));
+		      			botao = criarBotaoAcao(acao,array,resultado[0]);
+		      			if(botao === null || botao === undefined){
+		      				novaCelula.innerHTML = " ";
+		      			}else{
+		      				novaCelula.appendChild(botao);
+		      			}
+		      			
 		      	});
       			}else{
       				novaCelula.innerHTML = " ";
@@ -284,14 +305,19 @@ function popularTabela(idTabela,array,acoes,limpaTela,linkNoRegistro){
 	if(nomeAcao === 'remover'){
 		botao = document.createElement("button");
 	    botao.setAttribute("onclick","removerLinhaTabela(this.parentNode.parentNode.rowIndex,'"+idTabela+"','"+acao[4]+"','"+param+"')");
+	    otao.setAttribute("type", "button");
 	    botao.setAttribute("class", "btn btn-link");
+	    botao.setAttribute("data-tt","tooltip");
+	    botao.setAttribute("title","Remover da listagem");
 	    i = document.createElement("i");
 	    i.setAttribute("class", "far fa-trash-alt");
 	    botao.appendChild(i);
 	}else if(nomeAcao === 'redirecionar'){
 		botao = document.createElement("a");
+	    botao.setAttribute("class", "btn btn-link");
+	    botao.setAttribute("data-tt","tooltip");
+	    botao.setAttribute("title","Alterar Projeto");
 	    botao.setAttribute("href",href);
-	    botao.setAttribute("class", "link-normal");
 	    if(onclick != ''){
 	    botao.setAttribute("onclick",onclick);
 	    }
@@ -307,7 +333,7 @@ function popularTabela(idTabela,array,acoes,limpaTela,linkNoRegistro){
 	    botao.setAttribute("type", "button");
 	    botao.setAttribute("class", "btn btn-link");
 	    botao.setAttribute("data-toggle","modal");
-	    botao.setAttribute("data-tt","tooltip")
+	    botao.setAttribute("data-tt","tooltip");
 	    botao.setAttribute("data-target", href);
 	    botao.setAttribute("onclick",onclick);
 	    i = document.createElement("i");
