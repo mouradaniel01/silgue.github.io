@@ -914,34 +914,61 @@ function passarResponsavelTecnico(campo,resp){
     sessionStorage.setItem(campo, responsavel );
 }
 
+function populaLocalStorage(key,value){
+	localStorage.setItem(key,JSON.stringify(value));
+}
+
+function populaAnalises(){
+	
+	var analiseDefault = new Analise('0000','nenhum','ninguem','','','');
+
+	analises.push(analiseDefault);
+
+	populaLocalStorage('analises',analises);
+}
+
+function populaHistoricos(){
+
+	historicos.push(historicoProjeto1,historicoProjeto2,historicoProjeto3);
+
+	populaLocalStorage('historicos',historicos);
+
+}
+
+function populaFormalizacoes(){
+
+	formalizacoes.push(formalizacaoProjetoPesquisa1,formalizacaoProjetoPesquisa2,formalizacaoProjetoPesquisa3);
+
+	populaLocalStorage('formalizacoes',formalizacoes);
+
+}
+
+function populaMembros(){
+
+	membros.push(membro_1,membro_2,membro_3);
+
+	populaLocalStorage('membros',membros);
+
+}
+
 function inicioModuloPROPLAN(){
 
 	projetosPesquisa.forEach( function (projeto){
 		localStorage.setItem(projeto.dados_gerais.numero_projeto,JSON.stringify(projeto));
 	});
 
-	localStorage.setItem('projetosPesquisa',JSON.stringify(projetosPesquisa));
-
-	localStorage.setItem('tiposDocumentos',JSON.stringify(tiposDocumentosBase));
-
-	var analiseDefault = new Analise('0000','nenhum','ninguem','','',''); 
-
-	analises.push(analiseDefault);
-
-	localStorage.setItem('analises',JSON.stringify(analises));
-
-	historicos.push(historicoProjeto1,historicoProjeto2,historicoProjeto3);
-
-	localStorage.setItem('historicos',JSON.stringify(historicos));
-
-	formalizacoes.push(formalizacaoProjetoPesquisa1,formalizacaoProjetoPesquisa2,formalizacaoProjetoPesquisa3);
-
-	localStorage.setItem('formalizacoes', JSON.stringify(formalizacoes));
-
-	membros.push(membro_1,membro_2,membro_3);
-
-	localStorage.setItem('membros',JSON.stringify(membros));
+	JSON.parse(localStorage.getItem('projetosPesquisa')).length === 0 ? populaLocalStorage('projetosPesquisa',projetosPesquisa) : '';
 	
+	JSON.parse(localStorage.getItem('tiposDocumentos')).length === 0 ? populaLocalStorage('tiposDocumentos',tiposDocumentosBase) : '';
+	
+	JSON.parse(localStorage.getItem('analises')).length === 0 ? populaAnalises() : '';
+
+	JSON.parse(localStorage.getItem('historicos')).length === 0 ? populaHistoricos() : '';
+
+	JSON.parse(localStorage.getItem('formalizacoes')).length === 0 ? populaFormalizacoes() : '';
+
+	JSON.parse(localStorage.getItem('membros')).length === 0 ? populaMembros() : '';
+
 }
 
 function popularTabelaConsultaFormalizacaoRetornada(idTabela,redirect){
@@ -1026,7 +1053,7 @@ function retornaDadosConsultaFormalizacaoRetornadaByIdentificador(identificador)
 				&& historico.fluxo.toString() === 'PENDENTE DE AJUSTES')){
 
 			historicos.forEach( function (historico){
-				if(historico.numero_projeto === identificador){
+				if(historico.numero_projeto === identificador || historico.numero_projeto.toString() === identificador){
 					fluxo = historico.fluxo;
 				}
 			});
@@ -1298,7 +1325,7 @@ function retornarDadosConsultaGeralProjetadaProplanByIdentificador(identificador
 		});
 
 		historicos.forEach( function (historico){
-			if(historico.numero_projeto === identificador){
+			if(historico.numero_projeto === identificador || historico.numero_projeto.toString() === identificador){
 				fluxo = historico.fluxo;
 			}
 		});
@@ -1490,7 +1517,7 @@ function retornaDadosConsultaProjetosCoordenadorBySituacaoIdentificador(identifi
 	});
 
 	historicosLocal.forEach( function (historico){
-		if(historico.numero_projeto === identificador){
+		if(historico.numero_projeto === identificador || historico.numero_projeto.toString() === identificador){
 			fluxo = historico.fluxo;
 		}
 	});
