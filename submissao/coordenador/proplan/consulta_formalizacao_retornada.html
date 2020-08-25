@@ -150,7 +150,7 @@
                       </i>
                    </span>
                    </h5> 
-                  <table id="tabela-formalizacao-coordenador" class="table table-striped" data-toggle="table">
+                  <table id="tabela-formalizacao-retornada-coordenador" class="table table-striped" data-toggle="table">
                     <thead>
                       <tr>
                         <th style="width: 60px">Número</th>
@@ -269,10 +269,11 @@
     <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap-table/bootstrap-table.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap-table/bootstrap-table-pt-BR.min.js"></script>
     <script src="../../../js/tabelas.js"></script>
+    <script src="../../../js/util.js"></script> 
     <script src="../../../js/formalizacao_proplan.js"></script> 
     <script type="text/javascript">
     $(document).ready(function () {
-        $('#tabela-formalizacao-coordenador').DataTable( {
+        $('#tabela-formalizacao-retornada-coordenador').DataTable( {
           lengthChange: false,
           paging:   false,
           language: {
@@ -284,7 +285,7 @@
 
       });
 
-      popularTabelaConsultaFormalizacaoRetornada('tabela-formalizacao-coordenador','formalizar_projeto_pesquisa.html');
+      consultarFormalizacaoRetornada();
 
       //consultaProjetosRetornados();
 

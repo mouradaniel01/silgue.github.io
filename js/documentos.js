@@ -93,10 +93,12 @@ function removerTipoDocumento(i,idTabela,nome){
 
 function removerLinhaTabelaArquivo(i,idTabela,descricao){
 	arquivosProjeto.forEach(function(arquivo){
-		if(arquivo.descricao === descricao){
+		if(arquivo.numero_projeto === numero_projeto && arquivo.descricao === descricao){
 			arquivosProjeto.splice(arquivosProjeto.indexOf(arquivo), 1);
 		}
 	});
+
+	localStorage.setItem('arquivosProjetos', JSON.stringify(arquivosProjeto));
 	
     document.getElementById(idTabela).deleteRow(i);
 }
@@ -110,7 +112,8 @@ function inserirArquivo(idTabela,idSelect,idDescricao,idArquivo){
 
 	var arquivoProjeto = new ArquivoProjeto(numero_projeto,tipo,descricao,arquivo);
 
-	if(JSON.parse(localStorage.getItem('arquivosProjetos')) != null && arquivosProjeto.length === 0){
+	if(JSON.parse(localStorage.getItem('arquivosProjetos')) != null){
+		arquivosProjeto = [];
 		JSON.parse(localStorage.getItem('arquivosProjetos')).forEach( function (arquivo){
 			arquivosProjeto.push(arquivo);
 		});	
@@ -131,13 +134,71 @@ function populaTabelaArquivos(idTabela){
 
 	var dadosArquivos = [];
 
-	if(JSON.parse(localStorage.getItem('arquivosProjetos')) != null && arquivosProjeto.length === 0){
+	if(JSON.parse(localStorage.getItem('arquivosProjetos')) != null){
 		JSON.parse(localStorage.getItem('arquivosProjetos')).forEach( function (arquivo){
 			arquivosProjeto.push(arquivo);
-			dadosArquivos.push([arquivo.tipo, arquivo.descricao, arquivo.arquivo]);
+			if(arquivo.numero_projeto === numero_projeto){
+				dadosArquivos.push([arquivo.tipo, arquivo.descricao, arquivo.arquivo]);
+			}
 		});	
 	}
 
-	popularTabela(idTabela,dadosArquivos,[['remover_arquivo','','#removerLinhaTabelaArquivo',idTabela,'']],'sim','nao');
+	popularTabelaArquivo(idTabela,dadosArquivos);
 	
 }
+
+function popularTabelaArquivo(idTabela,dadosArquivos){
+
+ 	var tabela = document.getElementById(idTabela);
+
+ 	var botao;
+
+	limpaTabela(tabela);
+ 
+	dadosArquivos.forEach(function(item){
+
+		var resultado = [];
+
+		var numLinhas = tabela.rows.length;
+	   	// Captura a quantidade de colunas da última linha da tabela
+	   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+
+   		var novaLinha = tabela.insertRow(numLinhas);
+   		
+   		novaLinha.setAttribute("id",numLinhas+1);
+   		
+
+   		for (var i in item) {
+		    if (item.hasOwnProperty(i)) {
+		        resultado.push(item[i]);
+		    }
+		}
+
+   		for (var j = 0; j < numColunas; j++) {
+	    	var i;
+	       // Insere uma coluna na nova linha 
+	    	novaCelula = novaLinha.insertCell(j);
+
+	    	i = numColunas-1;
+
+	    	if (resultado.hasOwnProperty(j)) {
+					novaCelula.innerHTML = resultado[j];
+	    		}else{
+		    	novaCelula.setAttribute("align","right");
+      			novaCelula.setAttribute("class","btn-group");
+
+      			botao = document.createElement("button");
+			    botao.setAttribute("onclick","removerLinhaTabelaArquivo(this.parentNode.parentNode.rowIndex,'"+idTabela+"','"+item[1]+"')");
+			    botao.setAttribute("class", "btn btn-link");
+			    i = document.createElement("i");
+			    i.setAttribute("class", "far fa-trash-alt");
+			    botao.appendChild(i);
+
+			    novaCelula.appendChild(botao);
+
+		      	
+		    }
+	   }
+	});
+
+ }

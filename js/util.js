@@ -1,3 +1,33 @@
+function setLocalStorage(key,value){
+  localStorage.setItem(key,JSON.stringify(value));
+}
+
+function getLocalStorage(key){
+
+  var getVariavelLocalStorage = JSON.parse(localStorage.getItem(key));
+
+  return getVariavelLocalStorage;
+
+}
+
+function setArrayLocalStorage(key,array,value){
+
+  if(!Array.isArray(getLocalStorage(key))){
+    array = [];
+    value.forEach( function (item){
+      array.push(item);
+    });
+    setLocalStorage(key,array);
+  }else{
+    array = [];
+    getLocalStorage(key).forEach( function (item){
+      array.push(item);
+    });
+  }
+
+  return array;
+}
+
 function gera_random(n){
 var ranNum = Math.round(Math.random()*n);
 return ranNum;

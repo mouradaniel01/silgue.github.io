@@ -446,7 +446,7 @@
                   </div>
                 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="inserirResponsavel('ANALISE')">Salvar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="inserirResponsavel('ANALISE_TECNICA')">Salvar</button>
                 </div>
               </div>
             </div>
@@ -563,6 +563,53 @@
             </div>
           </div>
           <!-- Fim do modal de visualizar dados bancários do projeto-->
+          <!-- Modal Alerta Cadastrar Responsável -->
+          <div class="modal fade" id="modal-alerta-responsavel" tabindex="-1" role="dialog" aria-labelledby="odal-alerta-responsavel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <div class="alert alert-danger d-flex" role="alert">
+                      <div class="alert-icone d-flex justify-content-center align-items-center">
+                        <i class="fas fa-times"></i>
+                      </div>
+                      <div class="alert-information">
+                        <p class="alert-heading"><strong>Erro</strong></p>
+                        <p>Nenhum Responsável foi cadastrado!</p>
+                      </div>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal Alerta Cadastrar Responsável-->
+          <!-- Modal de visualizar justificativa retorno -->
+          <div class="modal fade" id="modal-visualizar-justificativa-retorno" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-justificativa-retorno" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Justificativa do Retorno do Projeto
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <p id="exibir-justificativa-retorno"></p>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar justificativa retorno-->
         </div>
       </div>
       <footer class="rodape">
@@ -584,7 +631,7 @@
     <script type="text/javascript">
       popularTabelaAnaliseTecnica('tabela-analise-tecnica','tabela-historico-analise-tecnica','tabela-arquivos-analise-tecnica');
       populaSelect(document.getElementById("select-tipos-documentos"),tiposDocumentos);
-      carregaResponsavel('ANALISE');
+      carregaResponsavel('ANALISE_TECNICA');
 
       $("[data-tt=tooltip]").tooltip();
 
