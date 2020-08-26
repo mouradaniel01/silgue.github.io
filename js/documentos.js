@@ -46,6 +46,28 @@ function popularTiposDocumento(idTabela){
 		tabela.deleteRow(length-1);
 	}
 
+	tiposDocumentosBase.forEach(function(tipo) {
+		
+		// Captura a quantidade de linhas já existentes na tabela
+	   	var numLinhas = tabela.rows.length;
+	   	// Captura a quantidade de colunas da última linha da tabela
+	   	var numColunas = tabela.rows[numLinhas-1].cells.length;
+
+   		var novaLinha = tabela.insertRow(numLinhas);
+   		novaLinha.setAttribute("id",numLinhas+1);
+
+   		for (var j = 0; j < numColunas; j++) {
+	      var a, i;
+	       // Insere uma coluna na nova linha 
+	      novaCelula = novaLinha.insertCell(j);
+	      if(j===0){
+	      	novaCelula.innerHTML = tipo;
+	      }else{
+	      		novaCelula.innerHTML = ' ';
+	      }
+	   }
+	});
+
 	tiposDocumentos.forEach(function(tipo) {
 		
 		// Captura a quantidade de linhas já existentes na tabela
@@ -63,10 +85,6 @@ function popularTiposDocumento(idTabela){
 	      if(j===0){
 	      	novaCelula.innerHTML = tipo;
 	      }else{
-	      	if(tipo === 'ATA APROVAÇÃO DEPARTAMENTO' || tipo === 'AUTORIZAÇÃO PARTICIPAÇÃO EM PESQUISA' || tipo === 'LIMITE DE CARGA HORÁRIA/REMUNERAÇÃO'
-	      		|| tipo ==='HOMOLOGAÇÃO PROPESQ' || tipo === 'HOMOLOGAÇÃO PROPLAN' || tipo === 'HOMOLOGAÇÃO PPG' || tipo === 'PLANILHA CLT - FUNPEC'){
-	      		novaCelula.innerHTML = ' ';
-	      	}else{
 	      		a = document.createElement("button");
 		        a.setAttribute("onclick","removerTipoDocumento(this.parentNode.parentNode.rowIndex,'"+idTabela+"','"+tipo+"')");
 		        a.setAttribute("class", "btn btn-link");
@@ -76,7 +94,6 @@ function popularTiposDocumento(idTabela){
 		        novaCelula.appendChild(a);
 	      	}
 	      }
-	   }
 	});
 
 }

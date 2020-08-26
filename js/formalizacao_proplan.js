@@ -9,7 +9,6 @@ var docentesComponente = [];
 var listaEntidades = [];
 var entidadesSelecionadas = [];
 var entidadesParticipes = [];
-var tiposDocumentos = ['ATA APROVAÇÃO DEPARTAMENTO', 'AUTORIZAÇÃO PARTICIPAÇÃO EM PESQUISA', 'LIMITE DE CARGA HORÁRIA/REMUNERAÇÃO', 'HOMOLOGAÇÃO PROPESQ', 'HOMOLOGAÇÃO PROPLAN', 'HOMOLOGAÇÃO PPG'];
 var arquivosProjeto = [];
 var recursos = [];
 var responsavelFunpec;
