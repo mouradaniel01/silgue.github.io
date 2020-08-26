@@ -1496,12 +1496,14 @@ function retornaDadosConsultaProjetosCoordenadorBySituacaoIdentificador(identifi
 
  }
 
- function popularTabelaAnaliseIJU(idTabela){
+ function popularTabelaProjetoAnaliseIJU(idTabela){
+
  	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(numero_projeto);
  	
  	popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela],
  		['modal-parecer-dcf','#modal-parecer-dcf','',idTabela],['modal-gerar-minuta','#modal-gerar-minuta','',idTabela],['modal-parecer-referencial','#modal-parecer-referencial','',idTabela],
- 		['modal-solicitar-dotacao','#modal-solicitar-dotacao','',idTabela],['modal-solicitar-empenho','#modal-solicitar-empenho','',idTabela],['modal-parecer-agir','#modal-parecer-agir','',idTabela]]);
+ 		['modal-solicitar-dotacao','#modal-solicitar-dotacao','',idTabela],['modal-solicitar-empenho','#modal-solicitar-empenho','',idTabela],['modal-parecer-agir','#modal-parecer-agir','',idTabela],
+ 		['modal-instrumento-juridico','#modal-instrumento-juridico','',idTabela]]);
 
  }
 
@@ -1578,50 +1580,7 @@ function popularTabelaProjetosPesquisa(idTabela){
 
  }
 
- function inserirSolicitacao(tipo, idTabela,idCampo,idDestino,modal){
 
- 	var textoSolicitacao;
-
- 	var idTabela = idTabela;
-
- 	if(idCampo === '' && idDestino === ''){
-
- 	}else{
- 		textoSolicitacao = document.getElementById(idCampo).value;
-
- 		document.getElementById(idDestino).innerHTML = textoSolicitacao;
- 	}
-
- 	var solicitacao = [];
-
- 	var data = new Date();
-
- 	/*if(localStorage.getItem('solicitacoes') != null){
- 		solicitacoes = JSON.parse(localStorage.getItem('solicitacoes'));
- 	}*/
-
- 	solicitacao.push([tipo, data.getDate() + "/"+ (data.getMonth()+1) + "/" + data.getFullYear() + " " + data.getHours() + ":" + ('0'+ data.getMinutes()).slice(-2),'login']);
-
- 	//localStorage.setItem('solicitacoes',JSON.stringify(solicitacoes));
-
-
- 	popularTabela(idTabela,solicitacao,[['modal-exibicao','#'+modal,'',idTabela]]);
-
- 	return solicitacao;
-
- }
-
- function inserirSolicitacaoDotacao(idCampo){
-
- }
-
- function inserirSolicitacaoEmpenho(idCampo){
-
- }
-
- function inserirParecerAGIR(idCampo){
-
- }
 
  function popularTabelaConsultaFunpec(){
 
@@ -1653,7 +1612,7 @@ function popularTabelaProjetosPesquisa(idTabela){
 
  	var href = 'analise_instrumento_juridico.html';
 
- 	var dadosProjetos = retornaDadosConsultaProjetadaProplanByCondicao('EM ANÁLISE TÉCNICA','ANÁLISE FINALIZADA','EM ANÁLISE PROPLAN');
+ 	var dadosProjetos = retornaDadosConsultaProjetadaProplanByCondicao('INSTRUMENTO_JURIDICO','ANÁLISE EMITIDA','EM ANÁLISE PELA PROPLAN');
 
  	popularTabela(idTabela,dadosProjetos,[['redirecionar',href,'passarNumeroProjeto',idTabela]],'sim','sim');
 
@@ -1707,6 +1666,126 @@ function popularTabelaProjetosPesquisa(idTabela){
  	}
  }
 
+ function inserirAnaliseIJU(){
+
+ 	var idTabelaProjeto = 'tabela-analise-instrumento-juridico';
+
+ 	var idTabelaHistorico = 'tabela-historico-instrumento-juridico';
+
+ 	var analise = getAnalise(numero_projeto,'INSTRUMENTO_JURIDICO');
+
+ 	if(analise.responsavel === ''){
+ 		return $('#modal-alerta-responsavel').modal('show');
+ 	}else{
+ 		limpaTabela(document.getElementById('tabela-historico-instrumento-juridico'));
+
+ 		var data = getData();
+ 	
+	 	inserirHistorico(numero_projeto,'ANÁLISE INSTRUMENTO JURÍDICO','ANÁLISE EMITIDA','EM ANÁLISE PELA PROPLAN',
+	 		data,'login', [['modal-exibicao','#modal-visualizar-analise-iju','exibirAnaliseIJU()',idTabelaHistorico]]);
+
+	 	inserirParecer('ANÁLISE INSTRUMENTO JURÍDICO','analise-instrumento-juridico');
+
+	 	popularTabelaAnaliseFunpec(idTabelaProjeto,idTabelaHistorico);
+ 	}
+ }
+
+ function inserirSolicitacaoIJU(idCampo,tipo,responsavel,situacao,fluxo,modal,idTabelaProjeto, idTabelaHistorico){
+
+ 	var solicitacao = document.getElementById(idCampo).value;
+
+ 	var data = getData();
+
+ 	inserirHistorico(numero_projeto, tipo,situacao,fluxo, data,'login', modal);
+
+ 	inserirAnalise(numero_projeto,tipo,responsavel,solicitacao,'','');
+
+ 	popularTabelaAnaliseFunpec(idTabelaProjeto,idTabelaHistorico);
+
+ }
+
+
+ function inserirSolicitacaoParecerDCF(){
+
+ 	var idTabelaProjeto = 'tabela-analise-instrumento-juridico';
+
+ 	var idTabelaHistorico = 'tabela-historico-instrumento-juridico';
+ 
+ 	populaAnalises();
+
+ 	var analise = getAnalise(numero_projeto,'INSTRUMENTO_JURIDICO');
+
+ 	var modal = [['modal-exibicao','#modal-visualizar-solicitacao-parecer-dcf','exibirSolicitacaoParecerDCF()',idTabelaHistorico]];
+
+ 	if(analise.responsavel === ''){
+ 		return $('#modal-alerta-responsavel').modal('show');
+ 	}else{
+ 		inserirSolicitacaoIJU('solicitacao-parecer-dcf','SOLICITAÇÃO DE PARECER DA DCF','AGUARDANDO RESPOSTA','EM ANÁLISE PELA PROPLAN',modal);
+ 	}
+
+ }
+
+ function inserirSolicitacaoDotacao(){
+
+ 	var idTabelaProjeto = 'tabela-analise-instrumento-juridico';
+
+ 	var idTabelaHistorico = 'tabela-historico-instrumento-juridico';
+
+ 	populaAnalises();
+
+ 	var analise = getAnalise(numero_projeto,'INSTRUMENTO_JURIDICO');
+
+ 	var modal = [['modal-exibicao','#modal-visualizar-solicitacao-dotacao-orcamentaria','exibirSolicitacaoDotacao()',idTabelaHistorico]];
+
+ 	if(analise.responsavel === ''){
+ 		return $('#modal-alerta-responsavel').modal('show');
+ 	}else{
+ 		inserirSolicitacaoIJU('solicitacao-dotacao','SOLICITAÇÃO DE DOTAÇÃO ORÇAMENTÁRIA','AGUARDANDO RESPOSTA','EM ANÁLISE PELA PROPLAN',modal);
+ 	}
+
+ }
+
+ function inserirSolicitacaoParecerAGIR(){
+
+ 	var idTabelaProjeto = 'tabela-analise-instrumento-juridico';
+
+ 	var idTabelaHistorico = 'tabela-historico-instrumento-juridico';
+
+ 	populaAnalises();
+
+ 	var analise = getAnalise(numero_projeto,'INSTRUMENTO_JURIDICO');
+
+ 	var modal = [['modal-exibicao','#modal-visualizar-solicitacao-parecer-agir','exibirSolicitacaoParecerAGIR()',idTabelaHistorico]];
+
+ 	if(analise.responsavel === ''){
+ 		return $('#modal-alerta-responsavel').modal('show');
+ 	}else{
+ 		inserirSolicitacaoIJU('solicitacao-parecer-agir','SOLICITAÇÃO DE PARECER DA AGIR','AGUARDANDO RESPOSTA','EM ANÁLISE PELA PROPLAN',modal);
+ 	}
+
+ }
+
+ function inserirSolicitacaoEmpenho(){
+
+ 	var idTabelaProjeto = 'tabela-analise-instrumento-juridico';
+
+ 	var idTabelaHistorico = 'tabela-historico-instrumento-juridico';
+
+ 	populaAnalises();
+
+ 	var analise = getAnalise(numero_projeto,'INSTRUMENTO_JURIDICO');
+
+ 	var modal = [['modal-exibicao','#modal-visualizar-solicitacao-emissao-empenho','exibirSolicitacaoEmpenho()',idTabelaHistorico]];
+
+ 	if(analise.responsavel === ''){
+ 		return $('#modal-alerta-responsavel').modal('show');
+ 	}else{
+ 		inserirSolicitacaoIJU('solicitacao-empenho','SOLICITAÇÃO DE EMISSÃO DE EMPENHO','AGUARDANDO RESPOSTA','EM ANÁLISE PELA PROPLAN',modal);
+ 	}
+
+ }
+
+
  function inserirJustificativaRetorno(){
 
  	var idTabelaProjeto = 'tabela-retorno-coordenador';
@@ -1735,6 +1814,20 @@ function popularTabelaProjetosPesquisa(idTabela){
 
  }
 
+ function inserirAnalise(numero_projeto,tipo,responsavel,parecer,dados_bancarios,documentos){
+ 	
+ 	populaAnalises();
+
+ 	var analise = new Analise(numero_projeto,tipo,responsavel,parecer,dados_bancarios,documentos);
+
+ 	analises.push(analise);
+
+ 	setAnalise(numero_projeto,tipo,analise);
+
+ 	setLocalStorage('analises',analises);
+
+ }
+
  function inserirParecer(tipo,idParecer){
 
  	var parecer = document.getElementById(idParecer).value;
@@ -1758,30 +1851,6 @@ function popularTabelaProjetosPesquisa(idTabela){
 
  	setLocalStorage('analises',analises);
  	setAnalise(numero_projeto,tipo,analise);
-
- }
-
- function exibirParecerFunpec(){
-
- 	var analise = getAnalise(numero_projeto,'ANALISE_FUNPEC');
- 	
- 	document.getElementById('exibir-parecer-funpec').innerHTML = analise.parecer;
-
- }
-
- function exibirAnaliseTecnica(){
-
- 	var analise = getAnalise(numero_projeto,'ANALISE_TECNICA');
- 	
- 	document.getElementById('exibir-analise-tecnica').innerHTML = analise.parecer;
-
- }
-
- function exibirJustificativaRetorno(){
-
- 	var analise = getAnalise(numero_projeto,'RETORNO COORDENADOR');
- 	
- 	document.getElementById('exibir-justificativa-retorno').innerHTML = analise.parecer;
 
  }
 
@@ -1835,6 +1904,38 @@ function popularTabelaProjetosPesquisa(idTabela){
 
  }
 
+ function exibirParecerFunpec(){
+
+ 	var analise = getAnalise(numero_projeto,'ANALISE_FUNPEC');
+ 	
+ 	document.getElementById('exibir-parecer-funpec').innerHTML = analise.parecer;
+
+ }
+
+ function exibirAnaliseTecnica(){
+
+ 	var analise = getAnalise(numero_projeto,'ANALISE_TECNICA');
+ 	
+ 	document.getElementById('exibir-analise-tecnica').innerHTML = analise.parecer;
+
+ }
+
+ function exibirAnaliseIJU(){
+
+ 	var analise = getAnalise(numero_projeto,'INSTRUMENTO_JURIDICO');
+ 	
+ 	document.getElementById('exibir-analise-iju').innerHTML = analise.parecer;
+
+ }
+
+ function exibirJustificativaRetorno(){
+
+ 	var analise = getAnalise(numero_projeto,'RETORNO COORDENADOR');
+ 	
+ 	document.getElementById('exibir-justificativa-retorno').innerHTML = analise.parecer;
+
+ }
+
  function exibirDadosBancariosFunpec(){
 
  	var analise = getAnalise(numero_projeto,'ANALISE_FUNPEC');
@@ -1845,15 +1946,46 @@ function popularTabelaProjetosPesquisa(idTabela){
 
  }
 
+ function exibirSolicitacaoParecerDCF(){
+
+ 	var analise = getAnalise(numero_projeto,'SOLICITAÇÃO DE PARECER DA DCF');
+ 	
+ 	document.getElementById('exibir-solicitacao-parecer-dcf').innerHTML = analise.parecer;
+
+ }
+
+ function exibirSolicitacaoDotacao(){
+
+ 	var analise = getAnalise(numero_projeto,'SOLICITAÇÃO DE DOTAÇÃO ORÇAMENTÁRIA');
+ 	
+ 	document.getElementById('exibir-solicitacao-dotacao').innerHTML = analise.parecer;
+
+ }
+
+ function exibirSolicitacaoEmpenho(){
+
+ 	var analise = getAnalise(numero_projeto,'SOLICITAÇÃO DE EMISSÃO DE EMPENHO');
+ 	
+ 	document.getElementById('exibir-solicitacao-empenho').innerHTML = analise.parecer;
+
+ }
+
+ function exibirSolicitacaoParecerAGIR(){
+
+ 	var analise = getAnalise(numero_projeto,'SOLICITAÇÃO DE PARECER DA AGIR');
+ 	
+ 	document.getElementById('exibir-solicitacao-parecer-agir').innerHTML = analise.parecer;
+
+ }
+
  function finalizarAnaliseFunpec(){
 
- 	var data = new Date();
+ 	var data = getData();
 
- 	var historico = new Historico(numero_projeto,'ANÁLISE FUNPEC',data.getDate() + "/"+ (data.getMonth()+1) + "/" + data.getFullYear() + " " + data.getHours() + ":" + ('0'+ data.getMinutes()).slice(-2),
- 								'login','ANÁLISE FINALIZADA','EM ANÁLISE PELA PROPLAN','');
+ 	var historico = new Historico(numero_projeto,'ANÁLISE FUNPEC',data,'login','ANÁLISE FINALIZADA','EM ANÁLISE PELA PROPLAN','');
  	historicos.push(historico);
 
- 	localStorage.setItem('historicos', JSON.stringify(historicos));
+ 	setLocalStorage('historicos', historicos);
 
  	//InserirAnaliseFunpec(idTabelaProjeto, idTabelaHistorico, idTabelaArquivo, parecer_funpec, idBanco,idAgencia,idConta);
 
@@ -1861,13 +1993,25 @@ function popularTabelaProjetosPesquisa(idTabela){
 
  function finalizarAnaliseTécnica(){
 
- 	var data = new Date();
+ 	var data = getData();
 
- 	var historico = new Historico(numero_projeto,'ANÁLISE TECNICA',data.getDate() + "/"+ (data.getMonth()+1) + "/" + data.getFullYear() + " " + data.getHours() + ":" + ('0'+ data.getMinutes()).slice(-2),
- 								'login','ANÁLISE TECNICA FINALIZADA','EM ANÁLISE PELA PROPLAN','');
+ 	var historico = new Historico(numero_projeto,'ANÁLISE TECNICA',data,'login','ANÁLISE TECNICA FINALIZADA','EM ANÁLISE PELA PROPLAN','');
  	historicos.push(historico);
 
- 	localStorage.setItem('historicos', JSON.stringify(historicos));
+ 	setLocalStorage('historicos', historicos);
+
+ 	//InserirAnaliseFunpec(idTabelaProjeto, idTabelaHistorico, idTabelaArquivo, parecer_funpec, idBanco,idAgencia,idConta);
+
+ }
+
+ function finalizarAnaliseIJU(){
+
+ 	var data = getData();
+
+ 	var historico = new Historico(numero_projeto,'ANÁLISE INSTRUMENTO JURÍDICO',data,'login','ANÁLISE FINALIZADA','EM ANÁLISE PELA PROPLAN','');
+ 	historicos.push(historico);
+
+ 	setLocalStorage('historicos', historicos);
 
  	//InserirAnaliseFunpec(idTabelaProjeto, idTabelaHistorico, idTabelaArquivo, parecer_funpec, idBanco,idAgencia,idConta);
 
@@ -1892,6 +2036,10 @@ function popularTabelaProjetosPesquisa(idTabela){
  }
 
  function populaTabelaArquivosAnaliseTecnica(idTabela){
+ 	populaTabelaArquivos(idTabela);
+ }
+
+ function populaTabelaArquivosInstrumentoJuridico(idTabela){
  	populaTabelaArquivos(idTabela);
  }
 
@@ -1926,6 +2074,22 @@ function popularTabelaProjetosPesquisa(idTabela){
  	populaTabelaHistorico(idTabelaHistorico);
 
  	populaTabelaArquivosAnaliseTecnica(idTabelaArquivo);
+ 	
+ }
+
+ function popularTabelaAnaliseIJU(){
+
+ 	var idTabelaProjetos = 'tabela-analise-instrumento-juridico';
+ 	var idTabelaHistorico = 'tabela-historico-instrumento-juridico';
+ 	var idTabelaArquivo = 'tabela-arquivos-analise-instrumento-juridico';
+
+ 	popularTabelaProjetoAnaliseIJU(idTabelaProjetos);
+
+ 	populaHistoricos();
+
+ 	populaTabelaHistorico(idTabelaHistorico);
+
+ 	populaTabelaArquivosInstrumentoJuridico(idTabelaArquivo);
  	
  }
 
@@ -2031,6 +2195,10 @@ function inserirArquivoAnaliseTecnica(){
 	//localStorage.setItem('formalizacoes',JSON.stringify(formalizacoes));
 
 	//populaTabelaArquivos('tabela-arquivos-funpec');
+}
+
+function inserirArquivoIJU(){
+	inserirArquivo('tabela-arquivos-analise-instrumento-juridico','select-tipos-documentos','descricao-arquivo-analise-instrumento-juridico','arquivo-projeto-analise-instrumento-juridico');
 }
 
 function inserirArquivoRetornoCoordenador(){

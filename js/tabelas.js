@@ -328,7 +328,8 @@ function popularTabela(idTabela,array,acoes,limpaTela,linkNoRegistro){
 		nomeAcao === 'modal-gerar-minuta' || nomeAcao === 'modal-solicitar-dotacao' || 
 		nomeAcao === 'modal-solicitar-empenho' || nomeAcao === 'modal-parecer-referencial' ||
 		nomeAcao === 'modal-parecer-funpec' || nomeAcao === 'modal-dados-bancarios-funpec' || 
-		nomeAcao === 'modal-parecer-agir' || nomeAcao === 'modal-analise-tecnica' || nomeAcao === 'modal-justificativa-retorno'){
+		nomeAcao === 'modal-parecer-agir' || nomeAcao === 'modal-analise-tecnica' ||
+		nomeAcao === 'modal-instrumento-juridico' || nomeAcao === 'modal-justificativa-retorno'){
 		botao = document.createElement("button");
 	    botao.setAttribute("type", "button");
 	    botao.setAttribute("class", "btn btn-link");
@@ -351,6 +352,9 @@ function popularTabela(idTabela,array,acoes,limpaTela,linkNoRegistro){
 	    	i.setAttribute("class", "fas fa-undo-alt");//<i class="fas fa-undo-alt"></i>
 	    }else if(nomeAcao === 'modal-analise-tecnica'){
 	    	botao.setAttribute("title","Emitir Análise Técnica");//<i class="fas fa-drafting-compass"></i>
+	    	i.setAttribute("class", "fas fa-drafting-compass");
+	    }else if(nomeAcao === 'modal-instrumento-juridico'){
+	    	botao.setAttribute("title","Emitir Análise Instrumento Jurídico");//<i class="fas fa-drafting-compass"></i>
 	    	i.setAttribute("class", "fas fa-drafting-compass");
 	    }else if(nomeAcao === 'modal-dados-bancarios-funpec'){
 	    	botao.setAttribute("title","Informar dados bancários do projeto");//<i class="fas fa-piggy-bank"></i>
