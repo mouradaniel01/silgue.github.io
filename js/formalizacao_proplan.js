@@ -1690,7 +1690,7 @@ function popularTabelaProjetosPesquisa(idTabela){
  	}
  }
 
- function inserirSolicitacaoIJU(idCampo,tipo,responsavel,situacao,fluxo,modal,idTabelaProjeto, idTabelaHistorico){
+ function inserirSolicitacaoIJU(idCampo,responsavel,tipo,situacao,fluxo,modal,idTabelaProjeto, idTabelaHistorico){
 
  	var solicitacao = document.getElementById(idCampo).value;
 
@@ -1700,7 +1700,7 @@ function popularTabelaProjetosPesquisa(idTabela){
 
  	inserirAnalise(numero_projeto,tipo,responsavel,solicitacao,'','');
 
- 	popularTabelaAnaliseFunpec(idTabelaProjeto,idTabelaHistorico);
+ 	popularTabelaAnaliseIJU(idTabelaProjeto,idTabelaHistorico);
 
  }
 
@@ -1720,7 +1720,7 @@ function popularTabelaProjetosPesquisa(idTabela){
  	if(analise.responsavel === ''){
  		return $('#modal-alerta-responsavel').modal('show');
  	}else{
- 		inserirSolicitacaoIJU('solicitacao-parecer-dcf','SOLICITAÇÃO DE PARECER DA DCF','AGUARDANDO RESPOSTA','EM ANÁLISE PELA PROPLAN',modal);
+ 		inserirSolicitacaoIJU('solicitacao-parecer-dcf',analise.responsavel,'SOLICITAÇÃO DE PARECER DA DCF','AGUARDANDO RESPOSTA','EM ANÁLISE PELA PROPLAN',modal,idTabelaProjeto,idTabelaHistorico);
  	}
 
  }
@@ -1740,7 +1740,7 @@ function popularTabelaProjetosPesquisa(idTabela){
  	if(analise.responsavel === ''){
  		return $('#modal-alerta-responsavel').modal('show');
  	}else{
- 		inserirSolicitacaoIJU('solicitacao-dotacao','SOLICITAÇÃO DE DOTAÇÃO ORÇAMENTÁRIA','AGUARDANDO RESPOSTA','EM ANÁLISE PELA PROPLAN',modal);
+ 		inserirSolicitacaoIJU('solicitacao-dotacao',analise.responsavel,'SOLICITAÇÃO DE DOTAÇÃO ORÇAMENTÁRIA','AGUARDANDO RESPOSTA','EM ANÁLISE PELA PROPLAN',modal);
  	}
 
  }
@@ -1760,7 +1760,7 @@ function popularTabelaProjetosPesquisa(idTabela){
  	if(analise.responsavel === ''){
  		return $('#modal-alerta-responsavel').modal('show');
  	}else{
- 		inserirSolicitacaoIJU('solicitacao-parecer-agir','SOLICITAÇÃO DE PARECER DA AGIR','AGUARDANDO RESPOSTA','EM ANÁLISE PELA PROPLAN',modal);
+ 		inserirSolicitacaoIJU('solicitacao-parecer-agir',analise.responsavel,'SOLICITAÇÃO DE PARECER DA AGIR','AGUARDANDO RESPOSTA','EM ANÁLISE PELA PROPLAN',modal);
  	}
 
  }
@@ -1780,7 +1780,7 @@ function popularTabelaProjetosPesquisa(idTabela){
  	if(analise.responsavel === ''){
  		return $('#modal-alerta-responsavel').modal('show');
  	}else{
- 		inserirSolicitacaoIJU('solicitacao-empenho','SOLICITAÇÃO DE EMISSÃO DE EMPENHO','AGUARDANDO RESPOSTA','EM ANÁLISE PELA PROPLAN',modal);
+ 		inserirSolicitacaoIJU('solicitacao-empenho',analise.responsavel,'SOLICITAÇÃO DE EMISSÃO DE EMPENHO','AGUARDANDO RESPOSTA','EM ANÁLISE PELA PROPLAN',modal);
  	}
 
  }
@@ -1808,8 +1808,13 @@ function popularTabelaProjetosPesquisa(idTabela){
  	
  	populaHistoricos();
 
- 	historicos.push(new Historico(numero_projeto.toString(),tipo,data,
- 								'login',situacao,fluxo,modal));
+ 	var historico = new Historico(numero_projeto.toString(),tipo,data,
+ 								'login',situacao,fluxo,modal);
+
+ 	historicos.push(historico);
+
+ 	setHistorico(numero_projeto,historico);
+
  	setLocalStorage('historicos',historicos);
 
  }
