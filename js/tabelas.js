@@ -264,7 +264,7 @@ function popularTabela(idTabela,array,acoes,limpaTela,linkNoRegistro){
 				botao.setAttribute("aria-haspopup","true");
 				botao.setAttribute("aria-expanded","false");
 				i = document.createElement("i");
-				i.setAttribute("class", "fas fa-toolbox");//<i class="fas fa-toolbox"></i>
+				i.setAttribute("class", "fas fa-ellipsis-h");
 				botao.appendChild(i);
 				div.appendChild(botao);
 				divItens = document.createElement("div");
@@ -337,45 +337,57 @@ function popularTabela(idTabela,array,acoes,limpaTela,linkNoRegistro){
 	    botao.setAttribute("data-tt","tooltip");
 	    botao.setAttribute("data-target", href);
 	    botao.setAttribute("onclick",onclick);
-	    i = document.createElement("i");
+	    //i = document.createElement("i");
 	    if(nomeAcao === 'modal-cadastro'){
-	    	botao.setAttribute("title","Informar Técnico Responsável");
-	    	i.setAttribute("class", "fas fa-user-plus");
+	    	//botao.setAttribute("title","Informar Técnico Responsável");
+	    	//i.setAttribute("class", "fas fa-user-plus");
+	    	botao.innerHTML = 'Informar Responsável';
 	    }else if(nomeAcao === 'modal-exibicao'){
-	    	botao.setAttribute("title","Visualizar informações do projeto");
-	    	i.setAttribute("class", "fas fa-file-alt");//<i class="fas fa-file-contract"></i><i class="far fa-file"></i> <i class="fas fa-info-circle"></i> -- <i class="fas fa-info"></i>
+	    	//botao.setAttribute("title","Visualizar informações do projeto");
+	    	//i.setAttribute("class", "fas fa-file-alt");//<i class="fas fa-file-contract"></i><i class="far fa-file"></i> <i class="fas fa-info-circle"></i> -- <i class="fas fa-info"></i>
+	    	botao.innerHTML = 'Visualizar Projeto';
 	    }else if(nomeAcao === 'modal-parecer-funpec'){
-	    	botao.setAttribute("title","Emitir Parecer Funpec");
-	    	i.setAttribute("class", "fas fa-funnel-dollar");
+	    	//botao.setAttribute("title","Emitir Parecer Funpec");
+	    	//i.setAttribute("class", "fas fa-funnel-dollar");
+	    	botao.innerHTML = 'Parecer Funpec';
 	    }else if(nomeAcao === 'modal-justificativa-retorno'){
-	    	botao.setAttribute("title","Informar Justificativa para Retorno do Projeto");
-	    	i.setAttribute("class", "fas fa-undo-alt");//<i class="fas fa-undo-alt"></i>
+	    	//botao.setAttribute("title","Informar Justificativa para Retorno do Projeto");
+	    	//i.setAttribute("class", "fas fa-undo-alt");//<i class="fas fa-undo-alt"></i>
+	    	botao.innerHTML = 'Retornar Projeto';
 	    }else if(nomeAcao === 'modal-analise-tecnica'){
-	    	botao.setAttribute("title","Emitir Análise Técnica");//<i class="fas fa-drafting-compass"></i>
-	    	i.setAttribute("class", "fas fa-drafting-compass");
+	    	//botao.setAttribute("title","Emitir Análise Técnica");//<i class="fas fa-drafting-compass"></i>
+	    	//i.setAttribute("class", "fas fa-drafting-compass");
+	    	botao.innerHTML = 'Análise Técnica';
 	    }else if(nomeAcao === 'modal-instrumento-juridico'){
-	    	botao.setAttribute("title","Emitir Análise Instrumento Jurídico");//<i class="fas fa-drafting-compass"></i>
-	    	i.setAttribute("class", "fas fa-drafting-compass");
+	    	//botao.setAttribute("title","Emitir Análise Instrumento Jurídico");//<i class="fas fa-drafting-compass"></i>
+	    	//i.setAttribute("class", "fas fa-drafting-compass");
+	    	botao.innerHTML = 'Análise Instrumento Jurídico';
 	    }else if(nomeAcao === 'modal-dados-bancarios-funpec'){
-	    	botao.setAttribute("title","Informar dados bancários do projeto");//<i class="fas fa-piggy-bank"></i>
-	    	i.setAttribute("class", "fas fa-piggy-bank");
+	    	//botao.setAttribute("title","Informar dados bancários do projeto");//<i class="fas fa-piggy-bank"></i>
+	    	//i.setAttribute("class", "fas fa-piggy-bank");
+	    	botao.innerHTML = 'Dados Bancários';
 	    }else if(nomeAcao === 'modal-gerar-minuta'){
-	    	botao.setAttribute("title","Gerar Minuta");
-	    	i.setAttribute("class", "fas fa-file-signature")
+	    	//botao.setAttribute("title","Gerar Minuta");
+	    	//i.setAttribute("class", "fas fa-file-signature")
+	    	botao.innerHTML = 'Gerar Minuta';
 	    }else if(nomeAcao === 'modal-solicitar-dotacao'){
-	    	botao.setAttribute("title","Solicitar Dotação Orçamentária");
-	    	i.setAttribute("class", "fas fa-money-check-alt");
+	    	//botao.setAttribute("title","Solicitar Dotação Orçamentária");
+	    	//i.setAttribute("class", "fas fa-money-check-alt");
+	    	botao.innerHTML = 'Dotação Orçamentária';
 	    }else if(nomeAcao === 'modal-solicitar-empenho'){
-	    	botao.setAttribute("title","Solicitar Empenho");
-	    	i.setAttribute("class", "far fa-money-bill-alt");
+	    	//botao.setAttribute("title","Solicitar Empenho");
+	    	//i.setAttribute("class", "far fa-money-bill-alt");
+	    	botao.innerHTML = 'Solicitar Empenho';
 	    }else if(nomeAcao === 'modal-parecer-referencial'){
-	    	botao.setAttribute("title","Enviar Despacho Parecer Referêncial para assinatura");
-	    	i.setAttribute("class", "fas fa-balance-scale-right");
+	    	//botao.setAttribute("title","Enviar Despacho Parecer Referêncial para assinatura");
+	    	//i.setAttribute("class", "fas fa-balance-scale-right");
+	    	botao.innerHTML = 'Parecer Referêncial';
 	    }else if(nomeAcao === 'modal-parecer-agir'){
-	    	botao.setAttribute("title","Solicitar Parecer da AGIR");
-	    	i.setAttribute("class", "fas fa-asterisk");
+	    	//botao.setAttribute("title","Solicitar Parecer da AGIR");
+	    	//i.setAttribute("class", "fas fa-asterisk");
+	    	botao.innerHTML = 'Parecer AGIR';
 	    }
-	    botao.appendChild(i);
+	    //botao.appendChild(i);
 	}
 	return botao;
 	//<i class="fas fa-file-signature"></i>
