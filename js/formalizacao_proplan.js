@@ -1165,6 +1165,35 @@ function retornaDadosConsultaProjetadaProplanByCondicao(tipo, situacao, fluxo){
 	return dadosProjetos;
 }
 
+function retornarDadosConsultaProjetadaDotacaoByCondicao(tipo, situacao, fluxo){
+
+	var dadosProjetos = [];
+
+	var projetosAExcluir = [];
+
+	populaHistoricos();
+
+	populaFormalizacoes();
+
+	formalizacoesDotacao = [];
+
+	historicos.forEach(function (historico){
+		if(historico.tipo === tipo && historico.situacao === situacao && historico.fluxo === fluxo){
+			formalizacoes.forEach( function (formalizacao){
+				if(formalizacao.projeto_pesquisa.dados_gerais.numero_projeto === historico.numero_projeto.toString()){
+					formalizacoesDotacao.push(formalizacao);
+				}
+			});
+		}
+	});
+
+	formalizacoesDotacao.forEach( function (formalizacao){
+		dadosProjetos.push(consultaAnalisesProplanByIdentificador(formalizacao.projeto_pesquisa.dados_gerais.numero_projeto));
+	});
+
+	return dadosProjetos;
+}
+
 function consultaAnalisesProplanByIdentificador(identificador){
 
 	formalizacao = getFormalizacao(identificador);
@@ -1614,6 +1643,18 @@ function popularTabelaProjetosPesquisa(idTabela){
  	var dadosProjetos = retornaDadosConsultaProjetadaProplanByCondicao('INSTRUMENTO_JURIDICO','ANÁLISE EMITIDA','EM ANÁLISE PELA PROPLAN');
 
  	popularTabela(idTabela,dadosProjetos,[['redirecionar',href,'passarNumeroProjeto',idTabela]],'sim','sim');
+
+ }
+
+ function popularTabelaConsultaDotacaoOrcamentaria(){
+ 	
+ 	var idTabela = 'tabela-consulta-projetos-dotacao-orcamentaria';
+
+ 	var href = 'analise_dotacao_orcamentaria.html';
+
+ 	var dadosProjetos = retornarDadosConsultaProjetadaDotacaoByCondicao('SOLICITAÇÃO DE DOTAÇÃO ORÇAMENTÁRIA','AGUARDANDO RESPOSTA','EM ANÁLISE PELA PROPLAN');
+
+	popularTabela(idTabela,dadosProjetos,[['redirecionar',href,'passarNumeroProjeto',idTabela]],'sim','sim'); 	
 
  }
 

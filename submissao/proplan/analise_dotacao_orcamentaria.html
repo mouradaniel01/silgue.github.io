@@ -147,30 +147,7 @@
         </div>
         <div class="container-conteudo__content w-100">
           <!-- Alerta de sucesso com botão para fechar -->
-            <div id="msg-sucesso-finalizada" class="alert alert-success alert-dismissible d-flex" role="alert">
-              <div class="alert-icone d-flex justify-content-center align-items-center">
-                <i class="fas fa-check"></i>
-              </div>
-              <div class="alert-information">
-                <p class="alert-heading"><strong>Sucesso</strong></p>
-                <p>Análise finalizada com sucesso!</p>
-              </div>
-              <button class="close d-flex" data-dismiss="alert" aria-label="fechar" href="consulta_analise_funpec.html">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-            <div id="msg-sucesso-salvamento" class="alert alert-success alert-dismissible d-flex" role="alert">
-              <div class="alert-icone d-flex justify-content-center align-items-center">
-                <i class="fas fa-check"></i>
-              </div>
-              <div class="alert-information">
-                <p class="alert-heading"><strong>Sucesso</strong></p>
-                <p>Informações foram armazenadas com sucesso!</p>
-              </div>
-              <button class="close d-flex" data-dismiss="alert" aria-label="fechar" href="consulta_analise_funpec.html">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
+    
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a class="link" href="../../../index.html"><i class="fas fa-home"></i></a></li>
@@ -178,7 +155,7 @@
               <li class="breadcrumb-item"><a class="link" href="../index.html">Projetos</a></li>
               <li class="breadcrumb-item"><a class="link" href="consulta_analise_funpec.html">Formalização de Projetos de Pesquisa</a></li>
               <li class="breadcrumb-item active" aria-current="page">
-                <h3>Análise Funpec</h3>
+                <h3>Informar Dotação Orçamentária</h3>
               </li>
             </ol>
           </nav>
@@ -187,11 +164,11 @@
               <div class="conteudo-principal__content parse-markdown my-4">
                 <h5>Regras de Negócio
                 <span class="tooltip-icon">
-                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O usuário poderá salvar as informações inseridas, sem finalizar a análise. As informações salvas devem ser visíveis para as demais funcionalidades, pois eles utilizam essas informações entre si, em suas análises. Ao finalizar a análise, então o projeto será removido da listagem de projeto pendente de análise FUNPEC, na tela anterior.">
+                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O coordenador de orçamento utilizará essa funcionalidade para informar os dados da dotação orçamentária do projeto.">
                   </i>
                </span>
                </h5> 
-                <table id="tabela-analise-funpec" class="table table-striped" data-toggle="table">
+                <table id="tabela-analise-dotacao-orcamentaria" class="table table-striped" data-toggle="table">
                   <thead>
                     <tr>
                       <th style="width: 85px">Número</th>
@@ -219,16 +196,7 @@
                     <td></td>
                   </tbody>
                 </table>
-                <div class="form-group position-relative mt-2">
-                  <output class="form-control" id="responsavel-funpec" type="text" placeholder="responsável técnico que está analisando o projeto."></output>
-                  <div class="tooltip-group">
-                     <label for="responsavel-funpec">Responsável Técnico</label>
-                     <span class="tooltip-icon">
-                        <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Regra de Negócio: O responsável técnico só poderia ser informado pelo líder da equipe. O sistema deve armazenar a informação da data, hora e login de quem informou o responsável. O sistema não deve permitir inserir as informações do parecer ou dos dados bancários caso não tenha sido informado o responsável.">
-                        </i>
-                     </span>
-                  </div>
-                </div>
+                
               </div>
             </article>
             <article class="conteudo-principal">
@@ -240,7 +208,7 @@
                </span>
                </h5>
               <div class="form-group position-relative">
-                  <table class="table table-striped" data-toggle="table" id="tabela-historico-funpec">
+                  <table class="table table-striped" data-toggle="table" id="tabela-historico-dotacao-orcamentaria">
                      <thead>
                         <tr>
                            <th style="width: 120px">Evento</th>
@@ -259,13 +227,7 @@
                      </tbody>
                   </table>
                </div>       
-                <!--<div class="form-group position-relative">
-                  <textarea class="form-control" id="parecer-funpec" placeholder="Parecer de aprovação ou recomendação..." data-max-size="4000"></textarea>
-                  <label class="required" for="parecer-funpec">Parecer Funpec</label>
-                  <div class="invalid-feedback">Limite de caracteres excedido
-                  </div>
-                </div>-->
-                
+                                
               </div>
               </article>
               <article class="conteudo-principal">
@@ -304,7 +266,7 @@
                         <button type="button" class="btn btn-primary" onclick="inserirArquivoFunpec()">Inserir</button>
                      </div>
                      <div class="form-group position-relative">
-                        <table class="table table-striped" data-toggle="table" id="tabela-arquivos-funpec">
+                        <table class="table table-striped" data-toggle="table" id="tabela-arquivos-dotacao-orcamentaria">
                            <thead>
                               <tr>
                                  <th>Tipo</th>
