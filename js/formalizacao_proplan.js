@@ -1524,16 +1524,7 @@ function retornaDadosConsultaProjetosCoordenadorBySituacaoIdentificador(identifi
 
  }
 
- function popularTabelaProjetoAnaliseIJU(idTabela){
 
- 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(numero_projeto);
- 	
- 	popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela],
- 		['modal-parecer-dcf','#modal-parecer-dcf','',idTabela],['modal-gerar-minuta','#modal-gerar-minuta','',idTabela],['modal-parecer-referencial','#modal-parecer-referencial','',idTabela],
- 		['modal-solicitar-dotacao','#modal-solicitar-dotacao','',idTabela],['modal-solicitar-empenho','#modal-solicitar-empenho','',idTabela],['modal-parecer-agir','#modal-parecer-agir','',idTabela],
- 		['modal-instrumento-juridico','#modal-instrumento-juridico','',idTabela]]);
-
- }
 
  function popularTabelaPROPLANSemResponsavel(idTabela){
  	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(numero_projeto);
@@ -2136,6 +2127,41 @@ function popularTabelaProjetosPesquisa(idTabela){
 
  	populaTabelaArquivosInstrumentoJuridico(idTabelaArquivo);
  	
+ }
+
+ function popularTabelaDotacaoPendente(){
+
+ 	var idTabelaProjetos = 'tabela-dotacao-orcamentaria';
+ 	var idTabelaHistorico = 'tabela-historico-dotacao-orcamentaria';
+ 	var idTabelaArquivo = 'tabela-arquivos-dotacao-orcamentaria';
+
+ 	popularTabelaProjetoDotacaoPendente(idTabelaProjetos);
+
+ 	populaHistoricos();
+
+ 	populaTabelaHistorico(idTabelaHistorico);
+
+ 	populaTabelaArquivosInstrumentoJuridico(idTabelaArquivo);
+ 	
+ }
+
+  function popularTabelaProjetoAnaliseIJU(idTabela){
+
+ 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(numero_projeto);
+ 	
+ 	popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela],
+ 		['modal-parecer-dcf','#modal-parecer-dcf','',idTabela],['modal-gerar-minuta','#modal-gerar-minuta','',idTabela],['modal-parecer-referencial','#modal-parecer-referencial','',idTabela],
+ 		['modal-solicitar-dotacao','#modal-solicitar-dotacao','',idTabela],['modal-solicitar-empenho','#modal-solicitar-empenho','',idTabela],['modal-parecer-agir','#modal-parecer-agir','',idTabela],
+ 		['modal-instrumento-juridico','#modal-instrumento-juridico','',idTabela]]);
+
+ }
+
+ function popularTabelaProjetoDotacaoPendente(idTabela){
+
+ 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(numero_projeto);
+
+ 	popularTabela(idTabela,dadosProjetos,[['dados_do_projeto','#modal-visualizar-projeto','',idTabela]],'sim','sim');
+
  }
 
  function populaTabelaHistorico(idTabelaHistorico){

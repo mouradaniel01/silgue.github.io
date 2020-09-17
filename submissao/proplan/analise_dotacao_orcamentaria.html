@@ -168,7 +168,7 @@
                   </i>
                </span>
                </h5> 
-                <table id="tabela-analise-dotacao-orcamentaria" class="table table-striped" data-toggle="table">
+                <table id="tabela-dotacao-orcamentaria" class="table table-striped" data-toggle="table">
                   <thead>
                     <tr>
                       <th style="width: 85px">Número</th>
@@ -180,11 +180,9 @@
                       <th style="width: 100px">Valor do Projeto</th>
                       <th style="width: 100px">Plano de Aplicação</th>
                       <th style="width: 90px">DOAP</th>
-                      <th>Ações</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -661,11 +659,10 @@
     <script src="../../js/formalizacao_proplan.js"></script> 
     <script src="../../js/util.js"></script> 
     <script type="text/javascript">
-      popularTabelaAnaliseFunpec();
+      popularTabelaDotacaoPendente();
 
       populaSelect(document.getElementById("select-tipos-documentos"),tiposDocumentosBase);
       populaSelect(document.getElementById("select-banco-conta-projeto"),bancos);
-      carregaResponsavel('ANALISE_FUNPEC');
 
       $("[data-tt=tooltip]").tooltip();
 
