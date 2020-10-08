@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html class="no-js" lang="pt-BR" paleta="administrativa">
   <head>
@@ -129,15 +130,6 @@
                   </ul>
                 </div>
               </button>
-              <button class="submenu" tabindex="0">
-                <div class="submenu__title">
-                  <h5>Formalização de Projetos de Ensino</h5><i class="fas fa-angle-right"></i>
-                </div>
-                <div class="submenu__items">
-                  <h5>Lato Sensu</h5>
-                   
-                </div>
-              </button>
             </div>
             <div class="menu-lateral__content--right">
               <button tabindex="-1"><i class="fas fa-angle-left"></i> Voltar ao menu</button>
@@ -152,14 +144,14 @@
               <li class="breadcrumb-item"><a class="link" href="../../index.html">Submissão</a></li>
               <li class="breadcrumb-item"><a class="link" href="../index.html">Projetos</a></li>
               <li class="breadcrumb-item active" aria-current="page">
-                <h3>Formalização de Projetos</h3>
+                <h3>Efetivar Projetos</h3>
               </li>
             </ol>
           </nav>
           <div class="row m-0">
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">
-              <table id="tabela-consulta-analise-instrumento_juridico" class="table table-striped" data-toggle="table">
+              <table id="tabela-consulta-retorno-coordenador" class="table table-striped" data-toggle="table">
                 <thead>
                   <tr>
                     <th style="width: 60px">Número</th>
@@ -207,7 +199,7 @@
     <script src="../../js/tabelas.js"></script> 
     <script type="text/javascript">
       $(document).ready(function () {
-        $('#tabela-consulta-analise-instrumento_juridico').DataTable( {
+        $('#tabela-consulta-retorno-coordenador').DataTable( {
           lengthChange: false,
           language: {
             search: "_INPUT_",
@@ -218,8 +210,9 @@
         } );
       });
 
-      popularTabelaConsultaIJU();
- 
+      popularTabelaConsultaProplan('tabela-consulta-retorno-coordenador','efetivar_projeto.html');
+
+      
       
     </script> 
   </body>

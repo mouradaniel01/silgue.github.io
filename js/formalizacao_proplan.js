@@ -1493,6 +1493,35 @@ function retornaDadosConsultaProjetosCoordenadorBySituacaoIdentificador(identifi
  	
  }
 
+ function popularTabelaEfetivarProjeto(idTabelaProjetos,idTabelaHistorico,idTabelaArquivo){
+
+ 	popularEfetivarProjeto(idTabelaProjetos);
+
+ 	if(historicos.length > 0){
+ 		historicos.forEach( function (historico){
+ 			if(historico.numero_projeto === numero_projeto.toString() || historico.numero_projeto === numero_projeto){
+				var dadosEvento = [];
+	 			dadosEvento.push([historico.tipo,historico.data,historico.login]);
+	 			popularTabela(idTabelaHistorico,dadosEvento,historico.modal,'nao','nao');
+			}
+			
+ 	});
+ 	}else{
+ 		historicos = JSON.parse(localStorage.getItem('historicos'));
+		historicos.forEach( function (historico){
+			if(historico.numero_projeto === numero_projeto.toString() || historico.numero_projeto === numero_projeto){
+				var dadosEvento = [];
+	 			dadosEvento.push([historico.tipo,historico.data,historico.login]);
+	 			popularTabela(idTabelaHistorico,dadosEvento,historico.modal,'nao','nao');
+			}
+			
+ 	});
+ 	}
+
+ 	populaTabelaArquivosFunpec(idTabelaArquivo);
+ 	
+ }
+
  function popularTabelaProjetoAnaliseFunpec(idTabela){
  	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(numero_projeto);
 
@@ -1521,10 +1550,16 @@ function retornaDadosConsultaProjetosCoordenadorBySituacaoIdentificador(identifi
  	popularTabelaComBotaoDropDown(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],
  		['modal-justificativa-retorno','#modal-justificativa-retorno','',idTabela]]);
 
-
  }
 
+function popularEfetivarProjeto(idTabela){
 
+ 	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(numero_projeto);
+
+ 	//popularTabela(idTabela,dadosProjetos,[['modal-exibicao','#modal-visualizar-projeto','',idTabela],['modal-cadastro','#modal-cadastrar-responsavel','',idTabela]],'sim','nao');
+ 	popularTabela(idTabela,dadosProjetos,[['dados_do_projeto','#modal-visualizar-projeto','',idTabela]],'nao','sim');
+
+ }
 
  function popularTabelaPROPLANSemResponsavel(idTabela){
  	var dadosProjetos = retornaDadosAnaliseProjetadaProplan(numero_projeto);

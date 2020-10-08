@@ -105,7 +105,7 @@
       </header>
       <div class="container-conteudo">
         <div class="container-conteudo__overlay"></div>
-        <div class="container-conteudo__aside"> 
+        <div class="container-conteudo__aside">
           <aside class="bg-secondary menu-lateral">
             <div class="menu-lateral__content">
               <button class="submenu" tabindex="0">
@@ -113,7 +113,7 @@
                 <div class="submenu__title">
                   <h5>Formalização de Projetos de Pesquisa</h5><i class="fas fa-angle-right"></i>
                 </div>
-                <div class="submenu__items">
+               <div class="submenu__items">
                   <h5>Pesquisa</h5>
                   <ul>
                     <li><a tabindex="-1" href="consulta_analise_funpec.html"><span>Análise FUNPEC</span></a></li>
@@ -129,15 +129,7 @@
                   </ul>
                 </div>
               </button>
-              <button class="submenu" tabindex="0">
-                <div class="submenu__title">
-                  <h5>Formalização de Projetos de Ensino</h5><i class="fas fa-angle-right"></i>
-                </div>
-                <div class="submenu__items">
-                  <h5>Lato Sensu</h5>
-                   
-                </div>
-              </button>
+              
             </div>
             <div class="menu-lateral__content--right">
               <button tabindex="-1"><i class="fas fa-angle-left"></i> Voltar ao menu</button>
@@ -146,16 +138,14 @@
           </aside>
         </div>
         <div class="container-conteudo__content w-100">
-          <!-- Alerta de sucesso com botão para fechar -->
-    
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a class="link" href="../../../index.html"><i class="fas fa-home"></i></a></li>
               <li class="breadcrumb-item"><a class="link" href="../../index.html">Submissão</a></li>
               <li class="breadcrumb-item"><a class="link" href="../index.html">Projetos</a></li>
-              <li class="breadcrumb-item"><a class="link" href="consulta_analise_funpec.html">Formalização de Projetos de Pesquisa</a></li>
+              <li class="breadcrumb-item"><a class="link" href="consulta_retorno_coordenador.html">Formalização de Projetos de Pesquisa</a></li>
               <li class="breadcrumb-item active" aria-current="page">
-                <h3>Informar Dotação Orçamentária</h3>
+                <h3>Efetivar Projeto</h3>
               </li>
             </ol>
           </nav>
@@ -164,11 +154,11 @@
               <div class="conteudo-principal__content parse-markdown my-4">
                 <h5>Regras de Negócio
                 <span class="tooltip-icon">
-                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="O coordenador de orçamento utilizará essa funcionalidade para informar os dados da dotação orçamentária do projeto.">
+                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Aqui serão listados todos os projetos que estão em análise pela proplan. Nessa funcionalidade, o gestor poderá visualizar os dados da formalização e poderá efetivar o projeto. Ao efetivar o projeto ele deve assumir a condição de vigente e não deverá ser listado nas demais funcionalidades da proplan(analise funpec, técnica, instrumento jurídico e retornar ao projeto ao coordenador.) Caso o projeto não esteja em condições de ser efetivado, a PROPLAN deve utilizar a funcionalidade de retornar projeto ao coordenador.">
                   </i>
                </span>
-               </h5> 
-                <table id="tabela-dotacao-orcamentaria" class="table table-striped" data-toggle="table">
+               </h5>
+                <table id="tabela-retorno-coordenador" class="table table-striped" data-toggle="table">
                   <thead>
                     <tr>
                       <th style="width: 85px">Número</th>
@@ -194,28 +184,18 @@
                     <td></td>
                   </tbody>
                 </table>
-                
               </div>
             </article>
             <article class="conteudo-principal">
               <div class="conteudo-principal__content parse-markdown my-4">
-                <div class="form-group position-relative">
-                  <input id="ptres"
-                     class="form-control form-autocomplete" data-type="simples" type="text" placeholder="Digite o programa de trabalho resumido..." />
-                  <label class="required" for="ptres">PTRES</label>
-               </div>
-              </div>
-            </article>
-            <article class="conteudo-principal">
-              <div class="conteudo-principal__content parse-markdown my-4"> 
-                <h5>Regras de Negócio
+              <h5>Regras de Negócio
                 <span class="tooltip-icon">
-                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Os eventos são as ações realizadas no projeto. Aqui deverão ser listados todos os eventos do projeto(Ex.: parecer funpec, analise técnica, parecer instrumento jurídico, solicitação de dotação e etc). Tais informações/parecer/solicitações devem ser visíveis para todas as funcionalidades da análise e na visualização da formalização. O sistema deve permitir não apenas visualizar um histórico de qual evento e quando, mas visualizar a informação que foi inserida. As ações permitidas em cada análise só devem ser liberadas caso o responsável técnico tenha sido informado.">
+                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Os eventos são as ações realizadas no projeto. Aqui deverão ser listados todos os eventos do projeto(Ex.: parecer funpec, analise técnica, parecer instrumento jurídico e demais).Após efetivar o projeto, o sistema gera um evento do tipo efetivação de projeto com os dados da tabela abaixo.">
                   </i>
                </span>
-               </h5>
+               </h5> 
               <div class="form-group position-relative">
-                  <table class="table table-striped" data-toggle="table" id="tabela-historico-dotacao-orcamentaria">
+                  <table class="table table-striped" data-toggle="table" id="tabela-historico-retorno-coordenador">
                      <thead>
                         <tr>
                            <th style="width: 120px">Evento</th>
@@ -233,15 +213,32 @@
                         </tr>
                      </tbody>
                   </table>
-               </div>       
-                                
+               </div>              
               </div>
               </article>
               <article class="conteudo-principal">
-                <div class="conteudo-principal__content parse-markdown my-4"> 
-                  <h5><a href="https://docs.google.com/document/d/19ZO0bydyjpRRVl0CXC40rC0LRt7XfnS89PFY-57M7qU/edit">Regras de Negócio</a>
+                <div class="conteudo-principal__content parse-markdown my-4">
+                  <h5>Regras de Negócio
                 <span class="tooltip-icon">
-                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Todos os arquivos inseridos no projeto deverão ser listados nessa tabela, mas apenas deverá ser permitido remover os arquivos que foram inseridos na funcionalidade, ou seja, a análise técnica não pode excluir arquivos inseridos pelo coordenador, assim como não pode excluir arquivos inseridos pelo analista da funpec, mas apenas os que foram inseridos pela central de serviços, independente do usuário que inseriu. A regra dos documentos obrigatórios em cada fase pode ser verificado clicando em regras de negócio.">
+                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="A data de assinatura pode ser anterior a data atual, pois o evento da assinatura ocorre antes da efetivação do projeto no sistema. A partir da data de assinatura é que se inicia a vigência do projeto. O prazo do projeto é a data em que o projeto será encerrado, e não pode ser superior ao tempo de execução informado na solicitação da formalização, a contar da data da assinatura.">
+                  </i>
+               </span>
+               </h5> 
+                  <div class="form-group">
+                    <input class="form-control" id="date-inicio" type="date" />
+                    <label for="date-input">Data de Assinatura</label>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" id="date-fim" type="date" />
+                    <label for="date-input">Prazo de vigência</label>
+                  </div>
+                </div>
+              </article>
+              <article class="conteudo-principal">
+                <div class="conteudo-principal__content parse-markdown my-4">
+                <h5>Regras de Negócio
+                <span class="tooltip-icon">
+                  <i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-trigger="click" data-type="tooltip-info" title="Todos os arquivos inseridos no projeto deverão ser listados nessa tabela, mas apenas deverá ser permitido remover os arquivos que foram inseridos na funcionalidade de efetivar o projeto.">
                   </i>
                </span>
                </h5> 
@@ -257,23 +254,23 @@
                         <div class="invalid-feedback">Selecione alguma opção</div>
                      </div>
                      <div class="form-group position-relative">
-                        <textarea class="form-control" id="descricao-arquivo-funpec" placeholder="Descreva de forma resumida do que se trata o arquivo" data-max-size="100"></textarea>
-                        <label class="required" for="descricao-arquivo-funpec">Descrição do Arquivo</label>
+                        <textarea class="form-control" id="descricao-arquivo-retorno-coordenador" placeholder="Descreva de forma resumida do que se trata o arquivo" data-max-size="100"></textarea>
+                        <label class="required" for="descricao-arquivo-retorno-coordenador">Descrição do Arquivo</label>
                         <div class="invalid-feedback">Limite de caracteres excedido
                         </div>
                      </div>
                      <div class="form-group position-relative">
                          <div class="custom-file">
-                           <input class="custom-file-input" type="file" id="arquivo-projeto-funpec" />
-                           <label class="custom-file-label" for="arquivo-projeto-funpec">Escolha seu arquivo</label>
+                           <input class="custom-file-input" type="file" id="arquivo-projeto-retorno-coordenador" />
+                           <label class="custom-file-label" for="arquivo-projeto-retorno-coordenador">Escolha seu arquivo</label>
                          </div>
                          <label>Arquivo</label>
                      </div>
                      <div class="form-group position-relative">
-                        <button type="button" class="btn btn-primary" onclick="inserirArquivoFunpec()">Inserir</button>
+                        <button type="button" class="btn btn-primary" onclick="inserirArquivoRetornoCoordenador()">Inserir</button>
                      </div>
                      <div class="form-group position-relative">
-                        <table class="table table-striped" data-toggle="table" id="tabela-arquivos-dotacao-orcamentaria">
+                        <table class="table table-striped" data-toggle="table" id="tabela-arquivos-retorno-coordenador">
                            <thead>
                               <tr>
                                  <th>Tipo</th>
@@ -294,7 +291,7 @@
                      </div>
                      <div class="btn-group">
                         <button id="salvar-analise" type="button" class="btn btn-primary">Salvar</button>
-                        <a id="finalizar-analise" class="btn btn-secondary" onclick="finalizarAnaliseFunpec()" href="consulta_analise_funpec.html">Finalizar Análise</a>
+                        <a id="retornar-formalizacao" class="btn btn-secondary" onclick="retornarFormalizacaoCoordenador()" href="consulta_retorno_coordenador.html">Finalizar Análise</a>
                      </div>
                   </div>
                 </div>
@@ -395,11 +392,11 @@
                    </div>
                    <div class="modal-body">
                       <div class="form-group position-relative">
-                            <input class="form-control" id="nome-tipo-documento-funpec" type="text" placeholder="Responsável técnico pelo projeto" />
+                            <input class="form-control" id="nome-tipo-documento-fiscalizacao" type="text" placeholder="Responsável técnico pelo projeto" />
                             <label for="nome-tipo-documento">Nome</label>
                       </div>
                       <div class="form-group position-relative">
-                         <button type="button" class="btn btn-primary" onclick="inserirTipoDocumento('tabela-tipos-documentos','nome-tipo-documento-funpec','select-tipos-documentos')">Inserir</button>
+                         <button type="button" class="btn btn-primary" onclick="inserirTipoDocumento('tabela-tipos-documentos','nome-tipo-documento-fiscalizacao','select-tipos-documentos')">Inserir</button>
                       </div>
                       <table class="table table-striped" data-toggle="table" id="tabela-tipos-documentos">
                          <thead>
@@ -423,12 +420,12 @@
              </div>
           </div>
           <!-- Fim do modal de cadastro de tipos de documentos-->
-          <!-- Modal de cadastro responsável projeto -->
-          <div class="modal fade" id="modal-cadastrar-responsavel" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
+          <!-- Modal de justificativa retorno -->
+          <div class="modal fade" id="modal-justificativa-retorno" tabindex="-1" role="dialog" aria-labelledby="modal-justificativa-retorno" aria-hidden="true">
              <div class="modal-dialog" role="document">
                 <div class="modal-content">
                    <div class="modal-header">
-                      <h5 class="modal-title" id="cadastrar-responsavel">Cadastrar Responsável
+                      <h5 class="modal-title">Retornar Projeto ao Coordenador
                       </h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                       <span aria-hidden="true">&times;</span>
@@ -436,48 +433,68 @@
                   </div>
                   <div class="modal-body">
                     <div class="form-group position-relative">
-                          <input class="form-control" id="nome-responsavel-funpec" type="text" placeholder="Responsável técnico pelo projeto..." />
-                          <label for="nome-responsavel-funpec">Responsável Técnico</label>
-                    </div>
-                  </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary"  data-dismiss="modal" onclick="inserirResponsavel('ANALISE_FUNPEC')">Salvar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Fim do modal de cadastro responsável projeto-->
-          <!-- Modal de Emitir parecer FUNPEC -->
-          <div class="modal fade" id="modal-parecer-funpec" tabindex="-1" role="dialog" aria-labelledby="cadastrar-responsavel" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                   <div class="modal-header">
-                      <h5 class="modal-title">Emitir Parecer FUNPEC
-                      </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                      <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="conteudo-principal_header">
-                      <h5>Com a finalidade de obter o apoio na execução das atividades e na gestão administrativa e financeira da FUNPEC a este Projeto Acadêmico, solicitamos manifestar-se quanto à possibilidade da celebração de um contrato acadêmico através de uma proposta de preço a ser apresentada por essa Fundação de Apoio</h5>
-                    </div> 
-                    <div class="form-group position-relative">
-                      <textarea class="form-control" id="parecer-funpec" placeholder="Parecer de aprovação ou recomendação..." data-max-size="2000"></textarea>
-                      <label class="required" for="parecer-funpec">Parecer FUNPEC</label>
+                      <textarea class="form-control" id="justificativa-retorno" placeholder="Justificativa para retornar o projeto para o coordenador" data-max-size="2000"></textarea>
+                      <label class="required" for="justificativa-retorno">Justificativa do Retorno</label>
                       <div class="invalid-feedback">Limite de caracteres excedido
                       </div>
                     </div>
                   </div>
                 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="inserirParecerFunpec()">Enviar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="inserirJustificativaRetorno()">Enviar</button>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Fim do modal de emitir parecer funpec-->
+          <!-- Fim do modal justificativa retorno-->
+          <!-- Modal de visualizar justificativa retorno -->
+          <div class="modal fade" id="modal-visualizar-justificativa-retorno" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-justificativa-retorno" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Justificativa do Retorno do Projeto
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <p id="exibir-justificativa-retorno"></p>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar justificativa retorno-->
+          <!-- Modal de visualizar Análise Técnica -->
+          <div class="modal fade" id="modal-visualizar-analise-tecnica" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-analise-tecnica" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <h5 class="modal-title">Análise Técnica
+                      </h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group position-relative">
+                          <p id="exibir-analise-tecnica"></p>
+                    </div>
+                  </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fim do modal de visualizar Análise Técnica-->
           <!-- Modal de visualizar solicitação parecer funpec -->
           <div class="modal fade" id="modal-visualizar-parecer-funpec" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-parecer-funpec" aria-hidden="true">
              <div class="modal-dialog" role="document">
@@ -502,45 +519,6 @@
             </div>
           </div>
           <!-- Fim do modal de visualizar solicitação de parecer funpec-->
-          <!-- Modal de informar dados bancários do projeto FUNPEC -->
-          <div class="modal fade" id="modal-dados-bancarios-funpec" tabindex="-1" role="dialog" aria-labelledby="modal-dados-bancarios-funpec" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                   <div class="modal-header">
-                      <h5 class="modal-title">Dados Bancários do Projeto
-                      </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                      <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                   <div class="form-group position-relative">
-                      <select class="custom-select" id="select-banco-conta-projeto" required="required" name="banco-conta-projeto">
-                         <option value="hide">Selecione</option>    
-                      </select>
-                         <label class="required" for="select-banco-conta-projeto">Banco
-                         </label>                  
-                      <div class="invalid-feedback">Selecione alguma opção</div>
-                   </div>
-                    <div class="form-group position-relative" >
-                      <input class="form-control" id="agencia-projeto" type="text" placeholder="Número da agência da conta do projeto, com o dígito..." />
-                         <label id="labelNomeCursoLatoSensu" class="required" for="agencia-projeto">Agência
-                         </label>
-                   </div>
-                    <div class="form-group position-relative" >
-                      <input class="form-control" id="conta-projeto" type="text" placeholder="Número da conta corrente do projeto, com o dígito..." />
-                         <label id="labelNomeCursoLatoSensu" class="required" for="conta-projeto">C/C
-                         </label>
-                   </div>
-                  </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="inserirDadosBancariosFunpec()">Enviar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Fim do Modal de informar dados bancários do projeto FUNPEC-->
           <!-- Modal de visualizar dados Bancários -->
           <div class="modal fade" id="modal-visualizar-dados-bancarios" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-parecer-funpec" aria-hidden="true">
              <div class="modal-dialog" role="document">
@@ -577,77 +555,6 @@
             </div>
           </div>
           <!-- Fim do modal de visualizar dados bancários do projeto-->
-          <!-- Modal de visualizar Análise Técnica -->
-          <div class="modal fade" id="modal-visualizar-analise-tecnica" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-analise-tecnica" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                   <div class="modal-header">
-                      <h5 class="modal-title">Análise Técnica
-                      </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                      <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="form-group position-relative">
-                          <p id="exibir-analise-tecnica"></p>
-                    </div>
-                  </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Fim do modal de visualizar Análise Técnica-->
-          <!-- Modal Alerta Cadastrar Responsável -->
-          <div class="modal fade" id="modal-alerta-responsavel" tabindex="-1" role="dialog" aria-labelledby="odal-alerta-responsavel" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-body">
-                    <div class="alert alert-danger d-flex" role="alert">
-                      <div class="alert-icone d-flex justify-content-center align-items-center">
-                        <i class="fas fa-times"></i>
-                      </div>
-                      <div class="alert-information">
-                        <p class="alert-heading"><strong>Erro</strong></p>
-                        <p>Nenhum Responsável foi cadastrado!</p>
-                      </div>
-                    </div>
-                  </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Fim do modal Alerta Cadastrar Responsável-->
-          <!-- Modal de visualizar justificativa retorno -->
-          <div class="modal fade" id="modal-visualizar-justificativa-retorno" tabindex="-1" role="dialog" aria-labelledby="modal-visualizar-justificativa-retorno" aria-hidden="true">
-             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                   <div class="modal-header">
-                      <h5 class="modal-title">Justificativa do Retorno do Projeto
-                      </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                      <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="form-group position-relative">
-                          <p id="exibir-justificativa-retorno"></p>
-                    </div>
-                  </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Fim do modal de visualizar justificativa retorno-->
         </div>
       </div>
       <footer class="rodape">
@@ -662,22 +569,15 @@
     <script src="https://static.info.ufrn.br/1.0.6/vendors/popper/popper.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/vendors/bootstrap/bootstrap.min.js"></script>
     <script src="https://static.info.ufrn.br/1.0.6/js/scripts.js"></script>
-    <script src="../../js/orcamento.js"></script>
     <script src="../../js/tabelas.js"></script>
-    <script src="../../js/documentos.js"></script>
-     <script src="../../js/bancos.js"></script>
+    <script src="../../js/documentos.js"></script> 
     <script src="../../js/formalizacao_proplan.js"></script> 
     <script src="../../js/util.js"></script> 
     <script type="text/javascript">
-      popularTabelaDotacaoPendente();
-
-      populaSelect(document.getElementById("select-tipos-documentos"),tiposDocumentosBase);
-      populaSelect(document.getElementById("select-banco-conta-projeto"),bancos);
-
-      autocomplete(document.getElementById("ptres"), ptres);
-
-      $("[data-tt=tooltip]").tooltip();
-
+      popularTabelaEfetivarProjeto('tabela-retorno-coordenador','tabela-historico-retorno-coordenador','tabela-arquivos-retorno-coordenador');
+      populaSelect(document.getElementById("select-tipos-documentos"),tiposDocumentos);
+      //carregaResponsavel('FISCALIZACAO');
+      //$("[data-tt=tooltip]").tooltip();
     </script> 
   </body>
 </html>
